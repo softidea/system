@@ -46,7 +46,7 @@
                                 <p class="sub_topic">Finance Management System</p>
                             </div>
                             <div class="panel-body">
-                                <form action="login.php" method="POST" enctype="multipart/form-data">
+                                <form action="controller/login.php" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">E-Mail Address :</label>
                                         <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>
