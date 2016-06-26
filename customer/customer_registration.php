@@ -40,8 +40,9 @@
         </style>
     </head>
     <body>
-        <?php include 'assets/include/navigation_bar.php'; ?>
-
+        <div>
+            <?php include 'navigation_bar.php';?>
+        </div>
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">

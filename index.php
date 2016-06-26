@@ -16,9 +16,7 @@
         <script type="text/javascript">
             function setregpanel()
             {
-                <?php
-                header('Location:http://www.google.com');
-                ?>
+                
                 if(document.getElementsById('panelreguser').style.display="none")
                 {
                     document.getElementsById('panelreguser').style.display="block";
