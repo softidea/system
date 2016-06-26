@@ -17,11 +17,11 @@
         <script type="text/javascript">
             function setregpanel()
             {
-                
-                if(document.getElementsById('panelreguser').style.display="none")
+
+                if (document.getElementsById('panelreguser').style.display = "none")
                 {
-                    document.getElementsById('panelreguser').style.display="block";
-                    document.getElementsById('panelloginusers').style.display="none";
+                    document.getElementsById('panelreguser').style.display = "block";
+                    document.getElementsById('panelloginusers').style.display = "none";
                 }
             }
         </script>
@@ -54,7 +54,7 @@
                                         <label class="control-label" for="input-password">Password :</label>
                                         <input type="password" name="password" placeholder="Password" id="input-password" class="form-control" required/>
                                         <a href="user/user_registration.php"><p id="para_forget">Did you forgot your password?</p></a></div>
-                                        <a href="user/user_home.php"><input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
+                                    <a href="user/user_home.php"><input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
                                     <input type="button" name="login_process" value="Register User" class="btn" id='btn_login' onclick="setregpanel();"/>
                                 </form>
                             </div>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="panel-body">
 
-                                <form action="register.php" method="POST" enctype="multipart/form-data">
+                                <form action="controller/login.php" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">First Name :</label>
                                         <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>
@@ -107,7 +107,7 @@
                                         <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>
                                     </div>
                                     <input type="submit" name="login_process" value="Register Here" class="btn" id='btn_login'/>
-                                    <input type="submit" name="login_process" value="Back Login" class="btn" id='btn_login'/>
+                                    <!-- <input type="submit" name="login_process" value="Back Login" class="btn" id='btn_login'/> -->
                                 </form>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
         </div>
         <!--Container Panel Start-->
 
-    <?php include 'assets/include/footer.php';?>
+        <?php include 'assets/include/footer.php'; ?>
 
     </body>
     <style>
