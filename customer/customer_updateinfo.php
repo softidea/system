@@ -29,18 +29,18 @@
             }
             #cviewbuttons
             {
-                background-color: #004D40;
+                background-color: #009688;
                 color: white;
                 margin-top: 25px;
             }
             #cviewbuttons:hover
             {
-                background-color: #009688;
+                background-color: #004D40;
             }
         </style>
     </head>
     <body>
-        <?php include 'assets/include/navigation_bar.php'; ?>
+        <?php include '../assets/include/navigation_bar.php';?>
 
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -50,7 +50,7 @@
                         <div class="panel-heading" id="panelheading">
                             <h3 class="panel-title">Customer Registration</h3>
                         </div>
-                        <div class="panel-body" style="background-color: #E8F5E9;">
+                        <div class="panel-body" style="background-color: #FAFAFA;">
                             <div class="col-sm-6">
                                 <fieldset id="account">
                                     <legend>01.Customer Personal Details</legend>
@@ -397,30 +397,30 @@
 <style>
     #panelheading
     {
-        background: #004D40;
+        background: #009688;
         color: white;          
     }
     #custcontinue
     {
-        background-color: #004D40;
+        background-color: #009688;
         color: white;
         float: right;
     }
     #custcontinue:hover
     {
-        background-color: #009688;
+        background-color: #004D40;
     }
     //.thcaption{text-align: center;}
     #backregister
     {
-        background-color: #004D40;
+        background-color: #009688;
         color: white;
         float: right;
         margin-right: 12px;
     }
     #backregister:hover
     {
-        background-color: #009688;
+        background-color: #004D40;
     }
 </style>
 <script>

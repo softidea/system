@@ -14,52 +14,52 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="<?php echo base_url('user/home'); ?>" style="text-decoration: none;">Home</a></li>
+                    <li><a href="<?php echo('../user/user_home.php'); ?>" style="text-decoration: none;">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('customer/registration'); ?>" style="text-decoration: none;">New Registration</a></li>
-                            <li><a href="<?php echo base_url('admin/customer/update'); ?>" style="text-decoration: none;">Update Customer</a></li>
-                            <li><a href="<?php echo base_url('customer'); ?>" style="text-decoration: none;">View Customers</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Pay Installment</a></li>
+                            <li><a href="<?php echo ('customer_registration.php'); ?>" style="text-decoration: none;">New Registration</a></li>
+                            <li><a href="<?php echo ('customer_updateinfo.php'); ?>" style="text-decoration: none;">Update Customer</a></li>
+                            <li><a href="<?php echo ('customer_view.php'); ?>" style="text-decoration: none;">View Customers</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Pay Installment</a></li>
                         </ul>
                     </li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#LoginModal">Add a Lease</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#LoginModal">Add a Pawn</a></li>
-                            <li><a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;">View Services</a></li>
-                            <li><a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;">View Services</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Settle Service</a></li>
+                            <li><a href="<?php echo ('customer_addlease.php'); ?>" style="text-decoration: none;">Add a Lease</a></li>
+                            <li><a href="<?php echo ('customer_addpawn.php'); ?>" style="text-decoration: none;">Add a Pawn</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>" style="text-decoration: none;">View Services</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>" style="text-decoration: none;">View Pawns</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Settle Service</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Installments<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Pay Installment</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">View Installment</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Update Installment</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Settle Service</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Pay Installment</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">View Installment</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Update Installment</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Settle Service</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Re-Process Management<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('admin/customer/addsis'); ?>">Add New Re-process</a></li>
-                            <li><a href="<?php echo base_url('admin/customer/viewsis'); ?>">View Re-Process</a></li>
-                            <li><a href="<?php echo base_url('admin/customer/viewsis'); ?>">Release Sis</a></li>
-                            <li><a href="<?php echo base_url('admin/customer/checksis'); ?>">Check Re-Process</a></li>
+                            <li><a href="<?php echo ('addsis.php'); ?>">Add New Re-process</a></li>
+                            <li><a href="<?php echo ('../../admin/customer/viewsis.php'); ?>">View Re-Process</a></li>
+                            <li><a href="<?php echo ('../../admin/customer/viewsis.php'); ?>">Release Sis</a></li>
+                            <li><a href="<?php echo ('../../admin/customer/checksis.php'); ?>">Check Re-Process</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('customer'); ?>">Customer Report</a></li>
-                            <li><a href="<?php echo base_url('customer/serviceview'); ?>">Service Report</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>">Installment Report</a></li>
-                            <li><a href="<?php echo base_url('customer/installment'); ?>">Service Settle Report</a></li>
+                            <li><a href="<?php echo ('customer_view.php'); ?>">Customer Report</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Service Report</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>">Installment Report</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>">Service Settle Report</a></li>
                         </ul>
                     </li>
                 </ul>

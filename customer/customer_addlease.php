@@ -69,7 +69,7 @@
         </style>
     </head>
     <body>
-       <?php include 'assets/include/navigation_bar.php'; ?>
+    <?php include '../assets/include/navigation_bar.php';?>
         <!--Lease Registration Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">

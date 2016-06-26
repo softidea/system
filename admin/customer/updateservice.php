@@ -79,7 +79,7 @@
         </style>
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php'; ?>
+        <?php include '../../assets/include/navigation_bar.php'; ?>
         
         <!--Service View Main Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">

@@ -68,7 +68,7 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <?php include 'assets/include/navigation_bar.php'; ?>
+        <?php include '../assets/include/navigation_bar.php';?>
 
 
         <!--Property Panel Section-->

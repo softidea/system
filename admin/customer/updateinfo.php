@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </style>
     </head>
     <body>
-       <?php include '../assets/include/navigation_bar.php'; ?>
+       <?php include '../../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
