@@ -102,21 +102,21 @@
                                 <li class="col-sm-3">
                                     <ul>
                                         <li class="dropdown-header" style="color: #004D40;">Three Wheels</li>
-                                        <li><a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;">Add new Lease</a></li>
-                                        <li><a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;">View Leases</a></li>
+                                        <li><a href="../customer/customer_service.php" style="text-decoration: none;">Add new Lease</a></li>
+                                        <li><a href="../customer/customer_serviceview.php" style="text-decoration: none;">View Leases</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header" style="color: #004D40;">Lands</li>
-                                        <li><a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;">New Pawn</a></li>
-                                        <li><a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;">Update Land Pawn</a></li>
-                                        <li><a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;">View Land Pawns</a></li>
+                                        <li><a href="../customer/customer_service.php" style="text-decoration: none;">New Pawn</a></li>
+                                        <li><a href="../customer/customer_serviceview.php" style="text-decoration: none;">Update Land Pawn</a></li>
+                                        <li><a href="../customer/customer_serviceview.php" style="text-decoration: none;">View Land Pawns</a></li>
                                     </ul>
                                 </li>
                                 <li class="col-sm-3">
                                     <ul>
                                         <li class="dropdown-header" style="color: #004D40;">Services</li>
-                                        <li><a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;">Add new Lease</a></li>
-                                        <li><a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;">Add new Pawn</a></li>
-                                        <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Pay Installment</a></li>							
+                                        <li><a href="../customer/customer_service.php" style="text-decoration: none;">Add new Lease</a></li>
+                                        <li><a href="../customer/customer_service.php" style="text-decoration: none;">Add new Pawn</a></li>
+                                        <li><a href="../customer/customer_installment.php" style="text-decoration: none;">Pay Installment</a></li>							
                                         <li class="divider"></li>
                                         <li class="dropdown-header" style="color: #004D40;">Search Customers</li>
                                         <form class="form" role="form">
@@ -124,7 +124,7 @@
                                                 <label class="sr-only" for="email">Name | ID</label>
                                                 <input type="email" class="form-control" id="email" placeholder="Name | ID | Service No">                                                              
                                             </div>
-                                            <a href="<?php echo base_url('customer'); ?>" style="text-decoration: none;color: white;">
+                                            <a href="../customer/customer_view.php" style="text-decoration: none;color: white;">
                                                 <button type="button" class="btn btn btn-block" style="background-color: #009688;color: white;">Search
                                                 </button>
                                             </a>
@@ -147,15 +147,15 @@
                             <h3 class="panel-title">Customers</h3>
                         </div>
                         <div class="panel-body" style="background-color: #FAFAFA;">
-                            <img class="panelimage"src="<?php echo base_url("assets/images/home/customer.png"); ?>"/>
+                            <img class="panelimage"src="../assets/images/home/customer.png"/>
                         </div>
                         <div class="list-group">
                             <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item">New Registration</button></a>
                             <a href="../customer/customer_updateinfo.php" style="text-decoration: none;"><button type="button" class="list-group-item">Update Customers</button></a>
                             <a href="../customer/customer_view.php" style="text-decoration: none;"><button type="button" class="list-group-item">Search Customers</button></s>
-                                <a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add a Vehicle Lease</button></s>
-                                    <a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add a Land Pawn</button></s>
-                                        <a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add Installment</button></s>
+                                <a href="../customer/customer_service.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add a Vehicle Lease</button></s>
+                                    <a href="../customer/customer_service.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add a Land Pawn</button></s>
+                                        <a href="../customer/customer_installment.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add Installment</button></s>
                                             </div>
                                             <div class="panel-footer"><div style="height: 15px;"></div></div>
                                             </div>
@@ -166,15 +166,15 @@
                                                         <h3 class="panel-title">Services</h3>
                                                     </div>
                                                     <div class="panel-body">
-                                                        <img class="panelimage" src="<?php echo base_url("assets/images/home/servicee.png"); ?>"/>
+                                                        <img class="panelimage" src="../assets/images/home/servicee.png"/>
                                                     </div>
                                                     <div class="list-group">
-                                                        <a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add Vehicle Lease</button></a>
-                                                        <a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add Land Pawn</button></a>
-                                                        <a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Search Leases</button></a>
-                                                        <a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">View Vehicles</button><a>
-                                                                <a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">View Pawns</button></a>
-                                                                <a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">View Lands</button></a>
+                                                        <a href="../customer/customer_service.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add Vehicle Lease</button></a>
+                                                        <a href="../customer/customer_service.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add Land Pawn</button></a>
+                                                        <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">Search Leases</button></a>
+                                                        <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Vehicles</button><a>
+                                                                <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Pawns</button></a>
+                                                                <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Lands</button></a>
                                                                 </div>
                                                                 <div class="panel-footer"><div style="height: 15px;"></div></div>
                                                                 </div>
@@ -185,7 +185,7 @@
                                                                             <h3 class="panel-title">Reports</h3>
                                                                         </div>
                                                                         <div class="panel-body">
-                                                                            <img class="panelimage" style="width: 130px;margin-left: 60px;"src="<?php echo base_url("assets/images/home/reportt.png"); ?>"/>
+                                                                            <img class="panelimage" style="width: 130px;margin-left: 60px;"src="../assets/images/home/reportt.png"/>
                                                                         </div>
                                                                         <div class="list-group">
                                                                             <button type="button" class="list-group-item">Lease Reports</button>
@@ -204,7 +204,7 @@
                                                                             <h3 class="panel-title">Settings</h3>
                                                                         </div>
                                                                         <div class="panel-body">
-                                                                            <img class="panelimage" style="width: 100px;margin-left: 70px;"src="<?php echo base_url("assets/images/home/settingss.png"); ?>"/>
+                                                                            <img class="panelimage" style="width: 100px;margin-left: 70px;"src="../assets/images/home/settingss.png"/>
                                                                         </div>
                                                                         <div class="list-group">
                                                                             <button type="button" class="list-group-item">Setting 01</button>

@@ -16,7 +16,9 @@
         <script type="text/javascript">
             function setregpanel()
             {
-                alert('malinda');
+                <?php
+                header('Location:http://www.google.com');
+                ?>
                 if(document.getElementsById('panelreguser').style.display="none")
                 {
                     document.getElementsById('panelreguser').style.display="block";
@@ -52,7 +54,7 @@
                                     <div class="form-group">
                                         <label class="control-label" for="input-password">Password :</label>
                                         <input type="password" name="password" placeholder="Password" id="input-password" class="form-control" required/>
-                                        <a href="#"><p id="para_forget">Did you forgot your password?</p></a></div>
+                                        <a href="user/user_registration.php"><p id="para_forget">Did you forgot your password?</p></a></div>
                                         <a href="user/user_home.php"><input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
                                     <input type="button" name="login_process" value="Register User" class="btn" id='btn_login' onclick="setregpanel();"/>
                                 </form>

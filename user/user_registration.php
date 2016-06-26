@@ -4,18 +4,18 @@
     <head>
         <title>User|Registration</title>
         <?php
-        include 'assets/include/header.php';
+        include '../assets/include/header.php';
         ?>
         <style>
-    <?php
-    include 'assets/css/user_registration.css';
-    ?>
+<?php
+include '../assets/css/user_registration.css';
+?>
         </style>
 
     </head>
     <body>
         <div class="container">
-            
+
             <div class="stepwizard">
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
@@ -319,13 +319,13 @@
         </div>
 
         <script type="text/javascript">
-        
-        <?php
-                include 'assets/js/customer_registration.js';
-        ?>
-        
+
+<?php
+include '../assets/js/customer_registration.js';
+?>
+
         </script>
-        
+
     </body>
 
 </html>

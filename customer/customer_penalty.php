@@ -10,9 +10,9 @@ and open the template in the editor.
         <title>Customer|Penalty</title>
     </head>
     <body>
-       <?php include 'assets/include/navigation_bar.php'; ?>
+       <?php include '../assets/include/navigation_bar.php'; ?>
         
         
-        <?php include 'assets/include/footer.php';?>
+        <?php include '../assets/include/footer.php';?>
     </body>
 </html>

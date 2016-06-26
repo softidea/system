@@ -1,6 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -508,7 +506,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <!--Popup Pane of Customers-->
-<?php include 'assets/include/footer.php';?>
+    <?php include 'assets/include/footer.php'; ?>
 
 </body>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -566,14 +564,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             alert("Bike");
             document.getElementById('landpanel').style.display = 'none';
             document.getElementById('leasepanel').style.display = 'block';
-        }
-        else if (property == 'twheel')
+        } else if (property == 'twheel')
         {
             alert("Three-Wheel");
             document.getElementById('landpanel').style.display = 'none';
             document.getElementById('leasepanel').style.display = 'block';
-        }
-        else if (property == 'land')
+        } else if (property == 'land')
         {
             alert("Land");
             document.getElementById('leasepanel').style.display = 'none';
