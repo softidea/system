@@ -1,6 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <style type="text/css">
-<?php include 'assets/css/home.css'; ?>
+<?php include '../assets/css/home.css'; ?>
         </style>
 
     </head>
@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="hidden-xs hidden-sm hidden-md">+94714 339 339</span>
                         </li>
                         <li><a href="#" id="wishlist-total" title="My Account"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">My Account</span></a></li>
-                        <li><a id="wishlist-total" title="Register" href="<?php echo base_url('user'); ?>" style="text-decoration: none;"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">Logout</span></a></li>	
+                        <li><a id="wishlist-total" title="Register" href="../user/user_registration.php" style="text-decoration: none;"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">Logout</span></a></li>	
                     </ul>
                 </div>
             </div>
@@ -88,15 +88,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <li class="col-sm-3">
                                     <ul>
                                         <li class="dropdown-header" style="color: #004D40;">Customer</li>
-                                        <li><a href="<?php echo base_url('customer/registration'); ?>" style="text-decoration: none;">Registration</a></li>
-                                        <li><a href="<?php echo base_url('customer/updateinfo'); ?>" style="text-decoration: none;">Update Customer</a></li>
-                                        <li><a href="<?php echo base_url('customer'); ?>" style="text-decoration: none;">View Customers</a></li>
-                                        <li><a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;">Add new Installment</a></li>
-                                        <li><a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;">Add a Lease</a></li>
+                                        <li><a href="../customer/customer_registration.php" style="text-decoration: none;">Registration</a></li>
+                                        <li><a href="../customer/customer_updateinfo.php" style="text-decoration: none;">Update Customer</a></li>
+                                        <li><a href="../customer/customer_view.php" style="text-decoration: none;">View Customers</a></li>
+                                        <li><a href="../customer/customer_installment.php" style="text-decoration: none;">Add new Installment</a></li>
+                                        <li><a href="../customer/customer_addlease.php" style="text-decoration: none;">Add a Lease</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header" style="color: #004D40;">Motor Bikes</li>
-                                        <li><a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;">New Lease</a></li>
-                                        <li><a href="<?php echo base_url('customer/serviceview'); ?>" style="text-decoration: none;">View Leases</a></li>
+                                        <li><a href="../customer/customer_service.php" style="text-decoration: none;">New Lease</a></li>
+                                        <li><a href="../customer/customer_serviceview.php" style="text-decoration: none;">View Leases</a></li>
                                     </ul>
                                 </li>
                                 <li class="col-sm-3">
@@ -150,9 +150,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <img class="panelimage"src="<?php echo base_url("assets/images/home/customer.png"); ?>"/>
                         </div>
                         <div class="list-group">
-                            <a href="<?php echo base_url('customer/registration'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">New Registration</button></a>
-                            <a href="<?php echo base_url('customer/update'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Update Customers</button></a>
-                            <a href="<?php echo base_url('customer'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Search Customers</button></s>
+                            <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item">New Registration</button></a>
+                            <a href="../customer/customer_updateinfo.php" style="text-decoration: none;"><button type="button" class="list-group-item">Update Customers</button></a>
+                            <a href="../customer/customer_view.php" style="text-decoration: none;"><button type="button" class="list-group-item">Search Customers</button></s>
                                 <a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add a Vehicle Lease</button></s>
                                     <a href="<?php echo base_url('customer/service'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add a Land Pawn</button></s>
                                         <a href="<?php echo base_url('customer/installment'); ?>" style="text-decoration: none;"><button type="button" class="list-group-item">Add Installment</button></s>
@@ -222,7 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                                                                 </div>
-                                                                <?php include 'assets/include/footer.php'; ?>
+                                                                <?php include '../assets/include/footer.php'; ?>
                                                                 </body>
                                                                 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
                                                                 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

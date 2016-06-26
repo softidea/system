@@ -1,6 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -55,11 +53,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="control-label" for="input-password">Password :</label>
                                         <input type="password" name="password" placeholder="Password" id="input-password" class="form-control" required/>
                                         <a href="#"><p id="para_forget">Did you forgot your password?</p></a></div>
-                                    <a href="<?php echo base_url('user/home'); ?>"><input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
+                                        <a href="user/user_home.php"><input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
                                     <input type="button" name="login_process" value="Register User" class="btn" id='btn_login' onclick="setregpanel();"/>
                                 </form>
                             </div>
-                            <div class="panel-footer">Powered by : <a href="#">Softidea Solutions</a></div>
+                            <div class="panel-footer">Powered by : <a href="http://www.fsczone.com/">Softidea Solutions</a></div>
                         </div>
                     </aside>
                 </div>
@@ -119,7 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <!--Container Panel Start-->
 
-    <?php include '../assets/include/footer.php';?>
+    <?php include 'assets/include/footer.php';?>
 
     </body>
     <style>
