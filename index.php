@@ -48,13 +48,14 @@
                                 <form action="controller/login.php" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">E-Mail Address :</label>
-                                        <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>
+                                        <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-password">Password :</label>
                                         <input type="password" name="password" placeholder="Password" id="input-password" class="form-control" required/>
                                         <a href="user/user_registration.php"><p id="para_forget">Did you forgot your password?</p></a></div>
-                                    <a href="user/user_home.php"><input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
+                                    <a href="user/user_home.php">
+                                        <input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
                                     <input type="button" name="login_process" value="Register User" class="btn" id='btn_login' onclick="setregpanel();"/>
                                 </form>
                             </div>

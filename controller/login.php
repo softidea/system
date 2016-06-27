@@ -1,8 +1,14 @@
 <?php
+require_once '../db/mysqliConnect.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$qy_login="CALL sp_loginUser('deepalsuranga@live.com','WelCome./@1');";
 
+
+$qy=mysqli_query($d_bc, $qy_login);
+if ($qy) {
+    echo "<script>alert('hiiii');</script>";
+    
+    header('Location:../user/user_view.php');
+}  else {
+    header('Location:signup.php');    
+}
