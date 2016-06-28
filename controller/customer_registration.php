@@ -6,7 +6,7 @@ require_once '../db/mysqliConnect.php';
 
 //$qu="CALL CALL ayolan_datahost.insert_customer('01'','aa','b','c','f','e','01','heeeeee','hiiiii','hellloo')";
 
-$q="CALL setuser('hello','hi')";
+$q="CALL setuser('dineth','Welcome')";
 
 $query=  mysqli_query($d_bc, $q);
 
