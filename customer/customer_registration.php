@@ -3,6 +3,71 @@
 session_start();
 ?>
 <html lang="en">
+    <?php
+    $cus_fullname="";
+    $cus_initialname="";
+    $cus_address="";
+    $cus_tp="";
+    $cus_nic="";
+    $cus_dob="";
+    $cus_ms="";
+    $cus_dependdency="";
+    $cus_position="";
+    $cus_monthly_salary="";
+    $cus_emp_name="";
+    $cus_emp_name="";
+
+    $cus_hhalf_name="";
+    $cus_bhalf_dob="";
+    $cus_bhalf_position="";
+    $cus_bhalf_monthly_salary="";
+    $cus_bhalf_emp_name="";
+
+    $gua_fullname="";
+    $gua_initial_name="";
+    $gua_address="";
+    $gua_tp="";
+    $gua_dob="";
+    $gua_ms="";
+    $gua_nic="";
+    $gua_dependency="";
+    $gua_position="";
+    $gua_monthly_salary="";
+    $gua_emp_name="";
+    $gua_emp_address="";
+
+
+    $loan_description="";
+
+
+    $real_prp_house_position="";
+    $real_prp_house_size="";
+    $real_prp_house_value="";
+    $real_prp_house_pawned="";
+    $real_prp_house_pawn_getter="";
+
+    $real_prp_other_position="";
+    $real_prp_other_size="";
+    $real_prp_other_value="";
+    $real_prp_other_pawned="";
+    $real_prp_other_pawn_getter="";
+
+    $cus_savings_bank_branch="";
+    $cus_savings_facilities="";
+    $cus_savings_account_no="";
+    $cus_mobile_bank_branch="";
+    $cus_mobile_facilities="";
+    $cus_mobile_account_no="";
+
+    $cus_daily_loan_bank_branch="";
+    $cus_daily_loan_facilities="";
+    $cus_daily_loan_account_no="";
+
+    $payable_loan_amount="";
+    $loan_description="";
+
+    $reg_date="";
+    ?>
     <head>
         <meta charset="utf-8">
         <title>Customer</title>
@@ -44,7 +109,7 @@ session_start();
     </head>
     <body>
 
-        <?php include '../assets/include/navigation_bar.php'; ?>
+<?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -333,16 +398,15 @@ session_start();
                                         </div>
                                     </fieldset>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <label class="control-label" for="input-email">Registration Date</label>   
                                     <input type="date" name="reg_date" value="<?php echo $reg_date; ?>" placeholder="Date" id="input-email" class="form-control" required/>
-                                    
+
                                 </div>
 
                                 <div class="col-md-12">
                                     <input type="submit" class="btn btn" name="customer_continue" id="custcontinue" value="Continue">
-
                                 </div>
                             </div>
                         </form>
@@ -508,7 +572,7 @@ session_start();
         </div>
     </div>
     <!--Popup Pane of Customers-->
-    <?php include '../assets/include/footer.php'; ?>
+<?php include '../assets/include/footer.php'; ?>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
@@ -577,10 +641,10 @@ session_start();
             }
         }
     </script>
-    <?php
-    if (isset($_POST['customer_continue'])) {
-        echo "<script>alert('Hi Malinda');</script>";
-    }
-    ?>
+<?php
+if (isset($_POST['customer_continue'])) {
+    echo "<script>alert('Hi Malinda');</script>";
+}
+?>
 </body>
 </html>
