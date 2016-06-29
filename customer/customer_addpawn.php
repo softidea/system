@@ -119,16 +119,17 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Registration Date:</label>
-                                        <input type="text" name="fname" id="fname" value="" placeholder="Registration Date" id="input-email" class="form-control" required/>
+                                        <input type="date" name="fname" id="fname" value="" placeholder="Registration Date" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Period:</label>
                                         <select name="cbopayment" id="input-region" class="form-control" required>
                                             <option value=""> --- Please Select --- </option>
-                                            <option>6 Months</option>
                                             <option>1 Year</option>
                                             <option>2 Year</option>
                                             <option>3 Year</option>
+                                            <option>4 Year</option>
+                                            <option>5 Year</option>
                                         </select>
                                     </div>
                                     <div class="form-group required">
@@ -148,7 +149,7 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-        <?php include 'assets/include/footer.php'; ?>
+        <?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

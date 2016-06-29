@@ -14,7 +14,7 @@
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <style>
+        <style type="text/css">
             body
             {
                 font-family: 'Source Sans Pro', sans-serif;
@@ -40,7 +40,7 @@
         </style>
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php';?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -54,9 +54,9 @@
                             <div class="col-sm-6">
                                 <fieldset id="account">
                                     <legend>01.Customer Personal Details</legend>
-                                    <label class="radio-inline"><input type="radio" name="optradio">: Mr</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio">: Mrs</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio">: Miss</label>
+                                    <label class="radio-inline"><input type="radio" name="optradioo" checked>: Mr</label>
+                                    <label class="radio-inline"><input type="radio" name="optradioo">: Mrs</label>
+                                    <label class="radio-inline"><input type="radio" name="optradioo">: Miss</label>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Full Name:</label>
                                         <input type="text" name="fname" id="fname" value="Malinda Senanayake" placeholder="Full Name" id="input-email" class="form-control" required/>
@@ -139,7 +139,7 @@
                             <div class="col-sm-6">
                                 <fieldset id="account">
                                     <legend>02.Guarantor Personal Details</legend>
-                                    <label class="radio-inline"><input type="radio" name="optradio">: Mr</label>
+                                    <label class="radio-inline"><input type="radio" name="optradio" checked>: Mr</label>
                                     <label class="radio-inline"><input type="radio" name="optradio">: Mrs</label>
                                     <label class="radio-inline"><input type="radio" name="optradio">: Miss</label>
                                     <div class="form-group required">
@@ -225,9 +225,8 @@
                                     <legend>05.Description of the Loan:</legend>
                                     <div class="form-group required">
 
-                                        <textarea id="input-email" class="form-control" required placeholder="Description of the Loan">
-                                        
-                                        </textarea>
+                                        <input type="text" id="input-email" class="form-control" required placeholder="Description of the Loan">
+
                                     </div>
                                 </fieldset>
                                 <div class="form-group required">
@@ -313,33 +312,17 @@
                                 <fieldset id="account">
                                     <legend>05.Enough Description of way to find the permanent resident of the applicant:</legend>
                                     <div class="form-group required">
-                                        <textarea id="input-email" class="form-control" required placeholder="Description of the Loan">
-                                        
-                                        </textarea>
+                                        <input type="text" id="input-email" class="form-control" required placeholder="Description of the Loan">
                                     </div>
                                 </fieldset>
-
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="tp1" value="" placeholder="Applicant Full Name" id="input-email" class="form-control" required/>
-                                <label class="control-label" for="input-email">I/We confirm the above information of mine/our Correct with the Sincerely</label>   
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" name="tp1" value="" placeholder="Date" id="input-email" class="form-control" required/>
                                 <label class="control-label" for="input-email">Date</label>   
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" name="tp1" value="" placeholder="Applicant Signature" id="input-email" class="form-control" required/>
-                                <label class="control-label" for="input-email">Applicant Signature</label>   
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" name="tp1" value="" placeholder="Gurantor Signature" id="input-email" class="form-control" required/>
-                                <label class="control-label" for="input-email">Gurantor Signature</label>   
+                                <input type="date" name="tp1" value="" placeholder="Date" id="input-email" class="form-control" required/>
                             </div>
 
                             <div class="col-md-12">
-
-                                <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Update Details</button>
+                                <button type="button" class="btn btn" id="custcontinue">Update Details</button>
                             </div>
                         </div>
                     </div>
@@ -347,15 +330,6 @@
             </div>
         </div>
         <!--Customer Panel Section-->
-
-        <!--Footer Section-->
-        <footer class="navbar-default navbar-fixed-bottom">
-            <div class="container-fluid" style="text-align: center;">
-                <span>Copyright © <a href="#" id="footer-caption">Softidea Solutions - 2016</a></span>
-            </div>
-        </footer>
-        <!--Footer Section-->
-
 
         <!--Popup Pane of Customers-->
         <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
@@ -388,7 +362,9 @@
     </div>
     <!--Popup Pane of Customers-->
 
-    <?php include 'assets/include/footer.php';?>
+    <!--Footer Section-->
+    <?php include '../assets/include/footer.php'; ?>
+    <!--Footer Section-->
 </body>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -424,16 +400,16 @@
     }
 </style>
 <script>
-                                            function gotosecond()
-                                            {
-                                                document.getElementById('one').style.display = "none";
-                                                document.getElementById('second').style.display = "block";
-                                            }
-                                            function gotoone()
-                                            {
-                                                document.getElementById('one').style.display = "block";
-                                                document.getElementById('second').style.display = "none";
-                                            }
+    function gotosecond()
+    {
+        document.getElementById('one').style.display = "none";
+        document.getElementById('second').style.display = "block";
+    }
+    function gotoone()
+    {
+        document.getElementById('one').style.display = "block";
+        document.getElementById('second').style.display = "none";
+    }
 
 </script>
 <script>

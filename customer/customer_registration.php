@@ -4,69 +4,69 @@ session_start();
 ?>
 <html lang="en">
     <?php
-    $cus_fullname="";
-    $cus_initialname="";
-    $cus_address="";
-    $cus_tp="";
-    $cus_nic="";
-    $cus_dob="";
-    $cus_ms="";
-    $cus_dependdency="";
-    $cus_position="";
-    $cus_monthly_salary="";
-    $cus_emp_name="";
-    $cus_emp_name="";
+    $cus_fullname = "";
+    $cus_initialname = "";
+    $cus_address = "";
+    $cus_tp = "";
+    $cus_nic = "";
+    $cus_dob = "";
+    $cus_ms = "";
+    $cus_dependdency = "";
+    $cus_position = "";
+    $cus_monthly_salary = "";
+    $cus_emp_name = "";
+    $cus_emp_name = "";
 
-    $cus_hhalf_name="";
-    $cus_bhalf_dob="";
-    $cus_bhalf_position="";
-    $cus_bhalf_monthly_salary="";
-    $cus_bhalf_emp_name="";
+    $cus_hhalf_name = "";
+    $cus_bhalf_dob = "";
+    $cus_bhalf_position = "";
+    $cus_bhalf_monthly_salary = "";
+    $cus_bhalf_emp_name = "";
 
-    $gua_fullname="";
-    $gua_initial_name="";
-    $gua_address="";
-    $gua_tp="";
-    $gua_dob="";
-    $gua_ms="";
-    $gua_nic="";
-    $gua_dependency="";
-    $gua_position="";
-    $gua_monthly_salary="";
-    $gua_emp_name="";
-    $gua_emp_address="";
-
-
-    $loan_description="";
+    $gua_fullname = "";
+    $gua_initial_name = "";
+    $gua_address = "";
+    $gua_tp = "";
+    $gua_dob = "";
+    $gua_ms = "";
+    $gua_nic = "";
+    $gua_dependency = "";
+    $gua_position = "";
+    $gua_monthly_salary = "";
+    $gua_emp_name = "";
+    $gua_emp_address = "";
 
 
-    $real_prp_house_position="";
-    $real_prp_house_size="";
-    $real_prp_house_value="";
-    $real_prp_house_pawned="";
-    $real_prp_house_pawn_getter="";
+    $loan_description = "";
 
-    $real_prp_other_position="";
-    $real_prp_other_size="";
-    $real_prp_other_value="";
-    $real_prp_other_pawned="";
-    $real_prp_other_pawn_getter="";
 
-    $cus_savings_bank_branch="";
-    $cus_savings_facilities="";
-    $cus_savings_account_no="";
-    $cus_mobile_bank_branch="";
-    $cus_mobile_facilities="";
-    $cus_mobile_account_no="";
+    $real_prp_house_position = "";
+    $real_prp_house_size = "";
+    $real_prp_house_value = "";
+    $real_prp_house_pawned = "";
+    $real_prp_house_pawn_getter = "";
 
-    $cus_daily_loan_bank_branch="";
-    $cus_daily_loan_facilities="";
-    $cus_daily_loan_account_no="";
+    $real_prp_other_position = "";
+    $real_prp_other_size = "";
+    $real_prp_other_value = "";
+    $real_prp_other_pawned = "";
+    $real_prp_other_pawn_getter = "";
 
-    $payable_loan_amount="";
-    $loan_description="";
+    $cus_savings_bank_branch = "";
+    $cus_savings_facilities = "";
+    $cus_savings_account_no = "";
+    $cus_mobile_bank_branch = "";
+    $cus_mobile_facilities = "";
+    $cus_mobile_account_no = "";
 
-    $reg_date="";
+    $cus_daily_loan_bank_branch = "";
+    $cus_daily_loan_facilities = "";
+    $cus_daily_loan_account_no = "";
+
+    $payable_loan_amount = "";
+    $loan_description = "";
+
+    $reg_date = "";
     ?>
     <head>
         <meta charset="utf-8">
@@ -82,34 +82,11 @@ session_start();
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <style>
-            body
-            {
-                font-family: 'Source Sans Pro', sans-serif;
-            }
-            .modal-backdrop {
-                z-index: -1;
-            }
-            ul {
-                list-style-type: square;
-                list-style-position: outside;
-                list-style-image: none;
-            }
-            #cviewbuttons
-            {
-                background-color: #004D40;
-                color: white;
-                margin-top: 25px;
-            }
-            #cviewbuttons:hover
-            {
-                background-color: #009688;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css" >
     </head>
     <body>
 
-<?php include '../assets/include/navigation_bar.php'; ?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -126,9 +103,9 @@ session_start();
                                     <fieldset id="account">
                                         <legend>01.Customer Personal Details</legend>
 
-                                        <label class="radio-inline"><input type="radio" name="optradio" checked>: Mr</label>
-                                        <label class="radio-inline"><input type="radio" name="optradio">: Mrs</label>
-                                        <label class="radio-inline"><input type="radio" name="optradio">: Miss</label>
+                                        <label class="radio-inline"><input type="radio" name="optradioo" checked>: Mr</label>
+                                        <label class="radio-inline"><input type="radio" name="optradioo">: Mrs</label>
+                                        <label class="radio-inline"><input type="radio" name="optradioo">: Miss</label>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Full Name:</label>
                                             <input type="text" name="cus_fullname" id="fname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" required/>
@@ -416,8 +393,8 @@ session_start();
         </div>
         <!--Customer Panel Section-->
 
+        
         <!--Property Panel Section-->
-
         <div class="container" style="margin-top: 80px;display: none;" id="second">
             <div class="row">
                 <div class="col-md-12">
@@ -530,17 +507,7 @@ session_start();
                 </div>
             </div>
         </div>
-
         <!--Property Panel Section-->
-
-        <!--Footer Section-->
-        <footer class="navbar-default navbar-fixed-bottom">
-            <div class="container-fluid" style="text-align: center;">
-                <span>Copyright © <a href="#" id="footer-caption">Softidea Solutions - 2016</a></span>
-            </div>
-        </footer>
-        <!--Footer Section-->
-
 
         <!--Popup Pane of Customers-->
         <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
@@ -564,15 +531,19 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" 
-                                class="btn btn-default" data-dismiss="modal">
-                            Close</button>
+                                class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div
             </div>
         </div>
     </div>
     <!--Popup Pane of Customers-->
-<?php include '../assets/include/footer.php'; ?>
+    
+
+    <!--Footer Section-->
+    <?php include '../assets/include/footer.php'; ?>
+    <!--Footer Section-->
+    
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
@@ -593,7 +564,6 @@ session_start();
         {
             background-color: #004D40;
         }
-        //.thcaption{text-align: center;}
         #backregister
         {
             background-color: #009688;
@@ -606,7 +576,7 @@ session_start();
             background-color: #004D40;
         }
     </style>
-    <script>
+    <script type="text/javascript">
                                             function gotosecond()
                                             {
                                                 document.getElementById('one').style.display = "none";
@@ -641,10 +611,10 @@ session_start();
             }
         }
     </script>
-<?php
-if (isset($_POST['customer_continue'])) {
-    echo "<script>alert('Hi Malinda');</script>";
-}
-?>
+    <?php
+    if (isset($_POST['customer_continue'])) {
+        echo "<script>alert('Hi Malinda');</script>";
+    }
+    ?>
 </body>
 </html>

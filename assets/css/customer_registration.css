@@ -1,51 +1,36 @@
-
-body{ 
-    margin-top:40px; 
+body
+{
+    font-family: 'Source Sans Pro', sans-serif;
 }
-
-.stepwizard-step p {
-    margin-top: 10px;
+.modal-backdrop {
+    z-index: -1;
 }
-
-.stepwizard-row {
-    display: table-row;
+ul {
+    list-style-type: square;
+    list-style-position: outside;
+    list-style-image: none;
 }
-
-.stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
+#cviewbuttons
+{
+    background-color: #004D40;
+    color: white;
+    margin-top: 25px;
 }
-
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
+#cviewbuttons:hover
+{
+    background-color: #009688;
 }
-
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-order: 0;
-
+#panelheading
+{
+    background: #009688;
+    color: white;          
 }
-
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
+#cservicebtn
+{
+    background-color: #009688;
+    color: white;
 }
-
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
+#cservicebtn:hover
+{
+    background-color: #004D40;
 }

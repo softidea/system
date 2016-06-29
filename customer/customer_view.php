@@ -14,47 +14,10 @@
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <style>
-            body
-            {
-                font-family: 'Source Sans Pro', sans-serif;
-            }
-            .modal-backdrop {
-                z-index: -1;
-            }
-            ul {
-                list-style-type: square;
-                list-style-position: outside;
-                list-style-image: none;
-            }
-            #cviewbuttons
-            {
-                background-color: #009688;
-                color: white;
-                margin-top: 25px;
-            }
-            #cviewbuttons:hover
-            {
-                background-color: #004D40;
-            }
-            #panelheading
-            {
-                background: #009688;
-                color: white;          
-            }
-            #cservicebtn
-            {
-                background-color: #009688;
-                color: white;
-            }
-            #cservicebtn:hover
-            {
-                background-color: #004D40;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css">
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php';?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">
@@ -85,7 +48,7 @@
                                         <legend>Service Option</legend>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Search by:</label>
-                                            <select name="cbopayment" id="cboservice" class="form-control" required onchange="check();">
+                                            <select disabled name="cbopayment" id="cboservice" class="form-control" required onchange="check();">
                                                 <option value=""> --- Please Select --- </option>
                                                 <option value="bike">Motor Bike</option>
                                                 <option value="twheel">Three-Wheel</option>
@@ -167,8 +130,32 @@
                                             <td style="text-align: center;"><button type="button" id="cviewbuttons" class="btn btn">View More</button></td>
                                         </tr>
                                     </tbody>
-                                </table>    
+                                </table>
+                                <div style="text-align: center;">
+                                    <nav>
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <div class="form-inline">
                                     <button type="submit"  class="btn btn" id="cservicebtn">Save as PDF</button>
@@ -180,18 +167,15 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-<!--Customer Panel Section-->
+        <!--Customer Panel Section-->
 
-<?php include 'assets/include/footer.php';?>
-</body>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="http://bootsnipp.com/dist/scripts.min.js"></script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
+        <?php include '../assets/include/footer.php'; ?>
+    </body>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
                                                 function setServiceOptionPanel()
                                                 {
                                                     var sp_value = document.getElementById('input-search-option').value;
@@ -208,5 +192,5 @@
                                                         alert(sp_value);
                                                     }
                                                 }
-</script>
+    </script>
 </html>

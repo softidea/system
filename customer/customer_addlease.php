@@ -126,12 +126,17 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Period:</label>
-                                        <select name="cbopayment" id="input-region" class="form-control" required>
-                                            <option value=""> --- Please Select --- </option>
-                                            <option>6 Months</option>
-                                            <option>1 Year</option>
-                                            <option>2 Year</option>
-                                            <option>3 Year</option>
+                                        <select name="cbo_loan_duration" id="input-region" class="form-control" required>
+                                            <option value="6">6 Months</option>
+                                            <option value="12">1 Year</option>
+                                            <option value="18">1.5 Years</option>
+                                            <option value="24">2 Years</option>
+                                            <option value="30">2.5 Years</option>
+                                            <option value="36">3 Years</option>
+                                            <option value="42">3.5 Years</option>
+                                            <option value="48">4 Years</option>
+                                            <option value="54">4.5 Years</option>
+                                            <option value="60">5 Years</option>
                                         </select>
                                     </div>
                                     <button type="button" class="btn btn" id="custcontinue">Register Lease</button>
@@ -143,7 +148,7 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-        <?php include 'assets/include/footer.php';?>
+        <?php include '../assets/include/footer.php';?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

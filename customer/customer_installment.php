@@ -98,6 +98,7 @@
                                             <input type="text"  name="customersearch" id="fname" value="" placeholder="Customer NIC" id="input-email" class="form-control" required/>
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group required">
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Customer Name:</label>
@@ -113,7 +114,7 @@
                                     <div class="form-group required">
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Start Date:</label>
-                                            <input type="text"  name="customersearch" id="fname" value="" placeholder="2016-10-20" id="input-email" class="form-control" required/>
+                                            <input type="date"  name="customersearch" id="fname" value="" placeholder="2016-10-20" id="input-email" class="form-control" required/>
                                         </div
                                     </div>
                                 </fieldset>
@@ -143,7 +144,7 @@
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">End Date:</label>
-                                                <input type="text" name="fname" id="fname" value="2016-10-20" placeholder="End Date" id="input-email" class="form-control" required/>
+                                                <input type="date" name="fname" id="fname" value="2016-10-20" placeholder="End Date" id="input-email" class="form-control" required/>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -299,7 +300,7 @@
                                                             <div class="form-group required">
                                                                 <div class="form-group required">
                                                                     <label class="control-label" for="input-email">Paid Date:</label>
-                                                                    <input type="text" name="fname" id="fname" value="2016-10-25" placeholder="Payment" id="input-email" class="form-control" required/>
+                                                                    <input type="date" name="fname" id="fname" value="2016-10-25" placeholder="Payment" id="input-email" class="form-control" required/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -432,7 +433,7 @@
         </div>
         <!--Customer Service Loader-->
 
-        <?php include 'assets/include/footer.php';?>
+        <?php include '../assets/include/footer.php';?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

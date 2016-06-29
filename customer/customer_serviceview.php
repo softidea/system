@@ -270,7 +270,7 @@
 
                                                     <button type="submit"  class="btn btn" id="cservicebtn">Print</button>
                                                     <button type="submit"  class="btn btn" id="cservicebtn">Add Installment</button>
-                                                    <button type="submit"  class="btn btn" id="cservicebtn">View Installment</button>
+                                                    <button type="submit"  class="btn btn" id="cservicebtn">View Installments</button>
                                                     <button type="submit"  class="btn btn" id="cservicebtn">Add New Lease</button>
                                              
                                                 </div>
@@ -286,7 +286,7 @@
         </div>
         <!--Customer Service Loader-->
 
-        <?php include 'assets/include/footer.php';?>
+        <?php include '../assets/include/footer.php';?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
