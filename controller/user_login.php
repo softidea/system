@@ -13,12 +13,12 @@ $button = filter_input(INPUT_POST, "login_process");
 //echo $password;
 //echo $username;
 
-$_SESSION['user_email']=$username;
-$_SESSION['user_password']=$password;
-$_SESSION['login_process']=$button;
+$_SESSION['user_email'] = $username;
+$_SESSION['user_password'] = $password;
+$_SESSION['login_process'] = $button;
 
 
-$qy_login = "CALL sp_login_User('" .$_SESSION['user_email'] . "','" .$_SESSION['user_password']. "');";
+$qy_login = "CALL sp_login_User('" . $_SESSION['user_email'] . "','" . $_SESSION['user_password'] . "');";
 //echo $qy_login;
 //echo mysqli_num_rows($qy);
 $qy = mysqli_query($d_bc, $qy_login);
@@ -30,10 +30,6 @@ if (mysqli_num_rows($qy) == 1) {
     echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
 
 //    echo "<script>alert('" . $row['user_email'] . "');</script>";
-
-    
-    
-    
 //    $_SESSION['user_email'] = $row['user_email'];
 //    header('Location:../user/user_view.php');
 } else {

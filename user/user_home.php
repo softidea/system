@@ -1,4 +1,11 @@
+<?php
+session_start();
+//unset($_SESSION['user_email']);
+if (!isset($_SESSION['user_email'])) {
+    header("Location:../index.php");
+}
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +29,7 @@
                             <span class="hidden-xs hidden-sm hidden-md">+94714 339 339</span>
                         </li>
                         <li><a href="#" id="wishlist-total" title="My Account"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">My Account</span></a></li>
-                        <li><a id="wishlist-total" title="Register" href="../user/user_registration.php" style="text-decoration: none;"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">Logout</span></a></li>	
+                        <li><a id="wishlist-total" href="../controller/co_logout.php" style="text-decoration: none;"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">Logout</span></a></li>	
                     </ul>
                 </div>
             </div>

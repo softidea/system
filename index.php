@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+//login eka
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,11 +27,9 @@ session_start();
 
         <meta charset="utf-8">
         <title>User Login</title>
-        <!-- Latest compiled and minified CSS -->
 
-       
-
-
+        <link rel="icon" href="favicon.ico">
+        
         <script type="text/javascript">
             function setregpanel()
             {

@@ -13,5 +13,4 @@ or die('Could not connect to MySql: '. mysqli_connect_error());
 
 mysqli_set_charset($d_bc,"UTF8");
 
-session_start();
 

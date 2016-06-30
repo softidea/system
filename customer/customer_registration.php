@@ -93,7 +93,7 @@ session_start();
                             <h3 class="panel-title">Customer Registration</h3>
                         </div>
 
-                        <form action="#" method="POST">
+                        <form action="../controller/co_customer.php" method="POST">
                             <div class="panel-body" style="background-color: #FAFAFA;">
                                 <div class="col-sm-6">
                                     <fieldset id="account">
@@ -129,7 +129,10 @@ session_start();
 
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Married Status:</label>
-                                            <input type="text" name="cus_ms" value="<?php echo $cus_ms; ?>" placeholder="Married Status" id="input-email" class="form-control" required/>
+                                            <select name="cus_ms" value="<?php echo $cus_ms; ?>"  id="input-email" class="form-control" required>
+                                                <option value="Single">Single</option>
+                                                <option value="Married">Married</option>
+                                            </select>
                                         </div>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Have any Dependencies:</label>
@@ -389,7 +392,7 @@ session_start();
         </div>
         <!--Customer Panel Section-->
 
-        
+
         <!--Property Panel Section-->
         <div class="container" style="margin-top: 80px;display: none;" id="second">
             <div class="row">
@@ -534,12 +537,12 @@ session_start();
         </div>
     </div>
     <!--Popup Pane of Customers-->
-    
+
 
     <!--Footer Section-->
     <?php include '../assets/include/footer.php'; ?>
     <!--Footer Section-->
-    
+
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
