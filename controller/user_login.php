@@ -5,17 +5,17 @@ session_start();
 
 require_once '../db/mysqliConnect.php';
 
-//$username = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
-//$password = filter_input(INPUT_POST, "user_password");
-//$button = filter_input(INPUT_POST, "login_process");
+$username = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
+$password = filter_input(INPUT_POST, "user_password");
+$button = filter_input(INPUT_POST, "login_process");
 
 //echo $button;
 //echo $password;
 //echo $username;
 
-$_SESSION['user_email']=$_POST['user_email'];
-$_SESSION['user_password']=$_POST['user_password'];
-$_SESSION['login_process']=$_POST['login_process'];
+$_SESSION['user_email']=$username;
+$_SESSION['user_password']=$password;
+$_SESSION['login_process']=$button;
 
 
 $qy_login = "CALL sp_login_User('" .$_SESSION['user_email'] . "','" .$_SESSION['user_password']. "');";
