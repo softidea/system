@@ -13,21 +13,14 @@ function load_vehicle_brands() {
     }
 }
 
-if (isset($_POST['get_option'])) {
-    echo "<script>alert('hi');</script>";
+if (isset($_GET['q'])) {
     require_once '../db/mysqliConnect.php';
-    $value=$_POST['get_option'];
-    
-        $sql_query = "CALL sp_lod_vehicle_types('".$value."');";
-        
-        
-        $run_query = mysqli_query($d_bc, $sql_query);
-        while ($row_vehicle_type = mysqli_fetch_array($run_query)) {
-            $vehicle_type_id = $row_vehicle_type['vehicle_type_id'];
-            $vehicle_type = $row_vehicle_type['vehicle_type'];
-            echo "<option value='$vehicle_type_id'>$vehicle_type</option>";
-        
-    }
+    $q = intval($_GET['q']);
+    $sql = "SELECT * FROM vehicle_type WHERE brand_id = '" . $q . "'";
+    $result = mysqli_query($d_bc, $sql);
 
+    while ($row = mysqli_fetch_array($result)) {
+        echo "<option>" . $row['vehicle_type'] . "</option>";
+    }
 }
 

@@ -49,7 +49,7 @@
                         document.getElementById("v_type").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET", "delete.php?q=" + str, true);
+                xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
                 xmlhttp.send();
             }
 
@@ -113,6 +113,11 @@
                                         <label class="control-label" for="input-email">Vehicle Number:</label>
                                         <input type="text" name="vehicle_no" id="fname" value="<?php echo $vehicle_no; ?>" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
                                     </div>
+                                    
+                                    <div class="form-inline required" style="margin-bottom: 8px;">
+                                        <button type="button" id="cviewbuttons" class="btn btn" onclick="search_Vehicle();">Search</button>
+                                    </div>
+                                    
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Model Year:</label>
                                         <input type="text" disabled name="model_year" id="fname" value="<?php echo $model_year; ?>" placeholder="Model Year" id="input-email" class="form-control" required/>
