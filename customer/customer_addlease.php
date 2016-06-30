@@ -82,7 +82,7 @@
                                         <label class="control-label" for="input-email">Select Vehicle Type:</label>
                                         <select name="vehicle_type" id="input-region" class="form-control" required>
                                             <option value="0">~~Select Vehicle Type~~</option>
-                                            <?php load_vehicle_types($_GET['vehicle_brand'])?>
+                                            
                                         </select>
                                     </div>
                                     <div class="form-group required">

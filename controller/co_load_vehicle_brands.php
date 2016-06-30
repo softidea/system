@@ -14,6 +14,7 @@ function load_vehicle_brands() {
 }
 
 function load_vehicle_types($vehicle_brand) {
+    alert($vehicle_brand);
     $sql_query = "CALL sp_lod_vehicle_types($vehicle_brand);";
     $run_query = mysqli_query($d_bc, $sql_query);
     while ($row_vehicle_type = mysqli_fetch_array($run_query)) {
