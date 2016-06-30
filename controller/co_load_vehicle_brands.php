@@ -13,13 +13,21 @@ function load_vehicle_brands() {
     }
 }
 
-function load_vehicle_types($vehicle_brand) {
-    alert($vehicle_brand);
-    $sql_query = "CALL sp_lod_vehicle_types($vehicle_brand);";
-    $run_query = mysqli_query($d_bc, $sql_query);
-    while ($row_vehicle_type = mysqli_fetch_array($run_query)) {
-        $vehicle_type_id=$row_vehicle_type['vehicle_type_id'];
-        $vehicle_type=$row_vehicle_type['vehicle_type'];
-        echo "<option value='$vehicle_type_id'>$vehicle_type</option>";
+if (isset($_POST['get_option'])) {
+    echo "<script>alert('hi');</script>";
+    require_once '../db/mysqliConnect.php';
+    $value=$_POST['get_option'];
+    
+        $sql_query = "CALL sp_lod_vehicle_types('".$value."');";
+        
+        
+        $run_query = mysqli_query($d_bc, $sql_query);
+        while ($row_vehicle_type = mysqli_fetch_array($run_query)) {
+            $vehicle_type_id = $row_vehicle_type['vehicle_type_id'];
+            $vehicle_type = $row_vehicle_type['vehicle_type'];
+            echo "<option value='$vehicle_type_id'>$vehicle_type</option>";
+        
     }
+
 }
+

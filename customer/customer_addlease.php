@@ -28,12 +28,37 @@
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_service.css">
+        <script src="../assets/js/jquery-3.0.0.js"></script>
+        <?php require '../controller/co_load_vehicle_brands.php'; ?>
 
-        <?php require '../controller/co_load_vehicle_brands.php';?>
-        
+        <script>
+            function showTypes(str) {
+                alert(str);
+                if (str == "") {
+                    document.getElementById("v_type").innerHTML = "";
+                    return;
+                }
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("v_type").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "delete.php?q=" + str, true);
+                xmlhttp.send();
+            }
+
+        </script>
+
+
     </head>
     <body>
-<?php include '../assets/include/navigation_bar.php'; ?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
         <!--Lease Registration Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">
@@ -73,18 +98,15 @@
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Brand:</label>
-                                        <select name="vehicle_brand" id="v_brand" class="form-control" required>
-                                            <?php load_vehicle_brands();?>
+                                        <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
+                                            <?php load_vehicle_brands(); ?>
                                         </select>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Type:</label>
-                                        <select name="vehicle_type" id="input-region" class="form-control" required>
+                                        <select name="vehicle_type" id="v_type" class="form-control" required >
                                             <option value="0">~~Select Vehicle Type~~</option>
-                                            <?php 
-                                            $vb=$_GET['vehicle_brand'];
-                                            load_vehicle_types($vb);
-                                            ?>
+
                                         </select>
                                     </div>
                                     <div class="form-group required">
@@ -127,7 +149,7 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-<?php include '../assets/include/footer.php'; ?>
+        <?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
