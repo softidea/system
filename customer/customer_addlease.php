@@ -74,18 +74,15 @@
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Brand:</label>
-                                        <select name="vehicle_brand" id="v_brand" class="form-control" required>
-                                            <?php loadx();?>
+                                        <select name="vehicle_brand" id="v_brand" class="form-control" required onchange="<?php load_vehicle_types($_GET['vehicle_brand'])?>">
+                                            <?php load_vehicle_brands();?>
                                         </select>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Type:</label>
                                         <select name="vehicle_type" id="input-region" class="form-control" required>
-                                            <option value="6">Bajaj</option>
-                                            <option value="12">Hero Honda</option>
-                                            <option value="18">Honda</option>
-                                            <option value="18">TVS</option>
-                                            <option value="18">Three-Wheel</option>
+                                            <option value="0">~~Select Vehicle Type~~</option>
+                                            <?php load_vehicle_types($_GET['vehicle_brand'])?>
                                         </select>
                                     </div>
                                     <div class="form-group required">
