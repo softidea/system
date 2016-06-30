@@ -31,55 +31,36 @@
         <script src="../assets/js/jquery-3.0.0.js"></script>
 
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
-        <?php require '../controller/delete.php'; ?>
 
         <script type="text/javascript">
             function showTypes(str) {
-                alert(str);
-                if (str == "") {
-                    document.getElementById("v_type").innerHTML = "";
-                    return;
-                }
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else { // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("v_type").innerHTML = xmlhttp.responseText;
+                if (document.getElementById('v_cat').selectedIndex == "1") {
+                    if (str == "") {
+                        document.getElementById("v_type").innerHTML = "";
+                        return;
                     }
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("v_type").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
+                    xmlhttp.send();
                 }
-                xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
-                xmlhttp.send();
+                
             }
 
         </script>
-        <script type="text/javascript">
-            function search_Vehicle() {
-                var v_type = document.getElementById('v_type').value;
-                var v_no = document.getElementById('v_no').value;
-                alert(v_type + " " + v_no);
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else { // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        alert(xmlhttp.responseText);
-                    }
-                }
-                xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_no=" + v_no, true);
-                xmlhttp.send();
-            }
 
-        </script>
         <script type="text/javascript">
             function showVehicleMods(str) {
-                alert(str);
+
                 if (str == "") {
                     document.getElementById("v_code").innerHTML = "";
                     return;
@@ -95,7 +76,7 @@
                         document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET", "../controller/delete.php?q=" + str, true);
+                xmlhttp.open("GET", "../controller/co_load_vehicle_mods.php?q=" + str, true);
                 xmlhttp.send();
             }
 
@@ -103,41 +84,79 @@
         <script type="text/javascript">
             function showDetails()
             {
-                var v_type = document.getElementById('v_type').value;
-                var v_code = document.getElementById('v_code').value;
-                alert(v_type + " " + v_code);
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else { // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        alert(xmlhttp.responseText);
-                        var value = xmlhttp.responseText;
-                        var result_arr = value.split("#");
-                        
-                        document.getElementById('m_year').value = result_arr[0];
-                        document.getElementById('l_rate').value = result_arr[1];
-                        
-                        if(v_code.length===1){
-                            document.getElementById('v_no_code').maxLength=v_code.length+1;
-                        }else{
-                            document.getElementById('v_no_code').maxLength=v_code.length;
-                        }
-
+                if (document.getElementById('v_cat').selectedIndex == 1) {
+                    var v_type = document.getElementById('v_type').value;
+                    var v_code = document.getElementById('v_code').value;
+                    alert(v_type + " " + v_code);
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+                            var value = xmlhttp.responseText;
+                            var result_arr = value.split("#");
+
+                            document.getElementById('m_year').value = result_arr[0];
+                            document.getElementById('l_rate').value = result_arr[1];
+
+                            if (v_code.length === 1) {
+                                document.getElementById('v_no_code').maxLength = v_code.length + 1;
+                            } else {
+                                document.getElementById('v_no_code').maxLength = v_code.length;
+                            }
+
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
+                    xmlhttp.send();
                 }
-                xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
-                xmlhttp.send();
             }
 
         </script>
-        
+        <script type="text/javascript">
+            function set_vehicle_div(val) {
+                if (val == 1) {
+                    reset_form_values();
+                    document.getElementById('v_brand').disabled = false;
+                    document.getElementById('v_type').disabled = false;
+                }
+                else if (val == 2) {
+                    reset_form_values();
+                    document.getElementById('v_brand').disabled = true;
+                    document.getElementById('v_type').disabled = true;
+
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById('v_code').innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/delete.php", true);
+                    xmlhttp.send();
+                }
+            }
+            function reset_form_values() {
+                document.getElementById('v_brand').selectedIndex = "0";
+                document.getElementById('v_type').selectedIndex = "0";
+                document.getElementById('v_no_code').value = "";
+                document.getElementById('v_no').value = "";
+                document.getElementById('m_year').value = "";
+                document.getElementById('l_rate').value = "";
+                document.getElementById('f_rate').value = "";
+            }
+        </script>
     </head>
     <body>
-<?php include '../assets/include/navigation_bar.php'; ?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
         <!--Lease Registration Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">
@@ -173,8 +192,16 @@
                                 </fieldset>
                             </div>
                             <div class="col-sm-6">
-                                <fieldset id="account"><td>
+                                <fieldset id="account">
                                     <legend>Leasing Details</legend>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Category:</label>
+                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
+                                            <option value="0">~~Select Category~~</option>
+                                            <option value="1">Bike</option>
+                                            <option value="2">Three-Wheel</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Brand:</label>
                                         <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
@@ -235,17 +262,11 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-<?php include '../assets/include/footer.php'; ?>
+        <?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <?php
-    if (isset($_GET['search_vehicle'])) {
-        $v_type = $_GET['v_type'];
-        $v_no = $_GET['v_no'];
-        echo "<script>$v_type</script>";
-    }
-    ?>
+
 </html>

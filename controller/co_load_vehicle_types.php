@@ -13,7 +13,7 @@ or die('Could not connect to MySql: '. mysqli_connect_error());
 
 $sql="SELECT * FROM vehicle_type WHERE brand_id = '".$q."'";
 $result = mysqli_query($d_bc,$sql);
-
+ echo "<option value='0'>~~Select Vehicle Type~~</option>";
 while($row = mysqli_fetch_array($result)) {
     $v_type_id=$row['vehicle_type_id'];
     echo "<option value=$v_type_id>" . $row['vehicle_type'] . "</option>";
