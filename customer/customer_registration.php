@@ -36,10 +36,6 @@ session_start();
     $gua_emp_name = "";
     $gua_emp_address = "";
 
-
-    $loan_description = "";
-
-
     $real_prp_house_position = "";
     $real_prp_house_size = "";
     $real_prp_house_value = "";

@@ -1,5 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!--Variable declaration-->
+    <?php
+    $cus_fullname = "";
+    $cus_initialname = "";
+    $cus_address = "";
+    $cus_tp = "";
+    $cus_nic = "";
+    $cus_dob = "";
+    $cus_ms = "";
+    $cus_dependdency = "";
+    $cus_position = "";
+    $cus_monthly_salary = "";
+    $cus_emp_name = "";
+    $cus_emp_name = "";
+
+    $cus_hhalf_name = "";
+    $cus_bhalf_dob = "";
+    $cus_bhalf_position = "";
+    $cus_bhalf_monthly_salary = "";
+    $cus_bhalf_emp_name = "";
+
+    $gua_fullname = "";
+    $gua_initial_name = "";
+    $gua_address = "";
+    $gua_tp = "";
+    $gua_dob = "";
+    $gua_ms = "";
+    $gua_nic = "";
+    $gua_dependency = "";
+    $gua_position = "";
+    $gua_monthly_salary = "";
+    $gua_emp_name = "";
+    $gua_emp_address = "";
+
+    $real_prp_house_position = "";
+    $real_prp_house_size = "";
+    $real_prp_house_value = "";
+    $real_prp_house_pawned = "";
+    $real_prp_house_pawn_getter = "";
+
+    $real_prp_other_position = "";
+    $real_prp_other_size = "";
+    $real_prp_other_value = "";
+    $real_prp_other_pawned = "";
+    $real_prp_other_pawn_getter = "";
+
+    $cus_savings_bank_branch = "";
+    $cus_savings_facilities = "";
+    $cus_savings_account_no = "";
+    $cus_mobile_bank_branch = "";
+    $cus_mobile_facilities = "";
+    $cus_mobile_account_no = "";
+
+    $cus_daily_loan_bank_branch = "";
+    $cus_daily_loan_facilities = "";
+    $cus_daily_loan_account_no = "";
+
+    $payable_loan_amount = "";
+    $loan_description = "";
+
+    $reg_date = "";
+    ?>
+    <!--Variable declaration-->
     <head>
         <meta charset="utf-8">
         <title>Update Customer</title>
@@ -14,30 +77,7 @@
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <style type="text/css">
-            body
-            {
-                font-family: 'Source Sans Pro', sans-serif;
-            }
-            .modal-backdrop {
-                z-index: -1;
-            }
-            ul {
-                list-style-type: square;
-                list-style-position: outside;
-                list-style-image: none;
-            }
-            #cviewbuttons
-            {
-                background-color: #009688;
-                color: white;
-                margin-top: 25px;
-            }
-            #cviewbuttons:hover
-            {
-                background-color: #004D40;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css" >
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>

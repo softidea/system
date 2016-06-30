@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+    <!--Variable Declaration-->
+    <?php
+    $cus_name = "";
+    $cus_nic = "";
+    $vehicle_no = "";
+    $model_year = "";
+    $lease_rate = "";
+    $fixed_rate = "";
+    $cbo_loan_duration = "";
+    ?>
+    <!--Variable Declaration-->
     <head>
         <meta charset="UTF-8">
         <title>Lease Registration</title>
@@ -16,60 +27,14 @@
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <style type="text/css">
-            body
-            {
-                font-family: 'Source Sans Pro', sans-serif;
-            }
-            .modal-backdrop {
-                z-index: -1;
-            }
-            ul {
-                list-style-type: square;
-                list-style-position: outside;
-                list-style-image: none;
-            }
-            #cviewbuttons
-            {
-                background-color: #009688;
-                color: white;
+        <link rel="stylesheet" type="text/css" href="../assets/css/customer_service.css">
 
-            }
-            #cviewbuttons:hover
-            {
-                background-color: #004D40;
-            }
-            #panelheading
-            {
-                background: #009688;
-                color: white;          
-            }
-            #custcontinue
-            {
-                background-color: #009688;
-                color: white;
-                float: right;
-            }
-            #custcontinue:hover
-            {
-                background-color: #004D40;
-            }
-            //.thcaption{text-align: center;}
-            #backregister
-            {
-                background-color: #004D40;
-                color: white;
-                float: right;
-                margin-right: 12px;
-            }
-            #backregister:hover
-            {
-                background-color: #009688;
-            }
-        </style>
+        <?php require '../controller/co_load_vehicle_brands.php';?>
+        
+        
     </head>
     <body>
-    <?php include '../assets/include/navigation_bar.php';?>
+<?php include '../assets/include/navigation_bar.php'; ?>
         <!--Lease Registration Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">
@@ -84,16 +49,15 @@
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer Name:</label>
-                                        <input type="text" name="fname" id="fname" value="" placeholder="Customer Name" id="input-email" class="form-control" required/>
+                                        <input type="text" name="cus_name" id="fname" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer NIC:</label>
-                                        <input type="text" name="fname" id="fname" value="" placeholder="Customer NIC" id="input-email" class="form-control" required/>
-
+                                        <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-inline required" style="margin-bottom: 8px;">
                                         <button type="button" id="cviewbuttons" class="btn btn">Search</button>
-                                        <button type="button" id="cviewbuttons" class="btn btn">New Customer</button>
+                                        <a href="customer_registration.php"><button type="button" id="cviewbuttons" class="btn btn">New Customer</button></a>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Upload Customer:</label>
@@ -109,20 +73,36 @@
                                 <fieldset id="account"><td>
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Vehicle Brand:</label>
+                                        <select name="vehicle_brand" id="v_brand" class="form-control" required>
+                                            <?php loadx();?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Vehicle Type:</label>
+                                        <select name="vehicle_type" id="input-region" class="form-control" required>
+                                            <option value="6">Bajaj</option>
+                                            <option value="12">Hero Honda</option>
+                                            <option value="18">Honda</option>
+                                            <option value="18">TVS</option>
+                                            <option value="18">Three-Wheel</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group required">
                                         <label class="control-label" for="input-email">Vehicle Number:</label>
-                                        <input type="text" name="fname" id="fname" value="" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
+                                        <input type="text" name="vehicle_no" id="fname" value="<?php echo $vehicle_no; ?>" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Model Year:</label>
-                                        <input type="text" disabled name="fname" id="fname" value="" placeholder="Model Year" id="input-email" class="form-control" required/>
+                                        <input type="text" disabled name="model_year" id="fname" value="<?php echo $model_year; ?>" placeholder="Model Year" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Lease Rate:</label>
-                                        <input type="text" disabled name="fname" id="fname" value="" placeholder="Lease Rate" id="input-email" class="form-control" required/>
+                                        <input type="text" disabled name="lease_rate" id="fname" value="<?php echo $lease_rate; ?>" placeholder="Lease Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Fixed Rate:</label>
-                                        <input type="text" name="fname" id="fname" value="" placeholder="Fix Rate" id="input-email" class="form-control" required/>
+                                        <input type="text" name="fixed_rate" id="fname" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Period:</label>
@@ -148,7 +128,7 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-        <?php include '../assets/include/footer.php';?>
+<?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
