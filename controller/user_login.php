@@ -13,9 +13,9 @@ require_once '../db/mysqliConnect.php';
 //echo $password;
 //echo $username;
 
-$_SESSION['user_email']=$username;
-$_SESSION['user_password']=$password;
-$_SESSION['login_process']=$button;
+$_SESSION['user_email']=$_POST['user_email'];
+$_SESSION['user_password']=$_POST['user_password'];
+$_SESSION['login_process']=$_POST['login_process'];
 
 
 $qy_login = "CALL sp_login_User('" .$_SESSION['user_email'] . "','" .$_SESSION['user_password']. "');";
