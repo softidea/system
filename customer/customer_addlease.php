@@ -31,7 +31,7 @@
         <script src="../assets/js/jquery-3.0.0.js"></script>
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
 
-        <script>
+        <script type="text/javascript">
             function showTypes(str) {
                 alert(str);
                 if (str == "") {
@@ -52,9 +52,28 @@
                 xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
                 xmlhttp.send();
             }
-
+            function search_Vehicle()
+            {
+                alert(str);
+                if (str == "") {
+                    document.getElementById("v_type").innerHTML = "";
+                    return;
+                }
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("v_type").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
+                xmlhttp.send();
+            }
         </script>
-
 
     </head>
     <body>
@@ -113,11 +132,11 @@
                                         <label class="control-label" for="input-email">Vehicle Number:</label>
                                         <input type="text" name="vehicle_no" id="fname" value="<?php echo $vehicle_no; ?>" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
                                     </div>
-                                    
+
                                     <div class="form-inline required" style="margin-bottom: 8px;">
                                         <button type="button" id="cviewbuttons" class="btn btn" onclick="search_Vehicle();">Search</button>
                                     </div>
-                                    
+
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Model Year:</label>
                                         <input type="text" disabled name="model_year" id="fname" value="<?php echo $model_year; ?>" placeholder="Model Year" id="input-email" class="form-control" required/>
