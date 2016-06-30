@@ -15,7 +15,8 @@ $sql="SELECT * FROM vehicle_type WHERE brand_id = '".$q."'";
 $result = mysqli_query($d_bc,$sql);
 
 while($row = mysqli_fetch_array($result)) {
-    echo "<option>" . $row['vehicle_type'] . "</option>";
+    $v_type_id=$row['vehicle_type_id'];
+    echo "<option value=$v_type_id>" . $row['vehicle_type'] . "</option>";
 }
 
 ?>

@@ -13,14 +13,5 @@ function load_vehicle_brands() {
     }
 }
 
-if (isset($_GET['q'])) {
-    require_once '../db/mysqliConnect.php';
-    $q = intval($_GET['q']);
-    $sql = "SELECT * FROM vehicle_type WHERE brand_id = '" . $q . "'";
-    $result = mysqli_query($d_bc, $sql);
 
-    while ($row = mysqli_fetch_array($result)) {
-        echo "<option>" . $row['vehicle_type'] . "</option>";
-    }
-}
 

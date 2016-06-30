@@ -42,22 +42,7 @@
                                 </fieldset>
 
                             </div>
-                            <div class="col-sm-6">
-                                <div id="searchOptionPanel">
-                                    <fieldset id="account">
-                                        <legend>Service Option</legend>
-                                        <div class="form-group required">
-                                            <label class="control-label" for="input-email">Search by:</label>
-                                            <select disabled name="cbopayment" id="cboservice" class="form-control" required onchange="check();">
-                                                <option value=""> --- Please Select --- </option>
-                                                <option value="bike">Motor Bike</option>
-                                                <option value="twheel">Three-Wheel</option>
-                                                <option value="land">Land</option>
-                                            </select>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
+                            
 
                             <div class="col-sm-6">
 

@@ -29,7 +29,9 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_service.css">
         <script src="../assets/js/jquery-3.0.0.js"></script>
+
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
+        <?php require '../controller/delete.php'; ?>
 
         <script type="text/javascript">
             function showTypes(str) {
@@ -52,18 +54,34 @@
                 xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
                 xmlhttp.send();
             }
-            function search_Vehicle()
-            {
-                
-                var v_brand=document.getElementById('v_brand').value;
-                var v_type=document.getElementById('v_type').value;
-                var v_no=document.getElementById('v_no').value;
-                
-                alert(v_brand);
-                alert(v_type);
-                alert(v_no);
+
+        </script>
+        <script type="text/javascript">
+            function search_Vehicle() {
+                var v_type = document.getElementById('v_type').value;
+                var v_no = document.getElementById('v_no').value;
+                alert(v_type + " " + v_no);
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        alert(xmlhttp.responseText);
+                    }
+                }
+                xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_no=" + v_no, true);
+                xmlhttp.send();
+            }
+
+        </script>
+        <script type="text/javascript">
+            function showVehicleMods(str) {
+                alert(str);
                 if (str == "") {
-                    document.getElementById("v_type").innerHTML = "";
+                    document.getElementById("v_code").innerHTML = "";
                     return;
                 }
                 if (window.XMLHttpRequest) {
@@ -74,16 +92,52 @@
                 }
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("v_type").innerHTML = xmlhttp.responseText;
+                        document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
+                xmlhttp.open("GET", "../controller/delete.php?q=" + str, true);
                 xmlhttp.send();
             }
+
         </script>
+        <script type="text/javascript">
+            function showDetails()
+            {
+                var v_type = document.getElementById('v_type').value;
+                var v_code = document.getElementById('v_code').value;
+                alert(v_type + " " + v_code);
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        alert(xmlhttp.responseText);
+                        var value = xmlhttp.responseText;
+                        var result_arr = value.split("#");
+                        
+                        document.getElementById('m_year').value = result_arr[0];
+                        document.getElementById('l_rate').value = result_arr[1];
+                        
+                        if(v_code.length===1){
+                            document.getElementById('v_no_code').maxLength=v_code.length+1;
+                        }else{
+                            document.getElementById('v_no_code').maxLength=v_code.length;
+                        }
+
+                    }
+                }
+                xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
+                xmlhttp.send();
+            }
+
+        </script>
+        
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php'; ?>
+<?php include '../assets/include/navigation_bar.php'; ?>
         <!--Lease Registration Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">
@@ -129,31 +183,33 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Type:</label>
-                                        <select name="vehicle_type" id="v_type" class="form-control" required >
+                                        <select name="vehicle_type" id="v_type" class="form-control" required onchange="showVehicleMods(this.value);">
                                             <option value="0">~~Select Vehicle Type~~</option>
-
                                         </select>
                                     </div>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Vehicle Number:</label>
-                                        <input type="text" name="vehicle_no" id="v_no" value="<?php echo $vehicle_no; ?>" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
+                                        <label class="control-label" for="input-email">Vehicle Pre Code:</label>
+                                        <select name="vehicle_code" id="v_code" class="form-control" required onchange="showDetails();">
+                                            <option value="0">~~Select Vehicle Code~~</option>
+                                        </select>
                                     </div>
-
-                                    <div class="form-inline required" style="margin-bottom: 8px;">
-                                        <button type="button" id="cviewbuttons" class="btn btn" onclick="search_Vehicle();">Search</button>
+                                    <div class="form-inline required">
+                                        <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
+                                        <label class="control-label" for="input-email"> - </label>
+                                        <input type="text" name="vehicle_no" maxlength="4" id="v_no" placeholder="Ex:2558" id="input-email" class="form-control" required/>
+                                        <br>
                                     </div>
-
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Model Year:</label>
-                                        <input type="text" disabled name="model_year" id="fname" value="<?php echo $model_year; ?>" placeholder="Model Year" id="input-email" class="form-control" required/>
+                                        <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Lease Rate:</label>
-                                        <input type="text" disabled name="lease_rate" id="fname" value="<?php echo $lease_rate; ?>" placeholder="Lease Rate" id="input-email" class="form-control" required/>
+                                        <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Fixed Rate:</label>
-                                        <input type="text" name="fixed_rate" id="fname" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required/>
+                                        <input type="text" name="fixed_rate" id="f_rate" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Period:</label>
@@ -179,10 +235,17 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-        <?php include '../assets/include/footer.php'; ?>
+<?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <?php
+    if (isset($_GET['search_vehicle'])) {
+        $v_type = $_GET['v_type'];
+        $v_no = $_GET['v_no'];
+        echo "<script>$v_type</script>";
+    }
+    ?>
 </html>
