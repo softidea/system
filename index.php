@@ -1,17 +1,35 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
+        <link rel="stylesheet" href="assets/css/login.css">
+        <?php include './assets/include/head.php'; ?>
+        <?php
+        //define("IN_VIEW", true);
+
+        //require_once "headerA.php";
+        ?>
+
+        <?php
+        // if (isset($_SESSION['user_email'])) {
+        //    header('Location:user/user_view.php');
+        //} else {
+        //    header('Location:index.php');
+        //}
+        ?>
+
+
+
         <meta charset="utf-8">
         <title>User Login</title>
         <!-- Latest compiled and minified CSS -->
 
-        <?php include './assets/include/head.php'; ?>
-        
-        <script type="text/javascript">
-               $(window).unload(function () {
-                alert("asd");
-            }
-        </script>
+       
+
+
         <script type="text/javascript">
             function setregpanel()
             {
@@ -55,18 +73,20 @@
                                 <p class="sub_topic">Finance Management System</p>
                             </div>
                             <div class="panel-body">
-                                <form action="controller/login.php" method="POST" enctype="multipart/form-data">
+                                <form action="controller/user_login.php" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">E-Mail Address :</label>
-                                        <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>
+                                        <input type="email" name="user_email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" min="10" max="100" required/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-password">Password :</label>
-                                        <input type="password" name="password" placeholder="Password" id="input-password" class="form-control" required/>
-                                        <a href="user/user_registration.php"><p id="para_forget">Did you forgot your password?</p></a></div>
-                                    <a href="user/user_home.php">
-                                        <input type="button" name="login_process" value="Login Here" class="btn" id='btn_login'/></a>
-                                    <input type="button" name="login_process" value="Register User" class="btn" id='btn_login' onclick="setregpanel();"/>
+                                        <input type="password" name="user_password" placeholder="Password" id="input-password" class="form-control" min="8" max="50" required/>
+                                        <a href="controller/user_forgetPassword.php"><p id="para_forget">Did you forgot your password?</p></a>
+
+                                    </div>
+
+                                    <input type="submit" name="login_process" value="Login Here" class="btn" id='btn_login'/>
+
                                 </form>
                             </div>
                             <div class="panel-footer">Powered by : <a href="http://www.fsczone.com/">Softidea Solutions</a></div>
@@ -129,7 +149,7 @@
         </div>
         <!--Container Panel Start-->
 
-<?php include 'assets/include/footer.php'; ?>
+        <?php include 'assets/include/footer.php'; ?>
 
     </body>
     <style>

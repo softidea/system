@@ -1,4 +1,5 @@
 <?php
+header("Location:../index.php");
 
 define('db_host', '107.180.14.32');
 define('db_port', '3306');
