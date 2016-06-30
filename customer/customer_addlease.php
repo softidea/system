@@ -31,7 +31,6 @@
 
         <?php require '../controller/co_load_vehicle_brands.php';?>
         
-        
     </head>
     <body>
 <?php include '../assets/include/navigation_bar.php'; ?>
@@ -74,7 +73,7 @@
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Vehicle Brand:</label>
-                                        <select name="vehicle_brand" id="v_brand" class="form-control" required onchange="<?php load_vehicle_types($_GET['vehicle_brand'])?>">
+                                        <select name="vehicle_brand" id="v_brand" class="form-control" required>
                                             <?php load_vehicle_brands();?>
                                         </select>
                                     </div>
@@ -82,7 +81,10 @@
                                         <label class="control-label" for="input-email">Select Vehicle Type:</label>
                                         <select name="vehicle_type" id="input-region" class="form-control" required>
                                             <option value="0">~~Select Vehicle Type~~</option>
-                                            
+                                            <?php 
+                                            $vb=$_GET['vehicle_brand'];
+                                            load_vehicle_types($vb);
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group required">

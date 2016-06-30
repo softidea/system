@@ -1,24 +1,11 @@
-<?php
-//require_once "../headerA.php";
-session_start();
-if (isset($_SESSION['user_email'])) {
-    
-} else {
-    
-    header("Location: ../index.php");
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
-
         <meta charset="utf-8">
         <title>User|Home</title>
-        <?php
-        include_once '../assets/include/head.php';
-        ?>
+       <?php include '../assets/include/head.php';?>
         <link rel="stylesheet" href="../assets/css/home.css">
 
     </head>
@@ -32,18 +19,10 @@ if (isset($_SESSION['user_email'])) {
                             <a href="#">
                                 <i class="glyphicon glyphicon-earphone"></i>
                             </a>
-                            <span class="hidden-xs hidden-sm hidden-md">+9434 226 5107</span>
+                            <span class="hidden-xs hidden-sm hidden-md">+94714 339 339</span>
                         </li>
-                        <li><a href="user_settings.php" id="wishlist-total" title="My Account"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">My Account</span></a></li>
-                        <li>
-
-                            <a id="wishlist-total" href="../controller/co_logout.php" style="text-decoration: none;">
-                                <span class="hidden-xs hidden-sm hidden-md">
-                                    Logout
-                                </span>
-                            </a>
-                        </li>
-
+                        <li><a href="#" id="wishlist-total" title="My Account"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">My Account</span></a></li>
+                        <li><a id="wishlist-total" title="Register" href="../user/user_registration.php" style="text-decoration: none;"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">Logout</span></a></li>	
                     </ul>
                 </div>
             </div>
