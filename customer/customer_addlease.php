@@ -54,7 +54,14 @@
             }
             function search_Vehicle()
             {
-                alert(str);
+                
+                var v_brand=document.getElementById('v_brand').value;
+                var v_type=document.getElementById('v_type').value;
+                var v_no=document.getElementById('v_no').value;
+                
+                alert(v_brand);
+                alert(v_type);
+                alert(v_no);
                 if (str == "") {
                     document.getElementById("v_type").innerHTML = "";
                     return;
@@ -74,7 +81,6 @@
                 xmlhttp.send();
             }
         </script>
-
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>
@@ -130,7 +136,7 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Vehicle Number:</label>
-                                        <input type="text" name="vehicle_no" id="fname" value="<?php echo $vehicle_no; ?>" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
+                                        <input type="text" name="vehicle_no" id="v_no" value="<?php echo $vehicle_no; ?>" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
                                     </div>
 
                                     <div class="form-inline required" style="margin-bottom: 8px;">
