@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("Location:../index.php");
+}
 ?>
 <html lang="en">
     <?php
@@ -93,7 +97,7 @@ session_start();
                             <h3 class="panel-title">Customer Registration</h3>
                         </div>
 
-                        <form action="../controller/co_customer.php" method="POST">
+                        <form action="co_customer.php" method="POST">
                             <div class="panel-body" style="background-color: #FAFAFA;">
                                 <div class="col-sm-6">
                                     <fieldset id="account">
@@ -102,82 +106,82 @@ session_start();
                                         <label class="radio-inline"><input type="radio" name="optradioo" checked>: Mr</label>
                                         <label class="radio-inline"><input type="radio" name="optradioo">: Mrs</label>
                                         <label class="radio-inline"><input type="radio" name="optradioo">: Miss</label>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Full Name:</label>
-                                            <input type="text" name="cus_fullname" id="fname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_fullname" id="fname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" maxlength="100" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Name with Initials:</label>
-                                            <input type="text" name="cus_initialname" value="<?php echo $cus_initialname; ?>" placeholder="Name with Initials" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_initialname" value="<?php echo $cus_initialname; ?>" placeholder="Name with Initials" id="input-email" class="form-control" maxlength="100" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Permanent Address :</label>
-                                            <input type="text" name="cus_address" value="<?php echo $cus_address; ?>" placeholder="E-mail" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_address" value="<?php echo $cus_address; ?>" placeholder="Permanent Address" id="input-email" class="form-control" maxlength="400" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Telephone:</label>
-                                            <input type="text" name="cus_tp" value="<?php echo $cus_tp; ?>" placeholder="Telephone" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_tp" value="<?php echo $cus_tp; ?>" placeholder="Telephone" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">NIC Number:</label>
-                                            <input type="text" name="cus_nic" value="<?php echo $cus_nic; ?>" placeholder="National Identity Card Number" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_nic" value="<?php echo $cus_nic; ?>" placeholder="National Identity Card Number" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Date of Birth:</label>
-                                            <input type="date" name="cus_dob" value="<?php echo $cus_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" required/>
+                                            <input type="date" name="cus_dob" value="<?php echo $cus_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
                                         </div>
 
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Married Status:</label>
-                                            <select name="cus_ms" value="<?php echo $cus_ms; ?>"  id="input-email" class="form-control" required>
+                                            <select name="cus_ms" value="<?php echo $cus_ms; ?>"  id="input-email" class="form-control" >
                                                 <option value="Single">Single</option>
                                                 <option value="Married">Married</option>
                                             </select>
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Have any Dependencies:</label>
-                                            <input type="text" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employment/Position:</label>
-                                            <input type="text" name="cus_position" value="<?php echo $cus_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_position" value="<?php echo $cus_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="cus_monthly_salary" value="<?php echo $cus_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_monthly_salary" value="<?php echo $cus_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employer Name:</label>
-                                            <input type="text" name="cus_emp_name" value="<?php echo $cus_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_emp_name" value="<?php echo $cus_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employer Address:</label>
-                                            <input type="text" name="cus_emp_address" value="<?php echo $cus_emp_name; ?>" placeholder="Employer Address" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_emp_address" value="<?php echo $cus_emp_name; ?>" placeholder="Employer Address" id="input-email" class="form-control" />
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
                                         <legend>03.Customer Better Half Details</legend>
 
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Full Name:</label>
-                                            <input type="text" name="cus_hhalf_name" id="fname" value="<?php echo $cus_hhalf_name; ?>" placeholder="Full Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_hhalf_name" id="fname" value="<?php echo $cus_hhalf_name; ?>" placeholder="Full Name" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Date of Birth:</label>
-                                            <input type="date" name="cus_bhalf_dob" value="<?php echo $cus_bhalf_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" required/>
+                                            <input type="date" name="cus_bhalf_dob" value="<?php echo $cus_bhalf_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
                                         </div>
 
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employment/Position:</label>
-                                            <input type="text" name="cus_bhalf_position" value="<?php echo $cus_bhalf_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_bhalf_position" value="<?php echo $cus_bhalf_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="cus_bhalf_monthly_salary" value="<?php echo $cus_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_bhalf_monthly_salary" value="<?php echo $cus_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employer Name:</label>
-                                            <input type="text" name="cus_bhalf_emp_name" value="<?php echo $cus_bhalf_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="cus_bhalf_emp_name" value="<?php echo $cus_bhalf_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" />
                                         </div>
 
                                     </fieldset>
@@ -190,79 +194,79 @@ session_start();
                                         <label class="radio-inline"><input type="radio" name="optradio" checked>: Mr</label>
                                         <label class="radio-inline"><input type="radio" name="optradio">: Mrs</label>
                                         <label class="radio-inline"><input type="radio" name="optradio">: Miss</label>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Full Name:</label>
-                                            <input type="text" name="gua_fullname" id="fname" value="<?php echo $gua_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_fullname" id="fname" value="<?php echo $gua_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Name with Initials:</label>
-                                            <input type="text" name="gua_initial_name" value="<?php echo $gua_initial_name; ?>" placeholder="Name with Initials" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_initial_name" value="<?php echo $gua_initial_name; ?>" placeholder="Name with Initials" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Permanent Address :</label>
-                                            <input type="text" name="gua_address" value="<?php echo $gua_address; ?>" placeholder="E-mail" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_address" value="<?php echo $gua_address; ?>" placeholder="E-mail" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Telephone:</label>
-                                            <input type="tel" name="gua_tp" value="<?php echo $gua_tp; ?>" placeholder="Telephone" id="input-email" class="form-control" required/>
+                                            <input type="tel" name="gua_tp" value="<?php echo $gua_tp; ?>" placeholder="Telephone" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Date of Birth:</label>
-                                            <input type="date" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" required/>
+                                            <input type="date" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Married Status:</label>
-                                            <input type="text" name="gua_ms" value="<?php echo $gua_ms; ?>" placeholder="Married Status" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_ms" value="<?php echo $gua_ms; ?>" placeholder="Married Status" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">NIC Number:</label>
-                                            <input type="text" name="gua_nic" value="<?php echo $gua_nic; ?>" placeholder="National Identity Card Number" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_nic" value="<?php echo $gua_nic; ?>" placeholder="National Identity Card Number" id="input-email" class="form-control" />
                                         </div>
 
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Have any Dependencies:</label>
-                                            <input type="text" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employment/Position:</label>
-                                            <input type="text" name="gua_position" value="<?php echo $gua_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_position" value="<?php echo $gua_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="gua_monthly_salary" value="<?php echo $gua_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_monthly_salary" value="<?php echo $gua_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employer Name:</label>
-                                            <input type="text" name="gua_emp_name" value="<?php echo $gua_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_emp_name" value="<?php echo $gua_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employer Address:</label>
-                                            <input type="text" name="gua_emp_address" value="<?php echo $gua_emp_address; ?>" placeholder="Employer Address" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_emp_address" value="<?php echo $gua_emp_address; ?>" placeholder="Employer Address" id="input-email" class="form-control" />
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
                                         <legend>04.Guarantor Better Half Details</legend>
 
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Full Name:</label>
-                                            <input type="text" name="gua_bhalf_fullname" id="fname" value="<?php echo $gua_bhalf_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_bhalf_fullname" id="fname" value="<?php echo $gua_bhalf_fullname; ?>" placeholder="Full Name" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Date of Birth:</label>
-                                            <input type="text" name="gua_bhalf_dob" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_bhalf_dob" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
                                         </div>
 
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employment/Position:</label>
-                                            <input type="text" name="gua_bhalf_position" value="<?php echo $gua_bhalf_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_bhalf_position" value="<?php echo $gua_bhalf_position; ?>" placeholder="Employment/Position" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="gua_bhalf_monthly_salary" value="<?php echo $gua_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_bhalf_monthly_salary" value="<?php echo $gua_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" id="input-email" class="form-control" />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Employer Name:</label>
-                                            <input type="text" name="gua_bhalf_emp_name" value="<?php echo $gua_bhalf_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" required/>
+                                            <input type="text" name="gua_bhalf_emp_name" value="<?php echo $gua_bhalf_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" />
                                         </div>
 
                                     </fieldset>
@@ -271,13 +275,13 @@ session_start();
                                 <div class="col-md-12">
                                     <fieldset id="account">
                                         <legend>05.Description of the Loan:</legend>
-                                        <div class="form-group required">
-                                            <input type="text" id="input-email" class="form-control" name="loan_description" value="<?php echo $loan_description; ?>" required placeholder="Description of the Loan">
+                                        <div class="form-group ">
+                                            <input type="text" id="input-email" class="form-control" name="loan_description" value="<?php echo $loan_description; ?>"   placeholder="Description of the Loan">
                                         </div>
                                     </fieldset>
-                                    <div class="form-group required">
+                                    <div class="form-group ">
                                         <label class="control-label" for="input-email">Duration of Loan Payment:</label>
-                                        <select name="cbo_loan_duration" id="input-region" class="form-control" required>
+                                        <select name="cbo_loan_duration" id="input-region" class="form-control" >
                                             <option value="6">6 Months</option>
                                             <option value="12">1 Year</option>
                                             <option value="18">1.5 Years</option>
@@ -292,7 +296,7 @@ session_start();
                                     </div>
                                     <fieldset id="account">
                                         <legend>05.Real Property</legend>
-                                        <div class="form-group required">
+                                        <div class="form-group ">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -307,19 +311,19 @@ session_start();
                                                 <tbody>
                                                     <tr>
                                                         <td>House</td>
-                                                        <td><input type="text" name="real_prp_house_position" value="<?php echo $real_prp_house_position; ?>" placeholder="Position" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_house_size" value="<?php echo $real_prp_house_size; ?>" placeholder="Size" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_house_value" value="<?php echo $real_prp_house_value; ?>" placeholder="Value" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_house_pawned" value="<?php echo $real_prp_house_pawned; ?>" placeholder="Is Pawned" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_house_pawn_getter" value="<?php echo $real_prp_house_pawn_getter; ?>" placeholder="Pawn Getter" id="input-email" class="form-control" required/></td>
+                                                        <td><input type="text" name="real_prp_house_position" value="<?php echo $real_prp_house_position; ?>" placeholder="Position" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_house_size" value="<?php echo $real_prp_house_size; ?>" placeholder="Size" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_house_value" value="<?php echo $real_prp_house_value; ?>" placeholder="Value" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_house_pawned" value="<?php echo $real_prp_house_pawned; ?>" placeholder="Is Pawned" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_house_pawn_getter" value="<?php echo $real_prp_house_pawn_getter; ?>" placeholder="Pawn Getter" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Other Property</td>
-                                                        <td><input type="text" name="real_prp_other_position" value="<?php echo $real_prp_other_position; ?>" placeholder="Position" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_other_size" value="<?php echo $real_prp_other_size; ?>" placeholder="Size" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_other_value" value="<?php echo $real_prp_other_value; ?>" placeholder="Value" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_other_pawned" value="<?php echo $real_prp_other_pawned; ?>" placeholder="Is Pawned" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="real_prp_other_pawn_getter" value="<?php echo $real_prp_other_pawn_getter; ?>" placeholder="Pawn Getter" id="input-email" class="form-control" required/></td>
+                                                        <td><input type="text" name="real_prp_other_position" value="<?php echo $real_prp_other_position; ?>" placeholder="Position" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_other_size" value="<?php echo $real_prp_other_size; ?>" placeholder="Size" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_other_value" value="<?php echo $real_prp_other_value; ?>" placeholder="Value" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_other_pawned" value="<?php echo $real_prp_other_pawned; ?>" placeholder="Is Pawned" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="real_prp_other_pawn_getter" value="<?php echo $real_prp_other_pawn_getter; ?>" placeholder="Pawn Getter" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -327,7 +331,7 @@ session_start();
                                     </fieldset>
                                     <fieldset id="account">
                                         <legend>05.Bank Accounts</legend>
-                                        <div class="form-group required">
+                                        <div class="form-group ">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -340,21 +344,21 @@ session_start();
                                                 <tbody>
                                                     <tr>
                                                         <td>Savings Account</td>
-                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" required/></td>
+                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Mobile Account</td>
-                                                        <td><input type="text" name="cus_mobile_bank_branch" value="<?php echo $cus_mobile_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="cus_mobile_facilities" value="<?php echo $cus_mobile_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="cus_mobile_account_no" value="<?php echo $cus_mobile_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" required/></td>
+                                                        <td><input type="text" name="cus_mobile_bank_branch" value="<?php echo $cus_mobile_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_facilities" value="<?php echo $cus_mobile_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_account_no" value="<?php echo $cus_mobile_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Daily Loan Service</td>
-                                                        <td><input type="text" name="cus_daily_loan_bank_branch" value="<?php echo $cus_daily_loan_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="cus_daily_loan_facilities" value="<?php echo $cus_daily_loan_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" required/></td>
-                                                        <td><input type="text" name="cus_daily_loan_account_no" value="<?php echo $cus_daily_loan_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" required/></td>
+                                                        <td><input type="text" name="cus_daily_loan_bank_branch" value="<?php echo $cus_daily_loan_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_facilities" value="<?php echo $cus_daily_loan_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_account_no" value="<?php echo $cus_daily_loan_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -362,22 +366,22 @@ session_start();
                                     </fieldset>
                                     <fieldset id="account">
                                         <legend>05.Payable Loan Amount of Applicant:</legend>
-                                        <div class="form-group required">
+                                        <div class="form-group ">
 
-                                            <input type="text" name="payable_loan_amount" value="<?php echo $payable_loan_amount; ?>" placeholder="Payable Loan Amount of Applicant" id="input-email" class="form-control" required/>
+                                            <input type="text" name="payable_loan_amount" value="<?php echo $payable_loan_amount; ?>" placeholder="Payable Loan Amount of Applicant" id="input-email" class="form-control" />
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
                                         <legend>05.Enough Description of way to find the permanent resident of the applicant:</legend>
-                                        <div class="form-group required">
-                                            <input type="text" id="input-email" name="loan_description" value="<?php echo $loan_description; ?>" class="form-control" required placeholder="Description of the Loan">
+                                        <div class="form-group ">
+                                            <input type="text" id="input-email" name="loan_description" value="<?php echo $loan_description; ?>" class="form-control"   placeholder="Description of the Loan">
                                         </div>
                                     </fieldset>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="control-label" for="input-email">Registration Date</label>   
-                                    <input type="date" name="reg_date" value="<?php echo $reg_date; ?>" placeholder="Date" id="input-email" class="form-control" required/>
+                                    <input type="date" name="reg_date" value="<?php echo $reg_date; ?>" placeholder="Date" id="input-email" class="form-control" />
 
                                 </div>
 
@@ -405,26 +409,26 @@ session_start();
                             <div class="col-sm-6">
                                 <fieldset id="account"><td>
                                     <legend>Property Details</legend>
-                                    <div class="form-group required">
+                                    <div class="form-group  ">
                                         <label class="control-label" for="input-email">Reference Person:</label>
-                                        <input type="text" name="fname" id="fname" value="" placeholder="Reference Person" id="input-email" class="form-control" required/>
+                                        <input type="text" name="fname" id="fname" value="" placeholder="Reference Person" id="input-email" class="form-control"  />
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group  ">
                                         <label class="control-label" for="input-email">Select Property:</label>
-                                        <select name="cbopayment" id="input-region" class="form-control" required onchange="check();">
+                                        <select name="cbopayment" id="input-region" class="form-control"   onchange="check();">
                                             <option value=""> --- Please Select --- </option>
                                             <option value="bike">Bike</option>
                                             <option value="twheel">Three-Wheel</option>
                                             <option value="land">Land</option>
                                         </select>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group  ">
                                         <label class="control-label" for="input-email">Upload Customer:</label>
-                                        <input type="file" name="product_image" required/>
+                                        <input type="file" name="product_image"  />
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group  ">
                                         <label class="control-label" for="input-email">Upload Property:</label>
-                                        <input type="file" name="product_image" required/>
+                                        <input type="file" name="product_image"  />
                                     </div>
                                 </fieldset>
 
@@ -433,25 +437,25 @@ session_start();
                                 <div id="leasepanel">
                                     <fieldset id="account"><td>
                                         <legend>Leasing Details</legend>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Vehicle Number:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Vehicle Number" id="input-email" class="form-control" required/>
+                                            <input type="text" name="fname" id="fname" value="" placeholder="Vehicle Number" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Model Year:</label>
-                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Model Year" id="input-email" class="form-control" required/>
+                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Model Year" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Lease Rate:</label>
-                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Lease Rate" id="input-email" class="form-control" required/>
+                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Lease Rate" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Fix Rate:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Fix Rate" id="input-email" class="form-control" required/>
+                                            <input type="text" name="fname" id="fname" value="" placeholder="Fix Rate" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Select Period:</label>
-                                            <select name="cbopayment" id="input-region" class="form-control" required>
+                                            <select name="cbopayment" id="input-region" class="form-control"  >
                                                 <option value=""> --- Please Select --- </option>
                                                 <option>6 Months</option>
                                                 <option>1 Year</option>
@@ -468,17 +472,17 @@ session_start();
                                 <div id="landpanel" style="display: none;">
                                     <fieldset id="account"><td>
                                         <legend>Land Pawning Details</legend>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Deed Number:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Deed Number" id="input-email" class="form-control" required/>
+                                            <input type="text" name="fname" id="fname" value="" placeholder="Deed Number" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Registration Year:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Registration Year" id="input-email" class="form-control" required/>
+                                            <input type="text" name="fname" id="fname" value="" placeholder="Registration Year" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Select Period:</label>
-                                            <select name="cbopayment" id="input-region" class="form-control" required>
+                                            <select name="cbopayment" id="input-region" class="form-control"  >
                                                 <option value=""> --- Please Select --- </option>
                                                 <option>6 Months</option>
                                                 <option>1 Year</option>
@@ -486,13 +490,13 @@ session_start();
                                                 <option>3 Year</option>
                                             </select>
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Pawn Rate:</label>
-                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Pawn Rate" id="input-email" class="form-control" required/>
+                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Pawn Rate" id="input-email" class="form-control"  />
                                         </div>
-                                        <div class="form-group required">
+                                        <div class="form-group  ">
                                             <label class="control-label" for="input-email">Fixed Rate:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Fixed Rate" id="input-email" class="form-control" required/>
+                                            <input type="text" name="fname" id="fname" value="" placeholder="Fixed Rate" id="input-email" class="form-control"  />
                                         </div>
 
                                         <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Update</button>
@@ -610,10 +614,6 @@ session_start();
             }
         }
     </script>
-    <?php
-    if (isset($_POST['customer_continue'])) {
-        echo "<script>alert('Hi Malinda');</script>";
-    }
-    ?>
+    
 </body>
 </html>
