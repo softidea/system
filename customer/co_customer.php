@@ -35,6 +35,8 @@ $c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
 
 function save_customer() {
+    
+    
     $lastId = "CALL sp_get_maxCusId();";
 
     $con_last = mysqli_query($d_bc, $lastId);

@@ -1,5 +1,8 @@
 <?php
-header("Location:../index.php");
+if (!isset($_POST['user_email'])) {
+  header("Location:../index.php");  
+}
+
 
 define('db_host', '107.180.14.32');
 define('db_port', '3306');
