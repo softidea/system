@@ -3,9 +3,10 @@
 session_start();
 
 if (!isset($_SESSION['user_email'])) {
-    //header("Location:../index.php");
-}
-if (isset($_POST['customer_continue'])) {
+    header("Location:../index.php");
+} else if (isset($_POST['customer_continue'])) {
+    $username = $_SESSION['user_email'];
+    echo "<script>alert('$username');</script>";
     save_customer();
 }
 
@@ -30,13 +31,15 @@ $c15 = filter_input(INPUT_POST, 'cus_bhalf_position');
 $c16 = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
 $c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
+echo "<script>alert('$c17');</script>";
+
 /////////////////////////////
 ////////////////////////////////
 
 
 function save_customer() {
-    
-    
+
+
     $lastId = "CALL sp_get_maxCusId();";
 
     $con_last = mysqli_query($d_bc, $lastId);

@@ -3,8 +3,12 @@ session_start();
 //unset($_SESSION['user_email']);
 if (!isset($_SESSION['user_email'])) {
     header("Location:../index.php");
+} else {
+    $username = $_SESSION['user_email'];
+    
+    echo "<script>alert('$username');</script>";
+    
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@ if (!isset($_SESSION['user_email'])) {
     <head>
         <meta charset="utf-8">
         <title>User|Home</title>
-       <?php include '../assets/include/head.php';?>
+        <?php include '../assets/include/head.php'; ?>
         <link rel="stylesheet" href="../assets/css/home.css">
 
     </head>

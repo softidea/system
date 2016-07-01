@@ -1,5 +1,5 @@
 <?php
-if (!isset($_POST['user_email'])) {
+if (!isset($_SESSION['user_email'])) {
   header("Location:../index.php");  
 }
 
