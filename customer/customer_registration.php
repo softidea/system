@@ -350,21 +350,21 @@ if (!isset($_SESSION['user_email'])) {
                                                 <tbody>
                                                     <tr>
                                                         <td>Savings Account</td>
-                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch;?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities;?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no;?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Mobile Account</td>
-                                                        <td><input type="text" name="cus_mobile_bank_branch" value="<?php echo $cus_mobile_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_mobile_facilities" value="<?php echo $cus_mobile_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_mobile_account_no" value="<?php echo $cus_mobile_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_bank_branch" value="<?php echo $cus_mobile_bank_branch;?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_facilities" value="<?php echo $cus_mobile_facilities;?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_account_no" value="<?php echo $cus_mobile_account_no;?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Daily Loan Service</td>
-                                                        <td><input type="text" name="cus_daily_loan_bank_branch" value="<?php echo $cus_daily_loan_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_daily_loan_facilities" value="<?php echo $cus_daily_loan_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_daily_loan_account_no" value="<?php echo $cus_daily_loan_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_bank_branch" value="<?php echo $cus_daily_loan_bank_branch;?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_facilities" value="<?php echo $cus_daily_loan_facilities;?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_account_no" value="<?php echo $cus_daily_loan_account_no;?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -380,7 +380,7 @@ if (!isset($_SESSION['user_email'])) {
                                     <fieldset id="account">
                                         <legend>05.Enough Description of way to find the permanent resident of the applicant:</legend>
                                         <div class="form-group ">
-                                            <input type="text" id="input-email" name="loan_description" value="<?php echo $loan_description; ?>" class="form-control"   placeholder="Description of the Loan">
+                                            <input type="text" id="input-email" name="address_description" value="<?php echo $loan_description; ?>" class="form-control"   placeholder="Description of the Loan">
                                         </div>
                                     </fieldset>
                                 </div>

@@ -52,6 +52,36 @@ $c33 = filter_input(INPUT_POST, 'gua_bhalf_position');
 $c34 = filter_input(INPUT_POST, 'gua_bhalf_monthly_salary');
 $c35 = filter_input(INPUT_POST, 'gua_bhalf_emp_name');
 
+$c36 = filter_input(INPUT_POST, 'home');
+$c37 = filter_input(INPUT_POST, 'real_prp_house_position');
+$c38 = filter_input(INPUT_POST, 'real_prp_house_size');
+$c39 = filter_input(INPUT_POST, 'real_prp_house_value');
+$c40 = filter_input(INPUT_POST, 'real_prp_house_pawned');
+$c41 = filter_input(INPUT_POST, 'real_prp_house_pawn_getter');
+
+$c42 = filter_input(INPUT_POST, 'op');
+$c43 = filter_input(INPUT_POST, 'real_prp_other_position');
+$c44 = filter_input(INPUT_POST, 'real_prp_other_size');
+$c45 = filter_input(INPUT_POST, 'real_prp_other_value');
+$c46 = filter_input(INPUT_POST, 'real_prp_other_pawned');
+$c47 = filter_input(INPUT_POST, 'real_prp_other_pawn_getter');
+
+$c48 = filter_input(INPUT_POST, 'cus_savings_bank_branch');
+$c49 = filter_input(INPUT_POST, 'cus_savings_facilities');
+$c50 = filter_input(INPUT_POST, 'cus_savings_account_no');
+
+$c51 = filter_input(INPUT_POST, 'cus_mobile_bank_branch');
+$c52 = filter_input(INPUT_POST, 'cus_mobile_facilities');
+$c53 = filter_input(INPUT_POST, 'cus_mobile_account_no');
+
+$c54 = filter_input(INPUT_POST, 'cus_daily_loan_bank_branch');
+$c55 = filter_input(INPUT_POST, 'cus_daily_loan_facilities');
+$c56 = filter_input(INPUT_POST, 'cus_daily_loan_account_no');
+
+$c57 = filter_input(INPUT_POST, 'address_description');
+$c58 = filter_input(INPUT_POST, 'reg_date');
+
+
 
 echo "<script>alert('$c1');</script>";
 
@@ -63,7 +93,7 @@ echo "<script>alert('$c1');</script>";
 
 
 
-     $query_cus_cus_1 = "CALL sp_ins_customer('" . $c18 . "','" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','" . $c6 . "','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "','" . $c12 . "',@inid)";
+     $query_cus_cus_1 = "CALL sp_ins_customer('" . $c18 . "','" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','" . $c6 . "','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "','" . $c12 . "','".$c57."','".$c58."',@inid)";
 
     $qu = mysqli_query($d_bc, $query_cus_cus_1);
     if ($qu) {
@@ -78,7 +108,21 @@ echo "<script>alert('$c1');</script>";
       //Adding Gerenter Wife 
         $query_ger_wf="CALL sp_ins_ger_wf_pers('".$c31."','".$c32."','".$c33."','".$c34."','".$c35."','".$c18."')";
          mysqli_query($d_bc, $query_ger_wf);
+      //Adding Real Property
+         $query_real_property="CALL sp_ins_real_property('".$c36."','".$c37."','".$c38."','".$c39."','".$c40."','".$c41."','".$c18."')";
+         mysqli_query($d_bc, $query_real_property);
          
+         $query_real_property_other="CALL sp_ins_real_property('".$c42."','".$c43."','".$c44."','".$c45."','".$c46."','".$c47."','".$c18."')";
+         mysqli_query($d_bc, $query_real_property_other);
+      //Adding Bank Account
+         $query_saving_bnk="CALL sp_ins_cus_bnk_acc('Savings Account','".$c48."','".$c49."','".$c50."','".$c18."')";
+         mysqli_query($d_bc, $query_saving_bnk);
+        
+         $query_mobile_bnk="CALL sp_ins_cus_bnk_acc('Mobile Account','".$c51."','".$c52."','".$c53."','".$c18."')";
+         mysqli_query($d_bc, $query_mobile_bnk);
+        
+         $query_dialy_loan_service="CALL sp_ins_cus_bnk_acc('Daily Loan Service','".$c54."','".$c55."','".$c56."','".$c18."')";
+         mysqli_query($d_bc,  $query_dialy_loan_service);
         header("Location:../customer/customer_addlease.php");
         
         mysqli_close($d_bc);
