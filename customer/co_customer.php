@@ -31,7 +31,8 @@ $c15 = filter_input(INPUT_POST, 'cus_bhalf_position');
 $c16 = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
 $c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
-echo "<script>alert('$c17');</script>";
+
+echo "<script>alert('$c12');</script>";
 
 /////////////////////////////
 ////////////////////////////////
