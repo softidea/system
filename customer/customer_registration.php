@@ -40,6 +40,12 @@ if (!isset($_SESSION['user_email'])) {
     $gua_emp_name = "";
     $gua_emp_address = "";
 
+    $gua_bhalf_fullname="";
+    $gua_bhalf_dob="";
+    $gua_bhalf_position="";
+    $gua_bhalf_monthly_salary="";
+    $gua_bhalf_emp_name="";
+
     $real_prp_house_position = "";
     $real_prp_house_size = "";
     $real_prp_house_value = "";

@@ -34,7 +34,7 @@
 
         <script type="text/javascript">
             function showTypes(str) {
-                if (document.getElementById('v_cat').selectedIndex == "1") {
+                if (document.getElementById('v_cat').selectedIndex == 1) {
                     if (str == "") {
                         document.getElementById("v_type").innerHTML = "";
                         return;
@@ -53,33 +53,51 @@
                     xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
                     xmlhttp.send();
                 }
-                
+
             }
 
         </script>
 
         <script type="text/javascript">
             function showVehicleMods(str) {
-
-                if (str == "") {
-                    document.getElementById("v_code").innerHTML = "";
-                    return;
-                }
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else { // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("v_code").innerHTML = xmlhttp.responseText;
+                if (document.getElementById('v_cat').selectedIndex == 1) {
+                    if (str == "") {
+                        document.getElementById("v_code").innerHTML = "";
+                        return;
                     }
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("v_code").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_vehicle_mods.php?q=" + str, true);
+                    xmlhttp.send();
+                }else if(document.getElementById('v_cat').selectedIndex == 2){
+                    if (str == "") {
+                        document.getElementById("v_code").innerHTML = "";
+                        return;
+                    }
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("v_code").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_twheel_mods.php?q=" + str, true);
+                    xmlhttp.send();
                 }
-                xmlhttp.open("GET", "../controller/co_load_vehicle_mods.php?q=" + str, true);
-                xmlhttp.send();
             }
-
         </script>
         <script type="text/javascript">
             function showDetails()
@@ -113,6 +131,25 @@
                     }
                     xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
                     xmlhttp.send();
+                }else if(document.getElementById('v_cat').selectedIndex == 2){
+                    var v_type = document.getElementById('v_type').value;
+                    var v_code = document.getElementById('v_code').value;
+                    alert(v_type + " " + v_code);
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                            alert(xmlhttp.responseText);
+                            document.getElementById('l_rate').value = xmlhttp.responseText;
+
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_twheel_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
+                    xmlhttp.send();
                 }
             }
 
@@ -122,12 +159,14 @@
                 if (val == 1) {
                     reset_form_values();
                     document.getElementById('v_brand').disabled = false;
-                    document.getElementById('v_type').disabled = false;
                 }
                 else if (val == 2) {
                     reset_form_values();
                     document.getElementById('v_brand').disabled = true;
-                    document.getElementById('v_type').disabled = true;
+
+                    document.getElementById("v_type").innerHTML = "";
+                    document.getElementById("v_type").innerHTML = "<option value='2'>2 Stroke</option><option value='4'>4 Stroke</option>";
+
 
                     if (window.XMLHttpRequest) {
                         // code for IE7+, Firefox, Chrome, Opera, Safari

@@ -30,6 +30,28 @@ $c15 = filter_input(INPUT_POST, 'cus_bhalf_position');
 $c16 = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
 $c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
+//cus id
+$c18=filter_input(INPUT_POST, 'cus_fullname');
+
+$c19 = filter_input(INPUT_POST, 'gua_fullname');
+$c20 = filter_input(INPUT_POST, 'gua_initial_name');
+$c21 = filter_input(INPUT_POST, 'gua_address');
+$c22 = filter_input(INPUT_POST, 'gua_tp');
+$c23 = filter_input(INPUT_POST, 'gua_dob');
+$c24 = filter_input(INPUT_POST, 'gua_ms');
+$c25 = filter_input(INPUT_POST, 'gua_nic');
+$c26 = filter_input(INPUT_POST, 'gua_dependency');
+$c27 = filter_input(INPUT_POST, 'gua_position');
+$c28 = filter_input(INPUT_POST, 'gua_monthly_salary');
+$c29 = filter_input(INPUT_POST, 'gua_emp_name');
+$c30 = filter_input(INPUT_POST, 'gua_emp_address');
+
+$c31 = filter_input(INPUT_POST, 'gua_bhalf_fullname');
+$c32 = filter_input(INPUT_POST, 'gua_bhalf_dob');
+$c33 = filter_input(INPUT_POST, 'gua_bhalf_position');
+$c34 = filter_input(INPUT_POST, 'gua_bhalf_monthly_salary');
+$c35 = filter_input(INPUT_POST, 'gua_bhalf_emp_name');
+
 
 echo "<script>alert('$c1');</script>";
 
@@ -41,12 +63,22 @@ echo "<script>alert('$c1');</script>";
 
 
 
-     $query_cus_cus_1 = "CALL sp_ins_customer('" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','" . $c6 . "','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "','" . $c12 . "','" . $c13 . "',@inid)";
+     $query_cus_cus_1 = "CALL sp_ins_customer('" . $c18 . "','" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','" . $c6 . "','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "','" . $c12 . "',@inid)";
 
     $qu = mysqli_query($d_bc, $query_cus_cus_1);
     if ($qu) {
         //echo "<script>alert('OK Customer');window.open('../customer/customer_registration.php','_self');</script>";
         echo "<script>alert('yes Customer');</script>";
+       //Adding Customer Wife
+        $query_cus_wf="CALL sp_ins_cus_wf_pers('".$c13."','".$c14."','".$c15."','".$c16."','".$c17."','".$c18."')";
+         mysqli_query($d_bc, $query_cus_wf);
+       //Adding Gerenter
+        $query_ger="CAll sp_ins_ger('" . $c18 . "','" . $c19 . "','" . $c20 . "','" . $c21 . "','" . $c22 . "','" . $c23 . "','" . $c24 . "','" . $c25 . "','" . $c26 . "','" . $c27 . "','" . $c28 . "','" . $c29 . "','" . $c30 . "')";
+       mysqli_query($d_bc, $query_ger);
+      //Adding Gerenter Wife 
+        $query_ger_wf="CALL sp_ins_ger_wf_pers('".$c31."','".$c32."','".$c33."','".$c34."','".$c35."','".$c18."')";
+         mysqli_query($d_bc, $query_ger_wf);
+         
         header("Location:../customer/customer_addlease.php");
         
         mysqli_close($d_bc);
