@@ -7,8 +7,7 @@ if (!isset($_SESSION['user_email'])) {
 } else if (isset($_POST['customer_continue'])) {
     $username = $_SESSION['user_email'];
     echo "<script>alert('$username');</script>";
-    save_customer();
-}
+   
 
 include '../db/mysqliConnect.php';
 
@@ -32,31 +31,31 @@ $c16 = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
 $c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
 
-echo "<script>alert('$c12');</script>";
+echo "<script>alert('$c1');</script>";
 
 /////////////////////////////
 ////////////////////////////////
 
 
-function save_customer() {
 
 
-    $lastId = "CALL sp_get_maxCusId();";
 
-    $con_last = mysqli_query($d_bc, $lastId);
 
-    $query_cus_cus_1 = "CALL sp_ins_customer('" . $con_last . "','" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','" . $c6 . "','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "',,'" . $c12 . "','" . $c13 . "','" . $c14 . "','" . $c15 . "','" . $c16 . "','" . $c17 . "')";
+     $query_cus_cus_1 = "CALL sp_ins_customer('" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','" . $c6 . "','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "','" . $c12 . "','" . $c13 . "',@inid)";
 
     $qu = mysqli_query($d_bc, $query_cus_cus_1);
     if ($qu) {
         //echo "<script>alert('OK Customer');window.open('../customer/customer_registration.php','_self');</script>";
-        header("Location:customer_registration.php");
+        echo "<script>alert('yes Customer');</script>";
+        header("Location:../customer/customer_addlease.php");
+        
         mysqli_close($d_bc);
     } else {
 
         echo '<script> alert($con_last);</script';
         echo "<script>alert('NO Customer');</script>";
-        header("Location:customer_registration.php");
+        header("Location:../user/user_home.php");
         mysqli_close($d_bc);
     }
+
 }
