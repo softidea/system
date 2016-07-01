@@ -316,7 +316,7 @@ if (!isset($_SESSION['user_email'])) {
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>House</td>
+                                                        <td>House<input type="hidden" value="House" name="home"></td>
                                                         <td><input type="text" name="real_prp_house_position" value="<?php echo $real_prp_house_position; ?>" placeholder="Position" id="input-email" class="form-control" /></td>
                                                         <td><input type="text" name="real_prp_house_size" value="<?php echo $real_prp_house_size; ?>" placeholder="Size" id="input-email" class="form-control" /></td>
                                                         <td><input type="text" name="real_prp_house_value" value="<?php echo $real_prp_house_value; ?>" placeholder="Value" id="input-email" class="form-control" /></td>
@@ -324,7 +324,7 @@ if (!isset($_SESSION['user_email'])) {
                                                         <td><input type="text" name="real_prp_house_pawn_getter" value="<?php echo $real_prp_house_pawn_getter; ?>" placeholder="Pawn Getter" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Other Property</td>
+                                                        <td>Other Property<input type="hidden" value="Other Property" name="op"></td>
                                                         <td><input type="text" name="real_prp_other_position" value="<?php echo $real_prp_other_position; ?>" placeholder="Position" id="input-email" class="form-control" /></td>
                                                         <td><input type="text" name="real_prp_other_size" value="<?php echo $real_prp_other_size; ?>" placeholder="Size" id="input-email" class="form-control" /></td>
                                                         <td><input type="text" name="real_prp_other_value" value="<?php echo $real_prp_other_value; ?>" placeholder="Value" id="input-email" class="form-control" /></td>

@@ -134,7 +134,7 @@
                 }else if(document.getElementById('v_cat').selectedIndex == 2){
                     var v_type = document.getElementById('v_type').value;
                     var v_code = document.getElementById('v_code').value;
-                    alert(v_type + " " + v_code);
+                    alert(v_type + "tw " + v_code);
                     if (window.XMLHttpRequest) {
                         // code for IE7+, Firefox, Chrome, Opera, Safari
                         xmlhttp = new XMLHttpRequest();

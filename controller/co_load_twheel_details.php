@@ -13,5 +13,10 @@ $v_type = $_GET['v_type'];
 $v_code = $_GET['v_code'];
 //getting varibles from ajax method
 
-$sql_query="SELECT ";
+$sql_query="SELECT max_value FROM ser_threewheel_pre WHERE type='$v_type' AND mode='$v_code'";
+$run_query=  mysqli_query($d_bc, $sql_query);
+while($row_query=  mysqli_fetch_array($run_query)){
+    $max_val=$row_query['max_value'];
+    echo $max_val;
+}
 ?>
