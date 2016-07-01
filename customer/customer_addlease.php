@@ -32,11 +32,11 @@
 
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
         <script type="text/javascript">
-            function imagepreview(input){
-                if(input.files && input.files[0]){
+            function imagepreview(input) {
+                if (input.files && input.files[0]) {
                     var filerd = new FileReader();
-                    filerd.onload=function (e){
-                        $('#imgpreview').attr('src',e.target.result);
+                    filerd.onload = function (e) {
+                        $('#imgpreview').attr('src', e.target.result);
                     };
                     filerd.readAsDataURL(input.files[0]);
                 }
@@ -88,7 +88,7 @@
                     }
                     xmlhttp.open("GET", "../controller/co_load_vehicle_mods.php?q=" + str, true);
                     xmlhttp.send();
-                }else if(document.getElementById('v_cat').selectedIndex == 2){
+                } else if (document.getElementById('v_cat').selectedIndex == 2) {
                     if (str == "") {
                         document.getElementById("v_code").innerHTML = "";
                         return;
@@ -141,7 +141,7 @@
                     }
                     xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
                     xmlhttp.send();
-                }else if(document.getElementById('v_cat').selectedIndex == 2){
+                } else if (document.getElementById('v_cat').selectedIndex == 2) {
                     alert('inner');
                     var v_tw_type = document.getElementById('v_type').value;
                     var v_tw_code = document.getElementById('v_code').value;
@@ -158,7 +158,7 @@
                             document.getElementById('l_rate').value = xmlhttp.responseText;
                         }
                     }
-                    xmlhttp.open("GET", "del.php?v_tw_type="+v_tw_type+"&v_tw_code="+v_tw_code, true);
+                    xmlhttp.open("GET", "del.php?v_tw_type=" + v_tw_type + "&v_tw_code=" + v_tw_code, true);
                     xmlhttp.send();
                 }
             }
@@ -235,18 +235,18 @@
                                         <input type="file" name="product_image[]" id="idupload" onchange="imagepreview(this);"/>
                                         <img id="imgpreview" title="Image Preview" style="width: 200px;height: 200px;">
                                     </div>
-                                    
-                                    
-                                    
+
+
+
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Upload Property:</label>
                                         <input type="file" name="product_image" required/>
                                     </div>
-                                    
-                                    
-                                    
-                                    
-                                    
+
+
+
+
+
                                 </fieldset>
                             </div>
                             <div class="col-sm-6">
@@ -310,6 +310,10 @@
                                             <option value="54">4.5 Years</option>
                                             <option value="60">5 Years</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Description of the Loan:</label>
+                                        <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
                                     </div>
                                     <button type="button" class="btn btn" id="custcontinue">Register Lease</button>
                                 </fieldset>

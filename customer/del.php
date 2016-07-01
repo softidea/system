@@ -13,13 +13,22 @@ $type=$_GET['v_tw_type'];
 $code=$_GET['v_tw_code'];
 //getting varibles from ajax method
 
+
 //secho $type."lol".$code;
 
-$sql_query="SELECT * FROM ser_threewheel_pre WHERE tw_type=$type AND tw_mode=$code LIMIT=1";
+sleep(5);
+
+$sql_query="SELECT max_val FROM ser_threewheel_pre WHERE tw_type='$type' AND tw_mode='$code'";
+
+echo $sql_query;
+
 $run_query=  mysqli_query($d_bc, $sql_query);
-if(mysqli_num_rows($run_query)>0){
-    $row=  mysqli_fetch_assoc($run_query);
-    echo $row['max_value'];
-}
+
+echo mysqli_num_rows($run_query);
+$sd =mysqli_num_rows($run_query);
+if($sd>0){
+    $row=  mysqli_fetch_assoc($sd);
+    echo $row['max_val'];
+}else{echo "hikz";}
 
 ?>

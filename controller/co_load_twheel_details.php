@@ -16,10 +16,10 @@ $v_code = $_GET['v_code'];
 
 echo $v_type+" output "+$v_code;
 
-//$sql_query="SELECT * FROM ser_threewheel_pre WHERE `type`='$v_type' AND `mode`='$v_code';";
-//$run_query=  mysqli_query($d_bc, $sql_query);
-//while($row_query=  mysqli_fetch_array($run_query)){
-//    $max_val=$row_query['max_value'];
-//    echo $max_val;
-//}
+$sql_query="SELECT * FROM ser_threewheel_pre WHERE `type`='$v_type' AND `mode`='$v_code';";
+$run_query=  mysqli_query($d_bc, $sql_query);
+while($row_query=  mysqli_fetch_array($run_query)){
+    $max_val=$row_query['max_value'];
+    echo $max_val;
+}
 ?>

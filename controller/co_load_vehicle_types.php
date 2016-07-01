@@ -18,5 +18,5 @@ while($row = mysqli_fetch_array($result)) {
     $v_type_id=$row['vehicle_type_id'];
     echo "<option value=$v_type_id>" . $row['vehicle_type'] . "</option>";
 }
-
+mysqli_close($d_bc);
 ?>

@@ -40,11 +40,11 @@ if (!isset($_SESSION['user_email'])) {
     $gua_emp_name = "";
     $gua_emp_address = "";
 
-    $gua_bhalf_fullname="";
-    $gua_bhalf_dob="";
-    $gua_bhalf_position="";
-    $gua_bhalf_monthly_salary="";
-    $gua_bhalf_emp_name="";
+    $gua_bhalf_fullname = "";
+    $gua_bhalf_dob = "";
+    $gua_bhalf_position = "";
+    $gua_bhalf_monthly_salary = "";
+    $gua_bhalf_emp_name = "";
 
     $real_prp_house_position = "";
     $real_prp_house_size = "";
@@ -89,6 +89,171 @@ if (!isset($_SESSION['user_email'])) {
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css" >
+         <?php require '../controller/co_load_vehicle_brands.php'; ?>
+        <script type="text/javascript">
+            function showTypes(str) {
+                if (document.getElementById('v_cat').selectedIndex == 1) {
+                    if (str == "") {
+                        document.getElementById("v_type").innerHTML = "";
+                        return;
+                    }
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("v_type").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_vehicle_types.php?q=" + str, true);
+                    xmlhttp.send();
+                }
+
+            }
+
+        </script>
+
+        <script type="text/javascript">
+            function showVehicleMods(str) {
+                if (document.getElementById('v_cat').selectedIndex == 1) {
+                    if (str == "") {
+                        document.getElementById("v_code").innerHTML = "";
+                        return;
+                    }
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("v_code").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_vehicle_mods.php?q=" + str, true);
+                    xmlhttp.send();
+                } else if (document.getElementById('v_cat').selectedIndex == 2) {
+                    if (str == "") {
+                        document.getElementById("v_code").innerHTML = "";
+                        return;
+                    }
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("v_code").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_twheel_mods.php?q=" + str, true);
+                    xmlhttp.send();
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            function showDetails()
+            {
+                if (document.getElementById('v_cat').selectedIndex == 1) {
+                    var v_type = document.getElementById('v_type').value;
+                    var v_code = document.getElementById('v_code').value;
+                    alert(v_type + " " + v_code);
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+                            var value = xmlhttp.responseText;
+                            var result_arr = value.split("#");
+
+                            document.getElementById('m_year').value = result_arr[0];
+                            document.getElementById('l_rate').value = result_arr[1];
+
+                            if (v_code.length === 1) {
+                                document.getElementById('v_no_code').maxLength = v_code.length + 1;
+                            } else {
+                                document.getElementById('v_no_code').maxLength = v_code.length;
+                            }
+
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
+                    xmlhttp.send();
+                } else if (document.getElementById('v_cat').selectedIndex == 2) {
+                    alert('inner');
+                    var v_tw_type = document.getElementById('v_type').value;
+                    var v_tw_code = document.getElementById('v_code').value;
+                    alert(v_tw_type + "tw " + v_tw_code);
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                            alert(xmlhttp.responseText);
+                            document.getElementById('l_rate').value = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "del.php?v_tw_type=" + v_tw_type + "&v_tw_code=" + v_tw_code, true);
+                    xmlhttp.send();
+                }
+            }
+
+        </script>
+        <script type="text/javascript">
+            function set_vehicle_div(val) {
+                
+                if (val == 1) {
+                    reset_form_values();
+                    document.getElementById('v_brand').disabled = false;
+                    
+                }
+                else if (val == 2) {
+                    reset_form_values();
+                    document.getElementById('v_brand').disabled = true;
+
+                    document.getElementById("v_type").innerHTML = "";
+                    document.getElementById("v_type").innerHTML = "<option value='2'>2 Stroke</option><option value='4'>4 Stroke</option>";
+
+
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById('v_code').innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/delete.php", true);
+                    xmlhttp.send();
+                }
+            }
+            function reset_form_values() {
+                document.getElementById('v_brand').selectedIndex = "0";
+                document.getElementById('v_type').selectedIndex = "0";
+                document.getElementById('v_no_code').value = "";
+                document.getElementById('v_no').value = "";
+                document.getElementById('m_year').value = "";
+                document.getElementById('l_rate').value = "";
+                document.getElementById('f_rate').value = "";
+            }
+        </script>
+        
     </head>
     <body>
 
@@ -274,32 +439,12 @@ if (!isset($_SESSION['user_email'])) {
                                             <label class="control-label" for="input-email">Employer Name:</label>
                                             <input type="text" name="gua_bhalf_emp_name" value="<?php echo $gua_bhalf_emp_name; ?>" placeholder="Employer Name" id="input-email" class="form-control" />
                                         </div>
-
                                     </fieldset>
                                 </div>
                                 <!--Guranter Details-->
                                 <div class="col-md-12">
-                                    <fieldset id="account">
-                                        <legend>05.Description of the Loan:</legend>
-                                        <div class="form-group ">
-                                            <input type="text" id="input-email" class="form-control" name="loan_description" value="<?php echo $loan_description; ?>"   placeholder="Description of the Loan">
-                                        </div>
-                                    </fieldset>
-                                    <div class="form-group ">
-                                        <label class="control-label" for="input-email">Duration of Loan Payment:</label>
-                                        <select name="cbo_loan_duration" id="input-region" class="form-control" >
-                                            <option value="6">6 Months</option>
-                                            <option value="12">1 Year</option>
-                                            <option value="18">1.5 Years</option>
-                                            <option value="24">2 Years</option>
-                                            <option value="30">2.5 Years</option>
-                                            <option value="36">3 Years</option>
-                                            <option value="42">3.5 Years</option>
-                                            <option value="48">4 Years</option>
-                                            <option value="54">4.5 Years</option>
-                                            <option value="60">5 Years</option>
-                                        </select>
-                                    </div>
+
+
                                     <fieldset id="account">
                                         <legend>05.Real Property</legend>
                                         <div class="form-group ">
@@ -371,13 +516,6 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
-                                        <legend>05.Payable Loan Amount of Applicant:</legend>
-                                        <div class="form-group ">
-
-                                            <input type="text" name="payable_loan_amount" value="<?php echo $payable_loan_amount; ?>" placeholder="Payable Loan Amount of Applicant" id="input-email" class="form-control" />
-                                        </div>
-                                    </fieldset>
-                                    <fieldset id="account">
                                         <legend>05.Enough Description of way to find the permanent resident of the applicant:</legend>
                                         <div class="form-group ">
                                             <input type="text" id="input-email" name="address_description" value="<?php echo $loan_description; ?>" class="form-control"   placeholder="Description of the Loan">
@@ -392,7 +530,7 @@ if (!isset($_SESSION['user_email'])) {
                                 </div>
 
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn" name="customer_continue" id="custcontinue" value="Continue">
+                                    <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="gotosecond();"value="Continue">
                                 </div>
                             </div>
                         </form>
@@ -441,34 +579,74 @@ if (!isset($_SESSION['user_email'])) {
                             </div>
                             <div class="col-sm-6">
                                 <div id="leasepanel">
-                                    <fieldset id="account"><td>
-                                        <legend>Leasing Details</legend>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Vehicle Number:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Vehicle Number" id="input-email" class="form-control"  />
-                                        </div>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Model Year:</label>
-                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Model Year" id="input-email" class="form-control"  />
-                                        </div>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Lease Rate:</label>
-                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Lease Rate" id="input-email" class="form-control"  />
-                                        </div>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Fix Rate:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Fix Rate" id="input-email" class="form-control"  />
-                                        </div>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Select Period:</label>
-                                            <select name="cbopayment" id="input-region" class="form-control"  >
-                                                <option value=""> --- Please Select --- </option>
-                                                <option>6 Months</option>
-                                                <option>1 Year</option>
-                                                <option>2 Year</option>
-                                                <option>3 Year</option>
-                                            </select>
-                                        </div>
+                                    <fieldset id="account">
+
+
+                                     <legend>Leasing Details</legend>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Category:</label>
+                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
+                                            <option value="0">~~Select Category~~</option>
+                                            <option value="1">Bike</option>
+                                            <option value="2">Three-Wheel</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Vehicle Brand:</label>
+                                        <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
+                                             <?php load_vehicle_brands(); ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Vehicle Type:</label>
+                                        <select name="vehicle_type" id="v_type" class="form-control" required onchange="showVehicleMods(this.value);">
+                                            <option value="0">~~Select Vehicle Type~~</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Vehicle Pre Code:</label>
+                                        <select name="vehicle_code" id="v_code" class="form-control" required onchange="showDetails();">
+                                            <option value="0">~~Select Vehicle Code~~</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-inline required">
+                                        <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
+                                        <label class="control-label" for="input-email"> - </label>
+                                        <input type="text" name="vehicle_no" maxlength="4" id="v_no" placeholder="Ex:2558" id="input-email" class="form-control" required/>
+                                        <br>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Model Year:</label>
+                                        <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Lease Rate:</label>
+                                        <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Fixed Rate:</label>
+                                        <input type="text" name="fixed_rate" id="f_rate" placeholder="Fix Rate" id="input-email" class="form-control" required/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Select Period:</label>
+                                        <select name="cbo_loan_duration" id="input-region" class="form-control" required>
+                                            <option value="6">6 Months</option>
+                                            <option value="12">1 Year</option>
+                                            <option value="18">1.5 Years</option>
+                                            <option value="24">2 Years</option>
+                                            <option value="30">2.5 Years</option>
+                                            <option value="36">3 Years</option>
+                                            <option value="42">3.5 Years</option>
+                                            <option value="48">4 Years</option>
+                                            <option value="54">4.5 Years</option>
+                                            <option value="60">5 Years</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Description of the Loan:</label>
+                                        <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                    </div>
+
                                         <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Continue</button>
                                         <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                     </fieldset>
@@ -476,7 +654,7 @@ if (!isset($_SESSION['user_email'])) {
 
                                 <!--Property Land Panel-->
                                 <div id="landpanel" style="display: none;">
-                                    <fieldset id="account"><td>
+                                    <fieldset id="account">
                                         <legend>Land Pawning Details</legend>
                                         <div class="form-group  ">
                                             <label class="control-label" for="input-email">Deed Number:</label>
@@ -618,6 +796,9 @@ if (!isset($_SESSION['user_email'])) {
                 document.getElementById('leasepanel').style.display = 'none';
                 document.getElementById('landpanel').style.display = 'block';
             }
+        }
+        function change() {
+
         }
     </script>
 

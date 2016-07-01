@@ -18,6 +18,6 @@ while($row_query=  mysqli_fetch_array($run_query)){
     $mod=$row_query['tw_type'];
     echo "<option value='$mod'>$mod</option>";
 }
-
+mysqli_close($d_bc);
 
 ?>
