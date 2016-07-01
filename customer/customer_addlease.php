@@ -31,7 +31,17 @@
         <script src="../assets/js/jquery-3.0.0.js"></script>
 
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
-
+        <script type="text/javascript">
+            function imagepreview(input){
+                if(input.files && input.files[0]){
+                    var filerd = new FileReader();
+                    filerd.onload=function (e){
+                        $('#imgpreview').attr('src',e.target.result);
+                    };
+                    filerd.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
         <script type="text/javascript">
             function showTypes(str) {
                 if (document.getElementById('v_cat').selectedIndex == 1) {
@@ -132,9 +142,10 @@
                     xmlhttp.open("GET", "../controller/co_load_vehicle_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
                     xmlhttp.send();
                 }else if(document.getElementById('v_cat').selectedIndex == 2){
-                    var v_type = document.getElementById('v_type').value;
-                    var v_code = document.getElementById('v_code').value;
-                    alert(v_type + "tw " + v_code);
+                    alert('inner');
+                    var v_tw_type = document.getElementById('v_type').value;
+                    var v_tw_code = document.getElementById('v_code').value;
+                    alert(v_tw_type + "tw " + v_tw_code);
                     if (window.XMLHttpRequest) {
                         // code for IE7+, Firefox, Chrome, Opera, Safari
                         xmlhttp = new XMLHttpRequest();
@@ -145,10 +156,9 @@
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             alert(xmlhttp.responseText);
                             document.getElementById('l_rate').value = xmlhttp.responseText;
-
                         }
                     }
-                    xmlhttp.open("GET", "../controller/co_load_twheel_details.php?v_type=" + v_type + "&v_code=" + v_code, true);
+                    xmlhttp.open("GET", "del.php?v_tw_type="+v_tw_type+"&v_tw_code="+v_tw_code, true);
                     xmlhttp.send();
                 }
             }
@@ -222,12 +232,21 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Upload Customer:</label>
-                                        <input type="file" name="product_image" required/>
+                                        <input type="file" name="product_image[]" id="idupload" onchange="imagepreview(this);"/>
+                                        <img id="imgpreview" title="Image Preview" style="width: 200px;height: 200px;">
                                     </div>
+                                    
+                                    
+                                    
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Upload Property:</label>
                                         <input type="file" name="product_image" required/>
                                     </div>
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </fieldset>
                             </div>
                             <div class="col-sm-6">

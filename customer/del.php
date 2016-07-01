@@ -9,17 +9,17 @@ define('db_database', 'ayolan_datahost');
 $d_bc = mysqli_connect(db_host, db_user, db_password, db_database) or die('Could not connect to MySql: ' . mysqli_connect_error());
 
 //getting varibles from ajax method
-$v_type = $_GET['v_type'];
-$v_code = $_GET['v_code'];
+$type=$_GET['v_tw_type'];
+$code=$_GET['v_tw_code'];
 //getting varibles from ajax method
 
+//secho $type."lol".$code;
 
-echo $v_type+" output "+$v_code;
+$sql_query="SELECT * FROM ser_threewheel_pre WHERE tw_type=$type AND tw_mode=$code LIMIT=1";
+$run_query=  mysqli_query($d_bc, $sql_query);
+if(mysqli_num_rows($run_query)>0){
+    $row=  mysqli_fetch_assoc($run_query);
+    echo $row['max_value'];
+}
 
-//$sql_query="SELECT * FROM ser_threewheel_pre WHERE `type`='$v_type' AND `mode`='$v_code';";
-//$run_query=  mysqli_query($d_bc, $sql_query);
-//while($row_query=  mysqli_fetch_array($run_query)){
-//    $max_val=$row_query['max_value'];
-//    echo $max_val;
-//}
 ?>
