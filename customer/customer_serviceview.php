@@ -19,7 +19,7 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_service.css">
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php';?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Service View Main Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -37,15 +37,18 @@
                                         <label class="control-label" for="input-email">Select Customer Option:</label>
                                         <select name="cbo_customer_search" id="cboservice" class="form-control" required onchange="check();">
                                             <option value=""> --- Please Select --- </option>
-                                            <option value="bike">Search by Name</option>
+                                            <option value="bike">Search by Service No</option>
                                             <option value="twheel">Search by NIC</option>
                                             <option value="land">Search by Phone Number</option>
                                         </select>
                                     </div>
                                     <div class="form-group required">
                                         <div class="form-group required">
-                                            <label class="control-label" for="input-email">Search Customer:</label>
-                                            <input type="text" name="customer_search_bar" id="customer_searchbar" value="<?php echo $customer_search_value;?>" placeholder="Search Customer Here" id="input-email" class="form-control" required/>
+                                            <label class="control-label" for="input-email">Search Here:</label>
+                                            <input type="text" name="customer_search_bar" id="customer_searchbar" value="" placeholder="Search Here" id="input-email" class="form-control" required/>
+                                        </div>
+                                        <div class="form required">
+                                            <button type="button" id="cservicebtn" class="btn btn">Search</button>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -65,8 +68,11 @@
                                         </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
-                                                <label class="control-label" for="input-email">Search Service:</label>
-                                                <input type="text" name="service_search_bar" id="service_searchbar" value="<?php echo $service_search_value;?>" placeholder="Enter Service Here" id="input-email" class="form-control" required/>
+                                                <label class="control-label" for="input-email">Installment Date:</label>
+                                                <input type="date" name="install_date" id="service_searchbar"  class="form-control" required/>
+                                            </div>
+                                            <div class="form required">
+                                                <button type="button" id="cservicebtn" class="btn btn">Search</button>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -82,19 +88,19 @@
                                             <div class="form-group required">
                                                 <div class="form-group required">
                                                     <label class="control-label" for="input-email">Service No:</label>
-                                                    <input type="text" name="service_no" id="serviceno" value="<?php echo $service_no;?>" placeholder="Service No" id="input-email" class="form-control" required/>
+                                                    <input type="text" name="service_no" id="serviceno" value="" placeholder="Service No" id="input-email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group required">
                                                 <div class="form-group required">
                                                     <label class="control-label" for="input-email">Service Date:</label>
-                                                    <input type="text" name="service_date" id="servicedate" value="<?php echo $service_date;?>" placeholder="Service Date" id="input-email" class="form-control" required/>
+                                                    <input type="text" name="service_date" id="servicedate" value="" placeholder="Service Date" id="input-email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group required">
                                                 <div class="form-group required">
                                                     <label class="control-label" for="input-email">Service:</label>
-                                                    <input type="text" name="service_name" id="service" value="<?php echo $service_name;?>" placeholder="Service" id="input-email" class="form-control" required/>
+                                                    <input type="text" name="service_name" id="service" value="" placeholder="Service" id="input-email" class="form-control" required/>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,19 +108,19 @@
                                             <div class="form-group required">
                                                 <div class="form-group required">
                                                     <label class="control-label" for="input-email">Service Rental:</label>
-                                                    <input type="text" name="service_rental" id="servicerent" value="<?php echo $service_rental;?>" placeholder="Service Rental" id="input-email" class="form-control" required/>
+                                                    <input type="text" name="service_rental" id="servicerent" value="" placeholder="Service Rental" id="input-email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group required">
                                                 <div class="form-group required">
                                                     <label class="control-label" for="input-email">Service Period:</label>
-                                                    <input type="text" name="service_period" id="serviceperiod" value="<?php echo $service_period;?>" placeholder="Service Period" id="input-email" class="form-control" required/>
+                                                    <input type="text" name="service_period" id="serviceperiod" value="" placeholder="Service Period" id="input-email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group required">
                                                 <div class="form-group required">
                                                     <label class="control-label" for="input-email">Installment:</label>
-                                                    <input type="text" name="installment" id="installemnt_des" value="<?php echo $installment;?>" placeholder="Installment" id="input-email" class="form-control" required/>
+                                                    <input type="text" name="installment" id="installemnt_des" value="" placeholder="Installment" id="input-email" class="form-control" required/>
                                                 </div>
                                             </div>
                                         </div>
@@ -209,11 +215,11 @@
                                             <div class="form-inline col-sm-12">
                                                 <div class="form" style="float: right;">
 
-                                                    <button type="submit"  class="btn btn" id="cservicebtn">Print</button>
-                                                    <button type="submit"  class="btn btn" id="cservicebtn">Add Installment</button>
-                                                    <button type="submit"  class="btn btn" id="cservicebtn">View Installments</button>
-                                                    <button type="submit"  class="btn btn" id="cservicebtn">Add New Lease</button>
-                                             
+                                                    <button type="submit" class="btn btn" id="cservicebtn">Print</button>
+                                                    <button type="submit" class="btn btn" id="cservicebtn"><a href="customer_installment.php" style="text-decoration: none;color: white;">Add Installment</a></button>
+                                                    <button type="submit" class="btn btn" id="cservicebtn"><a href="customer_installment.php" style="text-decoration: none;color: white;">View Installments</a></button>
+                                                    <button type="submit" class="btn btn" id="cservicebtn"><a href="customer_addlease.php" style="text-decoration: none;color: white;">Add New Lease</a></button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -227,7 +233,7 @@
         </div>
         <!--Customer Service Loader-->
 
-        <?php include '../assets/include/footer.php';?>
+        <?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

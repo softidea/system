@@ -29,153 +29,138 @@
                         <div class="panel-body" style="background-color: #FAFAFA;">
                             <div class="col-sm-6">
                                 <fieldset id="account">
-                                    <legend>Search Option</legend>
+                                    <legend>Search Option 01</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Search by:</label>
                                         <select name="cbopayment" id="input-search-option" class="form-control" required onchange="setServiceOptionPanel();">
                                             <option value=""> --- Please Select --- </option>
-                                            <option value="cname">Customer Name</option>
+                                            <option value="cname">Customer NIC</option>
                                             <option value="tp">Phone Number</option>
                                             <option value="serviceno">Service Number</option>
                                         </select>
                                     </div>
-                                </fieldset>
-
-                            </div>
-                            
-
-                            <div class="col-sm-6">
-
-                                <div class="form-group required">
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Search Here:</label>
                                         <input type="text" name="fname" id="fname" value="" placeholder="Search Here" id="input-email" class="form-control" required/>
+                                        <br>
+                                        <button type="button" id="cservicebtn" class="btn btn">Search</button>
                                     </div>
-                                </div>
-                                <div style="padding-bottom: 8px;">
-                                    <button type="button" id="cviewbuttons" class="btn btn">Search</button>
-                                </div>
+                                </fieldset>
                             </div>
-
-
-
-                            <div class="col-sm-12">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Full Name</th>
-                                            <th>NIC</th>
-                                            <th>Permanent Address</th>
-                                            <th>Phone Number</th>
-                                            <th>No Services</th>
-                                            <th>No Settled</th>
-                                            <th style="text-align: center;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Malinda</td>
-                                            <td>931781258V</td>
-                                            <td>Kandy</td>
-                                            <td>0774585256</td>
-                                            <td>2</td>
-                                            <td>0</td>
-                                            <td style="text-align: center;"><button type="button" id="cviewbuttons" class="btn btn">View More</button></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Malinda</td>
-                                            <td>931781258V</td>
-                                            <td>Kandy</td>
-                                            <td>0774585256</td>
-                                            <td>2</td>
-                                            <td>0</td>
-                                            <td style="text-align: center;"><button type="button" id="cviewbuttons" class="btn btn">View More</button></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Malinda</td>
-                                            <td>931781258V</td>
-                                            <td>Kandy</td>
-                                            <td>0774585256</td>
-                                            <td>2</td>
-                                            <td>0</td>
-                                            <td style="text-align: center;"><button type="button" id="cviewbuttons" class="btn btn">View More</button></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Malinda</td>
-                                            <td>931781258V</td>
-                                            <td>Kandy</td>
-                                            <td>0774585256</td>
-                                            <td>2</td>
-                                            <td>0</td>
-                                            <td style="text-align: center;"><button type="button" id="cviewbuttons" class="btn btn">View More</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div style="text-align: center;">
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                           
+                            <fieldset id="account">
+                                <legend>Search Option 02</legend>
+                                <div class="form-group required">
+                                    <label class="control-label" for="input-email">Start Date:</label>
+                                    <input type="date" name="fname" id="fname" value="" placeholder="Registration Date" id="input-email" class="form-control"/>
                                 </div>
+                                <div class="form-group required">
+                                    <label class="control-label" for="input-email">End Here:</label>
+                                    <input type="date" name="fname" id="fname" value="" placeholder="Search Here" id="input-email" class="form-control" required/>
+                                    <br>
+                                    <button type="button" id="cservicebtn" class="btn btn">Search</button>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Full Name</th>
+                                        <th>NIC</th>
+                                        <th>Permanent Address</th>
+                                        <th>Registration Date</th>
+                                        <th>Phone Number</th>
+                                        <th>Service Details</th>
+                                        <th>Update Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Malinda Prabhash Senanayake</td>
+                                        <td>931781258V</td>
+                                        <td>Kandy</td>
+                                        <td>2016/06/25</td>
+                                        <td>0774585256</td>
+                                        <td>2</td>
+                                        <td><a href="customer_updateinfo.php">HOR-1258</a></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Malinda Prabhash Senanayake</td>
+                                        <td>931781258V</td>
+                                        <td>Kandy</td>
+                                        <td>2016/06/25</td>
+                                        <td>0774585256</td>
+                                        <td>2</td>
+                                        <td><a href="customer_updateinfo.php">HOR-1258</a></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="text-align: center;">
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
+                        </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-inline">
-                                    <button type="submit"  class="btn btn" id="cservicebtn">Save as PDF</button>
-                                    <button type="submit"  class="btn btn" id="cservicebtn">Print</button>
-                                </div>
+                        <div class="col-sm-6">
+                            <div class="form-inline">
+                                <button type="submit"  class="btn btn" id="cservicebtn">Save as PDF</button>
+                                <button type="submit"  class="btn btn" id="cservicebtn">Print</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Customer Panel Section-->
+    </div>
+    <!--Customer Panel Section-->
 
-        <?php include '../assets/include/footer.php'; ?>
-    </body>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-                                                function setServiceOptionPanel()
-                                                {
-                                                    var sp_value = document.getElementById('input-search-option').value;
-                                                    if (sp_value == 'serviceno')
-                                                    {
-                                                        document.getElementById('cboservice').disabled = false;
+    <?php include '../assets/include/footer.php'; ?>
+</body>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://bootsnipp.com/dist/scripts.min.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+                                        function setServiceOptionPanel()
+                                        {
+                                            var sp_value = document.getElementById('input-search-option').value;
+                                            if (sp_value == 'serviceno')
+                                            {
+                                                document.getElementById('cboservice').disabled = false;
 
-                                                        alert(sp_value);
-                                                    }
-                                                    else if (sp_value == 'cname' || sp_value == 'tp')
-                                                    {
-                                                        document.getElementById('cboservice').selectedIndex = "0";
-                                                        document.getElementById('cboservice').disabled = true;
-                                                        alert(sp_value);
-                                                    }
-                                                }
-    </script>
+                                                alert(sp_value);
+                                            }
+                                            else if (sp_value == 'cname' || sp_value == 'tp')
+                                            {
+                                                document.getElementById('cboservice').selectedIndex = "0";
+                                                document.getElementById('cboservice').disabled = true;
+                                                alert(sp_value);
+                                            }
+                                        }
+</script>
 </html>

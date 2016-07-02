@@ -673,7 +673,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
                                         </div>
 
-                                        <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Continue</button>
+                                        <button type="button" class="btn btn" id="custcontinue">Register Lease</button>
                                         <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                     </fieldset>
                                 </div>
@@ -725,7 +725,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <label class="control-label" for="input-email">Description of the Loan:</label>
                                             <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
                                         </div>
-                                        <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Update</button>
+                                        <button type="button" class="btn btn" id="custcontinue">Register Pawn</button>
                                         <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                     </fieldset>
                                 </div>
