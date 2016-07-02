@@ -88,7 +88,7 @@ if (!isset($_SESSION['user_email'])) {
                                     <ul>
                                         <li class="dropdown-header" style="color: #004D40;">Customer</li>
                                         <li><a href="../customer/customer_registration.php" style="text-decoration: none;">Registration</a></li>
-                                        <li><a href="../customer/customer_updateinfo.php" style="text-decoration: none;">Update Customer</a></li>
+                                        <li><a href="../customer/customer_view.php" style="text-decoration: none;">Update Customer</a></li>
                                         <li><a href="../customer/customer_view.php" style="text-decoration: none;">View Customers</a></li>
                                         <li><a href="../customer/customer_installment.php" style="text-decoration: none;">Add new Installment</a></li>
                                         <li><a href="../customer/customer_addlease.php" style="text-decoration: none;">Add a Lease</a></li>
