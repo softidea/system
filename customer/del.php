@@ -13,7 +13,6 @@ $type=$_GET['v_tw_type'];
 $code=$_GET['v_tw_code'];
 //getting varibles from ajax method
 
-sleep(5);
 
 $sql_query="SELECT max_val FROM ser_threewheel_pre WHERE tw_type='$type' AND tw_mode='$code'";
 
