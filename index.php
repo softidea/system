@@ -1,35 +1,19 @@
 <?php
 session_start();
-
-//login eka
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <link rel="stylesheet" href="assets/css/login.css">
         <?php include './assets/include/head.php'; ?>
-        <?php
-        //define("IN_VIEW", true);
-
-        //require_once "headerA.php";
-        ?>
-
-        <?php
-        // if (isset($_SESSION['user_email'])) {
-        //    header('Location:user/user_view.php');
-        //} else {
-        //    header('Location:index.php');
-        //}
-        ?>
-
 
 
         <meta charset="utf-8">
         <title>User Login</title>
 
         <link rel="icon" href="favicon.ico">
-        
+
         <script type="text/javascript">
             function setregpanel()
             {
