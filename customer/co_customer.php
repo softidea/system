@@ -11,29 +11,29 @@ if (!isset($_SESSION['user_email'])) {
 
 include '../db/mysqliConnect.php';
 
-$c1 = filter_input(INPUT_POST, 'cus_fullname');
-$c2 = filter_input(INPUT_POST, 'cus_initialname');
-$c3 = filter_input(INPUT_POST, 'cus_address');
-$c4 = filter_input(INPUT_POST, 'cus_tp');
-$c5 = filter_input(INPUT_POST, 'cus_nic');
-$c6 = filter_input(INPUT_POST, 'cus_dob');
-$c7 = filter_input(INPUT_POST, 'cus_ms');
-$c8 = filter_input(INPUT_POST, 'cus_dependdency');
-$c9 = filter_input(INPUT_POST, 'cus_position');
-$c10 = filter_input(INPUT_POST, 'cus_monthly_salary');
-$c11 = filter_input(INPUT_POST, 'cus_emp_name');
-$c12 = filter_input(INPUT_POST, 'cus_emp_address');
+$_SESSION["c1"] = filter_input(INPUT_POST, 'cus_fullname');
+$_SESSION["c2"] = filter_input(INPUT_POST, 'cus_initialname');
+$_SESSION["c3"] = filter_input(INPUT_POST, 'cus_address');
+$_SESSION["c4"] = filter_input(INPUT_POST, 'cus_tp');
+$_SESSION["c5"] = filter_input(INPUT_POST, 'cus_nic');
+$_SESSION["c6"] = filter_input(INPUT_POST, 'cus_dob');
+$_SESSION["c7"] = filter_input(INPUT_POST, 'cus_ms');
+$_SESSION["c8"] = filter_input(INPUT_POST, 'cus_dependdency');
+$_SESSION["c9"] = filter_input(INPUT_POST, 'cus_position');
+$_SESSION["c10"] = filter_input(INPUT_POST, 'cus_monthly_salary');
+$_SESSION["c11"] = filter_input(INPUT_POST, 'cus_emp_name');
+$_SESSION["c12"] = filter_input(INPUT_POST, 'cus_emp_address');
 
-$c13 = filter_input(INPUT_POST, 'cus_hhalf_name');
-$c14 = filter_input(INPUT_POST, 'cus_bhalf_dob');
-$c15 = filter_input(INPUT_POST, 'cus_bhalf_position');
-$c16 = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
-$c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
+$_SESSION["c13"] = filter_input(INPUT_POST, 'cus_hhalf_name');
+$_SESSION["c14"] = filter_input(INPUT_POST, 'cus_bhalf_dob');
+$_SESSION["c15"] = filter_input(INPUT_POST, 'cus_bhalf_position');
+$_SESSION["c16"] = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
+$_SESSION["c17"] = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
 //cus id
-$c18=filter_input(INPUT_POST, 'cus_nic');
+$_SESSION["c18"]=filter_input(INPUT_POST, 'cus_nic');
 
-$c19 = filter_input(INPUT_POST, 'gua_fullname');
+$_SESSION["c19"] = filter_input(INPUT_POST, 'gua_fullname');
 $c20 = filter_input(INPUT_POST, 'gua_initial_name');
 $c21 = filter_input(INPUT_POST, 'gua_address');
 $c22 = filter_input(INPUT_POST, 'gua_tp');
