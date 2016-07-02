@@ -9,8 +9,9 @@ define('db_database', 'ayolan_datahost');
 $d_bc = mysqli_connect(db_host, db_user, db_password, db_database) or die('Could not connect to MySql: ' . mysqli_connect_error());
 
 //getting varibles from ajax method
-$type=$_GET['v_tw_type'];
-$code=$_GET['v_tw_code'];
+$type=  filter_input(INPUT_GET, 'v_tw_type');
+$code=  filter_input(INPUT_GET, 'v_tw_code');
+
 //getting varibles from ajax method
 
 
