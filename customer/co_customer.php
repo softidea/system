@@ -31,7 +31,7 @@ $c16 = filter_input(INPUT_POST, 'cus_bhalf_monthly_salary');
 $c17 = filter_input(INPUT_POST, 'cus_bhalf_emp_name');
 
 //cus id
-$c18=filter_input(INPUT_POST, 'cus_fullname');
+$c18=filter_input(INPUT_POST, 'cus_nic');
 
 $c19 = filter_input(INPUT_POST, 'gua_fullname');
 $c20 = filter_input(INPUT_POST, 'gua_initial_name');
