@@ -219,12 +219,12 @@
                                 <fieldset id="account">
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Customer Name:</label>
-                                        <input type="text" name="cus_name" id="fname" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
-                                    </div>
-                                    <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer NIC:</label>
                                         <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" id="input-email" class="form-control" required/>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Customer Name:</label>
+                                        <input type="text" name="cus_name" id="fname" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-inline required" style="margin-bottom: 8px;">
                                         <button type="button" id="cviewbuttons" class="btn btn">Search</button>
@@ -252,6 +252,10 @@
                             <div class="col-sm-6">
                                 <fieldset id="account">
                                     <legend>Leasing Details</legend>
+                                    <div class="form-group required">
+                                            <label class="control-label" for="input-email">Service No:</label>
+                                            <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
+                                        </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Category:</label>
                                         <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">

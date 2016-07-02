@@ -89,7 +89,7 @@ if (!isset($_SESSION['user_email'])) {
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css" >
-         <?php require '../controller/co_load_vehicle_brands.php'; ?>
+        <?php require '../controller/co_load_vehicle_brands.php'; ?>
         <script type="text/javascript">
             function showTypes(str) {
                 if (document.getElementById('v_cat').selectedIndex == 1) {
@@ -115,7 +115,35 @@ if (!isset($_SESSION['user_email'])) {
             }
 
         </script>
-
+        <script type="text/javascript">
+            function load_interest() {
+                var aid = document.getElementById('aid').value;
+                var yid = document.getElementById('yid').value;
+                alert(aid + "###" + yid);
+                if (aid != 0 && yid != 0) {
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    }
+                    else {
+                        // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                            if (xmlhttp.responseText === "No Interest Found,Try Again") {
+                                alert(xmlhttp.responseText);
+                            }
+                            else {
+                                document.getElementById('pawnrate').value = xmlhttp.responseText;
+                            }
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_pawn_rate.php?aid=" + aid + "&yid=" + yid, true);
+                    xmlhttp.send();
+                }
+            }
+        </script>
         <script type="text/javascript">
             function showVehicleMods(str) {
                 if (document.getElementById('v_cat').selectedIndex == 1) {
@@ -214,11 +242,11 @@ if (!isset($_SESSION['user_email'])) {
         </script>
         <script type="text/javascript">
             function set_vehicle_div(val) {
-                
+
                 if (val == 1) {
                     reset_form_values();
                     document.getElementById('v_brand').disabled = false;
-                    
+
                 }
                 else if (val == 2) {
                     reset_form_values();
@@ -253,7 +281,7 @@ if (!isset($_SESSION['user_email'])) {
                 document.getElementById('f_rate').value = "";
             }
         </script>
-        
+
     </head>
     <body>
 
@@ -495,32 +523,27 @@ if (!isset($_SESSION['user_email'])) {
                                                 <tbody>
                                                     <tr>
                                                         <td>Savings Account</td>
-                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch;?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities;?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no;?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Mobile Account</td>
-                                                        <td><input type="text" name="cus_mobile_bank_branch" value="<?php echo $cus_mobile_bank_branch;?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_mobile_facilities" value="<?php echo $cus_mobile_facilities;?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_mobile_account_no" value="<?php echo $cus_mobile_account_no;?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_bank_branch" value="<?php echo $cus_mobile_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_facilities" value="<?php echo $cus_mobile_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_mobile_account_no" value="<?php echo $cus_mobile_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Daily Loan Service</td>
-                                                        <td><input type="text" name="cus_daily_loan_bank_branch" value="<?php echo $cus_daily_loan_bank_branch;?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_daily_loan_facilities" value="<?php echo $cus_daily_loan_facilities;?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
-                                                        <td><input type="text" name="cus_daily_loan_account_no" value="<?php echo $cus_daily_loan_account_no;?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_bank_branch" value="<?php echo $cus_daily_loan_bank_branch; ?>" placeholder="Bank Name & Branch" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_facilities" value="<?php echo $cus_daily_loan_facilities; ?>" placeholder="Facilities" id="input-email" class="form-control" /></td>
+                                                        <td><input type="text" name="cus_daily_loan_account_no" value="<?php echo $cus_daily_loan_account_no; ?>" placeholder="Account Number" id="input-email" class="form-control" /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </fieldset>
-                                    <fieldset id="account">
-                                        <legend>05.Enough Description of way to find the permanent resident of the applicant:</legend>
-                                        <div class="form-group ">
-                                            <input type="text" id="input-email" name="address_description" value="<?php echo $loan_description; ?>" class="form-control"   placeholder="Description of the Loan">
-                                        </div>
-                                    </fieldset>
+                                    
                                 </div>
 
                                 <div class="col-md-6">
@@ -560,7 +583,6 @@ if (!isset($_SESSION['user_email'])) {
                                     <div class="form-group  ">
                                         <label class="control-label" for="input-email">Select Property:</label>
                                         <select name="cbopayment" id="input-region" class="form-control"   onchange="check();">
-                                            <option value=""> --- Please Select --- </option>
                                             <option value="bike">Bike</option>
                                             <option value="twheel">Three-Wheel</option>
                                             <option value="land">Land</option>
@@ -582,70 +604,74 @@ if (!isset($_SESSION['user_email'])) {
                                     <fieldset id="account">
 
 
-                                     <legend>Leasing Details</legend>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Select Category:</label>
-                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
-                                            <option value="0">~~Select Category~~</option>
-                                            <option value="1">Bike</option>
-                                            <option value="2">Three-Wheel</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Select Vehicle Brand:</label>
-                                        <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
-                                             <?php load_vehicle_brands(); ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Select Vehicle Type:</label>
-                                        <select name="vehicle_type" id="v_type" class="form-control" required onchange="showVehicleMods(this.value);">
-                                            <option value="0">~~Select Vehicle Type~~</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Vehicle Pre Code:</label>
-                                        <select name="vehicle_code" id="v_code" class="form-control" required onchange="showDetails();">
-                                            <option value="0">~~Select Vehicle Code~~</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-inline required">
-                                        <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
-                                        <label class="control-label" for="input-email"> - </label>
-                                        <input type="text" name="vehicle_no" maxlength="4" id="v_no" placeholder="Ex:2558" id="input-email" class="form-control" required/>
-                                        <br>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Model Year:</label>
-                                        <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Lease Rate:</label>
-                                        <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Fixed Rate:</label>
-                                        <input type="text" name="fixed_rate" id="f_rate" placeholder="Fix Rate" id="input-email" class="form-control" required/>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Select Period:</label>
-                                        <select name="cbo_loan_duration" id="input-region" class="form-control" required>
-                                            <option value="6">6 Months</option>
-                                            <option value="12">1 Year</option>
-                                            <option value="18">1.5 Years</option>
-                                            <option value="24">2 Years</option>
-                                            <option value="30">2.5 Years</option>
-                                            <option value="36">3 Years</option>
-                                            <option value="42">3.5 Years</option>
-                                            <option value="48">4 Years</option>
-                                            <option value="54">4.5 Years</option>
-                                            <option value="60">5 Years</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-email">Description of the Loan:</label>
-                                        <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
-                                    </div>
+                                        <legend>Leasing Details</legend>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Service No:</label>
+                                            <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Category:</label>
+                                            <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
+                                                <option value="0">~~Select Category~~</option>
+                                                <option value="1">Bike</option>
+                                                <option value="2">Three-Wheel</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Vehicle Brand:</label>
+                                            <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
+                                                <?php load_vehicle_brands(); ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Vehicle Type:</label>
+                                            <select name="vehicle_type" id="v_type" class="form-control" required onchange="showVehicleMods(this.value);">
+                                                <option value="0">~~Select Vehicle Type~~</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Vehicle Pre Code:</label>
+                                            <select name="vehicle_code" id="v_code" class="form-control" required onchange="showDetails();">
+                                                <option value="0">~~Select Vehicle Code~~</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-inline required">
+                                            <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
+                                            <label class="control-label" for="input-email"> - </label>
+                                            <input type="text" name="vehicle_no" maxlength="4" id="v_no" placeholder="Ex:2558" id="input-email" class="form-control" required/>
+                                            <br>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Model Year:</label>
+                                            <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Lease Rate:</label>
+                                            <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Fixed Rate:</label>
+                                            <input type="text" name="fixed_rate" id="f_rate" placeholder="Fix Rate" id="input-email" class="form-control" required/>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Period:</label>
+                                            <select name="cbo_loan_duration" id="input-region" class="form-control" required>
+                                                <option value="6">6 Months</option>
+                                                <option value="12">1 Year</option>
+                                                <option value="18">1.5 Years</option>
+                                                <option value="24">2 Years</option>
+                                                <option value="30">2.5 Years</option>
+                                                <option value="36">3 Years</option>
+                                                <option value="42">3.5 Years</option>
+                                                <option value="48">4 Years</option>
+                                                <option value="54">4.5 Years</option>
+                                                <option value="60">5 Years</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Description of the Loan:</label>
+                                            <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                        </div>
 
                                         <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Continue</button>
                                         <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
@@ -656,33 +682,49 @@ if (!isset($_SESSION['user_email'])) {
                                 <div id="landpanel" style="display: none;">
                                     <fieldset id="account">
                                         <legend>Land Pawning Details</legend>
-                                        <div class="form-group  ">
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Service No:</label>
+                                            <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
+                                        </div>
+                                        <div class="form-group required">
                                             <label class="control-label" for="input-email">Deed Number:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Deed Number" id="input-email" class="form-control"  />
+                                            <input type="text" name="deed_no" id="deed" placeholder="Deed Number" id="input-email" class="form-control" required/>
                                         </div>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Registration Year:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Registration Year" id="input-email" class="form-control"  />
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Registration Date:</label>
+                                            <input type="date" name="reg_date" id="regdate" value="" placeholder="Registration Date" id="input-email" class="form-control" required/>
                                         </div>
-                                        <div class="form-group  ">
-                                            <label class="control-label" for="input-email">Select Period:</label>
-                                            <select name="cbopayment" id="input-region" class="form-control"  >
-                                                <option value=""> --- Please Select --- </option>
-                                                <option>6 Months</option>
-                                                <option>1 Year</option>
-                                                <option>2 Year</option>
-                                                <option>3 Year</option>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Amount:</label>
+                                            <select name="cbo_period" id="aid" class="form-control">
+                                                <option value="0">~~Select Amount~~</option>
+                                                <option value="1">100,000.00</option>
+                                                <option value="2">200,000.00</option>
                                             </select>
                                         </div>
-                                        <div class="form-group  ">
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Period:</label>
+                                            <select name="cbo_year" id="yid" class="form-control" onchange="load_interest();">
+                                                <option value="0"> --- Please Select --- </option>
+                                                <option value="1">1 Year</option>
+                                                <option value="2">2 Year</option>
+                                                <option value="3">3 Year</option>
+                                                <option value="4">4 Year</option>
+                                                <option value="5">5 Year</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
                                             <label class="control-label" for="input-email">Pawn Rate:</label>
-                                            <input type="text" disabled name="fname" id="fname" value="" placeholder="Pawn Rate" id="input-email" class="form-control"  />
+                                            <input type="text" disabled name="pawn_rate" id="pawnrate" placeholder="Pawn Rate" id="input-email" class="form-control" required/>
                                         </div>
-                                        <div class="form-group  ">
+                                        <div class="form-group required">
                                             <label class="control-label" for="input-email">Fixed Rate:</label>
-                                            <input type="text" name="fname" id="fname" value="" placeholder="Fixed Rate" id="input-email" class="form-control"  />
+                                            <input type="text" name="fixed_rate" id="fixedrate" value="" placeholder="Fixed Rate" id="input-email" class="form-control" required/>
                                         </div>
-
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Description of the Loan:</label>
+                                            <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                        </div>
                                         <button type="button" class="btn btn" id="custcontinue" onclick="gotosecond();">Update</button>
                                         <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                     </fieldset>

@@ -11,6 +11,17 @@ function load_vehicle_brands() {
         $vehicle_brand = $row_vehicle_brand['brand'];
         echo "<option value='$vehicle_brand_id'>$vehicle_brand</option>";
     }
+    }
+function load_land_pawn_amounts(){
+    require_once '../db/mysqliConnect.php';
+    $sql_query = "SELECT * FROM pawn_amount";
+    $run_query = mysqli_query($d_bc, $sql_query);
+    echo "<option value='0'>~~Select Amount~~</option>";
+    while ($row = mysqli_fetch_array($run_query)) {
+        $aid = $row['amount_id'];
+        $amount = $row['pawn_amount'];
+        echo "<option value='$aid'>.$amount.</option>";
+    }
 }
 
 
