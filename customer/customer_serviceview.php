@@ -17,6 +17,7 @@
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_service.css">
+        <link rel="icon" href="favicon.ico">
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>

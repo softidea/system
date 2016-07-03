@@ -31,6 +31,7 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_service.css">
         <script src="../assets/js/jquery-3.0.0.js"></script>
+        <link rel="icon" href="favicon.ico">
 
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
         <script type="text/javascript">

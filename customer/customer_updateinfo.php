@@ -90,6 +90,7 @@ if (!isset($_SESSION['user_email'])) {
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css" >
         <?php require '../controller/co_load_vehicle_brands.php'; ?>
+        <link rel="icon" href="favicon.ico">
         <script type="text/javascript">
             function showTypes(str) {
                 if (document.getElementById('v_cat').selectedIndex == 1) {

@@ -79,7 +79,7 @@
         </style>
     </head>
     <body>
-        <?php include '../../assets/include/navigation_bar.php'; ?>
+       <?php include '../../assets/include/navigation_bar_forAdmin.php'; ?>
 
         <!--Service View Main Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -335,7 +335,7 @@
         </div>
         <!--Customer Service Loader-->
 
-        <?php include '../assets/include/footer.php'; ?>
+        <?php include '../../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
