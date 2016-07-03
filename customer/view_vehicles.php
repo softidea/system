@@ -16,7 +16,7 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css">
         <link rel="icon" href="favicon.ico">
-
+        <?php require '../controller/co_load_bike_rates.php'; ?>
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>
@@ -34,7 +34,7 @@
                                     <legend>Search Option 01</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Search by Category:</label>
-                                        <select name="cbopayment" id="v_cat" class="form-control" onchange="checker();">
+                                        <select name="v_cat" id="v_cat" class="form-control" onchange="checker();">
                                             <option value="bike">Bikes</option>
                                             <option value="tw">Three-Wheels</option>
                                             <option value="land">Lands</option>
@@ -71,15 +71,15 @@
                                             </tr>
                                         </thead>
                                         <tbody id="bike_tbody">
-                                            
+                                            <?php loadBikeRates(); ?>
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="tw_div" style="display: block;">
+                                <div id="tw_div" style="display: none;">
                                     <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
+                                                <th>TW_Id</th>
                                                 <th>Model Year</th>
                                                 <th>Model</th>
                                                 <th>Type</th>
@@ -87,8 +87,8 @@
                                                 <th>Max Value</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="vehicle_tbody">
-                                            
+                                        <tbody id="tw_tbody">
+                                            <?php loadTwRates();?>
                                         </tbody>
                                     </table>
                                 </div>
