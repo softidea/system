@@ -88,7 +88,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tw_tbody">
-                                            <?php loadTwRates();?>
+                                            <?php loadTwRates(); ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -103,15 +103,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>1 Year</td>
-                                                <td>100,000.00</td>
-                                                <td>6500.00</td>
-                                            </tr>
-
+                                            <?php loadLandRates(); ?>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="new_vehicle" style="display: none;">
+                                    <div class="col-sm-6">
+                                        <fieldset id="account">
+                                            <legend>Search Option 01</legend>
+                                            <div class="form-group">
+                                                <label class="control-label" for="input-email" id="hidecaption">Admin Options:</label>
+                                                <div class="form-inline required">
+                                                   
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -150,7 +157,7 @@
                                             function checker() {
 
                                                 var value = document.getElementById('v_cat').value;
-                                                alert(value);
+
                                                 if (value == 'bike') {
                                                     document.getElementById('bike_div').style.display = "block"
                                                     document.getElementById('land_div').style.display = "none";

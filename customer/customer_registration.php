@@ -412,7 +412,10 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" for="input-email">Date of Birth:</label>
-                                            <input type="date" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
+                                           <select name="cus_ms" value="<?php echo $cus_ms; ?>"  id="input-email" class="form-control" >
+                                                <option value="Single">Single</option>
+                                                <option value="Married">Married</option>
+                                            </select>
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" for="input-email">Married Status:</label>
@@ -453,7 +456,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" for="input-email">Date of Birth:</label>
-                                            <input type="text" name="gua_bhalf_dob" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
+                                            <input type="date" name="gua_bhalf_dob" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" id="input-email" class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">

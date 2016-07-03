@@ -38,7 +38,7 @@ function loadTwRates() {
     if (mysqli_num_rows($run_query) > 0) {
 
         while ($row_query = mysqli_fetch_array($run_query)) {
-            
+
             $twid = $row_query['threewheel_pre_id'];
             $twmodel = $row_query['tw_type'];
             $twtype = $row_query['tw_mode'];
@@ -64,23 +64,29 @@ function loadLandRates() {
     if (mysqli_num_rows($run_query) > 0) {
 
         while ($row_query = mysqli_fetch_array($run_query)) {
-            
-            $twid = $row_query['threewheel_pre_id'];
-            $twmodel = $row_query['tw_type'];
-            $twtype = $row_query['tw_mode'];
-            $twmin_val = $row_query['min_val'];
-            $twmax_val = $row_query['max_val'];
-            echo "<tr>";
-            echo "<td>$twid</td>";
-            echo "<td>None</td>";
-            echo "<td>$twmodel</td>";
-            echo "<td>$twtype Stroke</td>";
-            echo "<td>$twmin_val</td>";
-            echo "<td>$twmax_val</td>";
-            echo "</tr>";
+
+            $lid = $row_query['id'];
+            $l_yid = $row_query['year_id'];
+            $l_aid = $row_query['amount_id'];
+            $l_interest = $row_query['interest'];
+
+            if ($l_yid == "1" && $l_yid!="0") {
+                echo "<tr>";
+                echo "<td>$l_aid</td>";
+                echo "<td>$l_yid Year</td>";
+                echo "<td>$l_aid 00,000.00</td>";
+                echo "<td>$l_interest</td>";
+                echo "</tr>";
+            } else if ($l_yid != "1" && $l_yid != "0") {
+                echo "<tr>";
+                echo "<td>$l_aid</td>";
+                echo "<td>$l_yid Years</td>";
+                echo "<td>$l_aid 00,000.00</td>";
+                echo "<td>$l_interest</td>";
+                echo "</tr>";
+            }
         }
     }
 }
-
 
 ?>
