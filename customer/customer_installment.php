@@ -131,11 +131,11 @@
                                                 <input type="text" name="fname" id="fname" value="" placeholder="Service No" class="form-control" style="width:85%;"required/>
                                                 <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
                                             </div>
+                                        </div>
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Service No:</label>
                                                 <input type="text" name="fname" id="fname" value="" placeholder="Service No" id="input-email" class="form-control" required/>
                                             </div>
-                                        </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Loan Payment:</label>

@@ -81,7 +81,7 @@
                     document.getElementById('newbrand').readOnly = false;
                 } else {
                     document.getElementById('newbrand').readOnly = true;
-                    document.getElementById('newbrand').value="";
+                    document.getElementById('newbrand').value = "";
                     if (str == "") {
                         document.getElementById("v_type").innerHTML = "";
                         return;
@@ -112,7 +112,7 @@
                     document.getElementById('newtype').readOnly = false;
                 } else {
                     document.getElementById('newtype').readOnly = true;
-                    document.getElementById('newtype').value="";
+                    document.getElementById('newtype').value = "";
                     if (str == "") {
                         document.getElementById("v_code").innerHTML = "";
                         return;
@@ -141,7 +141,7 @@
                         // code for IE7+, Firefox, Chrome, Opera, Safari
                         xmlhttp = new XMLHttpRequest();
                     }
-                    else 
+                    else
                     { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
@@ -155,12 +155,12 @@
                     xmlhttp.send();
                 }
             }
-            function enablenewtwmodel(){
-                if(document.getElementById('tw_code').value=="new_tw_model"){
-                    document.getElementById('new_tw_model').readOnly=false;
-                }else{
-                    document.getElementById('new_tw_model').value="";
-                    document.getElementById('new_tw_model').readOnly=true;
+            function enablenewtwmodel() {
+                if (document.getElementById('tw_code').value == "new_tw_model") {
+                    document.getElementById('new_tw_model').readOnly = false;
+                } else {
+                    document.getElementById('new_tw_model').value = "";
+                    document.getElementById('new_tw_model').readOnly = true;
                 }
             }
         </script>
@@ -221,7 +221,8 @@
                                             <button type="submit"  class="btn btn" id="cservicebtn">Add Vehicle Rate</button>
                                             <button type="submit"  class="btn btn" id="cservicebtn">Add Land Rate</button>
                                             <button type="submit"  class="btn btn" id="cservicebtn">Update Rates</button>
-                                            <button type="submit"  class="btn btn" id="cservicebtn">Print Report</button>
+                                            <button type="submit"  class="btn btn" id="cservicebtn" onclick="PrintDoc();">Print Report</button>
+                                            <button type="submit"  class="btn btn" id="cservicebtn" onclick="PrintPreview();">Preview</button>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -229,21 +230,23 @@
 
                             <div class="col-sm-12">
                                 <div id="bike_div" style="display: block;background: white;">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Model Year</th>
-                                                <th>Model</th>
-                                                <th>Type</th>
-                                                <th>Min Value</th>
-                                                <th>Max Value</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="bike_tbody">
-                                            <?php loadBikeRates(); ?>
-                                        </tbody>
-                                    </table>
+                                    <div id="printarea">
+                                        <table class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Model Year</th>
+                                                    <th>Model</th>
+                                                    <th>Type</th>
+                                                    <th>Min Value</th>
+                                                    <th>Max Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="bike_tbody">
+                                                <?php loadBikeRates(); ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <div id="tw_div" style="display: none;">
                                     <table class="table table-bordered table-hover">
@@ -447,7 +450,29 @@
             alert(sp_value);
         }
     }
-   
 
+
+</script>
+<script type="text/javascript">
+    /*--This JavaScript method for Print command--*/
+    function PrintDoc() {
+        var toPrint = document.getElementById('printarea');
+        var popupWin = window.open('', '_blank', 'width=1024,height=600,location=no,left=200px');
+        popupWin.document.open();
+        popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
+        popupWin.document.write(toPrint.innerHTML);
+        popupWin.document.write('</html>');
+        popupWin.document.close();
+    }
+    /*--This JavaScript method for Print Preview command--*/
+    function PrintPreview() {
+        var toPrint = document.getElementById('printarea');
+        var popupWin = window.open('', '_blank', 'width=1024,height=600,location=no,left=200px');
+        popupWin.document.open();
+        popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body">')
+        popupWin.document.write(toPrint.innerHTML);
+        popupWin.document.write('</html>');
+        popupWin.document.close();
+    }
 </script>
 </html>
