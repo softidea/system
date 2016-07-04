@@ -81,6 +81,7 @@
                     document.getElementById('newbrand').readOnly = false;
                 } else {
                     document.getElementById('newbrand').readOnly = true;
+                    document.getElementById('newbrand').value="";
                     if (str == "") {
                         document.getElementById("v_type").innerHTML = "";
                         return;
@@ -111,6 +112,7 @@
                     document.getElementById('newtype').readOnly = false;
                 } else {
                     document.getElementById('newtype').readOnly = true;
+                    document.getElementById('newtype').value="";
                     if (str == "") {
                         document.getElementById("v_code").innerHTML = "";
                         return;
@@ -128,6 +130,37 @@
                     }
                     xmlhttp.open("GET", "../controller/co_load_bike_type_custom.php?mode=" + str, true);
                     xmlhttp.send();
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            function loadTWTypes(str) {
+                if (str != "" && str != "0") {
+                    alert(str);
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    }
+                    else 
+                    { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+                            document.getElementById("tw_code").innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_bike_advance_seacrh_rate.php?tw_mode=" + str, true);
+                    xmlhttp.send();
+                }
+            }
+            function enablenewtwmodel(){
+                if(document.getElementById('tw_code').value=="new_tw_model"){
+                    document.getElementById('new_tw_model').readOnly=false;
+                }else{
+                    document.getElementById('new_tw_model').value="";
+                    document.getElementById('new_tw_model').readOnly=true;
                 }
             }
         </script>
@@ -155,30 +188,27 @@
                                         </select>
                                     </div>
                                     <div id="advance_bike_panel" style="display: none;">
-                                      
-                                            <div class="form-group required">
-                                                <label class="control-label" for="input-email">Brand:</label>
-                                                <select name="vbrand_advance" id="v_brand_advanced" class="form-control" onchange="loadCustomBikeBrands(this.value);">
-                                                    <option value="0">~~Select Brand~~</option>
-                                                    <option value="1">Bajaj</option>
-                                                    <option value="2">Hero Honda</option>
-                                                    <option value="3">TVS</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="control-label" for="input-email">Select Type:</label>
-                                                <select name="vtype" id="v_type_advance" class="form-control" onchange="loadCustomBikeTypes(this.value);">
-                                                    <option>~~Select Type~~</option> 
-                                                </select>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="control-label" for="input-email">Select Model:</label>
-                                                <select name="vcode" id="v_code_advance" class="form-control" onchange=";">
-                                                    <option>~~Select Model~~</option>
-
-                                                </select>
-                                            </div>
-                                        
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Brand:</label>
+                                            <select name="vbrand_advance" id="v_brand_advanced" class="form-control" onchange="loadCustomBikeBrands(this.value);">
+                                                <option value="0">~~Select Brand~~</option>
+                                                <option value="1">Bajaj</option>
+                                                <option value="2">Hero Honda</option>
+                                                <option value="3">TVS</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Type:</label>
+                                            <select name="vtype" id="v_type_advance" class="form-control" onchange="loadCustomBikeTypes(this.value);">
+                                                <option>~~Select Type~~</option> 
+                                            </select>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-email">Select Model:</label>
+                                            <select name="vcode" id="v_code_advance" class="form-control" onchange=";">
+                                                <option>~~Select Model~~</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -187,7 +217,6 @@
                                     <legend style="color: #FAFAFA;">Search Option 02</legend>
                                     <div class="form-group">
                                         <label class="control-label" for="input-email" id="hidecaption">Admin Options:</label>
-
                                         <div class="form-inline required">
                                             <button type="submit"  class="btn btn" id="cservicebtn">Add Vehicle Rate</button>
                                             <button type="submit"  class="btn btn" id="cservicebtn">Add Land Rate</button>
@@ -213,7 +242,6 @@
                                         </thead>
                                         <tbody id="bike_tbody">
                                             <?php loadBikeRates(); ?>
-                                            <?php loadBikeRatesByBrand(); ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -303,6 +331,43 @@
                                         </fieldset>
                                     </div>
                                 </div>
+                                <div class="new_vehicle" style="display: block;">
+                                    <div class="col-sm-6">
+                                        <fieldset id="account">
+                                            <legend>New Three-Wheel Rate Registration</legend>
+                                            <div class="form-group required">
+                                                <label class="control-label" for="input-email">Select Type:</label>
+                                                <select name="vtype" id="tw_type" class="form-control" onchange="loadTWTypes(this.value);">
+                                                    <option value="0">~~Select Type~~</option>
+                                                    <option value="2">2 Stroke</option>
+                                                    <option value="4">4 Stroke</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="control-label" for="input-email">Select Model:</label>
+                                                <select name="vcode" id="tw_code" class="form-control" onchange="enablenewtwmodel();">
+                                                    <option>~~Select Model~~</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="control-label" for="input-email">New Model:</label>
+                                                <input type="text" readonly id="new_tw_model" placeholder="New Model" class="form-control" style="text-transform: uppercase;"/>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="control-label" for="input-email">Min Value:</label>
+                                                <input type="text" name="minval" placeholder="Min Value" class="form-control" />
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="control-label" for="input-email">Max Value:</label>
+                                                <input type="text" name="maxval" placeholder="Max Value" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"  class="btn btn" id="cservicebtn">Save Rate</button>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -348,7 +413,7 @@
             document.getElementById('land_div').style.display = "none";
             document.getElementById('tw_div').style.display = "none";
             document.getElementById('bike_div').style.display = "block"
-            document.getElementById('advance_bike_panel').style.display = "block";
+            document.getElementById('advance_bike_panel').style.display = "none";
 
         }
         else if (value == 'tw') {
@@ -382,6 +447,7 @@
             alert(sp_value);
         }
     }
+   
 
 </script>
 </html>

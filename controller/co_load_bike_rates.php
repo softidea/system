@@ -8,11 +8,12 @@ if (mysqli_connect_errno()) {
 function loadBikeRatesByBrand() {
     if (isset($_GET['vbrand_advance'])) {
         global $conn;
-        $sql_query = "SELECT c.vehicle_type_id,c.model_year,c.model,c.type,c.min_value,c.max_value
+        $bid=$_GET['vbrand_advance'];
+        $sql_query = "SELECT c.ser_vehicles_pre_id,c.vehicle_type_id,c.model_year,c.model,c.type,c.min_value,c.max_value
     FROM ser_vehicles_pre c
     LEFT JOIN vehicle_type o ON c.vehicle_type_id = o.vehicle_type_id
     WHERE
-    o.brand_id =1;";
+    o.brand_id =$bid";
         $run_query = mysqli_query($conn, $sql_query);
         if (mysqli_num_rows($run_query) > 0) {
 
@@ -35,7 +36,6 @@ function loadBikeRatesByBrand() {
         }
     }
 }
-
 function loadBikeRates() {
     global $conn;
     $sql_query = "SELECT * FROM ser_vehicles_pre";
