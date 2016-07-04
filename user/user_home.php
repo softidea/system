@@ -15,7 +15,12 @@ if (!isset($_SESSION['user_email'])) {
 
     </head>
     <body>
-
+        <?php
+//         unset($_SESSION['login_process']);
+//        if ($_SESSION) {
+//            echo '<pre><script>'.print_r($_SESSION).'</script></pre>';
+//        }
+        ?>
         <nav id="top">
             <div class="container">
                 <div id="top-links" class="nav pull-right">
@@ -165,7 +170,7 @@ if (!isset($_SESSION['user_email'])) {
                                                             <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Vehicle Leases</button></a>
                                                             <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Land Pawns</button></a>
                                                             <a href="../customer/view_vehicles.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Vehicle Rates</button><a>
-                                                            <a href="../customer/view_vehicles.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Land Rates</button></a>
+                                                                    <a href="../customer/view_vehicles.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Land Rates</button></a>
                                                                     </div>
                                                                     <div class="panel-footer"><div style="height: 15px;"></div></div>
                                                                     </div>

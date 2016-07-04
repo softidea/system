@@ -1,7 +1,8 @@
 <?php
-//if (!isset($_SESSION['user_email'])) {
-//  header("Location:../index.php");  
-//}
+
+if (!isset($_SESSION['user_email'])) {
+  header("Location:../index.php");  
+}
 
 
 define('db_host', '107.180.14.32');
@@ -12,8 +13,8 @@ define('db_database', 'ayolan_datahost');
 
 $d_bc = mysqli_connect(db_host, db_user, db_password, db_database)
 
-or die('Could not connect to MySql: '. mysqli_connect_error());
+or die('Could not connect to MySql: ' . mysqli_connect_error());
 
-mysqli_set_charset($d_bc,"UTF8");
+mysqli_set_charset($d_bc, "UTF8");
 
 
