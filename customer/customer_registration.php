@@ -315,18 +315,24 @@ if (!isset($_SESSION['user_email'])) {
                                         $chack_p = "checked";
                                         ?>
                                         <label class="radio-inline"><input type="radio" name="cus_salutation" <?php
-                                            if ($_SESSION['cus_salutation'] == "Mr") {
-                                                echo $chack_p;
+                                            if (isset($_SESSION['cus_salutation'])) {
+                                                if ($_SESSION['cus_salutation'] == "Mr") {
+                                                    echo $chack_p;
+                                                }
                                             }
                                             ?> >: Mr</label>
                                         <label class="radio-inline"><input type="radio" name="cus_salutation" <?php
-                                            if ($_SESSION['cus_salutation'] == "Mis") {
-                                                echo $chack_p;
+                                            if (isset($_SESSION['cus_salutation'])) {
+                                                if ($_SESSION['cus_salutation'] == "Mis") {
+                                                    echo $chack_p;
+                                                }
                                             }
                                             ?> >: Mis</label>
                                         <label class="radio-inline"><input type="radio" name="cus_salutation" <?php
-                                            if ($_SESSION['cus_salutation'] == "Miss") {
-                                                echo $chack_p;
+                                            if (isset($_SESSION['cus_salutation'])) {
+                                                if ($_SESSION['cus_salutation'] == "Miss") {
+                                                    echo $chack_p;
+                                                }
                                             }
                                             ?> >: Miss</label>
 
@@ -426,18 +432,24 @@ if (!isset($_SESSION['user_email'])) {
                                         $b = "checked";
                                         ?>
                                         <label class="radio-inline"><input type="radio" name="gua_salutation" <?php
-                                            if ($_SESSION['rdg_salutation'] == "Mr") {
-                                                echo $b;
+                                            if (isset($_SESSION['cus_salutation'])) {
+                                                if ($_SESSION['rdg_salutation'] == "Mr") {
+                                                    echo $b;
+                                                }
                                             }
                                             ?> >: Mr</label>
                                         <label class="radio-inline"><input type="radio" name="gua_salutation" <?php
-                                            if ($_SESSION['rdg_salutation'] == "Mis") {
-                                                echo $b;
+                                            if (isset($_SESSION['cus_salutation'])) {
+                                                if ($_SESSION['rdg_salutation'] == "Mis") {
+                                                    echo $b;
+                                                }
                                             }
                                             ?> >: Mis</label>
                                         <label class="radio-inline"><input type="radio" name="gua_salutation" <?php
-                                            if ($_SESSION['rdg_salutation'] == "Miss") {
-                                                echo $b;
+                                            if (isset($_SESSION['cus_salutation'])) {
+                                                if ($_SESSION['rdg_salutation'] == "Miss") {
+                                                    echo $b;
+                                                }
                                             }
                                             ?> >: Miss</label>
 
@@ -684,7 +696,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Vehicle Brand:</label>
                                                 <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
-                                                    <?php load_vehicle_brands(); ?>
+<?php load_vehicle_brands(); ?>
                                                 </select>
                                             </div>
                                             <div class="form-group required">
@@ -808,7 +820,7 @@ if (!isset($_SESSION['user_email'])) {
 
 
         <!--Footer Section-->
-        <?php include '../assets/include/footer.php'; ?>
+<?php include '../assets/include/footer.php'; ?>
         <!--Footer Section-->
 
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
