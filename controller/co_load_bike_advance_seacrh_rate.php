@@ -1,0 +1,33 @@
+<?php
+
+$conn = mysqli_connect("107.180.14.32", "ayolandeveloper", "WelComeDB1129", "ayolan_datahost");
+if (mysqli_connect_errno()) {
+    echo "Falied to Connect the Database" . mysqli_connect_error();
+}
+if (isset($_GET['q'])) {
+    $q=  intval($_GET['q']);
+    global $conn;
+    $sql = "SELECT * FROM vehicle_type WHERE brand_id = '" . $q . "'";
+    $result = mysqli_query($conn, $sql);
+    echo "<option value='0'>~~Select Vehicle Type~~</option>";
+    while ($row = mysqli_fetch_array($result)) {
+        $v_type_id = $row['vehicle_type_id'];
+        echo "<option value=$v_type_id>" . $row['vehicle_type'] . "</option>";
+    }
+    echo "<option value='newtype'>~~Add New Type~~</option>";
+}
+if (isset($_GET['mode'])) {
+    $vt_id = intval($_GET['mode']);
+    global $conn;
+
+    $sql_query = "SELECT DISTINCT type FROM ser_vehicles_pre WHERE vehicle_type_id=$vt_id";
+    $run_query = mysqli_query($conn, $sql_query);
+    echo "<option value='0'>~~Select Pre Code~~</option>";
+    while ($row_query = mysqli_fetch_array($run_query)) {
+        $mod = $row_query['type'];
+        echo "<option value='$mod'>$mod</option>";
+    }
+    echo "<option value='newmodel'>~~Add New Model~~</option>";
+}
+
+?>

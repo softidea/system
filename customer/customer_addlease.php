@@ -13,7 +13,7 @@
     <!--Variable Declaration-->
     <head>
         <meta charset="UTF-8">
-        <title>Registration | Lease </title>
+        <title>Lease | Registration </title>
         
          <link rel="icon" href="favicon.ico">
         <!-- Latest compiled and minified CSS -->
@@ -293,11 +293,11 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Model Year:</label>
-                                        <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
+                                        <input type="text" readonly name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Lease Rate:</label>
-                                        <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
+                                        <input type="text" readonly name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Fixed Rate:</label>
