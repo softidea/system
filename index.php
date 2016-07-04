@@ -10,7 +10,7 @@ session_start();
 
 
         <meta charset="utf-8">
-        <title>User Login</title>
+        <title>User | Login</title>
 
         <link rel="icon" href="favicon.ico">
 
@@ -64,7 +64,7 @@ session_start();
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-password">Password :</label>
-                                        <input type="password" name="user_password" placeholder="Password" id="input-password" class="form-control" min="8" max="50" required/>
+                                        <input type="password" autocomplete="Off" name="user_password" placeholder="Password" id="input-password" class="form-control" min="8" max="50" required/>
                                         <a href="controller/user_forgetPassword.php"><p id="para_forget">Did you forgot your password?</p></a>
 
                                     </div>
@@ -96,7 +96,7 @@ session_start();
                             </div>
                             <div class="panel-body">
 
-                                <form action="controller/login.php" method="POST" enctype="multipart/form-data">
+                                <form action="controller/user_login.php" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">First Name :</label>
                                         <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required/>

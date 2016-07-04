@@ -293,7 +293,7 @@ if (!isset($_SESSION['user_email'])) {
         <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
-        <form action="co_customer.php" method="POST" enctype="multipart/form-data">
+        <form action="../controller/co_customer.php" method="POST" enctype="multipart/form-data">
             <div class="container" style="margin-top: 80px;display: block;" id="one">
 
                 <div class="row">
@@ -312,42 +312,24 @@ if (!isset($_SESSION['user_email'])) {
 
                                         <legend>01.Customer Personal Details</legend>
                                         <?php
-                                        $chack_p = "checked";
+                                        $chack_c = "checked";
                                         ?>
-                                        <label class="radio-inline"><input type="radio" name="cus_salutation" <?php
-                                            if (isset($_SESSION['cus_salutation'])) {
-                                                if ($_SESSION['cus_salutation'] == "Mr") {
-                                                    echo $chack_p;
-                                                }
-                                            }
-                                            ?> >: Mr</label>
-                                        <label class="radio-inline"><input type="radio" name="cus_salutation" <?php
-                                            if (isset($_SESSION['cus_salutation'])) {
-                                                if ($_SESSION['cus_salutation'] == "Mis") {
-                                                    echo $chack_p;
-                                                }
-                                            }
-                                            ?> >: Mis</label>
-                                        <label class="radio-inline"><input type="radio" name="cus_salutation" <?php
-                                            if (isset($_SESSION['cus_salutation'])) {
-                                                if ($_SESSION['cus_salutation'] == "Miss") {
-                                                    echo $chack_p;
-                                                }
-                                            }
-                                            ?> >: Miss</label>
+                                        <label class="radio-inline"><input type="radio" value="Mr" name="cus_salutation" <?php echo $chack_c; ?> required >: Mr</label>
+                                        <label class="radio-inline"><input type="radio" value="Mis" name="cus_salutation">: Mis</label>
+                                        <label class="radio-inline"><input type="radio" value="Miss" name="cus_salutation">: Miss</label>
 
 
                                         <div class="form-group  ">
                                             <label class="control-label">Full Name:</label>
-                                            <input type="text" name="cus_fullname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name"   class="form-control" maxlength="100" />
+                                            <input type="text" id="" name="cus_fullname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name"   class="form-control" maxlength="100" autofocus required />
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" >Name with Initials:</label>
-                                            <input type="text" name="cus_initialname" value="<?php echo $cus_initialname; ?>" placeholder="Name with Initials"   class="form-control" maxlength="100" />
+                                            <input type="text" name="cus_initialname" value="<?php echo $cus_initialname; ?>" placeholder="Name with Initials"   class="form-control" maxlength="100" required />
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" >Permanent Address :</label>
-                                            <input type="text" name="cus_address" value="<?php echo $cus_address; ?>" placeholder="Permanent Address"   class="form-control" maxlength="150" />
+                                            <input type="text" name="cus_address" value="<?php echo $cus_address; ?>" placeholder="Permanent Address"   class="form-control" maxlength="150" required />
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" >Telephone:</label>
@@ -359,7 +341,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" >Date of Birth:</label>
-                                            <input type="date" name="cus_dob" value="<?php echo $cus_dob; ?>" placeholder="Date of Birth"  class="form-control" maxlength="15"/>
+                                            <input type="date" name="cus_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" value="<?php echo $cus_dob; ?>" placeholder="Date of Birth"  class="form-control" maxlength="15"/>
                                         </div>
 
                                         <div class="form-group  ">
@@ -371,7 +353,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" >Have any Dependencies:</label>
-                                            <input type="text" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies"  class="form-control" maxlength="2"/>
+                                            <input type="number" min="0" max="20" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies"  class="form-control" maxlength="2"/>
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label" >Employment/Position:</label>
@@ -402,7 +384,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Date of Birth:</label>
-                                            <input type="date" name="cus_bhalf_dob" value="<?php echo $cus_bhalf_dob; ?>" placeholder="Date of Birth"   class="form-control" />
+                                            <input type="date" min="1900-12-31" max="<?php echo $reg_date; ?>" name="cus_bhalf_dob" value="<?php echo $cus_bhalf_dob; ?>" placeholder="Date of Birth"   class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">
@@ -429,29 +411,11 @@ if (!isset($_SESSION['user_email'])) {
 
 
                                         <?php
-                                        $b = "checked";
+                                        $chack_g = "checked";
                                         ?>
-                                        <label class="radio-inline"><input type="radio" name="gua_salutation" <?php
-                                            if (isset($_SESSION['cus_salutation'])) {
-                                                if ($_SESSION['rdg_salutation'] == "Mr") {
-                                                    echo $b;
-                                                }
-                                            }
-                                            ?> >: Mr</label>
-                                        <label class="radio-inline"><input type="radio" name="gua_salutation" <?php
-                                            if (isset($_SESSION['cus_salutation'])) {
-                                                if ($_SESSION['rdg_salutation'] == "Mis") {
-                                                    echo $b;
-                                                }
-                                            }
-                                            ?> >: Mis</label>
-                                        <label class="radio-inline"><input type="radio" name="gua_salutation" <?php
-                                            if (isset($_SESSION['cus_salutation'])) {
-                                                if ($_SESSION['rdg_salutation'] == "Miss") {
-                                                    echo $b;
-                                                }
-                                            }
-                                            ?> >: Miss</label>
+                                        <label class="radio-inline"><input type="radio" name="gua_salutation" <?php echo $chack_g; ?>  >: Mr</label>
+                                        <label class="radio-inline"><input type="radio" name="gua_salutation"  >: Mis</label>
+                                        <label class="radio-inline"><input type="radio" name="gua_salutation"  >: Miss</label>
 
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Full Name:</label>
@@ -471,7 +435,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Date of Birth:</label>
-                                            <input type="date" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth"   class="form-control" />
+                                            <input type="date" min="1900-12-31" max="<?php echo $reg_date; ?>" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth"   class="form-control" />
 
                                         </div>
                                         <div class="form-group  ">
@@ -488,7 +452,7 @@ if (!isset($_SESSION['user_email'])) {
 
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Have any Dependencies:</label>
-                                            <input type="text" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies"   class="form-control" />
+                                            <input type="number" min="0" max="20" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Employment/Position:</label>
@@ -519,7 +483,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Date of Birth:</label>
-                                            <input type="date" name="gua_bhalf_dob" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" class="form-control" />
+                                            <input type="date" name="gua_bhalf_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">
@@ -683,7 +647,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <legend>Leasing Details</legend>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Service No:</label>
-                                                <input type="text" name="service_no" id="sno" placeholder="Service No"   class="form-control"/>
+                                                <input type="text"  name="service_no" id="sno" placeholder="Service No"   class="form-control" required/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Category:</label>
@@ -892,10 +856,14 @@ if (!isset($_SESSION['user_email'])) {
                     document.getElementById('landpanel').style.display = 'block';
                 }
             }
-            function change() {
-
+          
+        </script>
+        <script type="text/javascript">
+            function checkCustomerValues(){
+                
+                var fullname= document.getElementById()
+                
             }
         </script>
-
     </body>
 </html>
