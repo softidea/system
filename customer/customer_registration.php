@@ -320,56 +320,56 @@ if (!isset($_SESSION['user_email'])) {
 
 
                                         <div class="form-group  ">
-                                            <label class="control-label">Full Name:</label>
-                                            <input type="text" id="" name="cus_fullname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name"   class="form-control" maxlength="100" autofocus required />
+                                            <span style="color:red;">*</span><label class="control-label">Full Name:</label>
+                                            <input type="text" id="cus_fullname" name="cus_fullname" value="<?php echo $cus_fullname; ?>" placeholder="Full Name"   class="form-control" maxlength="100" autofocus required />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Name with Initials:</label>
-                                            <input type="text" name="cus_initialname" value="<?php echo $cus_initialname; ?>" placeholder="Name with Initials"   class="form-control" maxlength="100" required />
+                                            <span style="color:red;">*</span><label class="control-label" >Name with Initials:</label>
+                                            <input type="text" id="cus_initial" name="cus_initialname" value="<?php echo $cus_initialname; ?>" placeholder="Name with Initials"   class="form-control" maxlength="100" required />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Permanent Address :</label>
-                                            <input type="text" name="cus_address" value="<?php echo $cus_address; ?>" placeholder="Permanent Address"   class="form-control" maxlength="150" required />
+                                            <span style="color:red;">*</span><label class="control-label" >Permanent Address :</label>
+                                            <input type="text" id="cus_paddress" name="cus_address" value="<?php echo $cus_address; ?>" placeholder="Permanent Address"   class="form-control" maxlength="150" required />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Telephone:</label>
-                                            <input type="text" name="cus_tp" value="<?php echo $cus_tp; ?>" placeholder="Telephone"   class="form-control" maxlength="15" />
+                                            <span style="color:red;">*</span><label class="control-label" >Telephone:</label>
+                                            <input type="text" id="cus_tp" name="cus_tp" value="<?php echo $cus_tp; ?>" placeholder="Telephone"   class="form-control" maxlength="15" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >NIC Number:</label>
-                                            <input type="text" name="cus_nic" value="<?php echo $cus_nic; ?>" placeholder="NIC Number"  class="form-control" maxlength="15"/>
+                                            <span style="color:red;">*</span><label class="control-label" >NIC Number:</label>
+                                            <input type="text" id="cus_nic" name="cus_nic" value="<?php echo $cus_nic; ?>" placeholder="NIC Number"  class="form-control" maxlength="15"/>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Date of Birth:</label>
-                                            <input type="date" name="cus_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" value="<?php echo $cus_dob; ?>" placeholder="Date of Birth"  class="form-control" maxlength="15"/>
+                                            <span style="color:red;">*</span><label class="control-label" >Date of Birth:</label>
+                                            <input type="date" id="cus_dob" name="cus_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" value="<?php echo $cus_dob; ?>" placeholder="Date of Birth"  class="form-control" maxlength="15"/>
                                         </div>
 
                                         <div class="form-group  ">
-                                            <label class="control-label" >Married Status:</label>
+                                            <span style="color:red;">*</span><label class="control-label" >Married Status:</label>
                                             <select name="cus_ms" value="<?php echo $cus_ms; ?>" class="form-control" >
                                                 <option value="Single">Single</option>
                                                 <option value="Married">Married</option>
                                             </select>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Have any Dependencies:</label>
-                                            <input type="number" min="0" max="20" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies"  class="form-control" maxlength="2"/>
+                                            <span style="color:red;">*</span><label class="control-label" >Have any Dependencies:</label>
+                                            <input type="number" id="cus_depend" min="0" max="20" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies"  class="form-control" maxlength="2"/>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Employment/Position:</label>
-                                            <input type="text" name="cus_position" value="<?php echo $cus_position; ?>" placeholder="Employment/Position"  class="form-control" maxlength="80"/>
+                                            <span style="color:red;">*</span><label class="control-label" >Employment/Position:</label>
+                                            <input type="text" id="cus_position" name="cus_position" value="<?php echo $cus_position; ?>" placeholder="Employment/Position"  class="form-control" maxlength="80"/>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Monthly Salary/Net Income:</label>
-                                            <input type="text" name="cus_monthly_salary" value="<?php echo $cus_monthly_salary; ?>" placeholder="Monthly Salary/Net Income"  class="form-control" maxlength="10"/>
+                                            <span style="color:red;">*</span><label class="control-label" >Monthly Salary/Net Income:</label>
+                                            <input type="text" id="cus_salary" name="cus_monthly_salary" value="<?php echo $cus_monthly_salary; ?>" placeholder="Monthly Salary/Net Income"  class="form-control" maxlength="10"/>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Employer Name:</label>
+                                            <span style="color:red;">*</span><label class="control-label" >Employer Name:</label>
                                             <input type="text" name="cus_emp_name" value="<?php echo $cus_emp_name; ?>" placeholder="Employer Name"   class="form-control" maxlength="200"/>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label" >Employer Address:</label>
-                                            <input type="text" name="cus_emp_address" value="<?php echo $cus_emp_address; ?>" placeholder="Employer Address"   class="form-control" maxlength="250"/>
+                                            <span style="color:red;">*</span><label class="control-label" >Employer Address:</label>
+                                            <input type="text" id="cus_emp_name" name="cus_emp_address" value="<?php echo $cus_emp_address; ?>" placeholder="Employer Address"   class="form-control" maxlength="250"/>
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
@@ -379,25 +379,25 @@ if (!isset($_SESSION['user_email'])) {
                                         <legend>03.Customer Better Half Details</legend>
 
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Full Name:</label>
-                                            <input type="text" name="cus_hhalf_name" id="fname" value="<?php echo $cus_hhalf_name; ?>" placeholder="Full Name"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label"   id="">Full Name:</label>
+                                            <input type="text" id="cus_bhalf_name" name="cus_hhalf_name" id="fname" value="<?php echo $cus_hhalf_name; ?>" placeholder="Full Name"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Date of Birth:</label>
-                                            <input type="date" min="1900-12-31" max="<?php echo $reg_date; ?>" name="cus_bhalf_dob" value="<?php echo $cus_bhalf_dob; ?>" placeholder="Date of Birth"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label"   id="">Date of Birth:</label>
+                                            <input type="date" id="cus_bhalf_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" name="cus_bhalf_dob" value="<?php echo $cus_bhalf_dob; ?>" placeholder="Date of Birth"   class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employment/Position:</label>
-                                            <input type="text" name="cus_bhalf_position" value="<?php echo $cus_bhalf_position; ?>" placeholder="Employment/Position"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label"   id="">Employment/Position:</label>
+                                            <input type="text" id="cus_bhalf_position" name="cus_bhalf_position" value="<?php echo $cus_bhalf_position; ?>" placeholder="Employment/Position"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="cus_bhalf_monthly_salary" value="<?php echo $cus_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label"   id="">Monthly Salary/Net Income:</label>
+                                            <input type="text" id="cus_bhalf_salary" name="cus_bhalf_monthly_salary" value="<?php echo $cus_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employer Name:</label>
-                                            <input type="text" name="cus_bhalf_emp_name" value="<?php echo $cus_bhalf_emp_name; ?>" placeholder="Employer Name"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label"   id="">Employer Name:</label>
+                                            <input type="text" id="cus_bhalf_emp_name" name="cus_bhalf_emp_name" value="<?php echo $cus_bhalf_emp_name; ?>" placeholder="Employer Name"   class="form-control" />
                                         </div>
 
                                     </fieldset>
@@ -418,57 +418,57 @@ if (!isset($_SESSION['user_email'])) {
                                         <label class="radio-inline"><input type="radio" name="gua_salutation"  >: Miss</label>
 
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Full Name:</label>
-                                            <input type="text" name="gua_fullname" id="fname" value="<?php echo $gua_fullname; ?>" placeholder="Full Name"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Full Name:</label>
+                                            <input type="text" id="g_fullname" name="gua_fullname" id="fname" value="<?php echo $gua_fullname; ?>" placeholder="Full Name"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Name with Initials:</label>
-                                            <input type="text" name="gua_initial_name" value="<?php echo $gua_initial_name; ?>" placeholder="Name with Initials"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Name with Initials:</label>
+                                            <input type="text" id="g_initial" name="gua_initial_name" value="<?php echo $gua_initial_name; ?>" placeholder="Name with Initials"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Permanent Address :</label>
-                                            <input type="text" name="gua_address" value="<?php echo $gua_address; ?>" placeholder="E-mail"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Permanent Address :</label>
+                                            <input type="text" id="g_address" name="gua_address" value="<?php echo $gua_address; ?>" placeholder="E-mail"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Telephone:</label>
-                                            <input type="tel" name="gua_tp" value="<?php echo $gua_tp; ?>" placeholder="Telephone"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Telephone:</label>
+                                            <input type="tel" id="g_tp" name="gua_tp" value="<?php echo $gua_tp; ?>" placeholder="Telephone"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Date of Birth:</label>
-                                            <input type="date" min="1900-12-31" max="<?php echo $reg_date; ?>" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Date of Birth:</label>
+                                            <input type="date" id="g_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" name="gua_dob" value="<?php echo $gua_dob; ?>" placeholder="Date of Birth"   class="form-control" />
 
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Married Status:</label>
+                                            <span style="color:red;">*</span><label class="control-label">Married Status:</label>
                                             <select name="gua_ms" value="<?php echo $gua_ms; ?>"    class="form-control" >
                                                 <option value="Single">Single</option>
                                                 <option value="Married">Married</option>
                                             </select>
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">NIC Number:</label>
-                                            <input type="text" name="gua_nic" value="<?php echo $gua_nic; ?>" placeholder="National Identity Card Number"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">NIC Number:</label>
+                                            <input type="text" id="g_nic" name="gua_nic" value="<?php echo $gua_nic; ?>" placeholder="National Identity Card Number"   class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Have any Dependencies:</label>
-                                            <input type="number" min="0" max="20" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Have any Dependencies:</label>
+                                            <input type="number" id="g_depend" min="0" max="20" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employment/Position:</label>
-                                            <input type="text" name="gua_position" value="<?php echo $gua_position; ?>" placeholder="Employment/Position"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Employment/Position:</label>
+                                            <input type="text" id="g_position" name="gua_position" value="<?php echo $gua_position; ?>" placeholder="Employment/Position"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="gua_monthly_salary" value="<?php echo $gua_monthly_salary; ?>" placeholder="Monthly Salary/Net Income"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Monthly Salary/Net Income:</label>
+                                            <input type="text" id="g_salary" name="gua_monthly_salary" value="<?php echo $gua_monthly_salary; ?>" placeholder="Monthly Salary/Net Income"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employer Name:</label>
-                                            <input type="text" name="gua_emp_name" value="<?php echo $gua_emp_name; ?>" placeholder="Employer Name"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Employer Name:</label>
+                                            <input type="text" id="g_emp_name" name="gua_emp_name" value="<?php echo $gua_emp_name; ?>" placeholder="Employer Name"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employer Address:</label>
-                                            <input type="text" name="gua_emp_address" value="<?php echo $gua_emp_address; ?>" placeholder="Employer Address"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Employer Address:</label>
+                                            <input type="text" id="g_emp_address" name="gua_emp_address" value="<?php echo $gua_emp_address; ?>" placeholder="Employer Address"   class="form-control" />
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
@@ -478,25 +478,25 @@ if (!isset($_SESSION['user_email'])) {
                                         <legend>04.Guarantor Better Half Details</legend>
 
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Full Name:</label>
-                                            <input type="text" name="gua_bhalf_fullname" id="fname" value="<?php echo $gua_bhalf_fullname; ?>" placeholder="Full Name"   class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Full Name:</label>
+                                            <input type="text" id="g_bhalf_fullname" name="gua_bhalf_fullname" id="fname" value="<?php echo $gua_bhalf_fullname; ?>" placeholder="Full Name"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Date of Birth:</label>
-                                            <input type="date" name="gua_bhalf_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Date of Birth:</label>
+                                            <input type="date" id="g_bhalf_dob" name="gua_bhalf_dob" min="1900-12-31" max="<?php echo $reg_date; ?>" value="<?php echo $gua_bhalf_dob; ?>" placeholder="Date of Birth" class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employment/Position:</label>
-                                            <input type="text" name="gua_bhalf_position" value="<?php echo $gua_bhalf_position; ?>" placeholder="Employment/Position" class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Employment/Position:</label>
+                                            <input type="text" id="g_bhalf_position" name="gua_bhalf_position" value="<?php echo $gua_bhalf_position; ?>" placeholder="Employment/Position" class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Monthly Salary/Net Income:</label>
-                                            <input type="text" name="gua_bhalf_monthly_salary" value="<?php echo $gua_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Monthly Salary/Net Income:</label>
+                                            <input type="text" id="g_bhalf_salary" name="gua_bhalf_monthly_salary" value="<?php echo $gua_bhalf_monthly_salary; ?>" placeholder="Monthly Salary/Net Income" class="form-control" />
                                         </div>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Employer Name:</label>
-                                            <input type="text" name="gua_bhalf_emp_name" value="<?php echo $gua_bhalf_emp_name; ?>" placeholder="Employer Name"  class="form-control" />
+                                            <span style="color:red;">*</span><label class="control-label">Employer Name:</label>
+                                            <input type="text" id="g_bhalf_emp_name" name="gua_bhalf_emp_name" value="<?php echo $gua_bhalf_emp_name; ?>" placeholder="Employer Name"  class="form-control" />
                                         </div>
                                     </fieldset>
                                 </div>
@@ -521,11 +521,11 @@ if (!isset($_SESSION['user_email'])) {
                                                 <tbody>
                                                     <tr>
                                                         <td>House<input type="hidden" value="House" name="home"></td>
-                                                        <td><input type="text" name="real_prp_house_position" value="<?php echo $real_prp_house_position; ?>" placeholder="Position"   class="form-control" /></td>
-                                                        <td><input type="text" name="real_prp_house_size" value="<?php echo $real_prp_house_size; ?>" placeholder="Size"   class="form-control" /></td>
-                                                        <td><input type="text" name="real_prp_house_value" value="<?php echo $real_prp_house_value; ?>" placeholder="Value"   class="form-control" /></td>
-                                                        <td><input type="text" name="real_prp_house_pawned" value="<?php echo $real_prp_house_pawned; ?>" placeholder="Is Pawned"   class="form-control" /></td>
-                                                        <td><input type="text" name="real_prp_house_pawn_getter" value="<?php echo $real_prp_house_pawn_getter; ?>" placeholder="Pawn Getter"   class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="house_property" name="real_prp_house_position" value="<?php echo $real_prp_house_position; ?>" placeholder="Position" class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="house_size" name="real_prp_house_size" value="<?php echo $real_prp_house_size; ?>" placeholder="Size" class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="house_value" name="real_prp_house_value" value="<?php echo $real_prp_house_value; ?>" placeholder="Value" class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="house_pawned" name="real_prp_house_pawned" value="<?php echo $real_prp_house_pawned; ?>" placeholder="Is Pawned" class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="house_pawn_getter" name="real_prp_house_pawn_getter" value="<?php echo $real_prp_house_pawn_getter; ?>" placeholder="Pawn Getter" class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Other Property<input type="hidden" value="Other Property" name="op"></td>
@@ -557,9 +557,9 @@ if (!isset($_SESSION['user_email'])) {
                                                 <tbody>
                                                     <tr>
                                                         <td>Savings Account</td>
-                                                        <td><input type="text" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch; ?>" placeholder="Bank Name & Branch"   class="form-control" /></td>
-                                                        <td><input type="text" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities; ?>" placeholder="Facilities"   class="form-control" /></td>
-                                                        <td><input type="text" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no; ?>" placeholder="Account Number"   class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="saving_account_bank" name="cus_savings_bank_branch" value="<?php echo $cus_savings_bank_branch; ?>" placeholder="Bank Name & Branch"   class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="saving_facility" name="cus_savings_facilities" value="<?php echo $cus_savings_facilities; ?>" placeholder="Facilities"   class="form-control" /></td>
+                                                        <td><span style="color:red;">*</span><input type="text" id="saving_acc_no" name="cus_savings_account_no" value="<?php echo $cus_savings_account_no; ?>" placeholder="Account Number"   class="form-control" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Mobile Account</td>
@@ -581,13 +581,17 @@ if (!isset($_SESSION['user_email'])) {
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="control-label"   id="">Registration Date</label>   
-                                    <input type="date" name="reg_date" value="<?php echo $reg_date; ?>" placeholder="Date"   class="form-control" />
-
+                                    <div class="form-group">
+                                        <span style="color:red;">*</span><label class="control-label"   id="">Registration Date</label>
+                                        <div class="fomr-inline">
+                                            <input type="date" id="cus_reg_date" name="reg_date" value="<?php echo $reg_date; ?>" placeholder="Date" class="form-control" />
+                                            <br><p><b>Warning</b> :~~<span style="color:red;">*</span>~~ are mandatory fields, should not be empty</p>
+                                        </div>
+                                    </div>
                                 </div>
-
+                        
                                 <div class="col-md-12">
-                                    <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="gotosecond();" value="Continue">
+                                    <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="checkCustomerValues();" value="Continue">
                                 </div>
                             </div>
 
@@ -660,7 +664,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Vehicle Brand:</label>
                                                 <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
-<?php load_vehicle_brands(); ?>
+                                                    <?php load_vehicle_brands(); ?>
                                                 </select>
                                             </div>
                                             <div class="form-group required">
@@ -784,7 +788,7 @@ if (!isset($_SESSION['user_email'])) {
 
 
         <!--Footer Section-->
-<?php include '../assets/include/footer.php'; ?>
+        <?php include '../assets/include/footer.php'; ?>
         <!--Footer Section-->
 
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -856,13 +860,70 @@ if (!isset($_SESSION['user_email'])) {
                     document.getElementById('landpanel').style.display = 'block';
                 }
             }
-          
+
         </script>
         <script type="text/javascript">
-            function checkCustomerValues(){
+            function checkCustomerValues() {
+
+                var cus_fullname=document.getElementById('cus_fullname').value
+                var cus_initial=document.getElementById('cus_initial').value
+                var cus_paddress=document.getElementById('cus_paddress').value
+                var cus_tp=document.getElementById('cus_tp').value
+                var cus_nic=document.getElementById('cus_nic').value
+                var cus_dob=document.getElementById('cus_dob').value
+                var cus_depend=document.getElementById('cus_depend').value
+                var cus_position=document.getElementById('cus_position').value
+                var cus_salary=document.getElementById('cus_salary').value
+                var cus_emp_name=document.getElementById('cus_emp_name').value
                 
-                var fullname= document.getElementById()
+                var cus_bhalf_name=document.getElementById('cus_bhalf_name').value
+                var cus_bhalf_dob=document.getElementById('cus_bhalf_dob').value
+                var cus_bhalf_position=document.getElementById('cus_bhalf_position').value
+                var cus_bhalf_salary=document.getElementById('cus_bhalf_salary').value
+                var cus_bhalf_emp_name=document.getElementById('cus_bhalf_emp_name').value
                 
+                var g_fullname=document.getElementById('g_fullname').value
+                var g_initial=document.getElementById('g_initial').value
+                var g_address=document.getElementById('g_address').value
+                var g_tp=document.getElementById('g_tp').value
+                var g_dob=document.getElementById('g_dob').value
+                var g_nic=document.getElementById('g_nic').value
+                var g_depend=document.getElementById('g_depend').value
+                var g_position=document.getElementById('g_position').value
+                var g_salary=document.getElementById('g_salary').value
+                var g_emp_name=document.getElementById('g_emp_name').value
+                var g_emp_address=document.getElementById('g_emp_address').value
+                
+                var g_bhalf_fullname=document.getElementById('g_bhalf_fullname').value
+                var g_bhalf_dob=document.getElementById('g_bhalf_dob').value
+                var g_bhalf_position=document.getElementById('g_bhalf_position').value
+                var g_bhalf_salary=document.getElementById('g_bhalf_salary').value
+                var g_bhalf_emp_name=document.getElementById('g_bhalf_emp_name').value
+
+                var house_property=document.getElementById('house_property').value
+                var house_size=document.getElementById('house_size').value
+                var house_value=document.getElementById('house_value').value
+                var house_pawned=document.getElementById('house_pawned').value
+                var house_pawn_getter=document.getElementById('house_pawn_getter').value
+
+                var saving_account_bank=document.getElementById('saving_account_bank').value
+                var saving_facility=document.getElementById('saving_facility').value
+                var saving_acc_no=document.getElementById('saving_acc_no').value
+                var cus_reg_date=document.getElementById('cus_reg_date').value
+                
+                 if(cus_fullname!="" && cus_initial!="" && cus_paddress!="" && cus_tp!="" && cus_nic!="" && cus_dob!="" && cus_depend!="" &&
+                        cus_position!="" && cus_salary!="" && cus_emp_name!="" && cus_bhalf_name!="" && cus_bhalf_dob!="" && cus_bhalf_position!="" &&
+                        cus_bhalf_salary!="" && cus_bhalf_emp_name!="" && g_fullname!="" && g_initial!="" && g_address!="" &&
+                        g_tp!="" && g_dob!="" && g_nic!="" && g_depend!="" && g_position!="" && g_salary!="" && g_emp_name!="" && g_emp_address!="" &&
+                        g_bhalf_fullname!="" && g_bhalf_dob!="" && g_bhalf_position!="" && g_bhalf_salary!="" && g_bhalf_emp_name!="" &&
+                        house_property!="" && house_size!="" && house_value!="" && house_pawned!="" && house_pawn_getter!="" &&
+                        saving_account_bank!="" && saving_facility!="" && saving_acc_no!="" && cus_reg_date!=""){
+                            gotosecond();
+                        }else{
+                            alert("Empty Data Fields Found,Please Insert Valid Data");
+                        }
+                
+
             }
         </script>
     </body>
