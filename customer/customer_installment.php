@@ -79,7 +79,7 @@
         </style>
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php';?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Service View Main Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -94,12 +94,13 @@
                                 <fieldset id="account">
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
-                                        <div class="form-group required">
-                                            <label class="control-label" for="input-email">Customer NIC:</label>
-                                            <input type="text"  name="customersearch" id="fname" value="" placeholder="Customer NIC" id="input-email" class="form-control" required/>
+                                        <label class="control-label" for="input-email">Customer NIC:</label>
+                                        <div class="form-inline required">
+                                            <input type="text"  name="customersearch" id="fname" value="" placeholder="Customer NIC" class="form-control" style="width:85%;"required/>
+                                            <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group required">
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Customer Name:</label>
@@ -125,6 +126,11 @@
                                     <fieldset id="account">
                                         <legend>Service Details</legend>
                                         <div class="form-group required">
+                                            <label class="control-label" for="input-email">Service No:</label>
+                                            <div class="form-inline required">
+                                                <input type="text" name="fname" id="fname" value="" placeholder="Service No" class="form-control" style="width:85%;"required/>
+                                                <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
+                                            </div>
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Service No:</label>
                                                 <input type="text" name="fname" id="fname" value="" placeholder="Service No" id="input-email" class="form-control" required/>
@@ -434,7 +440,7 @@
         </div>
         <!--Customer Service Loader-->
 
-        <?php include '../assets/include/footer.php';?>
+        <?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
