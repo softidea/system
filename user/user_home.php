@@ -61,17 +61,20 @@ if (!isset($_SESSION['user_email'])) {
                                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner">
                                                 <div class="item active">
-                                                    <a href="#"><img src="http://www.motorbikeslk.com/sites/default/files/bajaj-discover-125.jpg" class="img-responsive" alt="product 1"></a>
+                                                    
+                                                    <a href="../customer/customer_registration.php"><img src="http://www.motorbikeslk.com/sites/default/files/bajaj-discover-125.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4 style="color: #004D40;"><small>Motor Bikes</small></h4>                                        
-                                                    <button id="btnhov" class="btn btn" style="background-color: #009688;color: white;" type="button">Lease Now</button> 
-                                                    <button href="#" class="btn btn" style="background-color: #009688;color: white;"type="button">View Leased</button> 
-                                                </div><!-- End Item -->
+                                                    <button href="../customer/customer_registration.php" id="btnhov" class="btn btn" style="background-color: #009688;color: white;" type="button">Lease Now</button> 
+                                                    <button href="../customer/customer_serviceview.php" class="btn btn" style="background-color: #009688;color: white;"type="button">View Leased</button> 
+                                                </div>
+                                                <!-- End Item -->
                                                 <div class="item">
-                                                    <a href="#"><img src="http://www.dpmco.com/image/data/newrered.jpg" class="img-responsive" alt="product 2"></a>
+                                                    <a href="../customer/customer_registration.php"><img src="http://www.dpmco.com/image/data/newrered.jpg" class="img-responsive" alt="product 2"></a>
                                                     <h4 style="color: #004D40;"><small>Three Wheels</small></h4>                                        
                                                     <button class="btn btn" style="background-color: #009688;color: white;" type="button">Lease Now</button> 
                                                     <button href="#" class="btn btn" style="background-color: #009688;color: white;"type="button">View Leased</button>        
-                                                </div><!-- End Item -->
+                                                </div>
+                                                <!-- End Item -->
                                                 <div class="item">
                                                     <a href="#"><img src="http://www.araliyalandsandhomes.lk/upload_images/property/property_1372848223-Land-pic-03.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4 style="color: #004D40;"><small>Lands</small></h4>                                        

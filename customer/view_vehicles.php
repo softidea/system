@@ -230,23 +230,21 @@
 
                             <div class="col-sm-12">
                                 <div id="bike_div" style="display: block;background: white;">
-                                    <div id="printarea">
-                                        <table class="table table-bordered table-striped table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Model Year</th>
-                                                    <th>Model</th>
-                                                    <th>Type</th>
-                                                    <th>Min Value</th>
-                                                    <th>Max Value</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="bike_tbody">
-                                                <?php loadBikeRates(); ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Model Year</th>
+                                                <th>Model</th>
+                                                <th>Type</th>
+                                                <th>Min Value</th>
+                                                <th>Max Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bike_tbody">
+                                            <?php loadBikeRates(); ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div id="tw_div" style="display: none;">
                                     <table class="table table-bordered table-hover">
@@ -456,23 +454,49 @@
 <script type="text/javascript">
     /*--This JavaScript method for Print command--*/
     function PrintDoc() {
-        var toPrint = document.getElementById('printarea');
+        var toPrint = "";
+        if (document.getElementById('bike_div').style.display == "block") {
+            var toPrint = document.getElementById('bike_div');
+        } else if (document.getElementById('tw_div').style.display == "block") {
+            var toPrint = document.getElementById('tw_div');
+        } else if (document.getElementById('land_div').style.display == "block") {
+            var toPrint = document.getElementById('land_div');
+        }
+
         var popupWin = window.open('', '_blank', 'width=1024,height=600,location=no,left=200px');
         popupWin.document.open();
-        popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
+        popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
         popupWin.document.write(toPrint.innerHTML);
         popupWin.document.write('</html>');
         popupWin.document.close();
     }
     /*--This JavaScript method for Print Preview command--*/
     function PrintPreview() {
-        var toPrint = document.getElementById('printarea');
+        var toPrint = "";
+        if (document.getElementById('bike_div').style.display == "block") {
+            var toPrint = document.getElementById('bike_div');
+        } else if (document.getElementById('tw_div').style.display == "block") {
+            var toPrint = document.getElementById('tw_div');
+        } else if (document.getElementById('land_div').style.display == "block") {
+            var toPrint = document.getElementById('land_div');
+        }
+
         var popupWin = window.open('', '_blank', 'width=1024,height=600,location=no,left=200px');
         popupWin.document.open();
-        popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body">')
+        //
+        popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body style="font-size:14px;">')
         popupWin.document.write(toPrint.innerHTML);
         popupWin.document.write('</html>');
         popupWin.document.close();
     }
+</script>
+
+<script>
+    $(document).on('keydown', function (e) {
+        if (e.ctrlKey && (e.key == "p")) {
+            alert("Please use the Print PDF button below for a better rendering on the document");
+
+        }
+    });
 </script>
 </html>
