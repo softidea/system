@@ -33,7 +33,8 @@ if (!isset($_SESSION['user_email'])) {
     $cus_bhalf_position = "";
     $cus_bhalf_monthly_salary = "";
     $cus_bhalf_emp_name = "";
-
+//////////////////////////////////////////////////////////////
+    
     $gua_fullname = "";
     $gua_initial_name = "";
     $gua_address = "";
@@ -111,7 +112,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_type").innerHTML = xmlhttp.responseText;
                         }
@@ -136,7 +137,7 @@ if (!isset($_SESSION['user_email'])) {
                         // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             if (xmlhttp.responseText === "No Interest Found,Try Again") {
                                 alert(xmlhttp.responseText);
@@ -163,7 +164,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                         }
@@ -181,7 +182,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                         }
@@ -204,7 +205,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             alert(xmlhttp.responseText);
                             var value = xmlhttp.responseText;
@@ -234,7 +235,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             alert(xmlhttp.responseText);
                             document.getElementById('l_rate').value = xmlhttp.responseText;
@@ -267,7 +268,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function () {
+                    xmlhttp.onreadystatechange = function() {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById('v_code').innerHTML = xmlhttp.responseText;
                         }
@@ -293,9 +294,9 @@ if (!isset($_SESSION['user_email'])) {
         <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
-        <form action="../controller/co_customer.php" method="POST" enctype="multipart/form-data">
-            <div class="container" style="margin-top: 80px;display: block;" id="one">
 
+        <div class="container" style="margin-top: 80px;display: block;" id="one">
+            <form action="../controller/co_customer.php" method="POST" enctype="multipart/form-data" name="f1_cus" id="f1_cus">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
@@ -398,6 +399,11 @@ if (!isset($_SESSION['user_email'])) {
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label"   id="">Employer Name:</label>
                                             <input type="text" id="cus_bhalf_emp_name" name="cus_bhalf_emp_name" value="<?php echo $cus_bhalf_emp_name; ?>" placeholder="Employer Name"   class="form-control" />
+                                        </div>
+                                        
+                                        <div class="form-group  ">
+                                            <span style="color:green;">*</span><label class="control-label">Map Link :</label>
+                                            <input type="text" id="cus_addr_map_link" name="cus_addr_map_link" value="<?php echo $cus_addr_map_link; ?>" placeholder="Map Link"   class="form-control" form="f1_cus"/>
                                         </div>
 
                                     </fieldset>
@@ -589,25 +595,26 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                     </div>
                                 </div>
-                        
+
                                 <div class="col-md-12">
-                                    <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="checkCustomerValues();" value="Continue">
+                                    <input type="submit" class="btn btn" name="customer_continue" id="custcontinue" value="Continue">
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
+            </form>
+        </div>
+        <!-- Over.Customer Panel Section-->
 
-            </div>
-            <!-- Over.Customer Panel Section-->
 
+        <!--Start.Property Panel Section-->
 
-            <!--Start.Property Panel Section-->
+        <!--Start.Property Information Details-->
+        <div class="container" style="margin-top: 80px;display: none;" id="second">
+            <form action="../controller/co_customer.php" method="POST" id="fr_property"><div class="row">
 
-            <!--Start.Property Information Details-->
-            <div class="container" style="margin-top: 80px;display: none;" id="second">
-                <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading" id="panelheading">
@@ -779,9 +786,9 @@ if (!isset($_SESSION['user_email'])) {
                         </div>
                     </div>
                 </div>
+            </form>
+        </div>
 
-            </div>
-        </form>
         <!--Over.Property Panel Section-->
 
 
@@ -865,64 +872,64 @@ if (!isset($_SESSION['user_email'])) {
         <script type="text/javascript">
             function checkCustomerValues() {
 
-                var cus_fullname=document.getElementById('cus_fullname').value
-                var cus_initial=document.getElementById('cus_initial').value
-                var cus_paddress=document.getElementById('cus_paddress').value
-                var cus_tp=document.getElementById('cus_tp').value
-                var cus_nic=document.getElementById('cus_nic').value
-                var cus_dob=document.getElementById('cus_dob').value
-                var cus_depend=document.getElementById('cus_depend').value
-                var cus_position=document.getElementById('cus_position').value
-                var cus_salary=document.getElementById('cus_salary').value
-                var cus_emp_name=document.getElementById('cus_emp_name').value
-                
-                var cus_bhalf_name=document.getElementById('cus_bhalf_name').value
-                var cus_bhalf_dob=document.getElementById('cus_bhalf_dob').value
-                var cus_bhalf_position=document.getElementById('cus_bhalf_position').value
-                var cus_bhalf_salary=document.getElementById('cus_bhalf_salary').value
-                var cus_bhalf_emp_name=document.getElementById('cus_bhalf_emp_name').value
-                
-                var g_fullname=document.getElementById('g_fullname').value
-                var g_initial=document.getElementById('g_initial').value
-                var g_address=document.getElementById('g_address').value
-                var g_tp=document.getElementById('g_tp').value
-                var g_dob=document.getElementById('g_dob').value
-                var g_nic=document.getElementById('g_nic').value
-                var g_depend=document.getElementById('g_depend').value
-                var g_position=document.getElementById('g_position').value
-                var g_salary=document.getElementById('g_salary').value
-                var g_emp_name=document.getElementById('g_emp_name').value
-                var g_emp_address=document.getElementById('g_emp_address').value
-                
-                var g_bhalf_fullname=document.getElementById('g_bhalf_fullname').value
-                var g_bhalf_dob=document.getElementById('g_bhalf_dob').value
-                var g_bhalf_position=document.getElementById('g_bhalf_position').value
-                var g_bhalf_salary=document.getElementById('g_bhalf_salary').value
-                var g_bhalf_emp_name=document.getElementById('g_bhalf_emp_name').value
+                var cus_fullname = document.getElementById('cus_fullname').value
+                var cus_initial = document.getElementById('cus_initial').value
+                var cus_paddress = document.getElementById('cus_paddress').value
+                var cus_tp = document.getElementById('cus_tp').value
+                var cus_nic = document.getElementById('cus_nic').value
+                var cus_dob = document.getElementById('cus_dob').value
+                var cus_depend = document.getElementById('cus_depend').value
+                var cus_position = document.getElementById('cus_position').value
+                var cus_salary = document.getElementById('cus_salary').value
+                var cus_emp_name = document.getElementById('cus_emp_name').value
 
-                var house_property=document.getElementById('house_property').value
-                var house_size=document.getElementById('house_size').value
-                var house_value=document.getElementById('house_value').value
-                var house_pawned=document.getElementById('house_pawned').value
-                var house_pawn_getter=document.getElementById('house_pawn_getter').value
+                var cus_bhalf_name = document.getElementById('cus_bhalf_name').value
+                var cus_bhalf_dob = document.getElementById('cus_bhalf_dob').value
+                var cus_bhalf_position = document.getElementById('cus_bhalf_position').value
+                var cus_bhalf_salary = document.getElementById('cus_bhalf_salary').value
+                var cus_bhalf_emp_name = document.getElementById('cus_bhalf_emp_name').value
 
-                var saving_account_bank=document.getElementById('saving_account_bank').value
-                var saving_facility=document.getElementById('saving_facility').value
-                var saving_acc_no=document.getElementById('saving_acc_no').value
-                var cus_reg_date=document.getElementById('cus_reg_date').value
-                
-                 if(cus_fullname!="" && cus_initial!="" && cus_paddress!="" && cus_tp!="" && cus_nic!="" && cus_dob!="" && cus_depend!="" &&
-                        cus_position!="" && cus_salary!="" && cus_emp_name!="" && cus_bhalf_name!="" && cus_bhalf_dob!="" && cus_bhalf_position!="" &&
-                        cus_bhalf_salary!="" && cus_bhalf_emp_name!="" && g_fullname!="" && g_initial!="" && g_address!="" &&
-                        g_tp!="" && g_dob!="" && g_nic!="" && g_depend!="" && g_position!="" && g_salary!="" && g_emp_name!="" && g_emp_address!="" &&
-                        g_bhalf_fullname!="" && g_bhalf_dob!="" && g_bhalf_position!="" && g_bhalf_salary!="" && g_bhalf_emp_name!="" &&
-                        house_property!="" && house_size!="" && house_value!="" && house_pawned!="" && house_pawn_getter!="" &&
-                        saving_account_bank!="" && saving_facility!="" && saving_acc_no!="" && cus_reg_date!=""){
-                            gotosecond();
-                        }else{
-                            alert("Empty Data Fields Found,Please Insert Valid Data");
-                        }
-                
+                var g_fullname = document.getElementById('g_fullname').value
+                var g_initial = document.getElementById('g_initial').value
+                var g_address = document.getElementById('g_address').value
+                var g_tp = document.getElementById('g_tp').value
+                var g_dob = document.getElementById('g_dob').value
+                var g_nic = document.getElementById('g_nic').value
+                var g_depend = document.getElementById('g_depend').value
+                var g_position = document.getElementById('g_position').value
+                var g_salary = document.getElementById('g_salary').value
+                var g_emp_name = document.getElementById('g_emp_name').value
+                var g_emp_address = document.getElementById('g_emp_address').value
+
+                var g_bhalf_fullname = document.getElementById('g_bhalf_fullname').value
+                var g_bhalf_dob = document.getElementById('g_bhalf_dob').value
+                var g_bhalf_position = document.getElementById('g_bhalf_position').value
+                var g_bhalf_salary = document.getElementById('g_bhalf_salary').value
+                var g_bhalf_emp_name = document.getElementById('g_bhalf_emp_name').value
+
+                var house_property = document.getElementById('house_property').value
+                var house_size = document.getElementById('house_size').value
+                var house_value = document.getElementById('house_value').value
+                var house_pawned = document.getElementById('house_pawned').value
+                var house_pawn_getter = document.getElementById('house_pawn_getter').value
+
+                var saving_account_bank = document.getElementById('saving_account_bank').value
+                var saving_facility = document.getElementById('saving_facility').value
+                var saving_acc_no = document.getElementById('saving_acc_no').value
+                var cus_reg_date = document.getElementById('cus_reg_date').value
+
+                if (cus_fullname != "" && cus_initial != "" && cus_paddress != "" && cus_tp != "" && cus_nic != "" && cus_dob != "" && cus_depend != "" &&
+                        cus_position != "" && cus_salary != "" && cus_emp_name != "" && cus_bhalf_name != "" && cus_bhalf_dob != "" && cus_bhalf_position != "" &&
+                        cus_bhalf_salary != "" && cus_bhalf_emp_name != "" && g_fullname != "" && g_initial != "" && g_address != "" &&
+                        g_tp != "" && g_dob != "" && g_nic != "" && g_depend != "" && g_position != "" && g_salary != "" && g_emp_name != "" && g_emp_address != "" &&
+                        g_bhalf_fullname != "" && g_bhalf_dob != "" && g_bhalf_position != "" && g_bhalf_salary != "" && g_bhalf_emp_name != "" &&
+                        house_property != "" && house_size != "" && house_value != "" && house_pawned != "" && house_pawn_getter != "" &&
+                        saving_account_bank != "" && saving_facility != "" && saving_acc_no != "" && cus_reg_date != "") {
+                    gotosecond();
+                } else {
+                    alert("Empty Data Fields Found,Please Insert Valid Data");
+                }
+
 
             }
         </script>

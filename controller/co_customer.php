@@ -2,47 +2,325 @@
 
 session_start();
 
-if (!isset($_SESSION['user_email'])) {
-    //header("Location:../index.php");
-} else {
 
+$conn = mysqli_connect("107.180.14.32", "ayolandeveloper", "WelComeDB1129", "ayolan_datahost");
+if (mysqli_connect_errno()) {
+    echo "Falied to Connect the Database" . mysqli_connect_error();
+}
 
+if (isset($_POST['customer_continue'])) {
 
+    $c0 = $_POST['cus_salutation'];
+    $c1 = $_POST['cus_fullname'];
+    $c2 = $_POST['cus_initialname'];
+    $c3 = $_POST['cus_address'];
+    $c4 = $_POST['cus_tp'];
+    $c_nic = $_POST['cus_nic'];
+    $c6 = $_POST['cus_dob'];
+    $c7 = $_POST['cus_ms'];
+    $c8 = $_POST['cus_dependdency'];
+    $c9 = $_POST['cus_position'];
+    $c10 = $_POST['cus_monthly_salary'];
+    $c11 = $_POST['cus_emp_name'];
+    $c12 = $_POST['cus_emp_address'];
+    $c13 = $_POST['cus_addr_map_link'];
+    $c14 = $_POST['reg_date'];
+    $status = "00001";
+//over-customer
 
-    $c0 = filter_input(INPUT_POST, 'cus_salutation');
-    echo '<script>alert("hello:'.$c0.'");</script>';
-    $c1 = filter_input(INPUT_POST, 'cus_fullname');
-    $c2 = filter_input(INPUT_POST, 'cus_initialname');
-    $c3 = filter_input(INPUT_POST, 'cus_address');
-    $c4 = filter_input(INPUT_POST, 'cus_tp');
-    $c5 = filter_input(INPUT_POST, 'cus_nic');
-    $c6 = filter_input(INPUT_POST, 'cus_dob');
-    $c7 = filter_input(INPUT_POST, 'cus_ms');
-    $c8 = filter_input(INPUT_POST, 'cus_dependdency');
-    $c9 = filter_input(INPUT_POST, 'cus_position');
-    $c10 = filter_input(INPUT_POST, 'cus_monthly_salary');
-    $c11 = filter_input(INPUT_POST, 'cus_emp_name');
-    $c12 = filter_input(INPUT_POST, 'cus_emp_address');
-    $c13 = filter_input(INPUT_POST, 'cus_addr_map_link');
-    $c14 = filter_input(INPUT_POST, 'reg_date');
-    $c15 = filter_input(INPUT_POST, 'status');
+    $cw0 = $_POST['cus_hhalf_name'];
+    $cw1 = $_POST['cus_bhalf_dob'];
+    $cw2 = $_POST['cus_bhalf_position'];
+    $cw3 = $_POST['cus_bhalf_monthly_salary'];
+    $cw4 = $_POST['cus_bhalf_emp_name'];
+// Over -customer wf
 
+    $g0 = $_POST['gua_fullname'];
+    $g1 = $_POST['gua_initial_name'];
+    $g2 = $_POST['gua_address'];
+    $g3 = $_POST['gua_tp'];
+    $g4 = $_POST['gua_ms'];
+    $g5 = $_POST['gua_dob'];
+    $g_nic = $_POST['$gua_nic'];
+    $g7 = $_POST['gua_dependency'];
+    $g8 = $_POST['gua_position'];
+    $g9 = $_POST['gua_monthly_salary'];
+    $g10 = $_POST['gua_emp_name'];
+    $g11 = $_POST['gua_emp_address'];
+//Over-gerenter 
+    $gw0 = $_POST['gua_bhalf_fullname'];
+    $gw1= $_POST['gua_bhalf_dob'];
+    $gw2= $_POST['gua_bhalf_position'];
+    $gw3= $_POST['gua_bhalf_monthly_salary'];
+    $gw4= $_POST['gua_bhalf_emp_name'];
+// Over-gerenter wf
+    
+     $cr0 = $_POST['real_prp_house_position'];
+    $cr1 = $_POST['real_prp_house_size'];
+    $cr2 = $_POST['real_prp_house_value'];
+    $cr3 = $_POST['real_prp_house_pawned'];
+    $cr4 = $_POST['real_prp_house_pawn_getter'];
+//Over-customer real propty
+    
+    $cro1 = $_POST['real_prp_other_position'];
+    $cro2 = $_POST['real_prp_other_size'];
+    $cro3 = $_POST['real_prp_other_value'];
+    $cro4 = $_POST['real_prp_other_pawned'];
+    $cro5 = $_POST['real_prp_other_pawn_getter'];
+//Over-customer real propty other
+    
+    
+    $cba1_1 = $_POST['cus_savings_bank_branch'];
+    $cba1_2 = $_POST['cus_savings_facilities'];
+    $cba1_3 = $_POST['cus_savings_account_no'];
+    
+    $cba2_1 = $_POST['cus_mobile_bank_branch'];
+    $cba2_2 = $_POST['cus_mobile_facilities'];
+    $cba2_3 = $_POST['cus_mobile_account_no'];
+    
+    $cba3_1 = $_POST['cus_daily_loan_bank_branch'];
+    $cba3_2 = $_POST['cus_daily_loan_facilities'];
+    $cba3_3 = $_POST['cus_daily_loan_account_no'];
+    
+    
+    
+    
 
+//Query ========================================================================
+    $sql_query_cus = "INSERT INTO customer (
+  cus_salutation,
+  cus_fullname,
+  cus_initialname,
+  cus_address,
+  cus_tp,
+  cus_nic,
+  cus_dob,
+  cus_ms,
+  cus_dependdency,
+  cus_position,
+  cus_monthly_salary,
+  cus_emp_name,
+  cus_emp_address,
+  cus_addr_map_link,
+  cus_reg_date,
+  cus_status
+) 
+VALUES
+  (
+    '$c0',
+    '$c1',
+    '$c2',
+    '$c3',
+    '$c4',
+    '$c_nic',
+    '$c6',
+    '$c7',
+    '$c8',
+    '$c9',
+    '$c10',
+    '$c11',
+    '$c12',
+    '$c13',
+    '$c14',
+    '$status'
+  ) ;";
 
-    //CALL sp_add_customer('MR','Deepal Suranga Weerasuriya','W.A.Deepal Suranga Weerasuriya','87/1, Daduruoya, Chilaw, Srilanka.','+94778409762','943341583v','1994-11-29','Single','0','Developer','105000','Java Software Developers','thummullas, chilaw.','Nooo','2011-11-11','1')
-    $query_cus_cus_1 = "CALL sp_add_customer('" . $c0 . "','" . $c1 . "','" . $c2 . "','" . $c3 . "','" . $c4 . "','" . $c5 . "','$c6','" . $c7 . "','" . $c8 . "','" . $c9 . "','" . $c10 . "','" . $c11 . "','" . $c12 . "','" . $c13 . "','" . $c14 . "','$c15')";
-    echo $query_cus_cus_1;
-    global $d_bc;
-    $qu = mysqli_query($d_bc, $query_cus_cus_1);
+    $sql_query_cus_wf = "INSERT INTO cus_wf(
+  cus_wf_name,
+  cus_wf_dob,
+  cus_wf_posi,
+  cus_wf_salary,
+  cus_wf_emp_name,
+  cus_nic
+) 
+VALUES
+  (
+    '$cw0',
+    '$cw1',
+    '$cw2',
+    '$cw3',
+    '$cw4',
+    '$c_nic'
+  );";
 
+    $sql_query_ger = "INSERT INTO ger (
+  ger_fullname,
+  ger_initialname,
+  ger_address,
+  ger_emp_tp,
+  ger_nic,
+  ger_dob,
+  ger_ms,
+  ger_dependences,
+  ger_position,
+  ger_salerry,
+  ger_emp_name,
+  ger_emp_address,
+  cus_nic
+) 
+VALUES
+  (
+    '$g0',
+    '$g1',
+    '$g2',
+    '$g3',
+    '$g4',
+    '$g5',
+    '$g_nic',
+    '$g7',
+    '$g8',
+    '$g9',
+    '$g10',
+    '$g11',
+    '$c_nic'
+  ) ;
+";
+    ///////////////////////////////////////////////////////////////
+    $sql_query_ger_wf="INSERT INTO ger_wf (
+  ger_wf_name,
+  ger_wf_dob,
+  ger_wf_job_or_position,
+  ger_wf_salerry,
+  gua_wf_emp_name,
+  ger_nic
+) 
+VALUES
+  (
+    '$gw0',
+    '$gw1',
+    '$gw2',
+    '$gw3',
+    '$gw4',
+    '$g_nic'
+  ) ;";
+    
+  $sql_query_cus_real_ho="INSERT INTO cus_real_property (
+  category,
+  positi,
+  size,
+  val,
+  is_pawned,
+  pawn_getter,
+  cus_nic
+) 
+VALUES
+  (
+    '1',
+    '$cr0',
+    '$cr1',
+    '$cr2',
+    '$cr3',
+    '$cr4',
+    '$c_nic'
+  );";  
+    
+  
+  $sql_query_cus_real_ot="INSERT INTO cus_real_property (
+  category,
+  positi,
+  size,
+  val,
+  is_pawned,
+  pawn_getter,
+  cus_nic
+) 
+VALUES
+  (
+    '2',
+    '$cro1',
+    '$cro2',
+    '$cro3',
+    '$cro4',
+    '$cro5',
+    '$c_nic'
+  );";  
+    
+  $sql_query_cus_bank1="INSERT INTO cus_bnk_acc(
+  cus_bnk_name_and_branch,
+  cus_facilities,
+  cus_bnk_account_no,
+  idbank_acc_cat,
+  cus_nic
+) 
+VALUES
+  (
+    '$cba1_1',
+    '$cba1_2',
+    '$cba1_3',
+    '1',
+    '$c_nic'
+  ) ;
 
-    if ($qu) {
+";
+  $sql_query_cus_bank2="INSERT INTO cus_bnk_acc(
+  cus_bnk_name_and_branch,
+  cus_facilities,
+  cus_bnk_account_no,
+  idbank_acc_cat,
+  cus_nic
+) 
+VALUES
+  (
+    '$cba2_1',
+    '$cba2_2',
+    '$cba2_3',
+    '3',
+    '$c_nic'
+  ) ;
 
-        echo "<script>alert('OK Customer');window.open('../customer/customer_registration.php','_self');</script>";
-        mysqli_close($d_bc);
+";
+  $sql_query_cus_bank3="INSERT INTO cus_bnk_acc(
+  cus_bnk_name_and_branch,
+  cus_facilities,
+  cus_bnk_account_no,
+  idbank_acc_cat,
+  cus_nic
+) 
+VALUES
+  (
+    '$cba3_1',
+    '$cba3_2',
+    '$cba3_3',
+    '3',
+    '$c_nic'
+  ) ;
+
+";
+  
+  
+  
+  
+    ///////////////Don't Touch-query execute///////////////////// 
+
+    $runquery_cus = mysqli_query($conn, $sql_query_cus);
+    mysqli_close($conn);
+    $runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
+    mysqli_close($conn);
+    $runquery_ger = mysqli_query($conn, $sql_query_ger);
+    mysqli_close($conn);
+    $runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
+    mysqli_close($conn);
+    $runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
+    mysqli_close($conn);
+    $runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
+    mysqli_close($conn);
+    $runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
+    mysqli_close($conn);
+    $runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
+    mysqli_close($conn);
+    $runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
+    mysqli_close($conn);
+    
+    
+    
+    
+    echo 'Sussssssssssssssss';
+
+    if ($runquery_cus_wf) {
+        echo '<script>alert("Successs);</script>';
+        // header('Location:../customer/customer_registration.php');
     } else {
-        echo "<script>alert('NO Customer');</script>";
-
-        mysqli_close($d_bc);
+        echo "error";
     }
 }
+?>
