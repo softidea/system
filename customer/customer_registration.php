@@ -589,13 +589,12 @@ if (!isset($_SESSION['user_email'])) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span style="color:red;">*</span><label class="control-label"   id="">Registration Date</label>
-                                        <div class="fomr-inline">
+                                        <div class="fomr-inline" id="msg_caption">
                                             <input type="date" id="cus_reg_date" name="reg_date" value="<?php echo $reg_date; ?>" placeholder="Date" class="form-control" />
                                             <br><p><b>Warning</b> :~~<span style="color:red;">*</span>~~ are mandatory fields, should not be empty</p>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-12">
                                     <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="checkCustomerValues();" value="Continue">
                                 </div>
@@ -652,8 +651,6 @@ if (!isset($_SESSION['user_email'])) {
                                 <div class="col-sm-6">
                                     <div id="leasepanel">
                                         <fieldset id="account">
-
-
                                             <legend>Leasing Details</legend>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Service No:</label>
@@ -696,11 +693,11 @@ if (!isset($_SESSION['user_email'])) {
                                                 <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Lease Rate:</label>
+                                                <label class="control-label"   id="">Lease Rental:</label>
                                                 <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Fixed Rate:</label>
+                                                <label class="control-label"   id="">Fixed Rental:</label>
                                                 <input type="text" name="fixed_rate" id="f_rate" placeholder="Fix Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
@@ -925,11 +922,13 @@ if (!isset($_SESSION['user_email'])) {
                         saving_account_bank != "" && saving_facility != "" && saving_acc_no != "" && cus_reg_date != "") {
                     gotosecond();
                 } else {
+                    document.getElementById('msg_caption').style.color="red";
                     alert("Empty Data Fields Found,Please Insert Valid Data");
                 }
 
 
             }
+            
         </script>
     </body>
 </html>

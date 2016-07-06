@@ -140,11 +140,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Pawn Rate:</label>
+                                        <label class="control-label" for="input-email">Pawn Rental:</label>
                                         <input type="text" disabled name="pawn_rate" id="pawnrate" placeholder="Pawn Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Fixed Rate:</label>
+                                        <label class="control-label" for="input-email">Fixed Rental:</label>
                                         <input type="text" name="fixed_rate" id="fixedrate" value="<?php echo $fixed_rate; ?>" placeholder="Fixed Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">

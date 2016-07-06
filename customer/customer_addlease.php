@@ -296,11 +296,11 @@
                                         <input type="text" readonly name="model_year" id="m_year" placeholder="Model Year" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Lease Rate:</label>
+                                        <label class="control-label" for="input-email">Lease Rental:</label>
                                         <input type="text" readonly name="lease_rate" id="l_rate" placeholder="Lease Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Fixed Rate:</label>
+                                        <label class="control-label" for="input-email">Fixed Rental:</label>
                                         <input type="text" name="fixed_rate" id="f_rate" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
