@@ -44,11 +44,9 @@
                                         </select>
                                     </div>
                                     <div class="form-group required">
-                                        <div class="form-group required">
-                                            <label class="control-label" for="input-email">Search Here:</label>
-                                            <input type="text" name="customer_search_bar" id="customer_searchbar" value="" placeholder="Search Here" id="input-email" class="form-control" required/>
-                                        </div>
-                                        <div class="form required">
+                                        <label class="control-label" for="input-email">Search Here:</label>
+                                        <div class="form-inline required">
+                                            <input type="text" name="customer_search_bar" id="customer_searchbar" value="" placeholder="Search Here" class="form-control" style="width: 86%;" required/>
                                             <button type="button" id="cservicebtn" class="btn btn">Search</button>
                                         </div>
                                     </div>
@@ -71,9 +69,6 @@
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Installment Date:</label>
                                                 <input type="date" name="install_date" id="service_searchbar"  class="form-control" required/>
-                                            </div>
-                                            <div class="form required">
-                                                <button type="button" id="cservicebtn" class="btn btn">Search</button>
                                             </div>
                                         </div>
                                     </fieldset>
