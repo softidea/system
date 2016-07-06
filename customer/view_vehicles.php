@@ -15,6 +15,13 @@
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../assets/css/customer_registration.css">
+
+        <?php if (isset($_GET['bootstrap']) && $_GET['bootstrap'] == 1): ?>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <?php else: ?>
+        <link rel="stylesheet" type="text/css" href="../assets/css/zebra_pagination.css">
+        <?php endif ?>
+
         <link rel="icon" href="favicon.ico">
         <?php include '../controller/co_load_bike_rates.php'; ?>
 
@@ -166,7 +173,13 @@
         </script>
     </head>
     <body>
-        <?php include '../assets/include/navigation_bar.php'; ?>
+        <?php
+        include '../assets/include/navigation_bar.php';
+        $conn = mysqli_connect("77.104.142.97", "ayolanin_dev", "WelComeDB1129", "ayolanin_datahost");
+        if (mysqli_connect_errno()) {
+        echo "Falied to Connect the Database" . mysqli_connect_error();
+        }
+        ?>
         <!--Customer Panel Section-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
             <div class="row">
@@ -227,25 +240,79 @@
                                     </div>
                                 </fieldset>
                             </div>
+                            <!--pagination for bick values-->
+                            <?php
+                            global $conn;
+                            $records_per_page = 10;
+                            require 'Zebra_Pagination.php';
+                            $pagination = new Zebra_Pagination();
 
+                            $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_vehicles_pre_id`,`vehicle_type_id`,`model_year`,`model`,`type`,`min_value`,`max_value` FROM`ser_vehicles_pre` LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                            $result = mysqli_query($conn, $sql_query);
+                            if (!($result)) {
+
+                            // stop execution and display error message
+                            die(mysql_error());
+                            }
+                            $rows = mysqli_fetch_assoc(mysqli_query($conn, 'SELECT FOUND_ROWS() AS rows'));
+                            $pagination->records($rows['rows']);
+                            $pagination->records_per_page($records_per_page);
+                            ?>
                             <div class="col-sm-12">
                                 <div id="bike_div" style="display: block;background: white;">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Model Year</th>
-                                                <th>Model</th>
-                                                <th>Type</th>
-                                                <th>Min Value</th>
-                                                <th>Max Value</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="bike_tbody">
-                                            <?php loadBikeRates(); ?>
-                                        </tbody>
-                                    </table>
+                                    <div id="printarea">
+
+                                        <table class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Model Year</th>
+                                                    <th>Model</th>
+                                                    <th>Type</th>
+                                                    <th>Min Value</th>
+                                                    <th>Max Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="bike_tbody">
+                                                <?php $index = 0; ?>
+                                                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                                                <tr<?php echo $index++% 2 ? ' class="even"' : '' ?>>
+
+                                                    <td><?php echo $row['ser_vehicles_pre_id'] ?></td>
+                                                    <td><?php echo $row['model_year'] ?></td>
+                                                    <td><?php echo $row['model'] ?></td>
+                                                    <td><?php echo $row['type'] ?></td>
+                                                    <td><?php echo $row['min_value'] ?></td>
+                                                    <td><?php echo $row['max_value'] ?></td>
+
+                                                </tr>
+                                                <?php endwhile ?>
+                                            </tbody>
+                                        </table>
+                                        <div class="text-center">
+                                            <nav> <ul class="pagination"><li> <?php $pagination->render(); ?></li></ul></nav>
+                                        </div>
+
+
+                                    </div>
                                 </div>
+                                <!--pagination for 3whele values-->
+                                <?php
+                                global $conn;
+                                $records_per_page = 10;
+                                $pagination = new Zebra_Pagination();
+
+                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS `threewheel_pre_id`,`tw_type`,`tw_mode`,`min_val`,`max_val`,`status` FROM`ser_threewheel_pre`  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                $result = mysqli_query($conn, $sql_query);
+                                if (!($result)) {
+
+                                // stop execution and display error message
+                                die(mysql_error());
+                                }
+                                $rows = mysqli_fetch_assoc(mysqli_query($conn, 'SELECT FOUND_ROWS() AS rows'));
+                                $pagination->records($rows['rows']);
+                                $pagination->records_per_page($records_per_page);
+                                ?>
                                 <div id="tw_div" style="display: none;">
                                     <table class="table table-bordered table-hover">
                                         <thead>
@@ -259,10 +326,42 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tw_tbody">
-                                            <?php loadTwRates(); ?>
+                                            <?php $index = 0; ?>
+                                            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                                            <tr<?php echo $index++% 2 ? ' class="even"' : '' ?>>
+
+                                                <td><?php echo $row['threewheel_pre_id'] ?></td>
+                                                <td><?php echo 'None' ?></td>
+                                                <td><?php echo $row['tw_type'] ?></td>
+                                                <td><?php echo $row['tw_mode'] ?></td>
+                                                <td><?php echo $row['min_val'] ?></td>
+                                                <td><?php echo $row['max_val'] ?></td>
+
+                                            </tr>
+                                            <?php endwhile ?>
                                         </tbody>
                                     </table>
+                                    <div class="text-center">
+                                        <nav> <ul class="pagination"><li> <?php $pagination->render(); ?></li></ul></nav>
+                                    </div>
                                 </div>
+                                <!--pagination for Land values-->
+                                <?php
+                                global $conn;
+                                $records_per_page = 10;
+                                $pagination = new Zebra_Pagination();
+
+                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS `id`,`year_id`,`amount_id`,`interest` FROM`ser_land_pre`   LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                $result = mysqli_query($conn, $sql_query);
+                                if (!($result)) {
+
+                                // stop execution and display error message
+                                die(mysql_error());
+                                }
+                                $rows = mysqli_fetch_assoc(mysqli_query($conn, 'SELECT FOUND_ROWS() AS rows'));
+                                $pagination->records($rows['rows']);
+                                $pagination->records_per_page($records_per_page);
+                                ?>
                                 <div id="land_div" style="display: none;">
                                     <table class="table table-bordered table-hover">
                                         <thead>
@@ -274,9 +373,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php loadLandRates(); ?>
+                                            <?php $index = 0; ?>
+                                            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+
+                                            <?php
+                                            $lid = $row['id'];
+                                            $l_yid = $row['year_id'];
+                                            $l_aid = $row['amount_id'];
+                                            $l_interest = $row['interest'];
+                                            ?>
+                                            <?php if ($l_yid == "1" && $l_yid != "0") { ?>
+                                            <tr<?php echo $index++% 2 ? ' class="even"' : '' ?>>
+                                                <td><?php echo $l_aid?></td>
+                                                <td><?php echo $l_yid.' Year' ?></td>
+                                                <td><?php echo $l_aid.'00,000.00'?></td>
+                                                <td><?php echo $l_interest ?></td>
+                                            </tr>
+                                           <?php } else if ($l_yid != "1" && $l_yid != "0") {?>
+                                            <tr<?php echo $index++% 2 ? ' class="even"' : '' ?>>
+                                                 <td><?php echo $l_aid?></td>
+                                                <td><?php echo $l_yid.' Years' ?></td>
+                                                <td><?php echo $l_aid.'00,000.00'?></td>
+                                                <td><?php echo $l_interest ?></td>
+                                               </tr>
+                                           <?php }?>
+
+                                            <?php endwhile ?>
                                         </tbody>
                                     </table>
+                                    <div class="text-center">
+                                        <nav> <ul class="pagination"><li> <?php $pagination->render(); ?></li></ul></nav>
+                                    </div>
                                 </div>
 
                                 <div class="new_vehicle" style="display: block;">
@@ -454,49 +581,23 @@
 <script type="text/javascript">
     /*--This JavaScript method for Print command--*/
     function PrintDoc() {
-        var toPrint = "";
-        if (document.getElementById('bike_div').style.display == "block") {
-            var toPrint = document.getElementById('bike_div');
-        } else if (document.getElementById('tw_div').style.display == "block") {
-            var toPrint = document.getElementById('tw_div');
-        } else if (document.getElementById('land_div').style.display == "block") {
-            var toPrint = document.getElementById('land_div');
-        }
-
+        var toPrint = document.getElementById('printarea');
         var popupWin = window.open('', '_blank', 'width=1024,height=600,location=no,left=200px');
         popupWin.document.open();
-        popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
+        popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
         popupWin.document.write(toPrint.innerHTML);
         popupWin.document.write('</html>');
         popupWin.document.close();
     }
     /*--This JavaScript method for Print Preview command--*/
     function PrintPreview() {
-        var toPrint = "";
-        if (document.getElementById('bike_div').style.display == "block") {
-            var toPrint = document.getElementById('bike_div');
-        } else if (document.getElementById('tw_div').style.display == "block") {
-            var toPrint = document.getElementById('tw_div');
-        } else if (document.getElementById('land_div').style.display == "block") {
-            var toPrint = document.getElementById('land_div');
-        }
-
+        var toPrint = document.getElementById('printarea');
         var popupWin = window.open('', '_blank', 'width=1024,height=600,location=no,left=200px');
         popupWin.document.open();
-        //
-        popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body style="font-size:14px;">')
+        popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body">')
         popupWin.document.write(toPrint.innerHTML);
         popupWin.document.write('</html>');
         popupWin.document.close();
     }
-</script>
-
-<script>
-    $(document).on('keydown', function (e) {
-        if (e.ctrlKey && (e.key == "p")) {
-            alert("Please use the Print PDF button below for a better rendering on the document");
-
-        }
-    });
 </script>
 </html>
