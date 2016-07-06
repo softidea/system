@@ -21,6 +21,7 @@
                             <li><a href="<?php echo ('customer_view.php'); ?>" style="text-decoration: none;">Update Customer</a></li>
                             <li><a href="<?php echo ('customer_view.php'); ?>" style="text-decoration: none;">View Customers</a></li>
                             <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Pay Installment</a></li>
+                            <li><a href="<?php echo ('customer_tieup.php'); ?>" style="text-decoration: none;">Customer Tie-Up</a></li>
                         </ul>
                     </li>
 
