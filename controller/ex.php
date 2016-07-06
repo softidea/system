@@ -2,10 +2,10 @@
 
 // php code to Insert data into mysql database from input text
 if (isset($_POST['insert'])) {
-    $hostname = "107.180.14.32";
-    $username = "ayolandeveloper";
+    $hostname = "77.104.142.97";
+    $username = "ayolanin_dev";
     $password = "WelComeDB1129";
-    $databaseName = "ayolan_datahost";
+    $databaseName = "ayolanin_datahost";
 
     // get values form input text and number
 
