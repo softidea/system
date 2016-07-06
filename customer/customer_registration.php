@@ -419,9 +419,9 @@ if (!isset($_SESSION['user_email'])) {
                                         <?php
                                         $chack_g = "checked";
                                         ?>
-                                        <label class="radio-inline"><input type="radio" name="gua_salutation" <?php echo $chack_g; ?>  >: Mr</label>
-                                        <label class="radio-inline"><input type="radio" name="gua_salutation"  >: Mis</label>
-                                        <label class="radio-inline"><input type="radio" name="gua_salutation"  >: Miss</label>
+                                        <label class="radio-inline"><input type="radio" name="gua_salutation" value="Mr" <?php echo $chack_g; ?>  >: Mr</label>
+                                        <label class="radio-inline"><input type="radio" name="gua_salutation" value="Mis" >: Mis</label>
+                                        <label class="radio-inline"><input type="radio" name="gua_salutation" value="Miss" >: Miss</label>
 
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Full Name:</label>
@@ -433,7 +433,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Permanent Address :</label>
-                                            <input type="text" id="g_address" name="gua_address" value="<?php echo $gua_address; ?>" placeholder="E-mail"   class="form-control" />
+                                            <input type="text" id="g_address" name="gua_address" value="<?php echo $gua_address; ?>" placeholder="Permanent Address"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Telephone:</label>

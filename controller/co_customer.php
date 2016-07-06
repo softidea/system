@@ -35,13 +35,14 @@ if (isset($_POST['customer_continue'])) {
     $cw4 = $_POST['cus_bhalf_emp_name'];
 // Over -customer wf
 
-    $g0 = $_POST['gua_fullname'];
-    $g1 = $_POST['gua_initial_name'];
-    $g2 = $_POST['gua_address'];
-    $g3 = $_POST['gua_tp'];
-    $g4 = $_POST['gua_ms'];
+    $g0 = $_POST['gua_salutation'];
+    $g1 = $_POST['gua_fullname'];
+    $g2 = $_POST['gua_initial_name'];
+    $g3 = $_POST['gua_address'];
+    $g4 = $_POST['gua_tp'];
     $g5 = $_POST['gua_dob'];
-    $g_nic = $_POST['$gua_nic'];
+    $g6 = $_POST['gua_ms'];
+    $g_nic = $_POST['gua_nic'];
     $g7 = $_POST['gua_dependency'];
     $g8 = $_POST['gua_position'];
     $g9 = $_POST['gua_monthly_salary'];
@@ -49,42 +50,42 @@ if (isset($_POST['customer_continue'])) {
     $g11 = $_POST['gua_emp_address'];
 //Over-gerenter 
     $gw0 = $_POST['gua_bhalf_fullname'];
-    $gw1= $_POST['gua_bhalf_dob'];
-    $gw2= $_POST['gua_bhalf_position'];
-    $gw3= $_POST['gua_bhalf_monthly_salary'];
-    $gw4= $_POST['gua_bhalf_emp_name'];
+    $gw1 = $_POST['gua_bhalf_dob'];
+    $gw2 = $_POST['gua_bhalf_position'];
+    $gw3 = $_POST['gua_bhalf_monthly_salary'];
+    $gw4 = $_POST['gua_bhalf_emp_name'];
 // Over-gerenter wf
-    
-     $cr0 = $_POST['real_prp_house_position'];
+
+    $cr0 = $_POST['real_prp_house_position'];
     $cr1 = $_POST['real_prp_house_size'];
     $cr2 = $_POST['real_prp_house_value'];
     $cr3 = $_POST['real_prp_house_pawned'];
     $cr4 = $_POST['real_prp_house_pawn_getter'];
 //Over-customer real propty
-    
+
     $cro1 = $_POST['real_prp_other_position'];
     $cro2 = $_POST['real_prp_other_size'];
     $cro3 = $_POST['real_prp_other_value'];
     $cro4 = $_POST['real_prp_other_pawned'];
     $cro5 = $_POST['real_prp_other_pawn_getter'];
 //Over-customer real propty other
-    
-    
+
+
     $cba1_1 = $_POST['cus_savings_bank_branch'];
     $cba1_2 = $_POST['cus_savings_facilities'];
     $cba1_3 = $_POST['cus_savings_account_no'];
-    
+
     $cba2_1 = $_POST['cus_mobile_bank_branch'];
     $cba2_2 = $_POST['cus_mobile_facilities'];
     $cba2_3 = $_POST['cus_mobile_account_no'];
-    
+
     $cba3_1 = $_POST['cus_daily_loan_bank_branch'];
     $cba3_2 = $_POST['cus_daily_loan_facilities'];
     $cba3_3 = $_POST['cus_daily_loan_account_no'];
-    
-    
-    
-    
+
+
+
+
 
 //Query ========================================================================
     $sql_query_cus = "INSERT INTO customer (
@@ -144,6 +145,7 @@ VALUES
   );";
 
     $sql_query_ger = "INSERT INTO ger (
+  ger_salutation,
   ger_fullname,
   ger_initialname,
   ger_address,
@@ -156,7 +158,8 @@ VALUES
   ger_salerry,
   ger_emp_name,
   ger_emp_address,
-  cus_nic
+  cus_nic,
+  ger_status
 ) 
 VALUES
   (
@@ -167,16 +170,19 @@ VALUES
     '$g4',
     '$g5',
     '$g_nic',
+    '$g6',
     '$g7',
     '$g8',
     '$g9',
     '$g10',
     '$g11',
+    '1',
     '$c_nic'
   ) ;
+
 ";
     ///////////////////////////////////////////////////////////////
-    $sql_query_ger_wf="INSERT INTO ger_wf (
+    $sql_query_ger_wf = "INSERT INTO ger_wf (
   ger_wf_name,
   ger_wf_dob,
   ger_wf_job_or_position,
@@ -193,15 +199,16 @@ VALUES
     '$gw4',
     '$g_nic'
   ) ;";
-    
-  $sql_query_cus_real_ho="INSERT INTO cus_real_property (
+
+    $sql_query_cus_real_ho = "INSERT INTO cus_real_property (
   category,
-  positi,
+  place,
   size,
   val,
   is_pawned,
   pawn_getter,
-  cus_nic
+  cus_nic,
+  status
 ) 
 VALUES
   (
@@ -211,18 +218,20 @@ VALUES
     '$cr2',
     '$cr3',
     '$cr4',
-    '$c_nic'
-  );";  
-    
-  
-  $sql_query_cus_real_ot="INSERT INTO cus_real_property (
+    '$c_nic',
+    '1'
+  ) ;";
+
+
+    $sql_query_cus_real_ot = "INSERT INTO cus_real_property (
   category,
-  positi,
+  place,
   size,
   val,
   is_pawned,
   pawn_getter,
-  cus_nic
+  cus_nic,
+  status
 ) 
 VALUES
   (
@@ -232,10 +241,11 @@ VALUES
     '$cro3',
     '$cro4',
     '$cro5',
-    '$c_nic'
-  );";  
-    
-  $sql_query_cus_bank1="INSERT INTO cus_bnk_acc(
+    '$c_nic',
+    '1'
+  ) ;";
+
+    $sql_query_cus_bank1 = "INSERT INTO cus_bnk_acc(
   cus_bnk_name_and_branch,
   cus_facilities,
   cus_bnk_account_no,
@@ -252,7 +262,7 @@ VALUES
   ) ;
 
 ";
-  $sql_query_cus_bank2="INSERT INTO cus_bnk_acc(
+    $sql_query_cus_bank2 = "INSERT INTO cus_bnk_acc(
   cus_bnk_name_and_branch,
   cus_facilities,
   cus_bnk_account_no,
@@ -269,7 +279,7 @@ VALUES
   ) ;
 
 ";
-  $sql_query_cus_bank3="INSERT INTO cus_bnk_acc(
+    $sql_query_cus_bank3 = "INSERT INTO cus_bnk_acc(
   cus_bnk_name_and_branch,
   cus_facilities,
   cus_bnk_account_no,
@@ -286,41 +296,42 @@ VALUES
   ) ;
 
 ";
-  
-  
-  
-  
+
+
+
+
     ///////////////Don't Touch-query execute///////////////////// 
 
     $runquery_cus = mysqli_query($conn, $sql_query_cus);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_ger = mysqli_query($conn, $sql_query_ger);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
-    mysqli_close($conn);
+    //mysqli_close($conn);
     $runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
     mysqli_close($conn);
-    
-    
-    
-    
-    echo 'Sussssssssssssssss';
 
-    if ($runquery_cus_wf) {
+
+
+
+    
+
+    if ($runquery_cus || $runquery_cus_wf ||  $runquery_ger ||  $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3  ) {
+        echo 'Sussssssssssssssss';
         echo '<script>alert("Successs);</script>';
-        // header('Location:../customer/customer_registration.php');
+        header('Location:../customer/customer_registration.php');
     } else {
-        echo "error";
+        echo "Error Registration";
     }
 }
 ?>
