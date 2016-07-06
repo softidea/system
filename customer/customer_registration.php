@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_email'])) {
     $cus_bhalf_monthly_salary = "";
     $cus_bhalf_emp_name = "";
 //////////////////////////////////////////////////////////////
-    
+
     $gua_fullname = "";
     $gua_initial_name = "";
     $gua_address = "";
@@ -112,7 +112,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_type").innerHTML = xmlhttp.responseText;
                         }
@@ -137,7 +137,7 @@ if (!isset($_SESSION['user_email'])) {
                         // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             if (xmlhttp.responseText === "No Interest Found,Try Again") {
                                 alert(xmlhttp.responseText);
@@ -164,7 +164,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                         }
@@ -182,7 +182,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                         }
@@ -205,7 +205,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             alert(xmlhttp.responseText);
                             var value = xmlhttp.responseText;
@@ -235,7 +235,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             alert(xmlhttp.responseText);
                             document.getElementById('l_rate').value = xmlhttp.responseText;
@@ -268,7 +268,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById('v_code').innerHTML = xmlhttp.responseText;
                         }
@@ -294,9 +294,9 @@ if (!isset($_SESSION['user_email'])) {
         <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Customer Panel Section-->
+        <form action="../controller/co_customer.php" method="POST" enctype="multipart/form-data" name="f1_cus" id="f1_cus">
+            <div class="container" style="margin-top: 80px;display: block;" id="one">
 
-        <div class="container" style="margin-top: 80px;display: block;" id="one">
-            <form action="../controller/co_customer.php" method="POST" enctype="multipart/form-data" name="f1_cus" id="f1_cus">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
@@ -400,7 +400,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <span style="color:red;">*</span><label class="control-label"   id="">Employer Name:</label>
                                             <input type="text" id="cus_bhalf_emp_name" name="cus_bhalf_emp_name" value="<?php echo $cus_bhalf_emp_name; ?>" placeholder="Employer Name"   class="form-control" />
                                         </div>
-                                        
+
                                         <div class="form-group  ">
                                             <span style="color:green;">*</span><label class="control-label">Map Link :</label>
                                             <input type="text" id="cus_addr_map_link" name="cus_addr_map_link" value="<?php echo $cus_addr_map_link; ?>" placeholder="Map Link"   class="form-control" form="f1_cus"/>
@@ -597,23 +597,22 @@ if (!isset($_SESSION['user_email'])) {
                                 </div>
 
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn" name="customer_continue" id="custcontinue" value="Continue">
+                                    <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="checkCustomerValues();" value="Continue">
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-        <!-- Over.Customer Panel Section-->
+            </div>
+            <!-- Over.Customer Panel Section-->
 
 
-        <!--Start.Property Panel Section-->
+            <!--Start.Property Panel Section-->
 
-        <!--Start.Property Information Details-->
-        <div class="container" style="margin-top: 80px;display: none;" id="second">
-            <form action="../controller/co_customer.php" method="POST" id="fr_property"><div class="row">
+            <!--Start.Property Information Details-->
+            <div class="container" style="margin-top: 80px;display: none;" id="second">
+                <div class="row">
 
                     <div class="col-md-12">
                         <div class="panel panel-default">
@@ -786,9 +785,8 @@ if (!isset($_SESSION['user_email'])) {
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-
+            </div>
+        </form>
         <!--Over.Property Panel Section-->
 
 
