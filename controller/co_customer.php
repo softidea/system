@@ -326,14 +326,14 @@ mysqli_close($conn);
 
 
 if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3 ) {
-echo 'Sussssssssssssssss';
-echo '<script>alert("Successs);</script>';
-echo '<script type="text/javascript">
-$(document).ready(function(){
-$("#second").load("../customer/customer_registration.php");
-});
-</script>';
-//        header('Location:../customer/customer_registration.php');
+echo 'Customer Successfully Registered!';
+//echo '<script>alert("Successs);</script>';
+//echo '<script type="text/javascript">
+//$(document).ready(function(){
+//$("#second").load("../customer/customer_registration.php");
+//});
+//</script>';
+        header('Location:../customer/customer_registration.php');
 } else {
 echo "Error Registration";
 }
