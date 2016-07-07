@@ -78,13 +78,35 @@ if (!isset($_SESSION['user_email'])) {
     $cus_daily_loan_account_no = "";
 
     $payable_loan_amount = "";
-    $loan_description = "";
+    
+    
 
     $reg_date = date("Y-m-d");
+///////////////////////////////////////////////////////
+
+    $useremailtoname = $_SESSION['user_email'];
+    $cbopayment = "";
+    
+    $service_no="";
+    $vehicle_mtype_brand="";
+    $vehicle_brand="";
+    $vehicle_type="";
+    $vehicle_code="";
+    $vehicle_no1="";
+    $vehicle_no2="";
+    $model_year="";
+    $lease_rate="";
+    $fixed_rate="";
+    $cbo_loan_duration="";
+    $loan_description="";
+    $deed_no="";
+    $cbo_period="";
+    $cbo_year="";
+    
+    $pawn_rate="";
     
     
-    $useremailtoname="";
-    $cbopayment="";
+    
     ?>
     <head>
         <meta charset="utf-8">
@@ -600,7 +622,7 @@ if (!isset($_SESSION['user_email'])) {
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                      
+
                                     <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="checkCustomerValues();" value="Continue">
                                 </div>
                             </div>
@@ -640,14 +662,14 @@ if (!isset($_SESSION['user_email'])) {
                                             </select>
                                         </div>
                                         <div class="form-group  ">
-                                            <form action="#" method="Get">
-                                            <label class="control-label"   id="">Upload Customer:</label>
-                                            <input type="file" name="product_image"  />
-                                            </form>
+
+                                            <label class="control-label">Upload Customer:</label>
+                                            <input type="file" name="fileToUpload" id="fileToUpload">
+
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Upload Property:</label>
-                                            <input type="file" name="product_image"  />
+                                            <input type="text" name="product_image"  />
                                         </div>
                                     </fieldset>
 
@@ -655,52 +677,8 @@ if (!isset($_SESSION['user_email'])) {
 
                                 <!--Start.Leasing Information Details-->
 
-                                <?php
-                               
-                                $target_dir = "uploads/";
-                                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-                                $uploadOk = 1;
-                                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-                                // Check if image file is a actual image or fake image
-                                if (isset($_POST["submit"])) {
-                                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                                    if ($check !== false) {
-                                        echo "File is an image - " . $check["mime"] . ".";
-                                        $uploadOk = 1;
-                                    } else {
-                                        echo "File is not an image.";
-                                        $uploadOk = 0;
-                                    }
-                                }
-// Check if file already exists
-                                if (file_exists($target_file)) {
-                                    echo "Sorry, file already exists.";
-                                    $uploadOk = 0;
-                                }
-                                // Check file size
-                                if ($_FILES["fileToUpload"]["size"] > 500000) {
-                                    echo "Sorry, your file is too large.";
-                                    $uploadOk = 0;
-                                }
-                                // Allow certain file formats
-                                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                                    $uploadOk = 0;
-                                }
-                                // Check if $uploadOk is set to 0 by an error
-                                if ($uploadOk == 0) {
-                                    echo "Sorry, your file was not uploaded.";
-                                // if everything is ok, try to upload file
-                                } else {
-                                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                                        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-                                    } else {
-                                        echo "<script>alert('Sorry, there was an error \n uploading your file.');</script>";
-                                    }
-                                }
-                                ?>
 
-                                
+
 
                                 <div class="col-sm-6">
                                     <div id="leasepanel">
@@ -708,11 +686,12 @@ if (!isset($_SESSION['user_email'])) {
                                             <legend>Leasing Details</legend>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Service No:</label>
-                                                <input type="text"  name="service_no" id="sno" placeholder="Service No"   class="form-control" required/>
+                                                <input type="text"  name="service_no"  value="<?php echo $service_no; ?>" id="sno" placeholder="Service No"   class="form-control" required/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Category:</label>
-                                                <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
+
+                                                <select name="vehicle_mtype_brand" value="<?php echo $vehicle_mtype_brand; ?>" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
                                                     <option value="0">~~Select Category~~</option>
                                                     <option value="1">Bike</option>
                                                     <option value="2">Three-Wheel</option>
@@ -720,43 +699,43 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Vehicle Brand:</label>
-                                                <select name="vehicle_brand" id="v_brand" class="form-control" onchange="showTypes(this.value);">
+                                                <select name="vehicle_brand" value="<?php echo $vehicle_brand; ?>" id="v_brand" class="form-control" onchange="showTypes(this.value);">
                                                     <?php load_vehicle_brands(); ?>
                                                 </select>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Vehicle Type:</label>
-                                                <select name="vehicle_type" id="v_type" class="form-control"  onchange="showVehicleMods(this.value);">
+                                                <select name="vehicle_type" value="<?php echo $vehicle_type; ?>" id="v_type" class="form-control"  onchange="showVehicleMods(this.value);">
                                                     <option value="0">~~Select Vehicle Type~~</option>
                                                 </select>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Vehicle Pre Code:</label>
-                                                <select name="vehicle_code" id="v_code" class="form-control" onchange="showDetails();">
+                                                <select name="vehicle_code" value="<?php echo $vehicle_code; ?>" id="v_code" class="form-control" onchange="showDetails();">
                                                     <option value="0">~~Select Vehicle Code~~</option>
                                                 </select>
                                             </div>
                                             <div class="form-inline required">
-                                                <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME"  class="form-control"/>
+                                                <input type="text" name="vehicle_no1" value="<?php echo $vehicle_no1; ?>" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME"  class="form-control"/>
                                                 <label class="control-label"   id=""> - </label>
-                                                <input type="text" name="vehicle_no" maxlength="4" id="v_no" placeholder="Ex:2558"   class="form-control"/>
+                                                <input type="text" name="vehicle_no2" value="<?php echo $vehicle_no2; ?>" maxlength="4" id="v_no" placeholder="Ex:2558"   class="form-control"/>
                                                 <br>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Model Year:</label>
-                                                <input type="text" disabled name="model_year" id="m_year" placeholder="Model Year"   class="form-control"/>
+                                                <input type="text" disabled  name="model_year" value="<?php echo $model_year; ?>" id="m_year" placeholder="Model Year"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Lease Rental:</label>
-                                                <input type="text" disabled name="lease_rate" id="l_rate" placeholder="Lease Rate"   class="form-control"/>
+                                                <input type="text" disabled name="lease_rate" value="<?php echo $lease_rate; ?>" id="l_rate" placeholder="Lease Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Fixed Rental:</label>
-                                                <input type="text" name="fixed_rate" id="f_rate" placeholder="Fix Rate"   class="form-control"/>
+                                                <input type="text" name="fixed_rate" value="<?php echo $fixed_rate; ?>" id="f_rate" placeholder="Fix Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Period:</label>
-                                                <select name="cbo_loan_duration" id="input-region" class="form-control">
+                                                <select name="cbo_loan_duration" value="<?php echo $cbo_loan_duration; ?>" id="input-region" class="form-control">
                                                     <option value="6">6 Months</option>
                                                     <option value="12">1 Year</option>
                                                     <option value="18">1.5 Years</option>
@@ -771,33 +750,33 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Description of the Loan:</label>
-                                                <input type="text"   class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                                <input type="text"  name="loan_description" value="<?php echo $loan_description; ?>" class="form-control" placeholder="Description of the Loan">
                                             </div>
 
                                             <input type="submit" class="btn btn" id="custcontinue" value="Register Lease">
                                             <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                         </fieldset>
                                     </div>
-
+                                    <!-- --------------------------------------------------------------------------- -->
                                     <!--Start.Property Land Panel-->
                                     <div id="landpanel" style="display: none;">
                                         <fieldset id="account">
                                             <legend>Land Pawning Details</legend>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Service No:</label>
-                                                <input type="text" name="service_no" id="sno" placeholder="Service No"   class="form-control"/>
+                                                <input type="text" name="service_no" value="<?php echo $service_no; ?>" id="sno" placeholder="Service No"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Deed Number:</label>
-                                                <input type="text" name="deed_no" id="deed" placeholder="Deed Number"   class="form-control"/>
+                                                <input type="text" name="deed_no" value="<?php echo $deed_no; ?>" id="deed" placeholder="Deed Number"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Registration Date:</label>
-                                                <input type="date" name="reg_date" id="regdate" value="" placeholder="Registration Date"   class="form-control"/>
+                                                <input type="date" name="reg_date" value="<?php echo $reg_date; ?>" id="regdate" value="" placeholder="Registration Date"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Select Amount:</label>
-                                                <select name="cbo_period" id="aid" class="form-control">
+                                                <select name="cbo_period" value="<?php echo $cbo_period; ?>" id="aid" class="form-control">
                                                     <option value="0">~~Select Amount~~</option>
                                                     <option value="1">100,000.00</option>
                                                     <option value="2">200,000.00</option>
@@ -805,7 +784,7 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Select Period:</label>
-                                                <select name="cbo_year" id="yid" class="form-control" onchange="load_interest();">
+                                                <select name="cbo_year" value="<?php echo $cbo_year; ?>" id="yid" class="form-control" onchange="load_interest();">
                                                     <option value="0"> --- Please Select --- </option>
                                                     <option value="1">1 Year</option>
                                                     <option value="2">2 Year</option>
@@ -816,15 +795,15 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Pawn Rate:</label>
-                                                <input type="text" disabled name="pawn_rate" id="pawnrate" placeholder="Pawn Rate"   class="form-control"/>
+                                                <input type="text" value="<?php echo $pawn_rate; ?>" disabled name="pawn_rate" id="pawnrate" placeholder="Pawn Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Fixed Rate:</label>
-                                                <input type="text" name="fixed_rate" id="fixedrate" value="" placeholder="Fixed Rate"   class="form-control"/>
+                                                <input type="text" value="<?php echo $fixed_rate; ?>" name="fixed_rate" id="fixedrate"  placeholder="Fixed Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Description of the Loan:</label>
-                                                <input type="text"   class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                                <input type="text" name="loan_description" value="<?php echo $loan_description; ?>"  class="form-control"  placeholder="Description of the Loan">
                                             </div>
                                             <button type="button" class="btn btn" id="custcontinue">Register Pawn</button>
                                             <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>

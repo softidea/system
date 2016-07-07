@@ -1,93 +1,110 @@
 <?php
+
 session_start();
 
 
 $conn = mysqli_connect("77.104.142.97", "ayolanin_dev", "WelComeDB1129", "ayolanin_datahost");
 if (mysqli_connect_errno()) {
-echo "Falied to Connect the Database" . mysqli_connect_error();
+    echo "Falied to Connect the Database" . mysqli_connect_error();
 }
 
 if (isset($_POST['customer_continue'])) {
 
-$c0 = $_POST['cus_salutation'];
-$c1 = $_POST['cus_fullname'];
-$c2 = $_POST['cus_initialname'];
-$c3 = $_POST['cus_address'];
-$c4 = $_POST['cus_tp'];
-$c_nic = $_POST['cus_nic'];
-$c6 = $_POST['cus_dob'];
-$c7 = $_POST['cus_ms'];
-$c8 = $_POST['cus_dependdency'];
-$c9 = $_POST['cus_position'];
-$c10 = $_POST['cus_monthly_salary'];
-$c11 = $_POST['cus_emp_name'];
-$c12 = $_POST['cus_emp_address'];
-$c13 = $_POST['cus_addr_map_link'];
-$c14 = $_POST['reg_date'];
-$status = "00001";
+    $c0 = $_POST['cus_salutation'];
+    $c1 = $_POST['cus_fullname'];
+    $c2 = $_POST['cus_initialname'];
+    $c3 = $_POST['cus_address'];
+    $c4 = $_POST['cus_tp'];
+    $c_nic = $_POST['cus_nic'];
+    $c6 = $_POST['cus_dob'];
+    $c7 = $_POST['cus_ms'];
+    $c8 = $_POST['cus_dependdency'];
+    $c9 = $_POST['cus_position'];
+    $c10 = $_POST['cus_monthly_salary'];
+    $c11 = $_POST['cus_emp_name'];
+    $c12 = $_POST['cus_emp_address'];
+    $c13 = $_POST['cus_addr_map_link'];
+    $c14 = $_POST['reg_date'];
+    $status = "00001";
 //over-customer
 
-$cw0 = $_POST['cus_hhalf_name'];
-$cw1 = $_POST['cus_bhalf_dob'];
-$cw2 = $_POST['cus_bhalf_position'];
-$cw3 = $_POST['cus_bhalf_monthly_salary'];
-$cw4 = $_POST['cus_bhalf_emp_name'];
+    $cw0 = $_POST['cus_hhalf_name'];
+    $cw1 = $_POST['cus_bhalf_dob'];
+    $cw2 = $_POST['cus_bhalf_position'];
+    $cw3 = $_POST['cus_bhalf_monthly_salary'];
+    $cw4 = $_POST['cus_bhalf_emp_name'];
 // Over -customer wf
 
-$g0 = $_POST['gua_salutation'];
-$g1 = $_POST['gua_fullname'];
-$g2 = $_POST['gua_initial_name'];
-$g3 = $_POST['gua_address'];
-$g4 = $_POST['gua_tp'];
-$g5 = $_POST['gua_dob'];
-$g6 = $_POST['gua_ms'];
-$g_nic = $_POST['gua_nic'];
-$g7 = $_POST['gua_dependency'];
-$g8 = $_POST['gua_position'];
-$g9 = $_POST['gua_monthly_salary'];
-$g10 = $_POST['gua_emp_name'];
-$g11 = $_POST['gua_emp_address'];
+    $g0 = $_POST['gua_salutation'];
+    $g1 = $_POST['gua_fullname'];
+    $g2 = $_POST['gua_initial_name'];
+    $g3 = $_POST['gua_address'];
+    $g4 = $_POST['gua_tp'];
+    $g5 = $_POST['gua_dob'];
+    $g6 = $_POST['gua_ms'];
+    $g_nic = $_POST['gua_nic'];
+    $g7 = $_POST['gua_dependency'];
+    $g8 = $_POST['gua_position'];
+    $g9 = $_POST['gua_monthly_salary'];
+    $g10 = $_POST['gua_emp_name'];
+    $g11 = $_POST['gua_emp_address'];
 //Over-gerenter 
-$gw0 = $_POST['gua_bhalf_fullname'];
-$gw1 = $_POST['gua_bhalf_dob'];
-$gw2 = $_POST['gua_bhalf_position'];
-$gw3 = $_POST['gua_bhalf_monthly_salary'];
-$gw4 = $_POST['gua_bhalf_emp_name'];
+    $gw0 = $_POST['gua_bhalf_fullname'];
+    $gw1 = $_POST['gua_bhalf_dob'];
+    $gw2 = $_POST['gua_bhalf_position'];
+    $gw3 = $_POST['gua_bhalf_monthly_salary'];
+    $gw4 = $_POST['gua_bhalf_emp_name'];
 // Over-gerenter wf
 
-$cr0 = $_POST['real_prp_house_position'];
-$cr1 = $_POST['real_prp_house_size'];
-$cr2 = $_POST['real_prp_house_value'];
-$cr3 = $_POST['real_prp_house_pawned'];
-$cr4 = $_POST['real_prp_house_pawn_getter'];
+    $cr0 = $_POST['real_prp_house_position'];
+    $cr1 = $_POST['real_prp_house_size'];
+    $cr2 = $_POST['real_prp_house_value'];
+    $cr3 = $_POST['real_prp_house_pawned'];
+    $cr4 = $_POST['real_prp_house_pawn_getter'];
 //Over-customer real propty
 
-$cro1 = $_POST['real_prp_other_position'];
-$cro2 = $_POST['real_prp_other_size'];
-$cro3 = $_POST['real_prp_other_value'];
-$cro4 = $_POST['real_prp_other_pawned'];
-$cro5 = $_POST['real_prp_other_pawn_getter'];
+    $cro1 = $_POST['real_prp_other_position'];
+    $cro2 = $_POST['real_prp_other_size'];
+    $cro3 = $_POST['real_prp_other_value'];
+    $cro4 = $_POST['real_prp_other_pawned'];
+    $cro5 = $_POST['real_prp_other_pawn_getter'];
 //Over-customer real propty other
 
 
-$cba1_1 = $_POST['cus_savings_bank_branch'];
-$cba1_2 = $_POST['cus_savings_facilities'];
-$cba1_3 = $_POST['cus_savings_account_no'];
+    $cba1_1 = $_POST['cus_savings_bank_branch'];
+    $cba1_2 = $_POST['cus_savings_facilities'];
+    $cba1_3 = $_POST['cus_savings_account_no'];
 
-$cba2_1 = $_POST['cus_mobile_bank_branch'];
-$cba2_2 = $_POST['cus_mobile_facilities'];
-$cba2_3 = $_POST['cus_mobile_account_no'];
+    $cba2_1 = $_POST['cus_mobile_bank_branch'];
+    $cba2_2 = $_POST['cus_mobile_facilities'];
+    $cba2_3 = $_POST['cus_mobile_account_no'];
 
-$cba3_1 = $_POST['cus_daily_loan_bank_branch'];
-$cba3_2 = $_POST['cus_daily_loan_facilities'];
-$cba3_3 = $_POST['cus_daily_loan_account_no'];
+    $cba3_1 = $_POST['cus_daily_loan_bank_branch'];
+    $cba3_2 = $_POST['cus_daily_loan_facilities'];
+    $cba3_3 = $_POST['cus_daily_loan_account_no'];
+
+    //Over customer bank account
+
+    $se1 = $_POST['service_no'];
+    $se2 = $_POST['vehicle_mtype_brand'];
+    $se3 = $_POST['vehicle_brand'];
+    $se4 = $_POST['vehicle_type'];
+    $se5 = $_POST['vehicle_code'];
+    $se6 = $_POST[''];
+    $se7 = $_POST[''];
+    $se8 = $_POST[''];
+    $se9 = $_POST[''];
+    $se10 = $_POST[''];
+    $se11 = $_POST[''];
+    $se12 = $_POST[''];
+    $se13 = $_POST[''];
 
 
 
 
 
 //Query ========================================================================
-$sql_query_cus = "INSERT INTO customer (
+    $sql_query_cus = "INSERT INTO customer (
   cus_salutation,
   cus_fullname,
   cus_initialname,
@@ -125,7 +142,7 @@ VALUES
     '$status'
   ) ;";
 
-$sql_query_cus_wf = "INSERT INTO cus_wf(
+    $sql_query_cus_wf = "INSERT INTO cus_wf(
   cus_wf_name,
   cus_wf_dob,
   cus_wf_posi,
@@ -143,7 +160,7 @@ VALUES
     '$c_nic'
   );";
 
-$sql_query_ger = "INSERT INTO ger (
+    $sql_query_ger = "INSERT INTO ger (
   ger_salutation,
   ger_fullname,
   ger_initialname,
@@ -181,7 +198,7 @@ VALUES
 
 ";
 ///////////////////////////////////////////////////////////////
-$sql_query_ger_wf = "INSERT INTO ger_wf (
+    $sql_query_ger_wf = "INSERT INTO ger_wf (
   ger_wf_name,
   ger_wf_dob,
   ger_wf_job_or_position,
@@ -199,7 +216,7 @@ VALUES
     '$g_nic'
   ) ;";
 
-$sql_query_cus_real_ho = "INSERT INTO cus_real_property (
+    $sql_query_cus_real_ho = "INSERT INTO cus_real_property (
   category,
   place,
   size,
@@ -222,7 +239,7 @@ VALUES
   ) ;";
 
 
-$sql_query_cus_real_ot = "INSERT INTO cus_real_property (
+    $sql_query_cus_real_ot = "INSERT INTO cus_real_property (
   category,
   place,
   size,
@@ -244,7 +261,7 @@ VALUES
     '1'
   ) ;";
 
-$sql_query_cus_bank1 = "INSERT INTO cus_bnk_acc(
+    $sql_query_cus_bank1 = "INSERT INTO cus_bnk_acc(
   cus_bnk_name_and_branch,
   cus_facilities,
   cus_bnk_account_no,
@@ -261,7 +278,7 @@ VALUES
   ) ;
 
 ";
-$sql_query_cus_bank2 = "INSERT INTO cus_bnk_acc(
+    $sql_query_cus_bank2 = "INSERT INTO cus_bnk_acc(
   cus_bnk_name_and_branch,
   cus_facilities,
   cus_bnk_account_no,
@@ -278,7 +295,7 @@ VALUES
   ) ;
 
 ";
-$sql_query_cus_bank3 = "INSERT INTO cus_bnk_acc(
+    $sql_query_cus_bank3 = "INSERT INTO cus_bnk_acc(
   cus_bnk_name_and_branch,
   cus_facilities,
   cus_bnk_account_no,
@@ -296,37 +313,72 @@ VALUES
 
 ";
 
-
+    $sql_query_service_add = "INSERT INTO service(
+  ser_number,
+  ser_caty,
+  ser_vbrand,
+  ser_vtype_id,
+  ser_v_d_number,
+  ser_v_d_modelyear,
+  ser_leserate,
+  ser_land_pond_amount,
+  ser_period,
+  ser_fixedrental,
+  ser_duration,
+  ser_date,
+  ser_details,
+  ser_status,
+  cus_nic
+) 
+VALUES
+  (
+    '$se1',
+    '$se2',
+    '$se3',
+    '$se4',
+    '$se5',
+    '$se6',
+    '$se7',
+    '$se8',
+    '$se9',
+    '$se10',
+    '$se11',
+    '$se12',
+    '$se13',
+    '1',
+    '$c_nic'
+  ) ;
+";
 
 
 ///////////////Don't Touch-query execute///////////////////// 
 
-$runquery_cus = mysqli_query($conn, $sql_query_cus);
+    $runquery_cus = mysqli_query($conn, $sql_query_cus);
 //mysqli_close($conn);
-$runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
+    $runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
 //mysqli_close($conn);
-$runquery_ger = mysqli_query($conn, $sql_query_ger);
+    $runquery_ger = mysqli_query($conn, $sql_query_ger);
 //mysqli_close($conn);
-$runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
+    $runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
 //mysqli_close($conn);
-$runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
+    $runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
 //mysqli_close($conn);
-$runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
+    $runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
 //mysqli_close($conn);
-$runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
+    $runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
 //mysqli_close($conn);
-$runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
+    $runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
 //mysqli_close($conn);
-$runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
-mysqli_close($conn);
+    $runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
+    mysqli_close($conn);
 
 
 
 
 
 
-if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3 ) {
-echo 'Customer Successfully Registered!';
+    if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
+        echo 'Customer Successfully Registered!';
 //echo '<script>alert("Successs);</script>';
 //echo '<script type="text/javascript">
 //$(document).ready(function(){
@@ -334,8 +386,54 @@ echo 'Customer Successfully Registered!';
 //});
 //</script>';
         header('Location:../customer/customer_registration.php');
-} else {
-echo "Error Registration";
+    } else {
+        echo "Error Registration";
+    }
 }
-}
-?>
+
+
+// file upload
+
+
+
+//$target_dir = "uploads/customers/";
+//$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//$uploadOk = 1;
+//$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+//// Check if image file is a actual image or fake image
+//if (isset($_POST["submit"])) {
+//    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+//    if ($check !== false) {
+//        echo "File is an image - " . $check["mime"] . ".";
+//        $uploadOk = 1;
+//    } else {
+//        echo "File is not an image.";
+//        $uploadOk = 0;
+//    }
+//}
+//// Check if file already exists
+//if (file_exists($target_file)) {
+//    echo "Sorry, file already exists.";
+//    $uploadOk = 0;
+//}
+//// Check file size
+//if ($_FILES["fileToUpload"]["size"] > 500000) {
+//    echo "Sorry, your file is too large.";
+//    $uploadOk = 0;
+//}
+//// Allow certain file formats
+//if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+//    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//    $uploadOk = 0;
+//}
+//// Check if $uploadOk is set to 0 by an error
+//if ($uploadOk == 0) {
+//    echo "Sorry, your file was not uploaded.";
+//// if everything is ok, try to upload file
+//} else {
+//    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+//        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+//    } else {
+//        echo "Sorry, there was an error uploading your file.";
+//    }
+//}
