@@ -81,6 +81,10 @@ if (!isset($_SESSION['user_email'])) {
     $loan_description = "";
 
     $reg_date = date("Y-m-d");
+    
+    
+    $useremailtoname="";
+    $cbopayment="";
     ?>
     <head>
         <meta charset="utf-8">
@@ -596,6 +600,7 @@ if (!isset($_SESSION['user_email'])) {
                                     </div>
                                 </div>
                                 <div class="col-md-12">
+                                      
                                     <input type="button" class="btn btn" name="customer_continue" id="custcontinue" onclick="checkCustomerValues();" value="Continue">
                                 </div>
                             </div>
