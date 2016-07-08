@@ -690,7 +690,6 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Category:</label>
-
                                                 <select name="vehicle_mtype_brand" value="<?php echo $vehicle_mtype_brand; ?>" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
                                                     <option value="0">~~Select Category~~</option>
                                                     <option value="1">Bike</option>

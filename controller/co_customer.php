@@ -84,46 +84,27 @@ if (isset($_POST['customer_continue'])) {
     $cba3_3 = $_POST['cus_daily_loan_account_no'];
 
     //Over customer bank account
-
-    $se1 = $_POST['service_no'];
-    $se2 = $_POST['vehicle_mtype_brand'];
-    $se3 = $_POST['vehicle_brand'];
-    $se4 = $_POST['vehicle_type'];
-    $se5 = $_POST['vehicle_code'];
-    $se6 = $_POST[''];
-    $se7 = $_POST[''];
-    $se8 = $_POST[''];
-    $se9 = $_POST[''];
-    $se10 = $_POST[''];
-    $se11 = $_POST[''];
-    $se12 = $_POST[''];
-    $se13 = $_POST[''];
-
-
-
-
-
 //Query ========================================================================
     $sql_query_cus = "INSERT INTO customer (
-  cus_salutation,
-  cus_fullname,
-  cus_initialname,
-  cus_address,
-  cus_tp,
-  cus_nic,
-  cus_dob,
-  cus_ms,
-  cus_dependdency,
-  cus_position,
-  cus_monthly_salary,
-  cus_emp_name,
-  cus_emp_address,
-  cus_addr_map_link,
-  cus_reg_date,
-  cus_status
-) 
-VALUES
-  (
+    cus_salutation,
+    cus_fullname,
+    cus_initialname,
+    cus_address,
+    cus_tp,
+    cus_nic,
+    cus_dob,
+    cus_ms,
+    cus_dependdency,
+    cus_position,
+    cus_monthly_salary,
+    cus_emp_name,
+    cus_emp_address,
+    cus_addr_map_link,
+    cus_reg_date,
+    cus_status
+    ) 
+    VALUES
+      (
     '$c0',
     '$c1',
     '$c2',
@@ -141,6 +122,7 @@ VALUES
     '$c14',
     '$status'
   ) ;";
+// customer insert over////////////////////////////////////////////////////////
 
     $sql_query_cus_wf = "INSERT INTO cus_wf(
   cus_wf_name,
@@ -160,25 +142,27 @@ VALUES
     '$c_nic'
   );";
 
+    //customer wife over////////////////////////////////////////////////////
+
     $sql_query_ger = "INSERT INTO ger (
-  ger_salutation,
-  ger_fullname,
-  ger_initialname,
-  ger_address,
-  ger_emp_tp,
-  ger_nic,
-  ger_dob,
-  ger_ms,
-  ger_dependences,
-  ger_position,
-  ger_salerry,
-  ger_emp_name,
-  ger_emp_address,
-  cus_nic,
-  ger_status
-) 
-VALUES
-  (
+    ger_salutation,
+    ger_fullname,
+    ger_initialname,
+    ger_address,
+    ger_emp_tp,
+    ger_nic,
+    ger_dob,
+    ger_ms,
+    ger_dependences,
+    ger_position,
+    ger_salerry,
+    ger_emp_name,
+    ger_emp_address,
+    cus_nic,
+    ger_status
+    ) 
+    VALUES
+      (
     '$g0',
     '$g1',
     '$g2',
@@ -192,12 +176,13 @@ VALUES
     '$g9',
     '$g10',
     '$g11',
-    '1',
+    '00001',
     '$c_nic'
-  ) ;
+    ) ;
 
-";
-///////////////////////////////////////////////////////////////
+  ";
+//////////gereanter over/////////////////////////////////////////
+
     $sql_query_ger_wf = "INSERT INTO ger_wf (
   ger_wf_name,
   ger_wf_dob,
@@ -215,6 +200,7 @@ VALUES
     '$gw4',
     '$g_nic'
   ) ;";
+// gerenter wife over///////////////////////////////////////////////////////
 
     $sql_query_cus_real_ho = "INSERT INTO cus_real_property (
   category,
@@ -225,9 +211,9 @@ VALUES
   pawn_getter,
   cus_nic,
   status
-) 
-VALUES
-  (
+    ) 
+    VALUES
+      (
     '1',
     '$cr0',
     '$cr1',
@@ -235,7 +221,7 @@ VALUES
     '$cr3',
     '$cr4',
     '$c_nic',
-    '1'
+    '00001'
   ) ;";
 
 
@@ -248,9 +234,9 @@ VALUES
   pawn_getter,
   cus_nic,
   status
-) 
-VALUES
-  (
+    ) 
+    VALUES
+      (
     '2',
     '$cro1',
     '$cro2',
@@ -313,83 +299,259 @@ VALUES
 
 ";
 
-    $sql_query_service_add = "INSERT INTO service(
-  ser_number,
-  ser_caty,
-  ser_vbrand,
-  ser_vtype_id,
-  ser_v_d_number,
-  ser_v_d_modelyear,
-  ser_leserate,
-  ser_land_pond_amount,
-  ser_period,
-  ser_fixedrental,
-  ser_duration,
-  ser_date,
-  ser_details,
-  ser_status,
-  cus_nic
+//    $sql_query_service_add = "INSERT INTO service(
+//  ser_number,
+//  ser_caty,
+//  ser_vbrand,
+//  ser_vtype_id,
+//  ser_v_d_number,
+//  ser_v_d_modelyear,
+//  ser_leserate,
+//  ser_land_pond_amount,
+//  ser_period,
+//  ser_fixedrental,
+//  ser_duration,
+//  ser_date,
+//  ser_details,
+//  ser_status,
+//  cus_nic
+//) 
+//VALUES
+//  (
+//    '$se1',
+//    '$se2',
+//    '$se3',
+//    '$se4',
+//    '$se5',
+//    '$se6',
+//    '$se7',
+//    '$se8',
+//    '$se9',
+//    '$se10',
+//    '$se11',
+//    '$se12',
+//    '$se13',
+//    '1',
+//    '$c_nic'
+//  ) ;
+//";
+///////////////////////////////////////////////////////////////////////////////
+
+    $se0 = $_POST['cbopayment'];
+    $se1 = $_POST['service_no'];
+    $se2 = $_POST['vehicle_mtype_brand'];
+    $se3 = $_POST['vehicle_brand'];
+    $se4 = $_POST['vehicle_type'];
+    $se5 = $_POST['vehicle_code'];
+
+    $se6_1 = $_POST['vehicle_no1'];
+    $se6_2 = $_POST['vehicle_no2'];
+
+    $se6 = $se6_1 . "-" . $se6_2;
+    
+    
+    
+
+    $se7 = $_POST['model_year'];
+    $se8 = $_POST['lease_rate'];
+    $se9 = $_POST['fixed_rate'];
+    $se10 = $_POST['cbo_loan_duration'];
+    $se11 = $_POST['loan_description'];
+    
+    
+    $se_l_ser_number=$_POST['service_no'];
+    $se_l_cbopayment=$_POST['cbopayment'];
+    $se_l_ser_caty="";
+    $se_l_no=$_POST['deed_no'];
+    $se_l_pwndrate=$_POST['pawn_rate'];
+    $se_l_cbo_year=$_POST['cbo_year'];
+    
+    
+    if (isset($_POST['cbopayment']) == "bike") {
+
+
+
+        $sql_query_service_add_bike = "INSERT INTO service(
+        ser_number,
+        cbopayment,
+        ser_caty,
+        ser_vbrand,
+        ser_vtype_id,
+        ser_v_code,
+        ser_v_d_number,
+        ser_v_d_modelyear,
+        ser_leserate,
+        ser_land_pond_amount,
+        ser_period,
+        ser_fixedrental,
+        ser_duration,
+        ser_date,
+        ser_details,
+        refrence_person,
+        ser_status,
+        cus_nic
+        ) 
+        VALUES
+          (
+        '$se1',
+        '$se0',
+        '$se2',
+        '$se3',
+        '$se4',
+        '$se5',
+        '$se6',
+        '$se7',
+        '$se8',
+        'No Land Pon Amount',
+        'No Period',
+        '$se9',
+        '$se10',
+        '$reg_date',
+        '$se11',
+        '" . $_SESSION['useremail'] . "',
+        '00001',
+        '$c_nic'
+            ) ;
+          ";
+
+        $runquery_sql_query_service_add = mysqli_query($conn, $sql_query_service_add_bike);
+    } else if (isset($_POST['cbopayment']) == "twheel") {
+
+
+
+
+        $sql_query_service_add_twheel = "INSERT INTO service(
+        ser_number,
+        cbopayment,
+        ser_caty,
+        ser_vbrand,
+        ser_vtype_id,
+        ser_v_code,
+        ser_v_d_number,
+        ser_v_d_modelyear,
+        ser_leserate,
+        ser_land_pond_amount,
+        ser_period,
+        ser_fixedrental,
+        ser_duration,
+        ser_date,
+        ser_details,
+        refrence_person,
+        ser_status,
+        cus_nic
+        ) 
+        VALUES
+          (
+        '$se1',
+        '$se0',
+        '$se2',
+        '$se3',
+        '$se4',
+        '$se5',
+        '$se6',
+        '$se7',
+        '$se8',
+        'No Land Pon Amount',
+        'No Period',
+        '$se9',
+        '$se10',
+        '$reg_date',
+        '$se11',
+        '" . $_SESSION['useremail'] . "',
+        '00001',
+        '$c_nic'
+          ) ;
+        ";
+    } else if (isset($_POST['cbopayment']) == "land") {
+
+        
+
+        $sql_query_service_add_land = "INSERT INTO service(
+      ser_number,
+      cbopayment,
+      ser_caty,
+      ser_vbrand,
+      ser_vtype_id,
+      ser_v_code,
+      ser_v_d_number,
+      ser_v_d_modelyear,
+      ser_leserate,
+      ser_land_pond_amount,
+      ser_period,
+      ser_fixedrental,
+      ser_duration,
+      ser_date,
+      ser_details,
+      refrence_person,
+      ser_status,
+      cus_nic
 ) 
 VALUES
   (
     '$se1',
-    '$se2',
-    '$se3',
-    '$se4',
-    '$se5',
-    '$se6',
+    '$se0',
+    'no v main type',
+    'no v brand',
+    'no v type',
+    'no v code',
+    '$se_lno',
     '$se7',
     '$se8',
+    '$se_l_pwndrate',
+    '$se_l_cbo_year',
     '$se9',
     '$se10',
+    '$reg_date',
     '$se11',
-    '$se12',
-    '$se13',
-    '1',
+    '" . $_SESSION['useremail'] . "',
+    '00001',
     '$c_nic'
   ) ;
 ";
+    }
 
 
+
+$runquery_sql_query_service_add = mysqli_query($conn, $sql_query_service_add);
 ///////////////Don't Touch-query execute///////////////////// 
 
-    $runquery_cus = mysqli_query($conn, $sql_query_cus);
+$runquery_cus = mysqli_query($conn, $sql_query_cus);
 //mysqli_close($conn);
-    $runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
+$runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
 //mysqli_close($conn);
-    $runquery_ger = mysqli_query($conn, $sql_query_ger);
+$runquery_ger = mysqli_query($conn, $sql_query_ger);
 //mysqli_close($conn);
-    $runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
+$runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
 //mysqli_close($conn);
-    $runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
+$runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
 //mysqli_close($conn);
-    $runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
+$runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
 //mysqli_close($conn);
-    $runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
+$runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
 //mysqli_close($conn);
-    $runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
+$runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
 //mysqli_close($conn);
-    $runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
-    mysqli_close($conn);
+$runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
+mysqli_close($conn);
 
 
 
 
 
 
-    if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
-        echo 'Customer Successfully Registered!';
+if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
+    echo 'Customer Successfully Registered!';
 //echo '<script>alert("Successs);</script>';
 //echo '<script type="text/javascript">
 //$(document).ready(function(){
 //$("#second").load("../customer/customer_registration.php");
 //});
 //</script>';
-        header('Location:../customer/customer_registration.php');
-    } else {
-        echo "Error Registration";
-    }
+    header('Location:../customer/customer_registration.php');
+} else {
+    echo "Error Registration";
 }
+
 
 
 // file upload
@@ -436,4 +598,4 @@ VALUES
 //    } else {
 //        echo "Sorry, there was an error uploading your file.";
 //    }
-//}
+}
