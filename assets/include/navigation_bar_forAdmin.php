@@ -58,9 +58,24 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo ('customer_view.php'); ?>">Customer Report</a></li>
-                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Service Report</a></li>
+                            <li><a href="<?php echo ('customer_view.php'); ?>">Single Customer Report</a></li>
+                            <li><a href="<?php echo ('customer_tieup.php'); ?>">Customer Tie-up Report</a></li>
+                            <li><a href="<?php echo ('view_vehicles.php'); ?>">Vehicle Rate Reports</a></li>
+                            <li><a href="<?php echo ('view_vehicles.php'); ?>">Land Rate Reports</a></li>
+                            <li><a href="<?php echo ('view_vehicles.php'); ?>">Bike Rate Reports</a></li>
+                            <li><a href="<?php echo ('view_vehicles.php'); ?>">Three-Wheel Rate Reports</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Vehicle Lease Report</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Land Pawn Report</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Bike Lease Report</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Three-Wheel Lease Report</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Single Land Pawn Report</a></li>
                             <li><a href="<?php echo ('customer_installment.php'); ?>">Installment Report</a></li>
+                            <li><a href="#">Penalty Report</a></li>
                             <li><a href="<?php echo ('customer_installment.php'); ?>">Service Settle Report</a></li>
+                            <li><a href="<?php echo ('../admin/customer/viewsis.php'); ?>">Sis Report</a></li>
+                            <li><a href="<?php echo ('../admin/customer/viewsis.php'); ?>">Single Sis Report</a></li>
+                            <li><a href="#">Release Report</a></li>
+                            <li><a href="#">Release Refund Report</a></li>
                         </ul>
                     </li>
                 </ul>

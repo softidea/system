@@ -165,7 +165,6 @@
                     xmlhttp.send();
                 }
             }
-
         </script>
         <script type="text/javascript">
             function set_vehicle_div(val) {
@@ -238,18 +237,10 @@
                                         <input type="file" name="product_image[]" id="idupload" onchange="imagepreview(this);"/>
                                         <img id="imgpreview" title="Image Preview" style="width: 200px;height: 200px;">
                                     </div>
-
-
-
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Upload Property:</label>
                                         <input type="file" name="product_image" required/>
                                     </div>
-
-
-
-
-
                                 </fieldset>
                             </div>
                             <div class="col-sm-6">

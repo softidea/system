@@ -958,10 +958,7 @@ if (!isset($_SESSION['user_email'])) {
                     document.getElementById('msg_caption').style.color = "red";
                     alert("Empty Data Fields Found,Please Insert Valid Data");
                 }
-
-
             }
-
         </script>
     </body>
 </html>
