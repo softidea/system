@@ -78,35 +78,32 @@ if (!isset($_SESSION['user_email'])) {
     $cus_daily_loan_account_no = "";
 
     $payable_loan_amount = "";
-    
-    
+
+
 
     $reg_date = date("Y-m-d");
 ///////////////////////////////////////////////////////
 
     $useremailtoname = $_SESSION['user_email'];
     $cbopayment = "";
-    
-    $service_no="";
-    $vehicle_mtype_brand="";
-    $vehicle_brand="";
-    $vehicle_type="";
-    $vehicle_code="";
-    $vehicle_no1="";
-    $vehicle_no2="";
-    $model_year="";
-    $lease_rate="";
-    $fixed_rate="";
-    $cbo_loan_duration="";
-    $loan_description="";
-    $deed_no="";
-    $cbo_period="";
-    $cbo_year="";
-    
-    $pawn_rate="";
-    
-    
-    
+
+    $service_no = "";
+    $vehicle_mtype_brand = "";
+    $vehicle_brand = "";
+    $vehicle_type = "";
+    $vehicle_code = "";
+    $vehicle_no1 = "";
+    $vehicle_no2 = "";
+    $model_year = "";
+    $lease_rate = "";
+    $fixed_rate = "";
+    $cbo_loan_duration = "";
+    $loan_description = "";
+    $deed_no = "";
+    $cbo_period = "";
+    $cbo_year = "";
+
+    $pawn_rate = "";
     ?>
     <head>
         <meta charset="utf-8">
@@ -138,7 +135,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_type").innerHTML = xmlhttp.responseText;
                         }
@@ -163,7 +160,7 @@ if (!isset($_SESSION['user_email'])) {
                         // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             if (xmlhttp.responseText === "No Interest Found,Try Again") {
                                 alert(xmlhttp.responseText);
@@ -190,7 +187,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                         }
@@ -208,7 +205,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById("v_code").innerHTML = xmlhttp.responseText;
                         }
@@ -231,7 +228,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             alert(xmlhttp.responseText);
                             var value = xmlhttp.responseText;
@@ -261,7 +258,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                             alert(xmlhttp.responseText);
                             document.getElementById('l_rate').value = xmlhttp.responseText;
@@ -294,7 +291,7 @@ if (!isset($_SESSION['user_email'])) {
                     } else { // code for IE6, IE5
                         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
-                    xmlhttp.onreadystatechange = function() {
+                    xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             document.getElementById('v_code').innerHTML = xmlhttp.responseText;
                         }
@@ -373,14 +370,14 @@ if (!isset($_SESSION['user_email'])) {
 
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label" >Married Status:</label>
-                                            <select name="cus_ms" value="<?php echo $cus_ms; ?>" class="form-control" >
+                                            <select name="cus_ms" value="<?php echo $cus_ms; ?>" class="form-control" id="c_m_status" onchange="setCusDependancy();">
                                                 <option value="Single">Single</option>
                                                 <option value="Married">Married</option>
                                             </select>
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label" >Have any Dependencies:</label>
-                                            <input type="number" id="cus_depend" min="0" max="20" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies"  class="form-control" maxlength="2"/>
+                                            <input type="number" id="cus_depend" min="0" max="20" name="cus_dependdency" value="<?php echo $cus_dependdency; ?>" placeholder="Have any Dependencies"  class="form-control" maxlength="2" readonly/>
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label" >Employment/Position:</label>
@@ -472,7 +469,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Married Status:</label>
-                                            <select name="gua_ms" value="<?php echo $gua_ms; ?>"    class="form-control" >
+                                            <select name="gua_ms" value="<?php echo $gua_ms; ?>" class="form-control" id="g_m_status" onchange="setGuaDependancy();">
                                                 <option value="Single">Single</option>
                                                 <option value="Married">Married</option>
                                             </select>
@@ -484,7 +481,7 @@ if (!isset($_SESSION['user_email'])) {
 
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Have any Dependencies:</label>
-                                            <input type="number" id="g_depend" min="0" max="20" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies"   class="form-control" />
+                                            <input type="number" id="g_depend" min="0" max="20" name="gua_dependency" value="<?php echo $gua_dependency; ?>" placeholder="Have any Dependencies" class="form-control" readonly/>
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Employment/Position:</label>
@@ -752,12 +749,12 @@ if (!isset($_SESSION['user_email'])) {
                                                 <input type="text"  name="loan_description" value="<?php echo $loan_description; ?>" class="form-control" placeholder="Description of the Loan">
                                             </div>
 
-                                            <input type="submit" class="btn btn" id="custcontinue" value="Register Lease">
+                                            <input type="submit" class="btn btn" id="custcontinue" name="register_lease" value="Register Lease">
                                             <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                         </fieldset>
                                     </div>
                                     <!-- --------------------------------------------------------------------------- -->
-                                    
+
                                     <!--Start.Property Land Panel-->
                                     <div id="landpanel" style="display: none;">
                                         <fieldset id="account">
@@ -772,7 +769,7 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Registration Date:</label>
-                                                <input type="date" name="reg_date" value="<?php echo $reg_date; ?>" id="regdate" value="" placeholder="Registration Date"   class="form-control"/>
+                                                <input type="date" name="land_reg_date" value="<?php echo $reg_date; ?>" id="regdate" value="" placeholder="Registration Date"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label"   id="">Select Amount:</label>
@@ -805,7 +802,7 @@ if (!isset($_SESSION['user_email'])) {
                                                 <label class="control-label"   id="">Description of the Loan:</label>
                                                 <input type="text" name="loan_description" value="<?php echo $loan_description; ?>"  class="form-control"  placeholder="Description of the Loan">
                                             </div>
-                                            <button type="button" class="btn btn" id="custcontinue">Register Pawn</button>
+                                            <input type="submit" class="btn btn" id="custcontinue" value="Register Pawn" name="register_pawn">Register Pawn
                                             <button type="button" class="btn btn" id="backregister" onclick="gotoone();">Back</button>
                                         </fieldset>
                                     </div>
@@ -869,9 +866,30 @@ if (!isset($_SESSION['user_email'])) {
                                                     document.getElementById('one').style.display = "block";
                                                     document.getElementById('second').style.display = "none";
                                                 }
-                                                function validate() {
-                                                    alert('Fuck');
+                                                function setCusDependancy() {
+                                                    if (document.getElementById('c_m_status').value == "Single") {
+                                                        alert("Single");
+                                                        document.getElementById('cus_depend').value = "";
+                                                        document.getElementById('cus_depend').readOnly = true;
+                                                    }
+                                                    else if (document.getElementById('c_m_status').value == "Married") {
+                                                        alert("Married");
+                                                        document.getElementById('cus_depend').value = "";
+                                                        document.getElementById('cus_depend').readOnly = false;
+                                                    }
                                                 }
+                                                function setGuaDependancy() {
+                                                    if (document.getElementById('g_m_status').value == "Single") {
+                                                        document.getElementById('g_depend').value = "";
+                                                        document.getElementById('g_depend').readOnly = true;
+                                                    }
+                                                    else if (document.getElementById('g_m_status').value == "Married") {
+                                                        document.getElementById('g_depend').value = "";
+                                                        document.getElementById('g_depend').readOnly = false;
+                                                    }
+                                                }
+
+
 
         </script>
         <script>

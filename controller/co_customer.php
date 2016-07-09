@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $conn = mysqli_connect("77.104.142.97", "ayolanin_dev", "WelComeDB1129", "ayolanin_datahost");
@@ -6,80 +7,87 @@ if (mysqli_connect_errno()) {
     echo "Falied to Connect the Database" . mysqli_connect_error();
 }
 
-if (isset($_POST['customer_continue'])) {
-
-    $c0 = $_POST['cus_salutation'];
-    $c1 = $_POST['cus_fullname'];
-    $c2 = $_POST['cus_initialname'];
-    $c3 = $_POST['cus_address'];
-    $c4 = $_POST['cus_tp'];
-    $c_nic = $_POST['cus_nic'];
-    $c6 = $_POST['cus_dob'];
-    $c7 = $_POST['cus_ms'];
-    $c8 = $_POST['cus_dependdency'];
-    $c9 = $_POST['cus_position'];
-    $c10 = $_POST['cus_monthly_salary'];
-    $c11 = $_POST['cus_emp_name'];
-    $c12 = $_POST['cus_emp_address'];
-    $c13 = $_POST['cus_addr_map_link'];
-    $c14 = $_POST['reg_date'];
-    $status = "00001";
+if (isset($_POST['register_lease']) || isset($_POST['register_pawn'])) {
+    
+    global $conn;
+    $cus_salutation = $_POST['cus_salutation'];
+    $cus_fullname = $_POST['cus_fullname'];
+    $cus_initialname = $_POST['cus_initialname'];
+    $cus_address = $_POST['cus_address'];
+    $cus_tp = $_POST['cus_tp'];
+    $cus_nic = $_POST['cus_nic'];
+    $cus_dob = $_POST['cus_dob'];
+    $cus_ms = $_POST['cus_ms'];
+    $cus_dependdency = $_POST['cus_dependdency'];
+    $cus_position = $_POST['cus_position'];
+    $cus_monthly_salary = $_POST['cus_monthly_salary'];
+    $cus_emp_name = $_POST['cus_emp_name'];
+    $cus_emp_address = $_POST['cus_emp_address'];
+    $cus_addr_map_link = $_POST['cus_addr_map_link'];
+    $reg_date = $_POST['reg_date'];
+    $cus_status = "1";
+    
+    echo $cus_salutation;
+    echo $cus_fullname;echo $cus_position;echo $cus_emp_address;
+    
+    
 //over-customer
 
-    $cw0 = $_POST['cus_hhalf_name'];
-    $cw1 = $_POST['cus_bhalf_dob'];
-    $cw2 = $_POST['cus_bhalf_position'];
-    $cw3 = $_POST['cus_bhalf_monthly_salary'];
-    $cw4 = $_POST['cus_bhalf_emp_name'];
+    $cus_bhalf_name = $_POST['cus_hhalf_name'];
+    $cus_bhalf_dob = $_POST['cus_bhalf_dob'];
+    $cus_bhalf_position = $_POST['cus_bhalf_position'];
+    $cus_bhalf_monthly_salary = $_POST['cus_bhalf_monthly_salary'];
+    $cus_bhalf_emp_name = $_POST['cus_bhalf_emp_name'];
 // Over -customer wf
 
-    $g0 = $_POST['gua_salutation'];
-    $g1 = $_POST['gua_fullname'];
-    $g2 = $_POST['gua_initial_name'];
-    $g3 = $_POST['gua_address'];
-    $g4 = $_POST['gua_tp'];
-    $g5 = $_POST['gua_dob'];
-    $g6 = $_POST['gua_ms'];
-    $g_nic = $_POST['gua_nic'];
-    $g7 = $_POST['gua_dependency'];
-    $g8 = $_POST['gua_position'];
-    $g9 = $_POST['gua_monthly_salary'];
-    $g10 = $_POST['gua_emp_name'];
-    $g11 = $_POST['gua_emp_address'];
+    $gua_salutation = $_POST['gua_salutation'];
+    $gua_fullname = $_POST['gua_fullname'];
+    $gua_initial_name = $_POST['gua_initial_name'];
+    $gua_address = $_POST['gua_address'];
+    $gua_tp = $_POST['gua_tp'];
+    $gua_dob = $_POST['gua_dob'];
+    $gua_ms = $_POST['gua_ms'];
+    $gua_nic = $_POST['gua_nic'];
+    $gua_dependency = $_POST['gua_dependency'];
+    $gua_position = $_POST['gua_position'];
+    $gua_monthly_salary = $_POST['gua_monthly_salary'];
+    $gua_emp_name = $_POST['gua_emp_name'];
+    $gua_emp_address = $_POST['gua_emp_address'];
+    $gua_status = "1";
 //Over-gerenter 
-    $gw0 = $_POST['gua_bhalf_fullname'];
-    $gw1 = $_POST['gua_bhalf_dob'];
-    $gw2 = $_POST['gua_bhalf_position'];
-    $gw3 = $_POST['gua_bhalf_monthly_salary'];
-    $gw4 = $_POST['gua_bhalf_emp_name'];
+    $gua_bhalf_fullname = $_POST['gua_bhalf_fullname'];
+    $gua_bhalf_dobs = $_POST['gua_bhalf_dob'];
+    $gua_bhalf_position = $_POST['gua_bhalf_position'];
+    $gua_bhalf_monthly_salary = $_POST['gua_bhalf_monthly_salary'];
+    $gua_bhalf_emp_name = $_POST['gua_bhalf_emp_name'];
 // Over-gerenter wf
 
-    $cr0 = $_POST['real_prp_house_position'];
-    $cr1 = $_POST['real_prp_house_size'];
-    $cr2 = $_POST['real_prp_house_value'];
-    $cr3 = $_POST['real_prp_house_pawned'];
-    $cr4 = $_POST['real_prp_house_pawn_getter'];
+    $real_prp_house_position = $_POST['real_prp_house_position'];
+    $real_prp_house_size = $_POST['real_prp_house_size'];
+    $real_prp_house_value = $_POST['real_prp_house_value'];
+    $real_prp_house_pawned = $_POST['real_prp_house_pawned'];
+    $real_prp_house_pawn_getter = $_POST['real_prp_house_pawn_getter'];
 //Over-customer real propty
 
-    $cro1 = $_POST['real_prp_other_position'];
-    $cro2 = $_POST['real_prp_other_size'];
-    $cro3 = $_POST['real_prp_other_value'];
-    $cro4 = $_POST['real_prp_other_pawned'];
-    $cro5 = $_POST['real_prp_other_pawn_getter'];
+    $real_prp_other_position = $_POST['real_prp_other_position'];
+    $real_prp_other_size = $_POST['real_prp_other_size'];
+    $real_prp_other_value = $_POST['real_prp_other_value'];
+    $real_prp_other_pawned = $_POST['real_prp_other_pawned'];
+    $real_prp_other_pawn_getter = $_POST['real_prp_other_pawn_getter'];
 //Over-customer real propty other
 
 
-    $cba1_1 = $_POST['cus_savings_bank_branch'];
-    $cba1_2 = $_POST['cus_savings_facilities'];
-    $cba1_3 = $_POST['cus_savings_account_no'];
+    $cus_savings_bank_branch_1 = $_POST['cus_savings_bank_branch'];
+    $cus_savings_facilities_2 = $_POST['cus_savings_facilities'];
+    $cus_savings_account_no_3 = $_POST['cus_savings_account_no'];
 
-    $cba2_1 = $_POST['cus_mobile_bank_branch'];
-    $cba2_2 = $_POST['cus_mobile_facilities'];
-    $cba2_3 = $_POST['cus_mobile_account_no'];
+    $cus_mobile_bank_branch_1 = $_POST['cus_mobile_bank_branch'];
+    $cus_mobile_facilities_2 = $_POST['cus_mobile_facilities'];
+    $cus_mobile_account_no_3 = $_POST['cus_mobile_account_no'];
 
-    $cba3_1 = $_POST['cus_daily_loan_bank_branch'];
-    $cba3_2 = $_POST['cus_daily_loan_facilities'];
-    $cba3_3 = $_POST['cus_daily_loan_account_no'];
+    $cus_daily_loan_bank_branch_1 = $_POST['cus_daily_loan_bank_branch'];
+    $cus_daily_loan_facilities_2 = $_POST['cus_daily_loan_facilities'];
+    $cus_daily_loan_account_no_3 = $_POST['cus_daily_loan_account_no'];
 
     //Over customer bank account
 //Query ========================================================================
@@ -103,22 +111,22 @@ if (isset($_POST['customer_continue'])) {
     ) 
     VALUES
       (
-    '$c0',
-    '$c1',
-    '$c2',
-    '$c3',
-    '$c4',
-    '$c_nic',
-    '$c6',
-    '$c7',
-    '$c8',
-    '$c9',
-    '$c10',
-    '$c11',
-    '$c12',
-    '$c13',
-    '$c14',
-    '$status'
+    '$cus_salutation',
+    '$cus_fullname',
+    '$cus_initialname',
+    '$cus_address',
+    '$cus_tp',
+    '$cus_nic',
+    '$cus_dob',
+    '$cus_ms',
+    '$cus_dependdency',
+    '$cus_position',
+    '$cus_monthly_salary',
+    '$cus_emp_name',
+    '$cus_emp_address',
+    '$cus_addr_map_link',
+    '$reg_date',
+    '$cus_status'
   ) ;";
 // customer insert over////////////////////////////////////////////////////////
 
@@ -132,12 +140,12 @@ if (isset($_POST['customer_continue'])) {
 ) 
 VALUES
   (
-    '$cw0',
-    '$cw1',
-    '$cw2',
-    '$cw3',
-    '$cw4',
-    '$c_nic'
+    '$cus_bhalf_name',
+    '$cus_bhalf_dob',
+    '$cus_bhalf_position',
+    '$cus_bhalf_monthly_salary',
+    '$cus_bhalf_emp_name',
+    '$cus_nic'
   );";
 
     //customer wife over////////////////////////////////////////////////////
@@ -147,7 +155,7 @@ VALUES
     ger_fullname,
     ger_initialname,
     ger_address,
-    ger_emp_tp,
+    ger_tp,
     ger_nic,
     ger_dob,
     ger_ms,
@@ -161,21 +169,21 @@ VALUES
     ) 
     VALUES
       (
-    '$g0',
-    '$g1',
-    '$g2',
-    '$g3',
-    '$g4',
-    '$g5',
-    '$g_nic',
-    '$g6',
-    '$g7',
-    '$g8',
-    '$g9',
-    '$g10',
-    '$g11',
-    '00001',
-    '$c_nic'
+    '$gua_salutation',
+    '$gua_fullname',
+    '$gua_initial_name',
+    '$gua_address',
+    '$gua_tp',
+    '$gua_nic',
+    '$gua_dob',
+    '$gua_ms',
+    '$gua_dependency',
+    '$gua_position',
+    '$gua_monthly_salary',
+    '$gua_emp_name',
+    '$gua_emp_address',
+    '$cus_nic',
+    '$gua_status'
     ) ;
 
   ";
@@ -191,12 +199,12 @@ VALUES
 ) 
 VALUES
   (
-    '$gw0',
-    '$gw1',
-    '$gw2',
-    '$gw3',
-    '$gw4',
-    '$g_nic'
+    '$gua_bhalf_fullname',
+    '$gua_bhalf_dobs',
+    '$gua_bhalf_position',
+    '$gua_bhalf_monthly_salary',
+    '$gua_bhalf_emp_name',
+    '$gua_nic'
   ) ;";
 // gerenter wife over///////////////////////////////////////////////////////
 
@@ -213,13 +221,13 @@ VALUES
     VALUES
       (
     '1',
-    '$cr0',
-    '$cr1',
-    '$cr2',
-    '$cr3',
-    '$cr4',
-    '$c_nic',
-    '00001'
+    '$real_prp_house_position',
+    '$real_prp_house_size',
+    '$real_prp_house_value',
+    '$real_prp_house_pawned',
+    '$real_prp_house_pawn_getter',
+    '$cus_nic',
+    '1'
   ) ;";
 
 
@@ -236,12 +244,12 @@ VALUES
     VALUES
       (
     '2',
-    '$cro1',
-    '$cro2',
-    '$cro3',
-    '$cro4',
-    '$cro5',
-    '$c_nic',
+    '$real_prp_other_position',
+    '$real_prp_other_size',
+    '$real_prp_other_value',
+    '$real_prp_other_pawned',
+    '$real_prp_other_pawn_getter',
+    '$cus_nic',
     '1'
   ) ;";
 
@@ -254,11 +262,11 @@ VALUES
 ) 
 VALUES
   (
-    '$cba1_1',
-    '$cba1_2',
-    '$cba1_3',
+    '$cus_savings_bank_branch_1',
+    '$cus_savings_facilities_2',
+    '$cus_savings_account_no_3',
     '1',
-    '$c_nic'
+    '$cus_nic'
   ) ;
 
 ";
@@ -271,11 +279,11 @@ VALUES
 ) 
 VALUES
   (
-    '$cba2_1',
-    '$cba2_2',
-    '$cba2_3',
-    '3',
-    '$c_nic'
+    '$cus_mobile_bank_branch_1',
+    '$cus_mobile_facilities_2',
+    '$cus_mobile_account_no_3',
+    '2',
+    '$cus_nic'
   ) ;
 
 ";
@@ -288,11 +296,11 @@ VALUES
 ) 
 VALUES
   (
-    '$cba3_1',
-    '$cba3_2',
-    '$cba3_3',
+    '$cus_daily_loan_bank_branch_1',
+    '$cus_daily_loan_facilities_2',
+    '$cus_daily_loan_account_no_3',
     '3',
-    '$c_nic'
+    '$cus_nic'
   ) ;
 
 ";
@@ -334,37 +342,36 @@ VALUES
 //  ) ;
 //";
 ///////////////////////////////////////////////////////////////////////////////
-
-    $se0 = $_POST['cbopayment'];
-    $se1 = $_POST['service_no'];
-    $se2 = $_POST['vehicle_mtype_brand'];
-    $se3 = $_POST['vehicle_brand'];
-    $se4 = $_POST['vehicle_type'];
-    $se5 = $_POST['vehicle_code'];
+    //vehicle service para
+    $cbopayment = $_POST['cbopayment'];
+    $vehicle_service_no = $_POST['service_no'];
+    $vehicle_brand = $_POST['vehicle_brand'];
+    $vehicle_type = $_POST['vehicle_type'];
+    $vehicle_code = $_POST['vehicle_code'];
 
     $se6_1 = $_POST['vehicle_no1'];
     $se6_2 = $_POST['vehicle_no2'];
 
-    $se6 = $se6_1 . "-" . $se6_2;
-    
-    
-    
+    $vehicle_no = $se6_1 . "-" . $se6_2;
+    //vehicle service para
+    //land service para
+    $model_year = $_POST['model_year'];
+    $lease_rate = $_POST['lease_rate'];
+    $fixed_rate = $_POST['fixed_rate'];
+    $cbo_loan_duration = $_POST['cbo_loan_duration'];
+    $loan_description = $_POST['loan_description'];
 
-    $se7 = $_POST['model_year'];
-    $se8 = $_POST['lease_rate'];
-    $se9 = $_POST['fixed_rate'];
-    $se10 = $_POST['cbo_loan_duration'];
-    $se11 = $_POST['loan_description'];
-    
-    
-    $se_l_ser_number=$_POST['service_no'];
-    $se_l_cbopayment=$_POST['cbopayment'];
-    $se_l_ser_caty="";
-    $se_l_no=$_POST['deed_no'];
-    $se_l_pwndrate=$_POST['pawn_rate'];
-    $se_l_cbo_year=$_POST['cbo_year'];
-    
-    
+
+    $land_service_no = $_POST['service_no'];
+    $land_cbopayment = $_POST['cbopayment'];
+    $se_l_ser_caty = "";
+    $deed_no = $_POST['deed_no'];
+    $pawn_rate = $_POST['pawn_rate'];
+    $cbo_year = $_POST['cbo_year'];
+    $land_pawn_amount = $_POST['cbo_period'];
+    $land_reg_date = $_POST['land_reg_date'];
+    //land service para
+
     if (isset($_POST['cbopayment']) == "bike") {
 
 
@@ -391,24 +398,24 @@ VALUES
         ) 
         VALUES
           (
-        '$se1',
-        '$se0',
-        '$se2',
-        '$se3',
-        '$se4',
-        '$se5',
-        '$se6',
-        '$se7',
-        '$se8',
+        '$vehicle_service_no',
+        '$cbopayment',
+        '$cbopayment',
+        '$vehicle_brand',
+        '$vehicle_type',
+        '$vehicle_code',
+        '$vehicle_no',
+        '$model_year',
+        '$lease_rate',
         'No Land Pon Amount',
         'No Period',
-        '$se9',
-        '$se10',
+        '$fixed_rate',
+        '$cbo_loan_duration',
         '$reg_date',
-        '$se11',
+        '$loan_description',
         '" . $_SESSION['useremail'] . "',
-        '00001',
-        '$c_nic'
+        '1',
+        '$cus_nic'
             ) ;
           ";
 
@@ -440,29 +447,29 @@ VALUES
         ) 
         VALUES
           (
-        '$se1',
-        '$se0',
-        '$se2',
-        '$se3',
-        '$se4',
-        '$se5',
-        '$se6',
-        '$se7',
-        '$se8',
+        '$vehicle_service_no',
+        '$cbopayment',
+        '$cbopayment',
+        'No Brand',
+        '$vehicle_type',
+        '$vehicle_code',
+        '$vehicle_no',
+        'No Model Year',
+        '$lease_rate',
         'No Land Pon Amount',
         'No Period',
-        '$se9',
-        '$se10',
+        '$fixed_rate',
+        '$cbo_loan_duration',
         '$reg_date',
-        '$se11',
+        '$loan_description',
         '" . $_SESSION['useremail'] . "',
-        '00001',
-        '$c_nic'
+        '1',
+        '$cus_nic'
           ) ;
         ";
     } else if (isset($_POST['cbopayment']) == "land") {
 
-        
+
 
         $sql_query_service_add_land = "INSERT INTO service(
       ser_number,
@@ -482,80 +489,80 @@ VALUES
       ser_details,
       refrence_person,
       ser_status,
-      cus_nic
+      cus_nic,
+      land_reg_date
 ) 
 VALUES
   (
-    '$se1',
-    '$se0',
-    'no v main type',
-    'no v brand',
-    'no v type',
-    'no v code',
-    '$se_lno',
-    '$se7',
-    '$se8',
-    '$se_l_pwndrate',
-    '$se_l_cbo_year',
-    '$se9',
-    '$se10',
-    '$reg_date',
-    '$se11',
-    '" . $_SESSION['useremail'] . "',
-    '00001',
-    '$c_nic'
+        '$vehicle_service_no',
+        '$cbopayment',
+        '$cbopayment',
+        'No Brand',
+        'No Type',
+        'No Code',
+        '$deed_no',
+        'No Model Year',
+        '$lease_rate',
+        '$land_pawn_amount',
+        'No Period',
+        '$cbo_year',
+        '$cbo_loan_duration',
+        '$reg_date',
+        '$loan_description',
+        '" . $_SESSION['useremail'] . "',
+        '1',
+        '$cus_nic',
+        '$land_reg_date'
+          ) ;
   ) ;
 ";
     }
 
 
 
-$runquery_sql_query_service_add = mysqli_query($conn, $sql_query_service_add);
+    $runquery_sql_query_service_add = mysqli_query($conn, $sql_query_service_add);
 ///////////////Don't Touch-query execute///////////////////// 
 
-$runquery_cus = mysqli_query($conn, $sql_query_cus);
+    $runquery_cus = mysqli_query($conn, $sql_query_cus);
 //mysqli_close($conn);
-$runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
+    $runquery_cus_wf = mysqli_query($conn, $sql_query_cus_wf);
 //mysqli_close($conn);
-$runquery_ger = mysqli_query($conn, $sql_query_ger);
+    $runquery_ger = mysqli_query($conn, $sql_query_ger);
 //mysqli_close($conn);
-$runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
+    $runquery_ger_wf = mysqli_query($conn, $sql_query_ger_wf);
 //mysqli_close($conn);
-$runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
+    $runquery_cus_real_ho = mysqli_query($conn, $sql_query_cus_real_ho);
 //mysqli_close($conn);
-$runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
+    $runquery_cus_real_ot = mysqli_query($conn, $sql_query_cus_real_ot);
 //mysqli_close($conn);
-$runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
+    $runquery_cus_bank1 = mysqli_query($conn, $sql_query_cus_bank1);
 //mysqli_close($conn);
-$runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
+    $runquery_cus_bank2 = mysqli_query($conn, $sql_query_cus_bank2);
 //mysqli_close($conn);
-$runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
-mysqli_close($conn);
+    $runquery_cus_bank3 = mysqli_query($conn, $sql_query_cus_bank3);
+    mysqli_close($conn);
 
 
 
 
 
 
-if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
-    echo 'Customer Successfully Registered!';
+    if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
+        echo 'Customer Successfully Registered!';
 //echo '<script>alert("Successs);</script>';
 //echo '<script type="text/javascript">
 //$(document).ready(function(){
 //$("#second").load("../customer/customer_registration.php");
 //});
 //</script>';
-    header('Location:../customer/customer_registration.php');
-} else {
-    echo "Error Registration";
-}
+        header('Location:../customer/customer_registration.php');
+    } else {
+        echo "Error Registration";
+    }
 
 
 
 // file upload
-
-
-
 //$target_dir = "uploads/customers/";
 //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 //$uploadOk = 1;

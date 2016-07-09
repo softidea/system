@@ -222,9 +222,11 @@
                                 <fieldset id="account">
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
+                                    <div class="form-inline required">
                                         <label class="control-label" for="input-email">Customer NIC:</label>
                                         <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" id="input-email" class="form-control" required/>
                                     </div>
+                                        </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer Name:</label>
                                         <input type="text" name="cus_name" id="fname" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
