@@ -357,11 +357,11 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label" >Telephone:</label>
-                                            <input type="text" id="cus_tp" name="cus_tp" value="<?php echo $cus_tp; ?>" placeholder="Telephone"   class="form-control" maxlength="15" />
+                                            <input type="text" id="cus_tp" name="cus_tp" maxlength="10" value="<?php echo $cus_tp; ?>" placeholder="Telephone"   class="form-control" maxlength="15" />
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label" >NIC Number:</label>
-                                            <input type="text" id="cus_nic" name="cus_nic" value="<?php echo $cus_nic; ?>" placeholder="NIC Number"  class="form-control" maxlength="15"/>
+                                            <input type="text" id="cus_nic" name="cus_nic" maxlength="10" value="<?php echo $cus_nic; ?>" placeholder="NIC Number"  class="form-control" maxlength="15"/>
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label" >Date of Birth:</label>
@@ -460,7 +460,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Telephone:</label>
-                                            <input type="tel" id="g_tp" name="gua_tp" value="<?php echo $gua_tp; ?>" placeholder="Telephone"   class="form-control" />
+                                            <input type="tel" id="g_tp" name="gua_tp" maxlength="10" value="<?php echo $gua_tp; ?>" placeholder="Telephone"   class="form-control" />
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">Date of Birth:</label>
@@ -476,7 +476,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                         <div class="form-group  ">
                                             <span style="color:red;">*</span><label class="control-label">NIC Number:</label>
-                                            <input type="text" id="g_nic" name="gua_nic" value="<?php echo $gua_nic; ?>" placeholder="National Identity Card Number"   class="form-control" />
+                                            <input type="text" id="g_nic" name="gua_nic" maxlength="10" value="<?php echo $gua_nic; ?>" placeholder="National Identity Card Number"   class="form-control" />
                                         </div>
 
                                         <div class="form-group  ">
@@ -869,22 +869,22 @@ if (!isset($_SESSION['user_email'])) {
                                                 function setCusDependancy() {
                                                     if (document.getElementById('c_m_status').value == "Single") {
                                                         alert("Single");
-                                                        document.getElementById('cus_depend').value = "";
+                                                        document.getElementById('cus_depend').value = "0";
                                                         document.getElementById('cus_depend').readOnly = true;
                                                     }
                                                     else if (document.getElementById('c_m_status').value == "Married") {
                                                         alert("Married");
-                                                        document.getElementById('cus_depend').value = "";
+                                                        document.getElementById('cus_depend').value = "0";
                                                         document.getElementById('cus_depend').readOnly = false;
                                                     }
                                                 }
                                                 function setGuaDependancy() {
                                                     if (document.getElementById('g_m_status').value == "Single") {
-                                                        document.getElementById('g_depend').value = "";
+                                                        document.getElementById('g_depend').value = "0";
                                                         document.getElementById('g_depend').readOnly = true;
                                                     }
                                                     else if (document.getElementById('g_m_status').value == "Married") {
-                                                        document.getElementById('g_depend').value = "";
+                                                        document.getElementById('g_depend').value = "0";
                                                         document.getElementById('g_depend').readOnly = false;
                                                     }
                                                 }

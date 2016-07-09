@@ -14,8 +14,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Lease | Registration </title>
-        
-         <link rel="icon" href="favicon.ico">
+
+        <link rel="icon" href="favicon.ico">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!-- Latest compiled and minified CSS -->
@@ -206,6 +206,11 @@
                 document.getElementById('f_rate').value = "";
             }
         </script>
+        <script type="text/javascript">
+            function searchCustomerforLease(){
+                alert('searchCustomerforLease');
+            }
+        </script>
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>
@@ -222,17 +227,17 @@
                                 <fieldset id="account">
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
-                                    <div class="form-inline required">
                                         <label class="control-label" for="input-email">Customer NIC:</label>
-                                        <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" id="input-email" class="form-control" required/>
-                                    </div>
+                                        <div class="form-inline required">
+                                            <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" class="form-control" required style="width: 85%;"/>
+                                            <button type="button" id="cviewbuttons" class="btn btn" onclick="searchCustomerforLease();">Search</button>
                                         </div>
+                                    </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer Name:</label>
                                         <input type="text" name="cus_name" id="fname" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-inline required" style="margin-bottom: 8px;">
-                                        <button type="button" id="cviewbuttons" class="btn btn">Search</button>
                                         <a href="customer_registration.php"><button type="button" id="cviewbuttons" class="btn btn">New Customer</button></a>
                                     </div>
                                     <div class="form-group required">
@@ -258,9 +263,9 @@
                                 <fieldset id="account">
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
-                                            <label class="control-label" for="input-email">Service No:</label>
-                                            <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
-                                        </div>
+                                        <label class="control-label" for="input-email">Service No:</label>
+                                        <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
+                                    </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Category:</label>
                                         <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
