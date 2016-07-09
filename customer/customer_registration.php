@@ -650,8 +650,8 @@ if (!isset($_SESSION['user_email'])) {
                                     <fieldset id="account"><td>
                                         <legend>Property Details</legend>
                                         <div class="form-group  ">
-                                            <label class="control-label"   id="">Reference Person:</label>
-                                            <input type="text" name="useremailtoname" id="fname" value="<?php echo $useremailtoname; ?>" placeholder="Reference Person"   class="form-control"  />
+                                            <label class="control-label" id="">Reference Person:</label>
+                                            <input type="text" readonly name="useremailtoname" id="fname" value="<?php echo $useremailtoname; ?>" placeholder="Reference Person"   class="form-control"  />
                                         </div>
                                         <div class="form-group  ">
                                             <label class="control-label"   id="">Select Property:</label>
@@ -757,12 +757,13 @@ if (!isset($_SESSION['user_email'])) {
                                         </fieldset>
                                     </div>
                                     <!-- --------------------------------------------------------------------------- -->
+                                    
                                     <!--Start.Property Land Panel-->
                                     <div id="landpanel" style="display: none;">
                                         <fieldset id="account">
                                             <legend>Land Pawning Details</legend>
                                             <div class="form-group">
-                                                <label class="control-label"   id="">Service No:</label>
+                                                <label class="control-label" id="">Service No:</label>
                                                 <input type="text" name="service_no" value="<?php echo $service_no; ?>" id="sno" placeholder="Service No"   class="form-control"/>
                                             </div>
                                             <div class="form-group">
