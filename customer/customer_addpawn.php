@@ -59,9 +59,34 @@
                 }
             }
         </script>
+
+        <script type="text/javascript">
+            function saveLandPawn() {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        if (xmlhttp.responseText == "No Interest Found") {
+                            alert(xmlhttp.responseText);
+                        }
+                        else {
+                            document.getElementById('pawnrate').value = xmlhttp.responseText;
+                        }
+                    }
+                }
+                xmlhttp.open("GET", "../controller/ser_external_l_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&v_cat=" + v_cat + "&v_brand=" + v_brand + "&v_type=" + v_type + "&v_code=" + v_code + "&v_number=" + v_number + "&v_myear=" + v_myear + "&v_lrate=" + v_lrate + "&v_frate=" + v_frate + "&v_period=" + v_lease_period + "&v_des=" + v_lease_des, true);
+                xmlhttp.send();
+            }
+        </script>
     </head>
     <body>
-<?php include '../assets/include/navigation_bar.php'; ?>
+        <?php include '../assets/include/navigation_bar.php'; ?>
 
         <!--Lease Registration Panel-->
         <div class="container" style="margin-top: 80px;display: block;" id="one">
@@ -101,9 +126,9 @@
                                 <fieldset id="account">
                                     <legend>Land Pawning Details</legend>
                                     <div class="form-group required">
-                                            <label class="control-label" for="input-email">Service No:</label>
-                                            <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
-                                        </div>
+                                        <label class="control-label" for="input-email">Service No:</label>
+                                        <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
+                                    </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Deed Number:</label>
                                         <input type="text" name="deed_no" id="deed" value="<?php echo $deed_no; ?>" placeholder="Deed Number" id="input-email" class="form-control" required/>
@@ -151,7 +176,7 @@
                                         <label class="control-label" for="input-email">Description of the Loan:</label>
                                         <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
                                     </div>
-                                    <button type="button" class="btn btn" id="custcontinue">Register Pawn</button>
+                                    <button type="button" class="btn btn" id="custcontinue" onclick="saveLandPawn();">Register Pawn</button>
                                 </fieldset>
                             </div>
                         </div>
@@ -160,7 +185,7 @@
             </div>
         </div>
         <!--Lease Registration Panel-->
-<?php include '../assets/include/footer.php'; ?>
+        <?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
