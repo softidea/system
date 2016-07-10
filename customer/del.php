@@ -1,5 +1,5 @@
 <?php
-
+//test comment
 define('db_host', '77.104.142.97');
 define('db_port', '3306');
 define('db_user', 'ayolanin_dev');
