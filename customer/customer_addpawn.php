@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_email'])) {
-    header("Location:../index.php");
-}
-?>
 <!DOCTYPE html>
 <html>
     <!--Variable Declaration-->
@@ -65,61 +59,29 @@ if (!isset($_SESSION['user_email'])) {
                 }
             }
         </script>
-        <script type="text/javascript">
-            function searchCustomerforPawn() {
-                if (document.getElementById('customer_nic').value != "") {
-                    alert('searchCustomerforPawn');
-                    var val = document.getElementById('customer_nic').value;
-                    if (window.XMLHttpRequest) {
-                        // code for IE7+, Firefox, Chrome, Opera, Safari
-                        xmlhttp = new XMLHttpRequest();
-                    } else { // code for IE6, IE5
-                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                            alert(xmlhttp.responseText);
-                            document.getElementById('customer_name').value = xmlhttp.responseText;
-                        }
-                    }
-                    xmlhttp.open("GET", "../controller/co_load_pawn_customer.php?cus_nic=" + val, true);
-                    xmlhttp.send();
-                }
-            }
-        </script>
+
         <script type="text/javascript">
             function saveLandPawn() {
-
-                var service_code = document.getElementById('scode').value;
-                var service_num = document.getElementById('sno').value;
-                var service_no = service_code + "-" + service_num;
-                var deed = document.getElementById('deed').value;
-                var regdate = document.getElementById('regdate').value;
-                var aid = document.getElementById('aid').value;
-                var yid = document.getElementById('yid').value;
-                var l_lrate = document.getElementById('pawnrate').value;
-                var l_frate = document.getElementById('fixedrate').value;
-                var l_pawn_des = document.getElementById('pawn_des').value;
-                var c_nic = document.getElementById('customer_nic').value;
-
-                if (service_no != "" && deed != "" && regdate != "" && aid != "" && yid != "" && l_lrate != "" && l_frate != "" && l_pawn_des != "" && c_nic != "") {
-
-                    if (window.XMLHttpRequest) {
-                        // code for IE7+, Firefox, Chrome, Opera, Safari
-                        xmlhttp = new XMLHttpRequest();
-                    }
-                    else {
-                        // code for IE6, IE5
-                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        if (xmlhttp.responseText == "No Interest Found") {
                             alert(xmlhttp.responseText);
                         }
+                        else {
+                            document.getElementById('pawnrate').value = xmlhttp.responseText;
+                        }
                     }
-                    xmlhttp.open("GET", "../controller/ser_external_l_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&deed=" + deed + "&regdate=" + regdate + "&aid=" + aid + "&yid=" + yid + "&l_lrate=" + l_lrate + "&l_frate=" + l_frate + "&l_pawn_des=" + l_pawn_des, true);
-                    xmlhttp.send();
                 }
+                xmlhttp.open("GET", "../controller/ser_external_l_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&v_cat=" + v_cat + "&v_brand=" + v_brand + "&v_type=" + v_type + "&v_code=" + v_code + "&v_number=" + v_number + "&v_myear=" + v_myear + "&v_lrate=" + v_lrate + "&v_frate=" + v_frate + "&v_period=" + v_lease_period + "&v_des=" + v_lease_des, true);
+                xmlhttp.send();
             }
         </script>
     </head>
@@ -140,16 +102,14 @@ if (!isset($_SESSION['user_email'])) {
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer NIC:</label>
-                                        <div class="form-inline required">
-                                            <input type="text" name="cus_nic" id="customer_nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" class="form-control" required style="width: 85%;" maxlength="10"/>
-                                            <button type="button" id="cviewbuttons" class="btn btn" onclick="searchCustomerforPawn();">Search</button>
-                                        </div>
+                                        <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer Name:</label>
-                                        <input type="text" name="cus_name" readonly id="customer_name" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
+                                        <input type="text" name="cus_name" id="c_name" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-inline required" style="margin-bottom: 8px;">
+                                        <button type="button" id="cviewbuttons" class="btn btn">Search</button>
                                         <a href="customer_registration.php"><button type="button" id="cviewbuttons" class="btn btn">New Customer</button></a>
                                     </div>
                                     <div class="form-group required">
@@ -167,13 +127,7 @@ if (!isset($_SESSION['user_email'])) {
                                     <legend>Land Pawning Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Service No:</label>
-                                        <div class="form-inline required">
-                                            <select name="service_code" id="scode" class="form-control" onchange="" style="width: 40%;">
-                                                <option value="HOR">HOR</option>
-                                                <option value="BUL">BUL</option>
-                                            </select>
-                                            <input type="text" name="service_no" id="sno" placeholder="Service No" class="form-control" maxlength="4" style="width: 59%;" required/>
-                                        </div>
+                                        <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Deed Number:</label>
@@ -220,7 +174,7 @@ if (!isset($_SESSION['user_email'])) {
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Description of the Loan:</label>
-                                        <input type="text" id="pawn_des" class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                        <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
                                     </div>
                                     <button type="button" class="btn btn" id="custcontinue" onclick="saveLandPawn();">Register Pawn</button>
                                 </fieldset>
