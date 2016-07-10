@@ -25,7 +25,16 @@ $v_period = filter_input(INPUT_GET, 'v_period');
 $v_des = filter_input(INPUT_GET, 'v_des');
 $reg_date = date("Y-m-d");
 
-$sql_query = "INSERT INTO service
+
+$check_sno = "SELECT ser_number FROM service WHERE ser_number='$service_no'";
+$run_sno = mysqli_query($conn, $check_sno);
+if (mysqli_num_rows($run_sno) > 0) {
+    if ($row_sno = mysqli_fetch_assoc($run_sno)) {
+        $res_sno = $row_sno['ser_number'];
+        if ($res_sno == $service_no) {
+            echo "Service-No already used,Please check the Serive Number";
+        } else if ($res_sno != $service_no) {
+            $sql_query = "INSERT INTO service
             (
              ser_number,
              cbopayment,
@@ -67,9 +76,16 @@ VALUES (
         '$customer_nic',
         'No Land Reg Date')";
 
-$run_query = mysqli_query($conn, $sql_query);
-if ($run_query) {
-    echo "Lease has been succesfully added";
-} else {
-    echo "Error While Saving the Leasing,Please check and Re register";
+            $run_query = mysqli_query($conn, $sql_query);
+            if ($run_query) {
+                echo "Lease has been succesfully added";
+            } else {
+                echo "Error While Saving the Leasing,Please check and Re register";
+            }
+        }
+    }
 }
+
+
+
+
