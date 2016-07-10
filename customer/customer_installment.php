@@ -17,66 +17,7 @@
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="icon" href="favicon.ico">
-        <style type="text/css">
-            body
-            {
-                font-family: 'Source Sans Pro', sans-serif;
-            }
-            .modal-backdrop {
-                z-index: -1;
-            }
-            ul {
-                list-style-type: square;
-                list-style-position: outside;
-                list-style-image: none;
-            }
-            #cviewbuttons
-            {
-                background-color: #009688;
-                color: white;
-
-            }
-            #cviewbuttons:hover
-            {
-                background-color: #004D40;
-            }
-            #panelheading
-            {
-                background: #009688;
-                color: white;          
-            }
-            #cservicebtn
-            {
-                background-color: #009688;
-                color: white;
-            }
-            #cservicebtn:hover
-            {
-                background-color: #004D40;
-            }
-            #custcontinue
-            {
-                background-color: #009688;
-                color: white;
-                float: right;
-            }
-            #custcontinue:hover
-            {
-                background-color: #004D40;
-            }
-            //.thcaption{text-align: center;}
-            #backregister
-            {
-                background-color: #004D40;
-                color: white;
-                float: right;
-                margin-right: 12px;
-            }
-            #backregister:hover
-            {
-                background-color: #009688;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../assets/css/installments.css"/>
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>
@@ -94,30 +35,36 @@
                                 <fieldset id="account">
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Customer NIC:</label>
+                                        <label class="control-label">Customer NIC:</label>
                                         <div class="form-inline required">
-                                            <input type="text"  name="customersearch" id="fname" value="" placeholder="Customer NIC" class="form-control" style="width:85%;"required/>
+                                            <input type="text"  name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" style="width:85%;text-transform: uppercase;"required/>
                                             <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
                                         </div>
                                     </div>
 
                                     <div class="form-group required">
                                         <div class="form-group required">
-                                            <label class="control-label" for="input-email">Customer Name:</label>
-                                            <input type="text"  name="customersearch" id="fname" value="" placeholder="Customer Name" id="input-email" class="form-control" required/>
+                                            <label class="control-label">Customer Name:</label>
+                                            <input type="text"  name="cus_name" id="cus_name" placeholder="Customer Name" class="form-control" required readonly/>
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <div class="form-group required">
-                                            <label class="control-label" for="input-email">Customer TP:</label>
-                                            <input type="text"  name="customersearch" id="fname" value="" placeholder="Customer Telephone" id="input-email" class="form-control" required/>
+                                            <label class="control-label">Customer TP:</label>
+                                            <input type="text"  name="cus_tp" id="cus_tp" placeholder="Customer Telephone" class="form-control" required readonly/>
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <div class="form-group required">
-                                            <label class="control-label" for="input-email">Start Date:</label>
-                                            <input type="date"  name="customersearch" id="fname" value="" placeholder="2016-10-20" id="input-email" class="form-control" required/>
-                                        </div
+                                            <label class="control-label">Customer Address:</label>
+                                            <input type="text" name="cus_address" id="cus_address" placeholder="Customer Telephone" class="form-control" required readonly/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Registered Date:</label>
+                                            <input type="text"  name="cus_reg_date" id="cus_reg_date" placeholder="Registered Date" class="form-control" required readonly/>
+                                        </div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -126,32 +73,32 @@
                                     <fieldset id="account">
                                         <legend>Service Details</legend>
                                         <div class="form-group required">
-                                            <label class="control-label" for="input-email">Service No:</label>
+                                            <label class="control-label">Service No:</label>
                                             <div class="form-inline required">
-                                                <input type="text" name="fname" id="fname" value="" placeholder="Service No" class="form-control" style="width:85%;"required/>
+                                                <input type="text" name="ser_no" id="ser_no" value="" placeholder="Service No" class="form-control" style="width:85%;"required/>
                                                 <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
                                             </div>
                                         </div>
                                             <div class="form-group required">
-                                                <label class="control-label" for="input-email">Service No:</label>
-                                                <input type="text" name="fname" id="fname" value="" placeholder="Service No" id="input-email" class="form-control" required/>
+                                                <label class="control-label">Service Date:</label>
+                                                <input type="text" name="ser_date" id="ser_date" placeholder="Service Date" class="form-control" required readonly/>
                                             </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
-                                                <label class="control-label" for="input-email">Loan Payment:</label>
-                                                <input type="text" name="fname" id="fname" value="" placeholder="Loan Payment" id="input-email" class="form-control" required/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group required">
-                                            <div class="form-group required">
-                                                <label class="control-label" for="input-email">Installment:</label>
-                                                <input type="text" name="fname" id="fname" value="5736.00" placeholder="Installment" id="input-email" class="form-control" required/>
+                                                <label class="control-label">Loan Payment:</label>
+                                                <input type="text" name="ser_payment" id="ser_payment" placeholder="Loan Payment" class="form-control" required readonly/>
                                             </div>
                                         </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
-                                                <label class="control-label" for="input-email">End Date:</label>
-                                                <input type="date" name="fname" id="fname" value="2016-10-20" placeholder="End Date" id="input-email" class="form-control" required/>
+                                                <label class="control-label">Installment:</label>
+                                                <input type="text" name="ser_installment" id="ser_installment" placeholder="Installment" class="form-control" required readonly/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="form-group required">
+                                                <label class="control-label">End Date:</label>
+                                                <input type="text" name="ser_end_date" id="ser_end_date"  placeholder="End Date" class="form-control" required readonly/>
                                             </div>
                                         </div>
                                     </fieldset>
