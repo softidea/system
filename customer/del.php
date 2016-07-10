@@ -19,8 +19,9 @@ $sql_query="SELECT max_val FROM ser_threewheel_pre WHERE tw_type='$type' AND tw_
 
 $run_query=  mysqli_query($d_bc, $sql_query);
 
-if($row=  mysqli_fetch_array($run_query)){
-    
+if($row=mysqli_fetch_array($run_query)){
+    $max_val=$row['max_val'];
+    echo $max_val;
 }
 
 ?>

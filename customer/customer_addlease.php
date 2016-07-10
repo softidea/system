@@ -1,3 +1,10 @@
+
+<?php
+session_start();
+if (!isset($_SESSION['user_email'])) {
+    header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
     <!--Variable Declaration-->
@@ -155,8 +162,9 @@
                     }
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                            alert(xmlhttp.responseText);
+                            //alert(xmlhttp.responseText);
                             document.getElementById('l_rate').value = xmlhttp.responseText;
+                            document.getElementById('m_year').value = "None";
                         }
                     }
                     xmlhttp.open("GET", "del.php?v_tw_type=" + v_tw_type + "&v_tw_code=" + v_tw_code, true);
@@ -169,10 +177,12 @@
             function set_vehicle_div(val) {
                 alert(val);
                 if (val == 1) {
+                    alert(val);
                     reset_form_values();
                     document.getElementById('v_brand').disabled = false;
                 }
                 else if (val == 2) {
+                    alert(val);
                     reset_form_values();
                     document.getElementById('v_brand').disabled = true;
                     document.getElementById("v_type").innerHTML = "";
@@ -194,9 +204,14 @@
             }
             function reset_form_values() {
                 document.getElementById('v_brand').selectedIndex = "0";
+                document.getElementById('v_type').innerHTML = "";
+                document.getElementById('v_type').innerHTML = "<option value='0'>~~Select Vehicle Type~~</option>";
                 document.getElementById('v_type').selectedIndex = "0";
+                document.getElementById('v_code').innerHTML = "";
+                document.getElementById('v_code').innerHTML = "<option value='0'>~~Select Vehicle Code~~</option>";
+                document.getElementById('v_code').selectedIndex = "0";
+                document.getElementById('v_no_num').value = "";
                 document.getElementById('v_no_code').value = "";
-                document.getElementById('v_no').value = "";
                 document.getElementById('m_year').value = "";
                 document.getElementById('l_rate').value = "";
                 document.getElementById('f_rate').value = "";
@@ -228,7 +243,9 @@
         <script type="text/javascript">
             function saveVehicleLease() {
 
-                var service_no = document.getElementById('sno').value;
+                var service_code = document.getElementById('scode').value;
+                var service_num = document.getElementById('sno').value;
+                var service_no = service_code + "-" + service_num;
                 var v_cat = document.getElementById('v_cat').value;
                 var v_brand = document.getElementById('v_brand').value;
                 var v_type = document.getElementById('v_type').value;
@@ -255,7 +272,6 @@
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             alert(xmlhttp.responseText);
-
                         }
                     }
                     xmlhttp.open("GET", "../controller/ser_external_v_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&v_cat=" + v_cat + "&v_brand=" + v_brand + "&v_type=" + v_type + "&v_code=" + v_code + "&v_number=" + v_number + "&v_myear=" + v_myear + "&v_lrate=" + v_lrate + "&v_frate=" + v_frate + "&v_period=" + v_lease_period + "&v_des=" + v_lease_des, true);
@@ -298,9 +314,6 @@
                                         <input type="file" name="product_image[]" id="idupload" onchange="imagepreview(this);"/>
                                         <img id="imgpreview" title="Image Preview" style="width: 200px;height: 200px;">
                                     </div>
-
-
-
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Upload Property:</label>
                                         <input type="file" name="product_image" required/>
@@ -312,11 +325,17 @@
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Service No:</label>
-                                        <input type="text" name="service_no" id="sno" placeholder="Service No" class="form-control" style="text-transform: uppercase;" required/>
+                                        <div class="form-inline required">
+                                            <select name="service_code" id="scode" class="form-control" onchange="" style="width: 40%;">
+                                                <option value="HOR">HOR</option>
+                                                <option value="BUL">BUL</option>
+                                            </select>
+                                            <input type="text" name="service_no" id="sno" placeholder="Service No" class="form-control" maxlength="4" style="width: 59%;" required/>
+                                        </div>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Category:</label>
-                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value)">
+                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
                                             <option value="0">~~Select Category~~</option>
                                             <option value="1">Bike</option>
                                             <option value="2">Three-Wheel</option>

@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+if (!isset($_SESSION['user_email'])) {
+    header("Location:../index.php");
+}
 
 $conn = mysqli_connect("77.104.142.97", "ayolanin_dev", "WelComeDB1129", "ayolanin_datahost");
 if (mysqli_connect_errno()) {
@@ -59,7 +62,7 @@ VALUES (
         '$v_period',
         '$reg_date',
         '$v_des',
-        '" . $_SESSION['useremail'] . "',
+        '" . $_SESSION['user_email'] . "',
         '1',
         '$customer_nic',
         'No Land Reg Date')";
@@ -70,4 +73,3 @@ if ($run_query) {
 } else {
     echo "Error While Saving the Leasing,Please check and Re register";
 }
-?>
