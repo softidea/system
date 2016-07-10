@@ -76,7 +76,6 @@ if (isset($_POST['register_lease']) || isset($_POST['register_pawn'])) {
     $real_prp_other_pawn_getter = $_POST['real_prp_other_pawn_getter'];
 //Over-customer real propty other
 
-
     $cus_savings_bank_branch_1 = $_POST['cus_savings_bank_branch'];
     $cus_savings_facilities_2 = $_POST['cus_savings_facilities'];
     $cus_savings_account_no_3 = $_POST['cus_savings_account_no'];

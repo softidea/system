@@ -130,10 +130,8 @@
                             alert(xmlhttp.responseText);
                             var value = xmlhttp.responseText;
                             var result_arr = value.split("#");
-
                             document.getElementById('m_year').value = result_arr[0];
                             document.getElementById('l_rate').value = result_arr[1];
-
                             if (v_code.length === 1) {
                                 document.getElementById('v_no_code').maxLength = v_code.length + 1;
                             } else {
@@ -169,6 +167,7 @@
         </script>
         <script type="text/javascript">
             function set_vehicle_div(val) {
+                alert(val);
                 if (val == 1) {
                     reset_form_values();
                     document.getElementById('v_brand').disabled = false;
@@ -176,11 +175,8 @@
                 else if (val == 2) {
                     reset_form_values();
                     document.getElementById('v_brand').disabled = true;
-
                     document.getElementById("v_type").innerHTML = "";
                     document.getElementById("v_type").innerHTML = "<option value='2'>2 Stroke</option><option value='4'>4 Stroke</option>";
-
-
                     if (window.XMLHttpRequest) {
                         // code for IE7+, Firefox, Chrome, Opera, Safari
                         xmlhttp = new XMLHttpRequest();
@@ -207,9 +203,66 @@
             }
         </script>
         <script type="text/javascript">
-            function searchCustomerforLease(){
-                alert('searchCustomerforLease');
+            function searchCustomerforLease() {
+
+                if (document.getElementById('customer_nic').value != "") {
+                    alert('searchCustomerforLease');
+                    var val = document.getElementById('customer_nic').value;
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+                            document.getElementById('customer_name').value = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_lease_customer.php?cus_nic=" + val, true);
+                    xmlhttp.send();
+                }
             }
+        </script>
+        <script type="text/javascript">
+            function saveVehicleLease() {
+
+                var service_no = document.getElementById('sno').value;
+                var v_cat = document.getElementById('v_cat').value;
+                var v_brand = document.getElementById('v_brand').value;
+                var v_type = document.getElementById('v_type').value;
+                var v_code = document.getElementById('v_code').value;
+                var v_number = document.getElementById('v_no_code').value + "-" + document.getElementById('v_no_num').value;
+                var v_myear = document.getElementById('m_year').value;
+                var v_lrate = document.getElementById('l_rate').value;
+                var v_frate = document.getElementById('f_rate').value;
+                var v_lease_period = document.getElementById('v_lease_period').value;
+                var v_lease_des = document.getElementById('lease_des').value;
+                var c_nic = document.getElementById('customer_nic').value;
+
+                if (service_no != "" && v_cat != "" && v_brand != "" && v_type != "" && v_code != ""
+                        && v_number != "" && v_myear != "" && v_lrate != ""
+                        && v_frate != "" && v_lease_period != "" && v_lease_des != "" && c_nic != "") {
+
+                    alert("inside save code");
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/ser_external_v_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&v_cat=" + v_cat + "&v_brand=" + v_brand + "&v_type=" + v_type + "&v_code=" + v_code + "&v_number=" + v_number + "&v_myear=" + v_myear + "&v_lrate=" + v_lrate + "&v_frate=" + v_frate + "&v_period=" + v_lease_period + "&v_des=" + v_lease_des, true);
+                    xmlhttp.send();
+                }
+            }
+
         </script>
     </head>
     <body>
@@ -229,13 +282,13 @@
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer NIC:</label>
                                         <div class="form-inline required">
-                                            <input type="text" name="cus_nic" id="nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" class="form-control" required style="width: 85%;"/>
+                                            <input type="text" name="cus_nic" id="customer_nic" value="<?php echo $cus_nic; ?>" placeholder="Customer NIC" class="form-control" required style="width: 85%;" maxlength="10"/>
                                             <button type="button" id="cviewbuttons" class="btn btn" onclick="searchCustomerforLease();">Search</button>
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Customer Name:</label>
-                                        <input type="text" name="cus_name" id="fname" value="<?php echo $cus_name; ?>" placeholder="Customer Name" id="input-email" class="form-control" required/>
+                                        <input type="text" name="cus_name" readonly id="customer_name" value="<?php echo $cus_name; ?>" placeholder="Customer Name" class="form-control" required/>
                                     </div>
                                     <div class="form-inline required" style="margin-bottom: 8px;">
                                         <a href="customer_registration.php"><button type="button" id="cviewbuttons" class="btn btn">New Customer</button></a>
@@ -252,11 +305,6 @@
                                         <label class="control-label" for="input-email">Upload Property:</label>
                                         <input type="file" name="product_image" required/>
                                     </div>
-
-
-
-
-
                                 </fieldset>
                             </div>
                             <div class="col-sm-6">
@@ -264,11 +312,11 @@
                                     <legend>Leasing Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Service No:</label>
-                                        <input type="text" name="service_no" id="sno" placeholder="Service No" id="input-email" class="form-control" required/>
+                                        <input type="text" name="service_no" id="sno" placeholder="Service No" class="form-control" style="text-transform: uppercase;" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Category:</label>
-                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value);">
+                                        <select name="vehicle_brand" id="v_cat" class="form-control" onchange="set_vehicle_div(this.value)">
                                             <option value="0">~~Select Category~~</option>
                                             <option value="1">Bike</option>
                                             <option value="2">Three-Wheel</option>
@@ -295,7 +343,7 @@
                                     <div class="form-inline required">
                                         <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
                                         <label class="control-label" for="input-email"> - </label>
-                                        <input type="text" name="vehicle_no" maxlength="4" id="v_no" placeholder="Ex:2558" id="input-email" class="form-control" required/>
+                                        <input type="text" name="vehicle_no" maxlength="4" id="v_no_num" placeholder="Ex:2558" id="input-email" class="form-control" required/>
                                         <br>
                                     </div>
                                     <div class="form-group required">
@@ -312,7 +360,7 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Period:</label>
-                                        <select name="cbo_loan_duration" id="input-region" class="form-control" required>
+                                        <select name="cbo_loan_duration" id="v_lease_period" class="form-control" required>
                                             <option value="6">6 Months</option>
                                             <option value="12">1 Year</option>
                                             <option value="18">1.5 Years</option>
@@ -327,9 +375,9 @@
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Description of the Loan:</label>
-                                        <input type="text" id="input-email" class="form-control" name="loan_description" placeholder="Description of the Loan">
+                                        <input type="text" id="lease_des" class="form-control" name="loan_description" placeholder="Description of the Loan">
                                     </div>
-                                    <button type="button" class="btn btn" id="custcontinue">Register Lease</button>
+                                    <button type="button" class="btn btn" id="custcontinue" onclick="saveVehicleLease();">Register Lease</button>
                                 </fieldset>
                             </div>
                         </div>
