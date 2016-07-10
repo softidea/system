@@ -284,7 +284,6 @@ if (!isset($_SESSION['user_email'])) {
                     document.getElementById("v_type").innerHTML = "";
                     document.getElementById("v_type").innerHTML = "<option value='2'>2 Stroke</option><option value='4'>4 Stroke</option>";
 
-
                     if (window.XMLHttpRequest) {
                         // code for IE7+, Firefox, Chrome, Opera, Safari
                         xmlhttp = new XMLHttpRequest();
@@ -310,7 +309,6 @@ if (!isset($_SESSION['user_email'])) {
                 document.getElementById('f_rate').value = "";
             }
         </script>
-
     </head>
     <body>
 
@@ -397,9 +395,8 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
-
+                                        
                                         <!-- Start.Customer Better Half Details --> 
-
                                         <legend>03.Customer Better Half Details</legend>
 
                                         <div class="form-group  ">
