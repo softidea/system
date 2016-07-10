@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_email'])) {
                                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner">
                                                 <div class="item active">
-                                                    
+
                                                     <a href="../customer/customer_registration.php"><img src="http://www.motorbikeslk.com/sites/default/files/bajaj-discover-125.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4 style="color: #004D40;"><small>Motor Bikes</small></h4>                                        
                                                     <button href="../customer/customer_registration.php" id="btnhov" class="btn btn" style="background-color: #009688;color: white;" type="button">Lease Now</button> 
