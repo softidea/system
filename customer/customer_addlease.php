@@ -140,9 +140,20 @@ if (!isset($_SESSION['user_email'])) {
                             document.getElementById('m_year').value = result_arr[0];
                             document.getElementById('l_rate').value = result_arr[1];
                             if (v_code.length === 1) {
-                                document.getElementById('v_no_code').maxLength = v_code.length + 1;
-                            } else {
                                 document.getElementById('v_no_code').maxLength = v_code.length;
+                                document.getElementById('v_no_code').readOnly=false;
+                                document.getElementById('v_no_code').value="";
+                                document.getElementById('v_no_num').value="";
+                                document.getElementById('m_year').value="";
+                                document.getElementById('l_rate').value="";
+                            } else {
+                                document.getElementById('v_no_code').value="";
+                                document.getElementById('v_no_num').value="";
+                                document.getElementById('m_year').value="";
+                                document.getElementById('l_rate').value="";
+                                document.getElementById('v_no_code').readOnly=true;
+                                document.getElementById('v_no_code').maxLength = v_code.length;
+                                document.getElementById('v_no_code').value=document.getElementById('v_code').value;
                             }
 
                         }
@@ -360,7 +371,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </select>
                                     </div>
                                     <div class="form-inline required">
-                                        <input type="text" name="vehicle_no" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
+                                        <input type="text" name="vehicle_no" style="text-transform: uppercase;" id="v_no_code" placeholder="Ex:ME" id="input-email" class="form-control" required/>
                                         <label class="control-label" for="input-email"> - </label>
                                         <input type="text" name="vehicle_no" maxlength="4" id="v_no_num" placeholder="Ex:2558" id="input-email" class="form-control" required/>
                                         <br>
