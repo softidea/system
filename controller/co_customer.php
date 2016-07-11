@@ -359,7 +359,7 @@ VALUES
     $fixed_rate = $_POST['fixed_rate'];
     $cbo_loan_duration = $_POST['cbo_loan_duration'];
     $loan_description = $_POST['loan_description'];
-
+    $installment=$_POST['loan_description'];
 
     $land_service_no = $_POST['service_no'];
     $land_cbopayment = $_POST['cbopayment'];
@@ -391,6 +391,7 @@ VALUES
         ser_duration,
         ser_date,
         ser_details,
+        ser_installment,
         refrence_person,
         ser_status,
         cus_nic
@@ -412,6 +413,7 @@ VALUES
         '$cbo_loan_duration',
         '$reg_date',
         '$loan_description',
+        '$installment',
         '" . $_SESSION['useremail'] . "',
         '1',
         '$cus_nic'

@@ -24,6 +24,7 @@ $v_frate = filter_input(INPUT_GET, 'v_frate');
 $v_period = filter_input(INPUT_GET, 'v_period');
 $v_des = filter_input(INPUT_GET, 'v_des');
 $reg_date = date("Y-m-d");
+$installment=  filter_input(INPUT_GET, 'installment');
 
 $sql_query = "INSERT INTO service
             (
@@ -42,6 +43,7 @@ $sql_query = "INSERT INTO service
              ser_duration,
              ser_date,
              ser_details,
+             ser_instalment,
              refrence_person,
              ser_status,
              cus_nic,
@@ -62,6 +64,7 @@ VALUES (
         '$v_period',
         '$reg_date',
         '$v_des',
+        '$installment',
         '" . $_SESSION['user_email'] . "',
         '1',
         '$customer_nic',

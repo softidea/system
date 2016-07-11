@@ -79,8 +79,6 @@ if (!isset($_SESSION['user_email'])) {
 
     $payable_loan_amount = "";
 
-
-
     $reg_date = date("Y-m-d");
 ///////////////////////////////////////////////////////
 
@@ -308,6 +306,31 @@ if (!isset($_SESSION['user_email'])) {
                 document.getElementById('l_rate').value = "";
                 document.getElementById('f_rate').value = "";
             }
+          
+            function setSerInstallment() {
+                var payment = document.getElementById('f_rate').value;
+                var period = document.getElementById('setServiceInstallment').value;
+
+                if (payment != "" && period != "" && payment != null && period != null) {
+
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+                            document.getElementById('ser_installment').value = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_lease_customer.php?payment=" + payment + "&period=" + period, true);
+                    xmlhttp.send();
+                }
+
+            }
+
         </script>
     </head>
     <body>
@@ -395,7 +418,7 @@ if (!isset($_SESSION['user_email'])) {
                                         </div>
                                     </fieldset>
                                     <fieldset id="account">
-                                        
+
                                         <!-- Start.Customer Better Half Details --> 
                                         <legend>03.Customer Better Half Details</legend>
 
@@ -703,32 +726,32 @@ if (!isset($_SESSION['user_email'])) {
                                                 </select>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Vehicle Pre Code:</label>
+                                                <label class="control-label">Vehicle Pre Code:</label>
                                                 <select name="vehicle_code" value="<?php echo $vehicle_code; ?>" id="v_code" class="form-control" onchange="showDetails();">
                                                     <option value="0">~~Select Vehicle Code~~</option>
                                                 </select>
                                             </div>
                                             <div class="form-inline required">
                                                 <input type="text" name="vehicle_no1" value="<?php echo $vehicle_no1; ?>" style="text-transform: uppercase;"id="v_no_code" placeholder="Ex:ME"  class="form-control"/>
-                                                <label class="control-label"   id=""> - </label>
+                                                <label class="control-label"> - </label>
                                                 <input type="text" name="vehicle_no2" value="<?php echo $vehicle_no2; ?>" maxlength="4" id="v_no" placeholder="Ex:2558"   class="form-control"/>
                                                 <br>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Model Year:</label>
+                                                <label class="control-label">Model Year:</label>
                                                 <input type="text" disabled  name="model_year" value="<?php echo $model_year; ?>" id="m_year" placeholder="Model Year"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Lease Rental:</label>
+                                                <label class="control-label">Lease Rental:</label>
                                                 <input type="text" disabled name="lease_rate" value="<?php echo $lease_rate; ?>" id="l_rate" placeholder="Lease Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Fixed Rental:</label>
+                                                <label class="control-label">Fixed Rental:</label>
                                                 <input type="text" name="fixed_rate" value="<?php echo $fixed_rate; ?>" id="f_rate" placeholder="Fix Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
-                                                <label class="control-label"   id="">Select Period:</label>
-                                                <select name="cbo_loan_duration" value="<?php echo $cbo_loan_duration; ?>" id="input-region" class="form-control">
+                                                <label class="control-label">Select Period:</label>
+                                                <select name="cbo_loan_duration" id="setServiceInstallment" class="form-control" onchange="setSerInstallment();">
                                                     <option value="6">6 Months</option>
                                                     <option value="12">1 Year</option>
                                                     <option value="18">1.5 Years</option>
@@ -740,6 +763,10 @@ if (!isset($_SESSION['user_email'])) {
                                                     <option value="54">4.5 Years</option>
                                                     <option value="60">5 Years</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="control-label">Service Installment:</label>
+                                                <input type="text" name="ser_installment" id="ser_installment" placeholder="Fix Rate" class="form-control" required readonly/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Description of the Loan:</label>
@@ -971,6 +998,7 @@ if (!isset($_SESSION['user_email'])) {
                     document.getElementById('msg_caption').style.color = "black";
                     gotosecond();
                 } else {
+                    gotosecond();
                     document.getElementById('msg_caption').style.color = "red";
                     alert("Empty Data Fields Found,Please Insert Valid Data");
                 }

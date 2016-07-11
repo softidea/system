@@ -7,6 +7,10 @@ if (mysqli_connect_errno()) {
 }
 
 $customer_nic=  filter_input(INPUT_GET, 'cus_nic');
+$payment=  filter_input(INPUT_GET, 'payment');
+$period=  filter_input(INPUT_GET, 'period');
+
+//customer detail loading
 if($customer_nic!="" && $customer_nic!=null){
    global $conn;
    $sql_query="SELECT * FROM customer WHERE cus_nic='$customer_nic'";
@@ -17,8 +21,19 @@ if($customer_nic!="" && $customer_nic!=null){
            $cus_name=$row['cus_fullname'];
            echo $cus_name;
        }
-   }
-   
-   
+   } 
 }
+//customer detail loading
+
+
+//setting the service installment
+if($payment!="" && $period!=""){
+    
+    $installment=((floatval($payment)/intval($period))+((3.96/100)*floatval($payment)));
+    
+    echo number_format($installment+0.5, -10); 
+    
+}
+//setting the service installment
+
 

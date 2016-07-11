@@ -144,13 +144,9 @@ if (!isset($_SESSION['user_email'])) {
                                 document.getElementById('v_no_code').readOnly = false;
                                 document.getElementById('v_no_code').value = "";
                                 document.getElementById('v_no_num').value = "";
-                                document.getElementById('m_year').value = "";
-                                document.getElementById('l_rate').value = "";
                             } else {
                                 document.getElementById('v_no_code').value = "";
                                 document.getElementById('v_no_num').value = "";
-                                document.getElementById('m_year').value = "";
-                                document.getElementById('l_rate').value = "";
                                 document.getElementById('v_no_code').readOnly = true;
                                 document.getElementById('v_no_code').maxLength = v_code.length;
                                 document.getElementById('v_no_code').value = document.getElementById('v_code').value;
@@ -268,10 +264,11 @@ if (!isset($_SESSION['user_email'])) {
                 var v_lease_period = document.getElementById('v_lease_period').value;
                 var v_lease_des = document.getElementById('lease_des').value;
                 var c_nic = document.getElementById('customer_nic').value;
+                var installment=document.getElementById('ser_installment').value;
 
                 if (service_no != "" && v_cat != "" && v_brand != "" && v_type != "" && v_code != ""
                         && v_number != "" && v_myear != "" && v_lrate != ""
-                        && v_frate != "" && v_lease_period != "" && v_lease_des != "" && c_nic != "") {
+                        && v_frate != "" && v_lease_period != "" && v_lease_des != "" && c_nic != "" && installment!="") {
 
                     alert("inside save code");
                     if (window.XMLHttpRequest) {
@@ -285,11 +282,33 @@ if (!isset($_SESSION['user_email'])) {
                             alert(xmlhttp.responseText);
                         }
                     }
-                    xmlhttp.open("GET", "../controller/ser_external_v_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&v_cat=" + v_cat + "&v_brand=" + v_brand + "&v_type=" + v_type + "&v_code=" + v_code + "&v_number=" + v_number + "&v_myear=" + v_myear + "&v_lrate=" + v_lrate + "&v_frate=" + v_frate + "&v_period=" + v_lease_period + "&v_des=" + v_lease_des, true);
+                    xmlhttp.open("GET", "../controller/ser_external_v_service_save.php?cus_nic=" + c_nic + "&sno=" + service_no + "&v_cat=" + v_cat + "&v_brand=" + v_brand + "&v_type=" + v_type + "&v_code=" + v_code + "&v_number=" + v_number + "&v_myear=" + v_myear + "&v_lrate=" + v_lrate + "&v_frate=" + v_frate + "&v_period=" + v_lease_period + "&v_des=" + v_lease_des+"&installment="+installment, true);
                     xmlhttp.send();
                 }
             }
+            function setServiceInstallment() {
 
+                var payment = document.getElementById('f_rate').value;
+                var period = document.getElementById('v_lease_period').value;
+
+                if (payment != "" && period != "" && payment != null && period != null) {
+
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            alert(xmlhttp.responseText);
+                            document.getElementById('ser_installment').value=xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/co_load_lease_customer.php?payment=" + payment + "&period=" + period, true);
+                    xmlhttp.send();
+                }
+            }
         </script>
     </head>
     <body>
@@ -390,7 +409,7 @@ if (!isset($_SESSION['user_email'])) {
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Select Period:</label>
-                                        <select name="cbo_loan_duration" id="v_lease_period" class="form-control" required>
+                                        <select name="cbo_loan_duration" id="v_lease_period" class="form-control" required onchange="setServiceInstallment();">
                                             <option value="6">6 Months</option>
                                             <option value="12">1 Year</option>
                                             <option value="18">1.5 Years</option>
@@ -404,8 +423,8 @@ if (!isset($_SESSION['user_email'])) {
                                         </select>
                                     </div>
                                     <div class="form-group required">
-                                        <label class="control-label" for="input-email">Fixed Rental:</label>
-                                        <input type="text" name="fixed_rate" id="f_rate" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required/>
+                                        <label class="control-label">Service Installment:</label>
+                                        <input type="text" name="ser_installment" id="ser_installment" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required readonly/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Description of the Loan:</label>
