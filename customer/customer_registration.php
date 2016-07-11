@@ -306,7 +306,6 @@ if (!isset($_SESSION['user_email'])) {
                 document.getElementById('l_rate').value = "";
                 document.getElementById('f_rate').value = "";
             }
-          
             function setSerInstallment() {
                 var payment = document.getElementById('f_rate').value;
                 var period = document.getElementById('setServiceInstallment').value;

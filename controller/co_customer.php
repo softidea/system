@@ -442,6 +442,7 @@ VALUES
         ser_duration,
         ser_date,
         ser_details,
+        ser_installment,
         refrence_person,
         ser_status,
         cus_nic
@@ -463,6 +464,7 @@ VALUES
         '$cbo_loan_duration',
         '$reg_date',
         '$loan_description',
+        '$installment',
         '" . $_SESSION['useremail'] . "',
         '1',
         '$cus_nic'
@@ -488,6 +490,7 @@ VALUES
       ser_duration,
       ser_date,
       ser_details,
+      ser_installment,
       refrence_person,
       ser_status,
       cus_nic,
@@ -510,6 +513,7 @@ VALUES
         '$cbo_loan_duration',
         '$reg_date',
         '$loan_description',
+        'No Service Installment',
         '" . $_SESSION['useremail'] . "',
         '1',
         '$cus_nic',
