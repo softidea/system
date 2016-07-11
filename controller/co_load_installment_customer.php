@@ -29,8 +29,6 @@ if ($customer_nic != "" && $customer_nic != null) {
     }
 }
 //loading customer details
-
-
 //loading service numbers of the customer
 if ($c_nic != "" && $c_nic != null) {
     global $conn;
@@ -45,9 +43,19 @@ if ($c_nic != "" && $c_nic != null) {
     }
 }
 //loading service numbers of the customer
-
 //loading service details
 if ($s_no != "" && $s_no != null) {
-    
+    global $conn;
+    $sql_query = "SELECT * FROM service WHERE ser_number='$s_no'";
+    $run_query = mysqli_query($conn, $sql_query);
+    if (mysqli_num_rows($run_query) > 0) {
+        if ($row = mysqli_fetch_assoc($run_query)) {
+            $ser_no = $row['ser_number'];
+            $ser_date = $row['ser_date'];
+            $fixed_rent = $row['ser_fixedrental'];
+            $install = $row['ser_instalment'];
+            echo $ser_no . "#" . $ser_date . "#" . $fixed_rent . "#" . $install;
+        }
+    }
 }
 //loading service details

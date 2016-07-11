@@ -52,7 +52,6 @@
                 xmlhttp.open("GET", "../controller/co_load_installment_customer.php?cus_nic=" + nic, true);
                 xmlhttp.send();
             }
-            
             function loadServices() {
 
                 var nic = document.getElementById('cus_nic').value;
@@ -75,9 +74,10 @@
                 xmlhttp.send();
 
             }
-            function loadServiceDetails(){
+            function loadServiceDetails() {
                 var sno = document.getElementById('service_combo').value;
-                 if (window.XMLHttpRequest) {
+                alert(sno);
+                if (window.XMLHttpRequest) {
                     // code for IE7+, Firefox, Chrome, Opera, Safari
                     xmlhttp = new XMLHttpRequest();
                 } else { // code for IE6, IE5
@@ -87,8 +87,18 @@
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
                     {
                         alert(xmlhttp.responseText);
-                        document.getElementById('service_combo').innerHTML = "";
-                        document.getElementById('service_combo').innerHTML = xmlhttp.responseText;
+                        var value = xmlhttp.responseText;
+                        var result_arr = value.split("#");
+
+                        document.getElementById('ser_no').value = "";
+                        document.getElementById('ser_date').value = "";
+                        document.getElementById('ser_payment').value = "";
+                        document.getElementById('ser_installment').value = "";
+
+                        document.getElementById('ser_no').value = result_arr[0];
+                        document.getElementById('ser_date').value = result_arr[1];
+                        document.getElementById('ser_payment').value = result_arr[2];
+                        document.getElementById('ser_installment').value = result_arr[3]+".00";
 
                     }
                 }
@@ -179,18 +189,12 @@
                                                 <input type="text" name="ser_installment" id="ser_installment" placeholder="Installment" class="form-control" required readonly/>
                                             </div>
                                         </div>
-                                        <div class="form-group required">
-                                            <div class="form-group required">
-                                                <label class="control-label">End Date:</label>
-                                                <input type="text" name="ser_end_date" id="ser_end_date"  placeholder="End Date" class="form-control" required readonly/>
-                                            </div>
-                                        </div>
                                     </fieldset>
                                 </div>
                             </div>
                             <!--Service View Main Panel-->
-                                      
-                            
+
+
                             <!--Customer Service Loader-->
                             <div class="col-sm-12">
                                 <div class="panel panel-default">
