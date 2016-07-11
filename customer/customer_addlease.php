@@ -141,19 +141,19 @@ if (!isset($_SESSION['user_email'])) {
                             document.getElementById('l_rate').value = result_arr[1];
                             if (v_code.length === 1) {
                                 document.getElementById('v_no_code').maxLength = v_code.length;
-                                document.getElementById('v_no_code').readOnly=false;
-                                document.getElementById('v_no_code').value="";
-                                document.getElementById('v_no_num').value="";
-                                document.getElementById('m_year').value="";
-                                document.getElementById('l_rate').value="";
+                                document.getElementById('v_no_code').readOnly = false;
+                                document.getElementById('v_no_code').value = "";
+                                document.getElementById('v_no_num').value = "";
+                                document.getElementById('m_year').value = "";
+                                document.getElementById('l_rate').value = "";
                             } else {
-                                document.getElementById('v_no_code').value="";
-                                document.getElementById('v_no_num').value="";
-                                document.getElementById('m_year').value="";
-                                document.getElementById('l_rate').value="";
-                                document.getElementById('v_no_code').readOnly=true;
+                                document.getElementById('v_no_code').value = "";
+                                document.getElementById('v_no_num').value = "";
+                                document.getElementById('m_year').value = "";
+                                document.getElementById('l_rate').value = "";
+                                document.getElementById('v_no_code').readOnly = true;
                                 document.getElementById('v_no_code').maxLength = v_code.length;
-                                document.getElementById('v_no_code').value=document.getElementById('v_code').value;
+                                document.getElementById('v_no_code').value = document.getElementById('v_code').value;
                             }
 
                         }
@@ -402,6 +402,10 @@ if (!isset($_SESSION['user_email'])) {
                                             <option value="54">4.5 Years</option>
                                             <option value="60">5 Years</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="control-label" for="input-email">Fixed Rental:</label>
+                                        <input type="text" name="fixed_rate" id="f_rate" value="<?php echo $fixed_rate; ?>" placeholder="Fix Rate" id="input-email" class="form-control" required/>
                                     </div>
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">Description of the Loan:</label>

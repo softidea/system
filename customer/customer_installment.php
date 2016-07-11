@@ -10,7 +10,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <!-- Optional theme -->
-        
+
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -18,6 +18,84 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" type="text/css" href="../assets/css/installments.css"/>
+        <script type="text/javascript">
+            function loadInstallmentCustomer() {
+
+                var nic = document.getElementById('cus_nic').value;
+
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        alert(xmlhttp.responseText);
+
+                        var value = xmlhttp.responseText;
+                        var result_arr = value.split("#");
+
+                        document.getElementById('cus_name').value = "";
+                        document.getElementById('cus_tp').value = "";
+                        document.getElementById('cus_address').value = "";
+                        document.getElementById('cus_reg_date').value = "";
+
+                        document.getElementById('cus_name').value = result_arr[0];
+                        document.getElementById('cus_tp').value = result_arr[1];
+                        document.getElementById('cus_address').value = result_arr[2];
+                        document.getElementById('cus_reg_date').value = result_arr[3];
+                        loadServices();
+                    }
+                }
+                xmlhttp.open("GET", "../controller/co_load_installment_customer.php?cus_nic=" + nic, true);
+                xmlhttp.send();
+            }
+            
+            function loadServices() {
+
+                var nic = document.getElementById('cus_nic').value;
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        alert(xmlhttp.responseText);
+                        document.getElementById('service_combo').innerHTML = "";
+                        document.getElementById('service_combo').innerHTML = xmlhttp.responseText;
+
+                    }
+                }
+                xmlhttp.open("GET", "../controller/co_load_installment_customer.php?c_nic=" + nic, true);
+                xmlhttp.send();
+
+            }
+            function loadServiceDetails(){
+                var sno = document.getElementById('service_combo').value;
+                 if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        alert(xmlhttp.responseText);
+                        document.getElementById('service_combo').innerHTML = "";
+                        document.getElementById('service_combo').innerHTML = xmlhttp.responseText;
+
+                    }
+                }
+                xmlhttp.open("GET", "../controller/co_load_installment_customer.php?s_no=" + sno, true);
+                xmlhttp.send();
+            }
+        </script>
     </head>
     <body>
         <?php include '../assets/include/navigation_bar.php'; ?>
@@ -37,8 +115,8 @@
                                     <div class="form-group required">
                                         <label class="control-label">Customer NIC:</label>
                                         <div class="form-inline required">
-                                            <input type="text"  name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" style="width:85%;text-transform: uppercase;"required/>
-                                            <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
+                                            <input type="text"  name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" style="width:85%;text-transform: uppercase;" maxlength="10" required/>
+                                            <input type="button" class="btn btn" id="custcontinue" onclick="loadInstallmentCustomer();" value="Search">
                                         </div>
                                     </div>
 
@@ -71,18 +149,24 @@
                             <div class="col-sm-6">
                                 <div id="searchOptionPanel">
                                     <fieldset id="account">
+                                        <div class="form-group required" style="display: block;" id="service_combo_div">
+                                            <label class="control-label">Select Service:</label>
+                                            <select name="service_combo" id="service_combo" class="form-control" onchange="loadServiceDetails();">
+                                                <option value='0'>~~Select Service~~</option>
+                                            </select>
+                                        </div>
                                         <legend>Service Details</legend>
-                                        <div class="form-group required">
+                                        <div class="form-group required" style="display: block;" id="service_text_div">
                                             <label class="control-label">Service No:</label>
                                             <div class="form-inline required">
                                                 <input type="text" name="ser_no" id="ser_no" value="" placeholder="Service No" class="form-control" style="width:85%;"required/>
-                                                <button type="button" class="btn btn" id="custcontinue" onclick="">Search</button>
+                                                <input type="button" class="btn btn" id="custcontinue" onclick="loadServices();" value="Search">
                                             </div>
                                         </div>
-                                            <div class="form-group required">
-                                                <label class="control-label">Service Date:</label>
-                                                <input type="text" name="ser_date" id="ser_date" placeholder="Service Date" class="form-control" required readonly/>
-                                            </div>
+                                        <div class="form-group required">
+                                            <label class="control-label">Service Date:</label>
+                                            <input type="text" name="ser_date" id="ser_date" placeholder="Service Date" class="form-control" required readonly/>
+                                        </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label">Loan Payment:</label>
@@ -105,7 +189,8 @@
                                 </div>
                             </div>
                             <!--Service View Main Panel-->
-
+                                      
+                            
                             <!--Customer Service Loader-->
                             <div class="col-sm-12">
                                 <div class="panel panel-default">
