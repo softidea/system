@@ -96,21 +96,20 @@
                                     <div class="form-group required">
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Customer Name:</label>
-                                            <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Customer Name" id="input-email" class="form-control" required/>
-
+                                            <input type="text" disabled name="customersearch" id="fname" placeholder="Customer Name" class="form-control" required/>
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">NIC:</label>
-                                            <input type="text" disabled name="customersearch" id="fname" value="" placeholder="NIC" id="input-email" class="form-control" required/>
+                                            <input type="text" disabled name="customersearch" id="fname" placeholder="NIC" class="form-control" required/>
 
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <div class="form-group required">
                                             <label class="control-label" for="input-email">Phone Number:</label>
-                                            <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Phone Number" id="input-email" class="form-control" required/>
+                                            <input type="text" disabled name="customersearch" id="fname" placeholder="Phone Number" class="form-control" required/>
 
                                         </div>
                                     </div>
@@ -130,27 +129,27 @@
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Service No:</label>
-                                                <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Service No" id="input-email" class="form-control" required/>
+                                                <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Service No" class="form-control" required/>
                                             </div>
                                         </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Service Type:</label>
-                                                <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Service Type" id="input-email" class="form-control" required/>
+                                                <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Service Type" class="form-control" required/>
 
                                             </div>
                                         </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Service Date:</label>
-                                                <input type="text" disabled name="customersearch" id="fname" value="" placeholder="Service Date" id="input-email" class="form-control" required/>
+                                                <input type="date" disabled name="customersearch" id="fname" placeholder="Service Date" class="form-control" required/>
 
                                             </div>
                                         </div>
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Sis Date :</label>
-                                                <input type="text" name="customersearch" id="fname" value="" placeholder="Sis Date" id="input-email" class="form-control" required/>
+                                                <input type="text" name="customersearch" id="fname" value="" placeholder="Sis Date" class="form-control" required/>
 
                                             </div>
                                         </div>
@@ -161,7 +160,7 @@
                                 <div class="form-group required">
                                     <div class="form-group required">
                                         <label class="control-label" for="input-email">No of Installments :</label>
-                                        <input type="text" disabled name="customersearch" id="fname" value="" placeholder="No of Installments" id="input-email" class="form-control" required/>
+                                        <input type="text" disabled name="customersearch" id="fname" value="" placeholder="No of Installments" class="form-control" required/>
 
                                     </div>
                                 </div>
