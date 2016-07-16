@@ -8,7 +8,7 @@ if (mysqli_connect_errno()) {
 }
 
 if (isset($_POST['register_lease']) || isset($_POST['register_pawn'])) {
-    
+
     global $conn;
     $cus_salutation = $_POST['cus_salutation'];
     $cus_fullname = $_POST['cus_fullname'];
@@ -26,11 +26,13 @@ if (isset($_POST['register_lease']) || isset($_POST['register_pawn'])) {
     $cus_addr_map_link = $_POST['cus_addr_map_link'];
     $reg_date = $_POST['reg_date'];
     $cus_status = "1";
-    
+
     echo $cus_salutation;
-    echo $cus_fullname;echo $cus_position;echo $cus_emp_address;
-    
-    
+    echo $cus_fullname;
+    echo $cus_position;
+    echo $cus_emp_address;
+
+
 //over-customer
 
     $cus_bhalf_name = $_POST['cus_hhalf_name'];
@@ -359,7 +361,7 @@ VALUES
     $fixed_rate = $_POST['fixed_rate'];
     $cbo_loan_duration = $_POST['cbo_loan_duration'];
     $loan_description = $_POST['loan_description'];
-    $installment=$_POST['loan_description'];
+    $installment = $_POST['loan_description'];
 
     $land_service_no = $_POST['service_no'];
     $land_cbopayment = $_POST['cbopayment'];
@@ -553,14 +555,43 @@ VALUES
 
 
     if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
-        echo 'Customer Successfully Registered!';
+        echo 'Customer Successfully Registered!'.'<br>';
+
+        echo'cbopayment - ' . $cbopayment.'<br>';
+        echo'service_no - ' . $vehicle_service_no.'<br>';
+        echo 'vehicle_brand - ' . $vehicle_brand.'<br>';
+        echo 'vehicle_type - ' . $vehicle_type.'<br>';
+        echo 'vehicle_code - ' . $vehicle_code.'<br>';
+
+        echo 'vehicle_no1 - ' . $se6_1.'<br>';
+        echo 'vehicle_no2 - ' . $se6_2.'<br>';
+
+        echo 'Vehicle no - ' . $vehicle_no.'<br>';
+        //vehicle service para
+        //land service para
+        echo 'model_year - ' . $model_year.'<br>';
+        echo 'lease_rate - ' . $lease_rate.'<br>';
+        echo 'fixed_rate - ' . $fixed_rate.'<br>';
+        echo 'cbo_loan_duration - ' . $cbo_loan_duration.'<br>';
+        echo 'loan_description - ' . $loan_description.'<br>';
+        echo 'loan_description - ' . $installment.'<br>';
+
+        echo 'service_no - ' . $land_service_no.'<br>';
+        echo 'cbopayment - ' . $land_cbopayment.'<br>';
+        echo 'service catogory - ' . $se_l_ser_caty.'<br>';
+        echo 'deed_no - ' . $deed_no.'<br>';
+        echo 'pawn_rate - ' . $pawn_rate.'<br>';
+        echo 'cbo_year - ' . $cbo_year.'<br>';
+        echo 'cbo_period - ' . $land_pawn_amount.'<br>';
+        echo 'land_reg_date - ' . $land_reg_date.'<br>';
+        //land service para
 //echo '<script>alert("Successs);</script>';
 //echo '<script type="text/javascript">
 //$(document).ready(function(){
 //$("#second").load("../customer/customer_registration.php");
 //});
 //</script>';
-        header('Location:../customer/customer_registration.php');
+        //header('Location:../customer/customer_registration.php');
     } else {
         echo "Error Registration";
     }
