@@ -702,7 +702,7 @@ if (!isset($_SESSION['user_email'])) {
                                             <legend>Leasing Details</legend>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Service No:</label>
-                                                <input type="text"  name="service_no"  value="<?php echo $service_no; ?>" id="sno" placeholder="Service No"   class="form-control" required/>
+                                                <input type="text"  name="sno"  value="<?php echo $service_no; ?>" id="sno" placeholder="Service No"   class="form-control" required/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Select Category:</label>
@@ -738,15 +738,15 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label">Model Year:</label>
-                                                <input type="text" disabled  name="model_year" value="<?php echo $model_year; ?>" id="m_year" placeholder="Model Year"   class="form-control"/>
+                                                <input type="text" disabled  name="modelYear" value="<?php echo $model_year; ?>" id="m_year" placeholder="Model Year"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label">Lease Rental:</label>
-                                                <input type="text" disabled name="lease_rate" value="<?php echo $lease_rate; ?>" id="l_rate" placeholder="Lease Rate"   class="form-control"/>
+                                                <input type="text" disabled name="lr" value="<?php echo $lease_rate; ?>" id="l_rate" placeholder="Lease Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label">Fixed Rental:</label>
-                                                <input type="text" name="fixed_rate" value="<?php echo $fixed_rate; ?>" id="f_rate" placeholder="Fix Rate"   class="form-control"/>
+                                                <input type="text" name="fixedRate" value="<?php echo $fixed_rate; ?>" id="f_rate" placeholder="Fix Rate"   class="form-control"/>
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label">Select Period:</label>
@@ -769,7 +769,7 @@ if (!isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label"   id="">Description of the Loan:</label>
-                                                <input type="text"  name="loan_description" value="<?php echo $loan_description; ?>" class="form-control" placeholder="Description of the Loan">
+                                                <input type="text"  name="loanDescription" value="<?php echo $loan_description; ?>" class="form-control" placeholder="Description of the Loan">
                                             </div>
 
                                             <input type="submit" class="btn btn" id="custcontinue" name="register_lease" value="Register Lease">

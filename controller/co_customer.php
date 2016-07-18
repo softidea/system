@@ -345,7 +345,7 @@ VALUES
 ///////////////////////////////////////////////////////////////////////////////
     //vehicle service para
     $cbopayment = $_POST['cbopayment'];
-    $vehicle_service_no = $_POST['service_no'];
+    $vehicle_service_no = $_POST['sno'];
     $vehicle_brand = $_POST['vehicle_brand'];
     $vehicle_type = $_POST['vehicle_type'];
     $vehicle_code = $_POST['vehicle_code'];
@@ -356,12 +356,12 @@ VALUES
     $vehicle_no = $se6_1 . "-" . $se6_2;
     //vehicle service para
     //land service para
-    $model_year = $_POST['model_year'];
-    $lease_rate = $_POST['lease_rate'];
-    $fixed_rate = $_POST['fixed_rate'];
+    $model_year = $_POST['modelYear'];
+    $lease_rate = $_POST['lr'];
+    $fixed_rate = $_POST['fixedRate'];
     $cbo_loan_duration = $_POST['cbo_loan_duration'];
-    $loan_description = $_POST['loan_description'];
-    $installment = $_POST['loan_description'];
+    $loan_description = $_POST['loanDescription'];
+    $installment = $_POST['ser_installment'];
 
     $land_service_no = $_POST['service_no'];
     $land_cbopayment = $_POST['cbopayment'];
@@ -416,7 +416,7 @@ VALUES
         '$reg_date',
         '$loan_description',
         '$installment',
-        '" . $_SESSION['useremail'] . "',
+        '" . $_SESSION['user_email'] . "',
         '1',
         '$cus_nic'
             ) ;
@@ -467,7 +467,7 @@ VALUES
         '$reg_date',
         '$loan_description',
         '$installment',
-        '" . $_SESSION['useremail'] . "',
+        '" . $_SESSION['user_email'] . "',
         '1',
         '$cus_nic'
           ) ;
@@ -516,7 +516,7 @@ VALUES
         '$reg_date',
         '$loan_description',
         'No Service Installment',
-        '" . $_SESSION['useremail'] . "',
+        '" . $_SESSION['user_email'] . "',
         '1',
         '$cus_nic',
         '$land_reg_date'
@@ -555,35 +555,35 @@ VALUES
 
 
     if ($runquery_cus || $runquery_cus_wf || $runquery_ger || $runquery_ger_wf || $runquery_cus_real_ho || $runquery_cus_real_ot || $runquery_cus_bank1 || $runquery_cus_bank2 || $runquery_cus_bank3) {
-        echo 'Customer Successfully Registered!'.'<br>';
-
-        echo'cbopayment - ' . $cbopayment.'<br>';
-        echo'service_no - ' . $vehicle_service_no.'<br>';
-        echo 'vehicle_brand - ' . $vehicle_brand.'<br>';
-        echo 'vehicle_type - ' . $vehicle_type.'<br>';
-        echo 'vehicle_code - ' . $vehicle_code.'<br>';
-
-        echo 'vehicle_no1 - ' . $se6_1.'<br>';
-        echo 'vehicle_no2 - ' . $se6_2.'<br>';
-
-        echo 'Vehicle no - ' . $vehicle_no.'<br>';
-        //vehicle service para
-        //land service para
-        echo 'model_year - ' . $model_year.'<br>';
-        echo 'lease_rate - ' . $lease_rate.'<br>';
-        echo 'fixed_rate - ' . $fixed_rate.'<br>';
-        echo 'cbo_loan_duration - ' . $cbo_loan_duration.'<br>';
-        echo 'loan_description - ' . $loan_description.'<br>';
-        echo 'loan_description - ' . $installment.'<br>';
-
-        echo 'service_no - ' . $land_service_no.'<br>';
-        echo 'cbopayment - ' . $land_cbopayment.'<br>';
-        echo 'service catogory - ' . $se_l_ser_caty.'<br>';
-        echo 'deed_no - ' . $deed_no.'<br>';
-        echo 'pawn_rate - ' . $pawn_rate.'<br>';
-        echo 'cbo_year - ' . $cbo_year.'<br>';
-        echo 'cbo_period - ' . $land_pawn_amount.'<br>';
-        echo 'land_reg_date - ' . $land_reg_date.'<br>';
+        echo 'Customer Successfully Registered!' . '<br>';
+        echo '-----------------Bick-----------------<br>';
+        echo'cbopayment - ' . $cbopayment . '<br>';
+        echo'service_no - ' . $vehicle_service_no . '<br>';
+        echo 'vehicle_brand - ' . $vehicle_brand . '<br>';
+        echo 'vehicle_type - ' . $vehicle_type . '<br>';
+        echo 'vehicle_code - ' . $vehicle_code . '<br>';
+        echo 'vehicle_no1 - ' . $se6_1 . '<br>';
+        echo 'vehicle_no2 - ' . $se6_2 . '<br>';
+        echo 'Vehicle no - ' . $vehicle_no . '<br>';
+        echo 'model_year - ' . $model_year . '<br>';
+        echo 'lease_rate - ' . $lease_rate . '<br>';
+        echo 'fixed_rate - ' . $fixed_rate . '<br>';
+        echo 'cbo_loan_duration - ' . $cbo_loan_duration . '<br>';
+        echo 'Reg Date - '. $reg_date.'<br>';
+        echo 'loan_description - ' . $loan_description . '<br>';
+        echo 'instalment - ' . $installment . '<br>';
+        echo 'User mail - '.$_SESSION['user_email'];
+        echo '-----------------Bick-----------------<br>';
+     //end bick
+        
+        echo 'service_no - ' . $land_service_no . '<br>';
+        echo 'cbopayment - ' . $land_cbopayment . '<br>';
+        echo 'service catogory - ' . $se_l_ser_caty . '<br>';
+        echo 'deed_no - ' . $deed_no . '<br>';
+        echo 'pawn_rate - ' . $pawn_rate . '<br>';
+        echo 'cbo_year - ' . $cbo_year . '<br>';
+        echo 'cbo_period - ' . $land_pawn_amount . '<br>';
+        echo 'land_reg_date - ' . $land_reg_date . '<br>';
         //land service para
 //echo '<script>alert("Successs);</script>';
 //echo '<script type="text/javascript">
