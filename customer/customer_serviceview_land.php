@@ -70,6 +70,7 @@
                                         if (isset($_POST['cbo_customer_search'])) {
 
                                             $com_cus = $_POST['cbo_customer_search'];
+                                            //echo $com_cus;
                                         }
                                         ?>
                                     </div>
@@ -88,7 +89,7 @@
                                                         <option value=""> --- Please Select --- </option>
                                                         <option value="bike">Motor Bike Leasing</option>
                                                         <option value="twheel">Three-Wheel Leasing</option>
-
+                                                        <option value="land">Land Pawning</option>
                                                     </select>
                                                     <button type="submit" name="searchByVehicle" id="cservicebtn" class="btn btn">Search</button>
                                                 </form>
@@ -104,11 +105,8 @@
                                         <div class="form-group required">
                                             <div class="form-group required">
                                                 <label class="control-label" for="input-email">Installment Date:</label>
-                                                <div class="form-inline required">
-                                                <input type="date" name="install_date" id="service_searchbar"  class="form-control" style="width: 86%;" required/>
-                                                <button type="submit" name="searchByDate" id="cservicebtn" class="btn btn">Search</button>
-                                                </div>
-                                                </div>
+                                                <input type="date" name="install_date" id="service_searchbar"  class="form-control" required/>
+                                            </div>
                                         </div>
 
 
@@ -169,33 +167,23 @@
                                         $records_per_page = 10;
                                         require 'Zebra_Pagination.php';
                                         $pagination = new Zebra_Pagination();
-
                                         if (isset($_POST['search'])) {
+                                            echo $com_cus;
+                                        }
+                                        if (isset($_POST['searchByVehicle'])) {
 
-                                            if ($com_cus == "sno") {
-                                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` WHERE `ser_number`='".$_POST['customer_search_bar']."'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            if ($com_ser=="bike") {
+                                                 
                                             }
-
-                                            if ($com_cus == "nic") {
-                                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` WHERE `cus_nic`='".$_POST['customer_search_bar']."'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            if ($com_ser=="twheel") {
+                                                
                                             }
-
-                                            if ($com_cus == "phone") {
-                                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS s.`ser_number`,s.`ser_date`,s.`description`,s.`fix_rate`,s.`period`,s.`installment`,s.`ser_status` FROM `service` s LEFT JOIN `customer` c ON s.`cus_nic`=c.`cus_nic` WHERE c.`cus_tp`='".$_POST['customer_search_bar']."'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            if ($com_ser=="land") {
+                                                
                                             }
                                             
-                                        } else if (isset($_POST['searchByVehicle'])) {
-
-                                            if ($com_ser == "bike") {
-                                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` WHERE `ser_category`=1  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
-                                            }
-                                            if ($com_ser == "twheel") {
-                                                $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` WHERE `ser_category`=2  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
-                                            }
-                                        } else {
-                                            $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
                                         }
-
+                                        $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
                                         $result = mysqli_query($conn, $sql_query);
                                         if (!($result)) {
 
@@ -221,10 +209,10 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody id="bike_tbody">
-                                                    <?php
-                                                    $index = 0;
-                                                    $status = "";
-                                                    ?>
+<?php
+$index = 0;
+$status = "";
+?>
                                                     <?php while ($row = mysqli_fetch_assoc($result)): ?>
 
                                                         <?php
@@ -247,7 +235,7 @@
                                                             <td><?php echo $status ?></td>
 
                                                         </tr>
-                                                    <?php endwhile ?>
+<?php endwhile ?>
                                                 </tbody>
                                             </table>
                                             <div class="text-center">
@@ -315,7 +303,7 @@
         </div>
         <!--Customer Service Loader-->
 
-        <?php include '../assets/include/footer.php'; ?>
+<?php include '../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
