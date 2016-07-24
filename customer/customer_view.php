@@ -129,7 +129,7 @@ session_start();
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                           
+
                                             <th>No</th>
                                             <th>Full Name</th>
                                             <th>NIC</th>
@@ -147,14 +147,14 @@ session_start();
                                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
                                             <tr<?php echo $index++ % 2 ? ' class="even"' : '' ?> onClick = "readValues(this)">
 
-                                 
+
                                                 <td><?php echo $row['cus_id'] ?></td>
                                                 <td><?php echo $row['cus_fullname'] ?></td>
                                                 <td><?php echo $row['cus_nic'] ?></td>
                                                 <td><?php echo $row['cus_address'] ?></td>
                                                 <td><?php echo $row['cus_reg_date'] ?></td>
                                                 <td><?php echo $row['cus_tp'] ?></td>
-                                                <td><?php echo '<form method="post" action="customer_updateinfo.php" name="view"><button type="submit" name="view"  id="cservicebtn" method="post" class="btn btn">View</button></form>' ?></td>
+                                                <td><?php echo '<button type="submit" name="view"  id="cservicebtn" method="post" class="btn btn">View</button>' ?></td>
 
                                             </tr>
                                             <?php $i++; ?>
@@ -170,23 +170,26 @@ session_start();
                                         <div class="form-inline">
                                             <button type="submit"  class="btn btn" id="cservicebtn">Save as PDF</button>
                                             <button type="submit"  class="btn btn" id="cservicebtn">Print</button>
-<script>
+                                            <script>
 
-        var cel;
-        function readValues(x) {
+                                                var cel;
+                                                function readValues(x) {
 
-            cel = x.cells[2].innerHTML;
-          
-        alert(cel);
-        
-         var userName = "Shekhar Shete";
-    '<%Session["UserName"] = "' + userName + '"; %>';
-     alert('<%Session["UserName"] %>');
-            
-        }
-      
+                                                    cel = x.cells[2].innerHTML;
+                                                    var cus_nic = cel;
+                                                    alert(cus_nic);
+                                                    window.location.href = "customer_updateinfo.php?nic=" + cus_nic;
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
 
-    </script>                                           
+                                                }
+
+
+                                            </script>                                           
 
                                         </div>
                                     </div>
@@ -208,9 +211,9 @@ session_start();
             </div>
         </div>
     </div>
-    
+
     <!--Customer Panel Section-->
-    
+
     <?php include '../assets/include/footer.php'; ?>
 </body>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -218,22 +221,22 @@ session_start();
 <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-        function setServiceOptionPanel()
+    function setServiceOptionPanel()
+    {
+        var sp_value = document.getElementById('input-search-option').value;
+        if (sp_value == 'serviceno')
         {
-            var sp_value = document.getElementById('input-search-option').value;
-            if (sp_value == 'serviceno')
-            {
-                document.getElementById('cboservice').disabled = false;
+            document.getElementById('cboservice').disabled = false;
 
-                alert(sp_value);
-            }
-            else if (sp_value == 'cname' || sp_value == 'tp')
-            {
-                document.getElementById('cboservice').selectedIndex = "0";
-                document.getElementById('cboservice').disabled = true;
-                alert(sp_value);
-            }
+            alert(sp_value);
         }
+        else if (sp_value == 'cname' || sp_value == 'tp')
+        {
+            document.getElementById('cboservice').selectedIndex = "0";
+            document.getElementById('cboservice').disabled = true;
+            alert(sp_value);
+        }
+    }
 
 
 
